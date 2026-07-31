@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | Infraestructura, Soporte TI & Telecomunicaciones</title>
 
-  <!-- Tipografía Corporativa Modern Tech -->
+  <!-- TIPOGRAFÍA ENTERPRISE DE ALTA DENSIDAD -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* =======================================================
-       ESTILOS GLOBALES & PALETA ENTERPRISE
+       1. VARIABLES Y HOJA DE ESTILOS BASE
        ======================================================= */
     :root {
-      --bg-dark: #030712;
-      --bg-card: rgba(15, 23, 42, 0.75);
-      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --bg-dark: #020617;
+      --bg-card: rgba(15, 23, 42, 0.8);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
       --accent-blue: #3b82f6;
       --accent-blue-hover: #2563eb;
       --accent-cyan: #06b6d4;
       --accent-green: #22c55e;
-      --accent-glow: rgba(59, 130, 246, 0.2);
+      --accent-glow: rgba(59, 130, 246, 0.25);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-light: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(59, 130, 246, 0.35);
+      --border-light: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(59, 130, 246, 0.4);
     }
 
     * {
@@ -47,11 +47,12 @@
       overflow-x: hidden;
     }
 
+    /* EFECTO LUMINOSO DE FONDO */
     .glow-bg {
       position: fixed;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(3, 7, 18, 0) 70%);
+      width: 750px;
+      height: 750px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%);
       top: -250px;
       left: 50%;
       transform: translateX(-50%);
@@ -60,7 +61,7 @@
     }
 
     /* =======================================================
-       ENCABEZADO & NAVEGACIÓN GLASS
+       2. NAVEGACIÓN Y LOGO
        ======================================================= */
     header {
       display: flex;
@@ -69,8 +70,8 @@
       padding: 14px 8%;
       position: sticky;
       top: 0;
-      background: rgba(3, 7, 18, 0.85);
-      backdrop-filter: blur(16px);
+      background: rgba(2, 6, 23, 0.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-light);
       z-index: 1000;
     }
@@ -90,7 +91,7 @@
     }
 
     .logo-img:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     nav {
@@ -105,6 +106,7 @@
       font-size: 0.92rem;
       font-weight: 600;
       transition: color 0.2s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -121,9 +123,9 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(34, 197, 94, 0.12);
+      background: rgba(34, 197, 94, 0.15);
       color: #4ade80;
-      border: 1px solid rgba(34, 197, 94, 0.25);
+      border: 1px solid rgba(34, 197, 94, 0.3);
       padding: 8px 14px;
       border-radius: 8px;
       font-size: 0.85rem;
@@ -133,8 +135,8 @@
     }
 
     .btn-wsp-header:hover {
-      background: rgba(34, 197, 94, 0.22);
-      box-shadow: 0 0 15px rgba(34, 197, 94, 0.25);
+      background: rgba(34, 197, 94, 0.25);
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
     }
 
     .btn-nav-cta {
@@ -154,11 +156,11 @@
     }
 
     /* =======================================================
-       HERO PRINCIPAL
+       3. HERO PRINCIPAL
        ======================================================= */
     .hero {
       text-align: center;
-      padding: 90px 8% 50px 8%;
+      padding: 85px 8% 45px 8%;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -167,7 +169,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(59, 130, 246, 0.12);
+      background: rgba(59, 130, 246, 0.15);
       color: var(--accent-cyan);
       border: 1px solid var(--border-glow);
       padding: 6px 18px;
@@ -179,7 +181,7 @@
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3.4rem;
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 22px;
@@ -232,7 +234,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 15px rgba(22, 163, 74, 0.25);
+      box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
       transition: transform 0.2s, background 0.2s;
     }
 
@@ -242,7 +244,7 @@
     }
 
     /* =======================================================
-       MARCAS & APLICATIVOS (INTERACTIVOS)
+       4. SECCIÓN INTERACTIVA DE APLICATIVOS
        ======================================================= */
     .apps-section {
       padding: 60px 8%;
@@ -354,7 +356,7 @@
     }
 
     /* =======================================================
-       TABLERO MODULAR BENTO GRID (SERVICIOS)
+       5. TABLERO MODULAR BENTO GRID (SERVICIOS)
        ======================================================= */
     .services-section {
       padding: 90px 8%;
@@ -445,7 +447,7 @@
     }
 
     /* =======================================================
-       COTIZADOR INTEGRADO (2 COLUMNAS)
+       6. WIDGET DE COTIZACIÓN INTEGRADO (2 COLUMNAS)
        ======================================================= */
     .quote-section {
       padding: 90px 8%;
@@ -471,7 +473,6 @@
       color: #0f172a;
     }
 
-    /* PANEL IZQUIERDO WIDGET */
     .iptelco-brand-box {
       background: linear-gradient(145deg, #0f172a, #1e293b);
       padding: 35px 25px;
@@ -581,7 +582,6 @@
 
     .iptelco-card-detail p { margin: 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
 
-    /* PANEL DERECHO WIDGET (FORMULARIO) */
     .iptelco-form-box { padding: 35px; background: #ffffff; }
     .iptelco-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .iptelco-input-group { margin-bottom: 16px; }
@@ -644,7 +644,119 @@
     .iptelco-status.error { display: block; background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
 
     /* =======================================================
-       FOOTER
+       7. MODAL DE MESA DE AYUDA (SOPORTE TÉCNICO)
+       ======================================================= */
+    .iptelco-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .iptelco-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .iptelco-modal-content {
+      background: #ffffff;
+      color: #0f172a;
+      width: 100%;
+      max-width: 680px;
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .iptelco-modal-backdrop.active .iptelco-modal-content {
+      transform: translateY(0);
+    }
+
+    .iptelco-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #f1f5f9;
+      border: none;
+      font-size: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .iptelco-modal-close:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .badge-soporte {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .modal-header-box h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .modal-header-box p {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .iptelco-btn-soporte {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    }
+
+    .iptelco-btn-soporte:hover {
+      background: linear-gradient(135deg, #b91c1c, #991b1b);
+    }
+
+    /* =======================================================
+       8. FOOTER
        ======================================================= */
     footer {
       padding: 45px 8%;
@@ -680,7 +792,8 @@
       <a href="#aplicativos">Aplicativos</a>
       <a href="#soluciones">Soluciones</a>
       <a href="#cotizacion">Cotizador B2B</a>
-      <a href="https://webhook-vtiger-soporte.vercel.app/api/soporte" target="_blank">Mesa de Ayuda</a>
+      <!-- MODIFICADO: Abre el modal interactivo de tickets de soporte -->
+      <a onclick="abrirModalSoporte(event)">Mesa de Ayuda</a>
     </nav>
     
     <div class="header-actions">
@@ -1123,6 +1236,71 @@
     </div>
   </section>
 
+  <!-- MODAL DE MESA DE AYUDA (INTERACTIVO) -->
+  <div id="modalSoporte" class="iptelco-modal-backdrop">
+    <div class="iptelco-modal-content">
+      <button type="button" class="iptelco-modal-close" onclick="cerrarModalSoporte()">&times;</button>
+
+      <div class="modal-header-box">
+        <span class="badge-soporte">🛠️ Mesa de Ayuda 24/7</span>
+        <h2>Crear Ticket de Soporte Técnico</h2>
+        <p>Reporta tu caso. La solicitud será asignada inmediatamente al ingeniero de soporte en turno.</p>
+      </div>
+
+      <form id="formSoporteIptelco" onsubmit="enviarTicketSoporte(event)">
+        <div class="iptelco-row">
+          <div class="iptelco-input-group">
+            <label for="sop_nit">NIT o Documento Registrado *</label>
+            <input type="text" id="sop_nit" placeholder="Ej: 900123456" required>
+          </div>
+          <div class="iptelco-input-group">
+            <label for="sop_contacto">Nombre de Quien Reporta *</label>
+            <input type="text" id="sop_contacto" placeholder="Nombre y Apellido" required>
+          </div>
+        </div>
+
+        <div class="iptelco-row">
+          <div class="iptelco-input-group">
+            <label for="sop_correo">Correo Electrónico *</label>
+            <input type="email" id="sop_correo" placeholder="correo@empresa.com" required>
+          </div>
+          <div class="iptelco-input-group">
+            <label for="sop_celular">Celular / WhatsApp *</label>
+            <input type="tel" id="sop_celular" placeholder="300 000 0000" required>
+          </div>
+        </div>
+
+        <div class="iptelco-row">
+          <div class="iptelco-input-group">
+            <label for="sop_prioridad">Prioridad del Caso *</label>
+            <select id="sop_prioridad" required>
+              <option value="Media" selected>Media (Operación normal con afectación leve)</option>
+              <option value="Baja">Baja (Consulta o requerimiento menor)</option>
+              <option value="Alta">Alta (Afectación considerable de servicio)</option>
+              <option value="Urgente">Urgente (Servicio completamente caído / Crítico)</option>
+            </select>
+          </div>
+          <div class="iptelco-input-group">
+            <label for="sop_asunto">Asunto / Resumen de la Falla *</label>
+            <input type="text" id="sop_asunto" placeholder="Ej: Falla en troncal de telefonía IP" required>
+          </div>
+        </div>
+
+        <div class="iptelco-input-group">
+          <label for="sop_descripcion">Descripción Detallada del Incidente *</label>
+          <textarea id="sop_descripcion" rows="3" placeholder="Explica detalladamente qué sucede, extensiones afectadas o mensaje de error..." required></textarea>
+        </div>
+
+        <button type="submit" id="btnSoporte" class="iptelco-btn-soporte">
+          <span id="btnSopText">Generar Ticket de Soporte</span>
+          <div id="btnSopSpinner" class="iptelco-spinner" style="display: none;"></div>
+        </button>
+
+        <div id="mensajeEstadoSoporte" class="iptelco-status"></div>
+      </form>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <p>© 2026 IPTELCO S.A.S — Soluciones Integrales de Telecomunicaciones & TI. Bogotá, Colombia.</p>
@@ -1134,6 +1312,69 @@
 
   <!-- LÓGICA JAVASCRIPT -->
   <script>
+    // FUNCIONES DEL MODAL DE MESA DE AYUDA (SOPORTE TÉCNICO)
+    function abrirModalSoporte(e) {
+      if(e) e.preventDefault();
+      document.getElementById('modalSoporte').classList.add('active');
+    }
+
+    function cerrarModalSoporte() {
+      document.getElementById('modalSoporte').classList.remove('active');
+    }
+
+    async function enviarTicketSoporte(event) {
+      event.preventDefault();
+
+      const btnText = document.getElementById('btnSopText');
+      const btnSpinner = document.getElementById('btnSopSpinner');
+      const btnSubmit = document.getElementById('btnSoporte');
+      const mensajeEstado = document.getElementById('mensajeEstadoSoporte');
+
+      btnText.style.display = 'none';
+      btnSpinner.style.display = 'block';
+      btnSubmit.disabled = true;
+      mensajeEstado.style.display = 'none';
+
+      const payload = {
+        nit: document.getElementById('sop_nit').value,
+        nombre_contacto: document.getElementById('sop_contacto').value,
+        correo: document.getElementById('sop_correo').value,
+        celular: document.getElementById('sop_celular').value,
+        prioridad: document.getElementById('sop_prioridad').value,
+        asunto: document.getElementById('sop_asunto').value,
+        descripcion: document.getElementById('sop_descripcion').value
+      };
+
+      try {
+        const response = await fetch('https://webhook-vtiger-soporte.vercel.app/api/soporte', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          mensajeEstado.className = 'iptelco-status success';
+          mensajeEstado.innerHTML = `🚨 <b>¡Ticket Generado con Éxito!</b><br>
+            Número de Ticket: <b>${data.ticket_no}</b><br>
+            Técnico Asignado: <b>${data.tecnico_asignado}</b><br>
+            <small style="color: #15803d;">Notificado a nuestro equipo. Te contactaremos en breve.</small>`;
+          document.getElementById('formSoporteIptelco').reset();
+        } else {
+          throw new Error(data.error || data.mensaje || 'NIT no encontrado en el sistema de Vtiger.');
+        }
+      } catch (error) {
+        mensajeEstado.className = 'iptelco-status error';
+        mensajeEstado.innerHTML = '❌ ' + error.message;
+      } finally {
+        btnText.style.display = 'block';
+        btnSpinner.style.display = 'none';
+        btnSubmit.disabled = false;
+      }
+    }
+
+    // FUNCIONES DEL COTIZADOR B2B
     function seleccionarServicio(tipo, elemento) {
       const yaEstaActiva = elemento.classList.contains('active');
 
