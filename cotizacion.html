@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador B2B | IPTELCO S.A.S</title>
+  <link rel="icon" type="image/png" href="img/Logo Wh.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg-dark: #020617; --accent-blue: #3b82f6; --text-muted: #94a3b8; --border-light: rgba(255,255,255,0.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: #f8fafc; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 10px 8%; background: rgba(2,6,23,0.94); border-bottom: 1px solid var(--border-light); }
+    .logo-img { height: 78px; width: auto; }
+    nav { display: flex; gap: 24px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
+    nav a.active { color: #06b6d4; }
+
+    .form-wrapper { padding: 60px 8%; max-width: 800px; margin: 0 auto; }
+    .form-box { background: #ffffff; color: #0f172a; padding: 35px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: #475569; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem; }
+    .btn-submit { width: 100%; padding: 14px; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    footer { padding: 40px 8%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); }
+
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; }
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .preloader-logo { width: 85px; height: 85px; border-radius: 50%; animation: pulseLogo 1.6s infinite ease-in-out; }
+    @keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(59,130,246,0.4)); } 50% { transform: scale(1.12); filter: drop-shadow(0 0 25px rgba(6,182,212,0.8)); } }
+    .preloader-spinner { width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @media (max-width: 900px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <div id="iptelco-preloader">
+    <div class="preloader-content"><img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo"><div class="preloader-spinner"></div></div>
+  </div>
+
+  <header>
+    <a href="index.html"><img src="img/Logo iptelco.png" alt="IPTELCO" class="logo-img"></a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
+      <a href="telefonia-ip.html">Telefonía IP</a>
+      <a href="ciberseguridad.html">Ciberseguridad</a>
+      <a href="redes-mikrotik.html">Redes</a>
+      <a href="cotizacion.html" class="active">Cotizador B2B</a>
+    </nav>
+  </header>
+
+  <div class="form-wrapper">
+    <div class="form-box">
+      <h2 style="margin-bottom: 8px; font-weight: 800;">Solicitar Cotización de Proyecto</h2>
+      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 24px;">Ingresa tus datos corporativos. La solicitud se registrará automáticamente en nuestro CRM.</p>
+
+      <form id="formCotizacion" onsubmit="enviarCotizacion(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group"><label>NIT o Cédula *</label><input type="text" id="nit" required placeholder="Ej: 900123456"></div>
+          <div class="form-group"><label>Razón Social / Empresa *</label><input type="text" id="empresa" required placeholder="Nombre Comercial"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group"><label>Persona de Contacto *</label><input type="text" id="contacto" required placeholder="Nombre y Apellido"></div>
+          <div class="form-group"><label>Celular / WhatsApp *</label><input type="tel" id="celular" required placeholder="300 000 0000"></div>
+        </div>
+        <div class="form-group"><label>Correo Electrónico *</label><input type="email" id="correo" required placeholder="correo@empresa.com"></div>
+        <div class="form-group">
+          <label>Servicio Requerido *</label>
+          <select id="servicio" required>
+            <option value="Soporte TI Outsourcing y Mesa de Ayuda Enterprise">Soporte TI Outsourcing y Mesa de Ayuda Enterprise</option>
+            <option value="Telefonía IP (Wolkvox / 3CX / Issabel / Fidelity)">Telefonía IP (Wolkvox / 3CX / Issabel / Fidelity)</option>
+            <option value="Ciberseguridad y Firewalls Fortinet">Ciberseguridad y Firewalls Fortinet</option>
+            <option value="Redes, Cableado Estructurado y APs Corporativos">Redes, Cableado Estructurado y APs Corporativos</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Notas adicionales</label><textarea id="notas" rows="3" placeholder="Indícanos número de sedes, usuarios o puntos de red..."></textarea></div>
+        <button type="submit" class="btn-submit">Enviar Cotización</button>
+        <div id="statusMsg" style="margin-top: 15px; display: none; padding: 12px; border-radius: 8px; text-align: center;"></div>
+      </form>
+    </div>
+  </div>
+
+  <footer><p>© 2026 IPTELCO S.A.S — Bogotá, Colombia.</p></footer>
+
+  <script>
+    window.addEventListener('load', () => { document.getElementById('iptelco-preloader').classList.add('hidden'); });
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href]').forEach(link => {
+        const url = link.getAttribute('href');
+        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
+          link.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('iptelco-preloader').classList.remove('hidden'); setTimeout(() => { window.location.href = url; }, 350); });
+        }
+      });
+    });
+
+    async function enviarCotizacion(e) {
+      e.preventDefault();
+      const msg = document.getElementById('statusMsg');
+      msg.style.display = 'block'; msg.style.background = '#e2e8f0'; msg.style.color = '#0f172a'; msg.innerHTML = 'Enviando...';
+
+      const payload = {
+        nit: document.getElementById('nit').value, empresa: document.getElementById('empresa').value,
+        contacto: document.getElementById('contacto').value, celular: document.getElementById('celular').value,
+        correo: document.getElementById('correo').value, servicio: document.getElementById('servicio').value,
+        notas: document.getElementById('notas').value
+      };
+
+      try {
+        const res = await fetch('https://webhook-vtiger-soporte.vercel.app/api/cotizacion', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          msg.style.background = '#dcfce7'; msg.style.color = '#15803d'; msg.innerHTML = '✅ ¡Cotización enviada exitosamente!';
+          document.getElementById('formCotizacion').reset();
+        } else { throw new Error(data.error || 'Error al enviar'); }
+      } catch (err) {
+        msg.style.background = '#fee2e2'; msg.style.color = '#b91c1c'; msg.innerHTML = '❌ ' + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
