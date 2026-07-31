@@ -43,26 +43,42 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER */
+    /* =========================================
+       NUEVO PRELOADER CON LOGO IPTELCO ANIMADO
+       ========================================= */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
       align-items: center; justify-content: center;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
     }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .preloader-spinner {
-      width: 36px; height: 36px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top: 3px solid var(--accent-blue);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    
+    /* Animación del Logo */
+    .preloader-logo {
+      animation: pulseLogo 1.5s ease-in-out infinite;
     }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes pulseLogo {
+      0% { transform: scale(0.9); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.8)); }
+      100% { transform: scale(0.9); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+    }
 
-    /* HEADER Y BOTÓN DE SOPORTE IPTELCO */
+    /* Animación del Texto del Logo */
+    .preloader-text {
+      font-size: 1.4rem; font-weight: 800; color: #ffffff; letter-spacing: 2px;
+      animation: pulseText 1.5s ease-in-out infinite;
+    }
+    .preloader-text span { color: var(--accent-cyan); }
+    @keyframes pulseText {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 6%; position: sticky; top: 0;
@@ -95,7 +111,7 @@
     }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
-    /* HERO PRINCIPAL CON ANIMACIÓN FLOTANTE */
+    /* HERO PRINCIPAL */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
@@ -118,8 +134,8 @@
     }
     .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
 
-    /* ANIMACIÓN FLOTANTE */
-    @keyframes floatAnimation {
+    /* Animación flotante de la imagen del hero */
+    @keyframes floatAnimationHero {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-14px); }
       100% { transform: translateY(0px); }
@@ -129,11 +145,11 @@
       background: #ffffff; border-radius: 20px; padding: 25px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      animation: floatAnimation 4s ease-in-out infinite;
+      animation: floatAnimationHero 4s ease-in-out infinite;
     }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
-    /* CATÁLOGO DE PRODUCTOS */
+    /* CATÁLOGOS CATEGORIZADOS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title {
       font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
@@ -188,7 +204,6 @@
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
 
-    /* FOOTER */
     footer {
       padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-light);
       color: var(--text-muted); font-size: 0.88rem;
@@ -204,11 +219,16 @@
 </head>
 <body>
 
-  <!-- PRELOADER -->
+  <!-- ==============================================
+       PRELOADER: LOGO IPTELCO CON PULSO DE NEÓN
+       ============================================== -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <div class="preloader-spinner"></div>
-      <span style="color: #94a3b8; font-weight: 700; font-size: 0.88rem;">CARGANDO IPTELCO...</span>
+      <svg class="preloader-logo" width="65" height="65" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
+        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="preloader-text">IPTELCO<span>.</span></div>
     </div>
   </div>
 
@@ -287,7 +307,7 @@
         <div class="product-info-box">
           <span class="product-badge">Contact Center Cloud</span>
           <h3>Wolkvox Cloud Contact Center</h3>
-          <p>Plataforma omnicanal en la nube. Supervisión en tiempo real, colas de atención telefónica, marcadores predictivos e integración directa con Vtiger CRM.</p>
+          <p>Plataforma omnicanal en la nube. Supervisión en tiempo real, colas de atención telefónica, marcadores predictivos e integración directa con CRM.</p>
           <a href="telefonia-ip.html" class="btn-link">Ver Solución Wolkvox ❯</a>
         </div>
       </div>
@@ -327,11 +347,9 @@
       </div>
     </div>
 
-    <!-- CATEGORÍA 3: VIDEOVIGILANCIA, BIOMETRÍA & CONTROL DE ACCESO (LAS 4 TARJETAS SEPARADAS) -->
+    <!-- CATEGORÍA 3: VIDEOVIGILANCIA, BIOMETRÍA & CONTROL DE ACCESO -->
     <div class="category-header-title">📹 Videovigilancia, Biometría & Control de Acceso</div>
     <div class="products-showcase">
-
-      <!-- TARJETA 1: CÁMARAS CCTV IP -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
         <div class="product-info-box">
@@ -342,7 +360,6 @@
         </div>
       </div>
 
-      <!-- TARJETA 2: CENTRO DE MONITOREO Y NVR -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/video-vigilancia-2.jpg" alt="Centro de Monitoreo CCTV"></div>
         <div class="product-info-box">
@@ -353,7 +370,6 @@
         </div>
       </div>
 
-      <!-- TARJETA 3: ZKTECO SPEEDFACE -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
         <div class="product-info-box">
@@ -364,7 +380,6 @@
         </div>
       </div>
 
-      <!-- TARJETA 4: BIOTIME CONTROL DE ASISTENCIA -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/biotime.jpg" alt="Software BioTime ZKTeco"></div>
         <div class="product-info-box">
@@ -374,7 +389,6 @@
           <a href="soporte.html" class="btn-link">Cotizar BioTime ❯</a>
         </div>
       </div>
-
     </div>
 
     <!-- CATEGORÍA 4: CABLEADO ESTRUCTURADO -->
@@ -418,7 +432,7 @@
       if (preloader) { preloader.classList.add('hidden'); }
     }
     window.addEventListener('load', abrirPagina);
-    setTimeout(abrirPagina, 800);
+    setTimeout(abrirPagina, 1000); // 1 segundo para apreciar la animación del logo
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('a[href]').forEach(link => {
@@ -427,7 +441,7 @@
           link.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('iptelco-preloader').classList.remove('hidden');
-            setTimeout(() => { window.location.href = url; }, 300);
+            setTimeout(() => { window.location.href = url; }, 350);
           });
         }
       });
