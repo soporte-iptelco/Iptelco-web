@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telefonía IP & Omnicanalidad 3CX | IPTELCO S.A.S</title>
-  
-  <link rel="icon" type="image/png" href="Logo Wh.png">
+  <title>Telefonía IP & Centrales Cloud | IPTELCO S.A.S</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="img/Logo Wh.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,186 +14,353 @@
   <style>
     :root {
       --bg-dark: #020617;
-      --bg-card: rgba(15, 23, 42, 0.8);
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
       --accent-blue: #3b82f6;
       --accent-cyan: #06b6d4;
-      --accent-green: #22c55e;
       --accent-glow: rgba(59, 130, 246, 0.25);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-light: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(59, 130, 246, 0.4);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
+    .glow-bg {
+      position: fixed;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%);
+      top: -250px; left: 50%; transform: translateX(-50%);
+      z-index: -1; pointer-events: none;
+    }
+
+    /* PRELOADER */
+    #iptelco-preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #020617; z-index: 99999; display: flex;
+      align-items: center; justify-content: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .preloader-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid var(--accent-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* HEADER Y BOTONES DE ACCIÓN */
     header {
-      display: flex; justify-content: space-between; align-items: center; padding: 14px 8%;
-      position: sticky; top: 0; background: rgba(2, 6, 23, 0.92); backdrop-filter: blur(12px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 6%; position: sticky; top: 0;
+      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
-    .logo-img { height: 48px; width: auto; }
-    nav { display: flex; gap: 25px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; }
-    nav a:hover, nav a.active { color: var(--accent-cyan); }
 
-    /* SECCIÓN HERO 3D PRODUCTO */
-    .product-hero {
-      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
-      padding: 80px 8%; max-width: 1300px; margin: 0 auto; min-height: 85vh; gap: 40px;
+    .brand-logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-logo-text { font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
+    .brand-logo-text span { color: var(--accent-blue); }
+
+    nav { display: flex; align-items: center; gap: 22px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+
+    .btn-soporte {
+      background: rgba(239, 68, 68, 0.15); color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px;
+      border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+    }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
+      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
+    }
+    .btn-cotizar:hover { transform: translateY(-2px); }
+
+    /* HERO TELEFONÍA IP */
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
+    
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 span { color: var(--accent-blue); }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
+
+    .features-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .feat-item { display: flex; align-items: center; gap: 12px; font-weight: 600; color: #cbd5e1; font-size: 0.98rem; }
+    .feat-check {
+      background: rgba(59, 130, 246, 0.2); color: var(--accent-cyan);
+      width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 800;
     }
 
-    .hero-text h1 {
-      font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    /* CONTENEDOR BLANCO PARA SOLUCIONAR LA IMAGEN ROTA DE 3CX */
+    .hero-media-container {
+      background: #ffffff; border-radius: 20px; padding: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .hero-media-container img { max-width: 100%; max-height: 330px; object-fit: contain; }
+
+    .cert-badges-row {
+      display: flex; align-items: center; gap: 16px; margin-top: 25px;
+      padding-top: 20px; border-top: 1px solid var(--border-light);
+    }
+    .cert-badge-box {
+      background: #ffffff; padding: 6px 14px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
+
+    /* SECCIÓN DE PRODUCTOS TELEFONÍA EN ZIG-ZAG */
+    .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
+
+    .products-showcase { display: flex; flex-direction: column; gap: 40px; }
+
+    .product-row {
+      display: flex; align-items: center; gap: 40px;
+      background: var(--bg-card); border: 1px solid var(--border-light);
+      border-radius: 24px; padding: 30px; transition: all 0.3s ease;
+    }
+    .product-row:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15);
+      background: var(--bg-card-hover);
+    }
+    .product-row.reverse { flex-direction: row-reverse; }
+
+    /* CAJA BLANCA PARA LOGOS Y CAPTURAS DE APLICATIVOS */
+    .product-img-box {
+      flex: 1; min-width: 270px; height: 230px;
+      background: #ffffff; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    }
+    .product-img-box img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .product-row:hover .product-img-box img { transform: scale(1.05); }
+
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+
+    .product-badge {
+      font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);
+      text-transform: uppercase; letter-spacing: 1px;
+      background: rgba(6, 182, 212, 0.12); padding: 4px 12px;
+      border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25);
     }
 
-    .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
-    .feature-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; }
-    .feature-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #e2e8f0; }
-    .feature-icon { background: rgba(59, 130, 246, 0.15); color: var(--accent-cyan); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
-
-    /* CONTENEDOR 3D TILT ANIMACIÓN */
-    .tilt-wrapper {
-      perspective: 1200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--accent-blue); font-weight: 700; text-decoration: none;
+      font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
     }
+    .btn-link:hover { gap: 12px; color: #60a5fa; }
 
-    .tilt-card {
-      position: relative;
-      transition: transform 0.15s ease-out;
-      transform-style: preserve-3d;
-      cursor: pointer;
+    /* FOOTER */
+    footer {
+      padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-light);
+      color: var(--text-muted); font-size: 0.88rem;
     }
-
-    /* EFECTO FLOTANTE AUTOMÁTICO */
-    .floating-anim {
-      animation: floatAnimation 4s ease-in-out infinite;
-    }
-
-    @keyframes floatAnimation {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-    }
-
-    .mockup-img {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.6));
-      pointer-events: none;
-    }
-
-    /* GLOW DETRÁS DE LA IMAGEN */
-    .mockup-glow {
-      position: absolute;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(2, 6, 23, 0) 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-    }
-
-    .btn-action {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff;
-      padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none;
-      display: inline-block; box-shadow: 0 4px 20px var(--accent-glow); transition: transform 0.2s;
-    }
-    .btn-action:hover { transform: translateY(-2px); }
-
-    footer { padding: 40px 8%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 0.88rem; }
 
     @media (max-width: 900px) {
-      .product-hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
-      .feature-list { align-items: center; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100%; height: 200px; }
+      nav { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO Y NAVEGACIÓN MULTIPÁGINA -->
+  <!-- PRELOADER -->
+  <div id="iptelco-preloader">
+    <div class="preloader-content">
+      <div class="preloader-spinner"></div>
+      <span style="color: #94a3b8; font-weight: 700; font-size: 0.88rem;">CARGANDO IPTELCO...</span>
+    </div>
+  </div>
+
+  <div class="glow-bg"></div>
+
+  <!-- HEADER UNIFICADO -->
   <header>
-    <a href="index.html">
-      <img src="Logo iptelco.png" alt="IPTELCO" class="logo-img">
+    <a href="index.html" class="brand-logo-container">
+      <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
+        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-logo-text">IPTELCO<span>.</span></span>
     </a>
+
+    <!-- MENÚ CON "QUIÉNES SOMOS" AL FINAL -->
     <nav>
       <a href="index.html">Inicio</a>
-      <a href="telefonia-ip.html" class="active">Telefonía IP 3CX</a>
+      <a href="telefonia-ip.html" class="active">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
-      <a href="redes.html">Redes MikroTik</a>
-      <a href="index.html#cotizacion">Cotizar</a>
+      <a href="redes-mikrotik.html">Redes</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
     </nav>
+    
+    <div class="header-actions">
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte Vtiger</a>
+      <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
+    </div>
   </header>
 
-  <!-- HERO INTERACTIVO CON MAQUETA 3D -->
-  <section class="product-hero">
-    <div class="hero-text">
-      <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">Centrales Telefónicas en la Nube</span>
-      <h1>Lleva la extensión de tu oficina en tu Smartphone</h1>
-      <p>
-        Con la integración de 3CX y Wolkvox desplegada por IPTELCO, tus colaboradores realizan y reciben llamadas corporativas desde cualquier lugar, manteniendo el número fijo de la empresa.
-      </p>
+  <!-- HERO TELEFONÍA IP -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Centrales Telefónicas IP & Cloud</span>
+        <h1 style="margin-top: 10px;">Lleva la extensión de tu oficina en tu <span>Smartphone</span></h1>
+        <p>
+          Con las soluciones de 3CX, Wolkvox, Fidelity e Issabel desplegadas por IPTELCO, tus colaboradores realizan y reciben llamadas corporativas desde cualquier lugar, manteniendo el número fijo de la empresa.
+        </p>
 
-      <div class="feature-list">
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <span>Apps nativas para Android e iOS con calidad HD</span>
+        <div class="features-list">
+          <div class="feat-item"><div class="feat-check">✓</div> Apps nativas para Android e iOS con calidad de voz HD</div>
+          <div class="feat-item"><div class="feat-check">✓</div> Grabación de llamadas, IVR interactivo y estado de presencia</div>
+          <div class="feat-item"><div class="feat-check">✓</div> Integración directa con WhatsApp Business y Vtiger CRM</div>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <span>Grabación de llamadas, IVR interactivo y estado de presencia</span>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Demo de Telefonía</a>
+          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda Vtiger</a>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">✓</div>
-          <span>Integración directa con WhatsApp Business y Vtiger CRM</span>
+
+        <!-- SELLOS 3CX -->
+        <div class="cert-badges-row">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Certificaciones 3CX:</span>
+          <div class="cert-badge-box"><img src="img/3cx-parner.png" alt="3CX Partner"></div>
+          <div class="cert-badge-box"><img src="img/3cx-avanced.png" alt="3CX Advanced Engineer"></div>
         </div>
       </div>
 
-      <a href="index.html#cotizacion" class="btn-action">Solicitar Demo de Telefonía</a>
-    </div>
-
-    <!-- CONTENEDOR DE LA MAQUETA 3D INTERACTIVA -->
-    <div class="tilt-wrapper">
-      <div class="tilt-card floating-anim" id="card3D">
-        <div class="mockup-glow"></div>
-        <!-- AQUÍ SE MUESTRA LA IMAGEN DEL SOFTPHONE 3CX -->
-        <img src="3cx-softphone.png" alt="3CX Softphone App IPTELCO" class="mockup-img">
+      <!-- IMAGEN HERO SOLUCIONADA (AQUÍ ESTABA EL ERROR EN TU CAPTURA) -->
+      <div class="hero-media-container">
+        <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.src='img/3cx-PBX.png';">
       </div>
     </div>
   </section>
 
+  <!-- MOSTRARIO DE SOLUCIONES DE TELEFONÍA (3CX, WOLKVOX, FIDELITY, ISSABEL) -->
+  <section class="services-section">
+    <div class="section-title">
+      <h2>Plataformas & Conmutación Telefónica</h2>
+      <p>Infraestructura certificada para empresas de todos los tamaños y Contact Centers:</p>
+    </div>
+
+    <div class="products-showcase">
+
+      <!-- 1. 3CX VOICE & PBX -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/3cx.png" alt="3CX Phone App" onerror="this.src='img/3cx-PBX.png';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Plataforma Unificada 3CX</span>
+          <h3>Centrales Telefónicas Virtuales 3CX</h3>
+          <p>La solución líder mundial en Comunicaciones Unificadas. Softphones móviles en smartphones, cliente web, conferencias web integradas, respuesta de voz interactiva (IVR) y reducción drástica de costos operativos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Licenciamiento 3CX ❯</a>
+        </div>
+      </div>
+
+      <!-- 2. WOLKVOX CLOUD CONTACT CENTER -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/wolkvox.jpg" alt="Wolkvox Contact Center">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Contact Center Cloud</span>
+          <h3>Wolkvox Contact Center Omnicanal</h3>
+          <p>Potencia tus equipos de servicio al cliente y telemercadeo. Supervisión en vivo de agentes, colas inteligentes de llamadas, marcadores predictivos, encuestas de satisfacción e integración nativa con Vtiger CRM.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Plataforma Wolkvox ❯</a>
+        </div>
+      </div>
+
+      <!-- 3. FIDELITY PBX -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/fidelity.jpg" alt="Fidelity PBX Enterprise">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Conmutación Corporativa</span>
+          <h3>Fidelity PBX Enterprise</h3>
+          <p>Solución robusta de conmutación telefónica corporativa. Control eficiente de troncales SIP, líneas analógicas e E1/T1, tarificación detallada por extensiones y auditoría de consumos telefónicos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Fidelity PBX ❯</a>
+        </div>
+      </div>
+
+      <!-- 4. ISSABEL VOIP PBX -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/3cx-PBX.png" alt="Issabel VoIP Server">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">VoIP Open Source</span>
+          <h3>Servidores Telefónicos Issabel PBX</h3>
+          <p>Implementación y soporte especializado para servidores Issabel PBX. Comunicaciones unificadas de código abierto, tarificadores integrados, módulos de Call Center y gateways analógicos/digitales.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Servidor Issabel ❯</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>© 2026 IPTELCO S.A.S — Soluciones Integrales de Telecomunicaciones & TI. Bogotá, Colombia.</p>
+    <p><b>IPTELCO S.A.S</b> — Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia</p>
+    <p style="margin-top: 8px;">
+      📞 WhatsApp / Ventas: <a href="https://wa.me/573178737171" target="_blank">+57 317 873 7171</a> | 
+      ✉️ <a href="mailto:info@iptelco.com.co" style="color: #60a5fa;">info@iptelco.com.co</a>
+    </p>
   </footer>
 
-  <!-- SCRIPT PARA EL EFECTO TILT 3D CON EL RATÓN -->
   <script>
-    const tiltCard = document.getElementById('card3D');
-    const container = document.querySelector('.tilt-wrapper');
+    function abrirPagina() {
+      const preloader = document.getElementById('iptelco-preloader');
+      if (preloader) { preloader.classList.add('hidden'); }
+    }
+    window.addEventListener('load', abrirPagina);
+    setTimeout(abrirPagina, 800);
 
-    container.addEventListener('mousemove', (e) => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      // Desactiva animación flotante mientras el mouse está encima
-      tiltCard.classList.remove('floating-anim');
-
-      // Grados de rotación basados en el cursor
-      const rotateX = (-y / rect.height) * 30;
-      const rotateY = (x / rect.width) * 30;
-
-      tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-    });
-
-    container.addEventListener('mouseleave', () => {
-      // Restablece la posición y reactiva la animación flotante
-      tiltCard.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-      tiltCard.classList.add('floating-anim');
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href]').forEach(link => {
+        const url = link.getAttribute('href');
+        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('iptelco-preloader').classList.remove('hidden');
+            setTimeout(() => { window.location.href = url; }, 300);
+          });
+        }
+      });
     });
   </script>
 </body>
