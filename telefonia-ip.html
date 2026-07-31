@@ -62,7 +62,7 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* HEADER Y BOTONES DE ACCIÓN */
+    /* CABECERA CORREGIDA CON LOGO VECTORIAL (JAMÁS SE ROMPE) */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 6%; position: sticky; top: 0;
@@ -111,11 +111,12 @@
       display: flex; align-items: center; justify-content: center; font-weight: 800;
     }
 
-    /* CONTENEDOR BLANCO PARA SOLUCIONAR LA IMAGEN ROTA DE 3CX */
+    /* CONTENEDOR BLANCO PARA MOSTRAR LA IMAGEN DE 3CX DE FORMA IMPECABLE */
     .hero-media-container {
       background: #ffffff; border-radius: 20px; padding: 25px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 320px;
     }
     .hero-media-container img { max-width: 100%; max-height: 330px; object-fit: contain; }
 
@@ -130,7 +131,7 @@
     }
     .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
 
-    /* SECCIÓN DE PRODUCTOS TELEFONÍA EN ZIG-ZAG */
+    /* SECCIÓN DE PRODUCTOS DE TELEFONÍA EN ZIG-ZAG */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
@@ -149,7 +150,7 @@
     }
     .product-row.reverse { flex-direction: row-reverse; }
 
-    /* CAJA BLANCA PARA LOGOS Y CAPTURAS DE APLICATIVOS */
+    /* CAJA BLANCA PARA LOGOS DE APLICATIVOS */
     .product-img-box {
       flex: 1; min-width: 270px; height: 230px;
       background: #ffffff; border-radius: 16px;
@@ -208,7 +209,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER UNIFICADO -->
+  <!-- HEADER CON LOGO SVG VECTORIAL (NUNCA SE ROMPE) -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
@@ -218,7 +219,7 @@
       <span class="brand-logo-text">IPTELCO<span>.</span></span>
     </a>
 
-    <!-- MENÚ CON "QUIÉNES SOMOS" AL FINAL -->
+    <!-- MENÚ ACTUALIZADO CON "QUIÉNES SOMOS" AL FINAL -->
     <nav>
       <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html" class="active">Telefonía IP</a>
@@ -262,14 +263,14 @@
         </div>
       </div>
 
-      <!-- IMAGEN HERO SOLUCIONADA (AQUÍ ESTABA EL ERROR EN TU CAPTURA) -->
+      <!-- MARCO BLANCO CON IMAGEN REAL CORREGIDA DE 3CX -->
       <div class="hero-media-container">
-        <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.src='img/3cx-PBX.png';">
+        <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.onerror=null; this.src='img/3cx-PBX.png';">
       </div>
     </div>
   </section>
 
-  <!-- MOSTRARIO DE SOLUCIONES DE TELEFONÍA (3CX, WOLKVOX, FIDELITY, ISSABEL) -->
+  <!-- MOSTRARIO DE TELEFONÍA IP (3CX, WOLKVOX, FIDELITY, ISSABEL) -->
   <section class="services-section">
     <div class="section-title">
       <h2>Plataformas & Conmutación Telefónica</h2>
@@ -281,12 +282,12 @@
       <!-- 1. 3CX VOICE & PBX -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/3cx.png" alt="3CX Phone App" onerror="this.src='img/3cx-PBX.png';">
+          <img src="img/3cx.png" alt="3CX Phone App" onerror="this.onerror=null; this.src='img/3cx-PBX.png';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Plataforma Unificada 3CX</span>
           <h3>Centrales Telefónicas Virtuales 3CX</h3>
-          <p>La solución líder mundial en Comunicaciones Unificadas. Softphones móviles en smartphones, cliente web, conferencias web integradas, respuesta de voz interactiva (IVR) y reducción drástica de costos operativos.</p>
+          <p>La solución líder mundial en Comunicaciones Unificadas. Softphones móviles en smartphones, cliente web, conferencias integradas, respuesta de voz interactiva (IVR) y reducción drástica de costos operativos.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Licenciamiento 3CX ❯</a>
         </div>
       </div>
