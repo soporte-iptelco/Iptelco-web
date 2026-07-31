@@ -95,7 +95,7 @@
     }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
-    /* HERO PRINCIPAL CON EFECTO DE MOVIMIENTO FLOTANTE */
+    /* HERO PRINCIPAL CON ANIMACIÓN FLOTANTE */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
@@ -118,7 +118,7 @@
     }
     .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
 
-    /* ANIMACIÓN FLOTANTE DE LA IMAGEN HERO */
+    /* ANIMACIÓN FLOTANTE */
     @keyframes floatAnimation {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-14px); }
@@ -133,7 +133,7 @@
     }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
-    /* CATÁLOGOS CATEGORIZADOS */
+    /* CATÁLOGO DE PRODUCTOS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title {
       font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
@@ -233,7 +233,6 @@
     </nav>
     
     <div class="header-actions">
-      <!-- BOTÓN REQUISITADO: SOPORTE IPTELCO -->
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
     </div>
@@ -251,7 +250,6 @@
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Proyecto</a>
-          <!-- BOTÓN REQUISITADO: MESA DE AYUDA IPTELCO -->
           <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda IPTELCO</a>
         </div>
 
@@ -271,7 +269,7 @@
   <!-- CATÁLOGO CATEGORIZADO -->
   <section class="services-section">
 
-    <!-- TELEFONÍA IP -->
+    <!-- CATEGORÍA 1: TELEFONÍA IP -->
     <div class="category-header-title">📞 Telefonía IP & Centrales Cloud</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -305,7 +303,7 @@
       </div>
     </div>
 
-    <!-- CIBERSEGURIDAD Y REDES -->
+    <!-- CATEGORÍA 2: CIBERSEGURIDAD Y REDES -->
     <div class="category-header-title">🛡️ Ciberseguridad & Redes Enterprise</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -329,31 +327,57 @@
       </div>
     </div>
 
-    <!-- VIDEOVIGILANCIA Y BIOMETRÍA -->
-    <div class="category-header-title">📹 Videovigilancia & Seguridad Electrónica</div>
+    <!-- CATEGORÍA 3: VIDEOVIGILANCIA, BIOMETRÍA & CONTROL DE ACCESO (LAS 4 TARJETAS SEPARADAS) -->
+    <div class="category-header-title">📹 Videovigilancia, Biometría & Control de Acceso</div>
     <div class="products-showcase">
+
+      <!-- TARJETA 1: CÁMARAS CCTV IP -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras IP"></div>
+        <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
         <div class="product-info-box">
           <span class="product-badge">Circuito Cerrado (CCTV)</span>
           <h3>Cámaras IP & Videovigilancia CCTV</h3>
-          <p>Sistemas de CCTV IP con analítica de video inteligente, grabación centralizada NVR, visión nocturna infrarroja y monitoreo remoto 24/7 en smartphones.</p>
+          <p>Sistemas de CCTV IP con analítica de video inteligente, grabación centralizada NVR, visión nocturna infrarroja y monitoreo remoto 24/7 en dispositivos móviles.</p>
           <a href="soporte.html" class="btn-link">Cotizar Videovigilancia ❯</a>
         </div>
       </div>
 
+      <!-- TARJETA 2: CENTRO DE MONITOREO Y NVR -->
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
+        <div class="product-img-box"><img src="img/video-vigilancia-2.jpg" alt="Centro de Monitoreo CCTV"></div>
         <div class="product-info-box">
-          <span class="product-badge">Control de Acceso Biométrico</span>
-          <h3>ZKTeco SpeedFace & BioTime</h3>
-          <p>Terminales de reconocimiento facial visible light sin contacto y software BioTime para control de asistencia, turnos y apertura automatizada de puertas.</p>
-          <a href="soporte.html" class="btn-link">Cotizar Biometría ❯</a>
+          <span class="product-badge">Centro de Monitoreo</span>
+          <h3>Servidores NVR & Analítica de Video</h3>
+          <p>Infraestructura de almacenamiento masivo para grabación continua, lectura automática de placas de vehículos (LPR), detección de intrusos y dashboards de seguridad.</p>
+          <a href="soporte.html" class="btn-link">Ver Soluciones de Monitoreo ❯</a>
         </div>
       </div>
+
+      <!-- TARJETA 3: ZKTECO SPEEDFACE -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Biometría Facial</span>
+          <h3>Control de Acceso ZKTeco SpeedFace</h3>
+          <p>Terminales de reconocimiento facial visible light sin contacto. Medición de temperatura, lectura biométrica ultra rápida y apertura automatizada de puertas o torniquetes.</p>
+          <a href="soporte.html" class="btn-link">Cotizar SpeedFace ❯</a>
+        </div>
+      </div>
+
+      <!-- TARJETA 4: BIOTIME CONTROL DE ASISTENCIA -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/biotime.jpg" alt="Software BioTime ZKTeco"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Gestión de Personal</span>
+          <h3>Software BioTime Control de Asistencia</h3>
+          <p>Plataforma web centralizada para la administración de turnos, marcaciones de personal, horas extras y sincronización directa con dispositivos biométricos de huella y rostro.</p>
+          <a href="soporte.html" class="btn-link">Cotizar BioTime ❯</a>
+        </div>
+      </div>
+
     </div>
 
-    <!-- CABLEADO ESTRUCTURADO -->
+    <!-- CATEGORÍA 4: CABLEADO ESTRUCTURADO -->
     <div class="category-header-title">🔌 Cableado Estructurado & Racks</div>
     <div class="products-showcase">
       <div class="product-row">
