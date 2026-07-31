@@ -12,12 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =======================================================
-       1. ESTILOS BASE Y VARIABLES
-       ======================================================= */
     :root {
       --bg-dark: #020617;
-      --bg-card: rgba(15, 23, 42, 0.8);
+      --bg-card: rgba(15, 23, 42, 0.85);
       --bg-card-hover: rgba(30, 41, 59, 0.95);
       --accent-blue: #3b82f6;
       --accent-cyan: #06b6d4;
@@ -46,9 +43,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* =======================================================
-       2. PRELOADER ANTI-BLOQUEO
-       ======================================================= */
+    /* PRELOADER */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
@@ -57,10 +52,7 @@
     }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    .preloader-content {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 16px; text-align: center;
-    }
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .preloader-spinner {
       width: 36px; height: 36px;
       border: 3px solid rgba(255, 255, 255, 0.1);
@@ -70,93 +62,83 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* =======================================================
-       3. CABECERA Y NAVEGACIÓN
-       ======================================================= */
+    /* CABECERA */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 8%; position: sticky; top: 0;
-      background: rgba(2, 6, 23, 0.92); backdrop-filter: blur(16px);
+      padding: 12px 6%; position: sticky; top: 0;
+      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    .brand-logo-container {
-      display: flex; align-items: center; gap: 10px; text-decoration: none;
-    }
-    .logo-img-header { height: 52px; width: auto; object-fit: contain; }
-    .brand-logo-text { font-size: 1.6rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
+    .brand-logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-logo-text { font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
     .brand-logo-text span { color: var(--accent-blue); }
 
-    nav { display: flex; align-items: center; gap: 26px; }
-    nav a {
-      color: var(--text-muted); text-decoration: none;
-      font-size: 0.92rem; font-weight: 600; transition: color 0.2s;
-    }
-    nav a:hover, nav a.active { color: var(--text-main); }
+    nav { display: flex; align-items: center; gap: 22px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
-      color: #ffffff; padding: 12px 24px; border-radius: 8px;
-      font-size: 0.9rem; font-weight: 700; text-decoration: none;
-      box-shadow: 0 4px 15px var(--accent-glow); display: inline-block;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
 
-    .btn-wsp {
-      background: rgba(34, 197, 94, 0.15); color: #4ade80;
-      border: 1px solid rgba(34, 197, 94, 0.3); padding: 12px 20px;
-      border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
+    .btn-soporte {
+      background: rgba(239, 68, 68, 0.15); color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35); padding: 9px 16px;
+      border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
     }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
 
-    /* =======================================================
-       4. HERO PRINCIPAL & CERTIFICACIONES 3CX
-       ======================================================= */
-    .hero { padding: 70px 8% 50px 8%; max-width: 1300px; margin: 0 auto; }
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
+      padding: 9px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
+    }
+    .btn-cotizar:hover { transform: translateY(-2px); }
+
+    /* HERO */
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
     .hero h1 {
-      font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+      font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;
       background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero h1 span { color: var(--accent-blue); -webkit-text-fill-color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
-    /* SELLOS DE CERTIFICACIÓN 3CX EN HERO */
     .cert-badges-row {
       display: flex; align-items: center; gap: 16px; margin-top: 25px;
       padding-top: 20px; border-top: 1px solid var(--border-light);
     }
-    .cert-badges-row img {
-      height: 45px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    .cert-badge-box {
+      background: #ffffff; padding: 6px 14px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+    .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
 
     .hero-media-container {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--border-glow);
-      border-radius: 24px; padding: 25px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      display: flex; flex-direction: column; align-items: center; gap: 20px;
+      background: #ffffff; border-radius: 20px; padding: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
-    .hero-media-container img {
-      max-width: 100%; max-height: 320px; object-fit: contain; display: block;
+    .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
+
+    /* MOSTRARIO DE PRODUCTOS ZIG-ZAG POR CATEGORÍAS */
+    .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
+    .category-header-title {
+      font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
+      margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 10px;
     }
 
-    /* =======================================================
-       5. CATÁLOGO COMPLETO EN ZIG-ZAG (14 IMÁGENES)
-       ======================================================= */
-    .services-section { padding: 60px 8% 80px 8%; max-width: 1250px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-title h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; }
-
-    .products-showcase { display: flex; flex-direction: column; gap: 45px; }
+    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
     .product-row {
-      display: flex; align-items: center; gap: 45px;
+      display: flex; align-items: center; gap: 40px;
       background: var(--bg-card); border: 1px solid var(--border-light);
-      border-radius: 24px; padding: 35px; transition: all 0.3s ease;
+      border-radius: 24px; padding: 30px; transition: all 0.3s ease;
     }
     .product-row:hover {
       border-color: var(--border-glow);
@@ -166,22 +148,18 @@
     .product-row.reverse { flex-direction: row-reverse; }
 
     .product-img-box {
-      flex: 1; min-width: 280px; height: 260px;
-      background: #080d1a; border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      flex: 1; min-width: 270px; height: 230px;
+      background: #ffffff; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
-      padding: 20px; overflow: hidden; position: relative;
+      padding: 20px; overflow: hidden;
     }
     .product-img-box img {
       max-width: 100%; max-height: 100%; object-fit: contain;
       transition: transform 0.4s ease;
     }
-    .product-row:hover .product-img-box img { transform: scale(1.06); }
+    .product-row:hover .product-img-box img { transform: scale(1.05); }
 
-    .product-info-box {
-      flex: 1.2; display: flex; flex-direction: column;
-      align-items: flex-start; gap: 12px;
-    }
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 
     .product-badge {
       font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);
@@ -190,34 +168,29 @@
       border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25);
     }
 
-    .product-info-box h3 { font-size: 1.75rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
-    .product-info-box p { font-size: 0.98rem; color: var(--text-muted); line-height: 1.6; }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
     .btn-link {
       display: inline-flex; align-items: center; gap: 8px;
       color: var(--accent-blue); font-weight: 700; text-decoration: none;
-      font-size: 0.95rem; margin-top: 6px; transition: gap 0.2s;
+      font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
 
-    /* FOOTER */
-    footer {
-      padding: 45px 8%; text-align: center; border-top: 1px solid var(--border-light);
-      color: var(--text-muted); font-size: 0.88rem;
-    }
-    footer a { color: #4ade80; text-decoration: none; font-weight: 700; }
+    footer { padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 0.88rem; }
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .product-row, .product-row.reverse { flex-direction: column; padding: 25px; gap: 25px; }
-      .product-img-box { width: 100%; height: 210px; }
+      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100%; height: 200px; }
       nav { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER ANTI-BLOQUEO -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <div class="preloader-spinner"></div>
@@ -227,27 +200,31 @@
 
   <div class="glow-bg"></div>
 
-  <!-- ENCABEZADO Y MARCA BLINDADA -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/Logo iptelco.png" alt="IPTELCO" class="logo-img-header" onerror="this.style.display='none';">
+      <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
+        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <span class="brand-logo-text">IPTELCO<span>.</span></span>
     </a>
 
-    <!-- NAVEGACIÓN REORDENADA: QUIÉNES SOMOS AL FINAL -->
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
       <a href="redes-mikrotik.html">Redes</a>
       <a href="quienes-somos.html">Quiénes Somos</a>
-      <a href="cotizacion.html">Cotizador B2B</a>
     </nav>
     
-    <a href="cotizacion.html" class="btn-primary">Solicitar Cotización</a>
+    <div class="header-actions">
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte Vtiger</a>
+      <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
+    </div>
   </header>
 
-  <!-- HERO PRINCIPAL CON 3CX PBX & CERTIFICACIONES -->
+  <!-- HERO PRINCIPAL -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -257,158 +234,129 @@
           Especialistas en Outsourcing de Soporte TI, Centrales Telefónicas IP Cloud, Firewalls Fortinet, Enrutamiento MikroTik y Biometría ZKTeco con garantía de SLA 24/7.
         </p>
 
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="cotizacion.html" class="btn-primary" style="padding: 14px 28px; font-size: 1rem;">Cotizar Proyecto</a>
-          <a href="https://wa.me/573178737171" target="_blank" class="btn-wsp">💬 WhatsApp +57 317 873 7171</a>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Proyecto</a>
+          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Soporte Técnico Vtiger</a>
         </div>
 
-        <!-- CERTIFICACIONES 3CX MOSTRADAS EN EL HERO (IMÁGENES 1 Y 2) -->
         <div class="cert-badges-row">
-          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Certificaciones Oficiales:</span>
-          <img src="img/3cx-parner.png" alt="3CX Partner" onerror="this.style.display='none';">
-          <img src="img/3cx-avanced.png" alt="3CX Advanced Engineer" onerror="this.style.display='none';">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Partner Certificado:</span>
+          <div class="cert-badge-box"><img src="img/3cx-parner.png" alt="3CX Partner"></div>
+          <div class="cert-badge-box"><img src="img/3cx-avanced.png" alt="3CX Advanced Engineer"></div>
         </div>
       </div>
 
-      <!-- VISTA MÓVIL Y PBX 3CX (IMAGEN 3 Y 14) -->
       <div class="hero-media-container">
         <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.src='img/3cx-PBX.png';">
-        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Plataforma Unificada 3CX Voice & Cloud</span>
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGOS CON TODAS LAS IMÁGENES ALUSIVAS -->
+  <!-- CATÁLOGO DIVIDIDO EN LAS 4 CATEGORÍAS SOLICITADAS -->
   <section class="services-section">
-    <div class="section-title">
-      <h2>Catálogo de Soluciones Tecnológicas</h2>
-      <p>Explora nuestras verticales de ingeniería respaldadas por equipamiento real y certificado:</p>
-    </div>
 
+    <!-- ================= CATEGORÍA 1: TELEFONÍA IP ================= -->
+    <div class="category-header-title">📞 Telefonía IP & Centrales Cloud</div>
     <div class="products-showcase">
 
-      <!-- 1. CIBERSEGURIDAD FORTINET (IMAGEN 13: fortinet.png) -->
+      <!-- 3CX -->
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/fortinet.png" alt="Fortinet FortiGate UTM">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Ciberseguridad Perimetral</span>
-          <h3>Fortinet FortiGate UTM</h3>
-          <p>Protección perimetral frente a ciberataques. Inspección profunda de tráfico, filtrado web, enlaces redundantes SD-WAN y túneles VPN SSL para la conexión segura de colaboradores remotos.</p>
-          <a href="ciberseguridad.html" class="btn-link">Ver Solución Fortinet ❯</a>
-        </div>
-      </div>
-
-      <!-- 2. MIKROTIK ROUTEROS (IMAGEN 12: mikrotik.jpg) -->
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/mikrotik.jpg" alt="MikroTik RouterOS">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Enrutamiento & Balanceo</span>
-          <h3>Redes & MikroTik RouterOS</h3>
-          <p>Balanceo de cargas PCC multienlace, conmutación gestionable, segmentación de VLANs corporativas y optimización de ancho de banda para alta densidad de tráfico.</p>
-          <a href="redes-mikrotik.html" class="btn-link">Ver Solución MikroTik ❯</a>
-        </div>
-      </div>
-
-      <!-- 3. TELEFONÍA 3CX PBX CONSOLA (IMAGEN 14: 3cx-PBX.png) -->
-      <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/3cx-PBX.png" alt="3CX PBX System Console">
-        </div>
+        <div class="product-img-box"><img src="img/3cx.png" alt="3CX Phone App"></div>
         <div class="product-info-box">
           <span class="product-badge">Telefonía IP Cloud</span>
           <h3>Centrales Telefónicas 3CX PBX</h3>
-          <p>Administración avanzada de troncales SIP, enrutamiento inteligente de llamadas, IVR interactivo multinivel, grabaciones automatizadas y panel de control unificado.</p>
+          <p>Lleva la extensión de tu oficina en tu Smartphone. Softphones para Android/iOS, grabaciones de llamadas, IVR interactivo, presencia y videoconferencias integradas.</p>
           <a href="telefonia-ip.html" class="btn-link">Ver Solución 3CX ❯</a>
         </div>
       </div>
 
-      <!-- 4. WOLKVOX CONTACT CENTER (IMAGEN 11: wolkvox.jpg) -->
+      <!-- WOLKVOX -->
       <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/wolkvox.jpg" alt="Wolkvox Cloud Contact Center">
-        </div>
+        <div class="product-img-box"><img src="img/wolkvox.jpg" alt="Wolkvox Contact Center"></div>
         <div class="product-info-box">
           <span class="product-badge">Contact Center Cloud</span>
-          <h3>Wolkvox Contact Center</h3>
-          <p>Plataforma omnicanal en la nube para Contact Centers. Monitoreo en tiempo real de agentes, colas de atención telefónica, marcadores predictivos e integración directa con Vtiger CRM.</p>
+          <h3>Wolkvox Cloud Contact Center</h3>
+          <p>Plataforma omnicanal en la nube. Supervisión en tiempo real, colas de atención telefónica, marcadores predictivos e integración directa con Vtiger CRM.</p>
           <a href="telefonia-ip.html" class="btn-link">Ver Solución Wolkvox ❯</a>
         </div>
       </div>
 
-      <!-- 5. FIDELITY TELEFONÍA (IMAGEN 8: fidelity.jpg) -->
+      <!-- FIDELITY Y ISSABEL -->
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/fidelity.jpg" alt="Fidelity PBX">
-        </div>
+        <div class="product-img-box"><img src="img/fidelity.jpg" alt="Fidelity PBX & Issabel"></div>
         <div class="product-info-box">
-          <span class="product-badge">Conmutación Telefónica</span>
-          <h3>Fidelity PBX Corporativo</h3>
-          <p>Sistemas integrados de conmutación telefónica enterprise, gestión eficiente de líneas analógicas y digitales, tarificación detallada y reportes gerenciales de consumo.</p>
-          <a href="telefonia-ip.html" class="btn-link">Ver Solución Fidelity ❯</a>
+          <span class="product-badge">Conmutación & Issabel PBX</span>
+          <h3>Fidelity PBX & Servidores Issabel</h3>
+          <p>Conmutación telefónica corporativa avanzada. Gestión de troncales SIP, líneas digitales y analógicas, tarificación detallada y servidores VoIP Issabel PBX.</p>
+          <a href="telefonia-ip.html" class="btn-link">Ver Soluciones PBX ❯</a>
         </div>
       </div>
 
-      <!-- 6. ZKTECO SPEEDFACE (IMAGEN 9: sped-face.jpg) -->
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
+    </div>
+
+    <!-- ================= CATEGORÍA 2: CIBERSEGURIDAD & REDES ================= -->
+    <div class="category-header-title">🛡️ Ciberseguridad & Redes Enterprise</div>
+    <div class="products-showcase">
+
+      <!-- FORTINET -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/fortinet.png" alt="Fortinet FortiGate UTM"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Ciberseguridad Perimetral</span>
+          <h3>Fortinet FortiGate UTM</h3>
+          <p>Protección frente a ciberataques y malware. Inspección profunda de tráfico, filtrado web, enlaces redundantes SD-WAN y túneles VPN SSL para teletrabajo.</p>
+          <a href="ciberseguridad.html" class="btn-link">Ver Solución Fortinet ❯</a>
         </div>
+      </div>
+
+      <!-- MIKROTIK -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/mikrotik.jpg" alt="MikroTik RouterOS"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Enrutamiento & Balanceo</span>
+          <h3>Redes & MikroTik RouterOS</h3>
+          <p>Balanceo de cargas PCC multienlace, failover automatizado, conmutación gestionable, segmentación de VLANs corporativas y priorización de telefonía IP.</p>
+          <a href="redes-mikrotik.html" class="btn-link">Ver Solución MikroTik ❯</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= CATEGORÍA 3: VIDEOVIGILANCIA & BIOMETRÍA ================= -->
+    <div class="category-header-title">📹 Videovigilancia & Seguridad Electrónica</div>
+    <div class="products-showcase">
+
+      <!-- VIDEOVIGILANCIA / CAMARAS IP -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Circuito Cerrado (CCTV)</span>
+          <h3>Cámaras IP & Videovigilancia CCTV</h3>
+          <p>Sistemas de CCTV IP con analítica de video inteligente, grabación centralizada NVR, visión nocturna infrarroja y monitoreo remoto 24/7 en smartphones.</p>
+          <a href="soporte.html" class="btn-link">Cotizar Videovigilancia ❯</a>
+        </div>
+      </div>
+
+      <!-- ZKTECO SPEEDFACE Y BIOTIME -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace & BioTime"></div>
         <div class="product-info-box">
           <span class="product-badge">Control de Acceso Biométrico</span>
-          <h3>ZKTeco SpeedFace</h3>
-          <p>Terminales de reconocimiento facial visible light sin contacto. Medición de temperatura, lectura biométrica ultra rápida y apertura automatizada de puertas o torniquetes.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Biometría ❯</a>
+          <h3>ZKTeco SpeedFace & BioTime</h3>
+          <p>Terminales de reconocimiento facial visible light sin contacto y software BioTime para control de asistencia, turnos y apertura automatizada de puertas.</p>
+          <a href="soporte.html" class="btn-link">Cotizar Biometría ❯</a>
         </div>
       </div>
 
-      <!-- 7. BIOTIME CONTROL DE ASISTENCIA (IMAGEN 10: biotime.jpg) -->
+    </div>
+
+    <!-- ================= CATEGORÍA 4: CABLEADO ESTRUCTURADO ================= -->
+    <div class="category-header-title">🔌 Cableado Estructurado & Racks</div>
+    <div class="products-showcase">
+
+      <!-- CABLEADO CAT 6A -->
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/biotime.jpg" alt="BioTime ZKTeco">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Software de Asistencia</span>
-          <h3>BioTime Control de Asistencia</h3>
-          <p>Software web centralizado para la administración de turnos, marcaciones de personal, horas extras y sincronización directa con biométricos de huella y rostro.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar BioTime ❯</a>
-        </div>
-      </div>
-
-      <!-- 8. VIDEOVIGILANCIA CCTV PRINCIPAL (IMAGEN 7: video-vigilancia.jpg) -->
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Seguridad Electrónica</span>
-          <h3>Cámaras & Videovigilancia IP (CCTV)</h3>
-          <p>Sistemas de CCTV IP con analítica de video inteligente, grabación centralizada NVR, visión nocturna infrarroja y monitoreo remoto desde dispositivos móviles.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar CCTV ❯</a>
-        </div>
-      </div>
-
-      <!-- 9. MONITOREO Y ANALÍTICA CCTV (IMAGEN 6: video-vigilancia-2.jpg) -->
-      <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/video-vigilancia-2.jpg" alt="Centro de Monitoreo CCTV">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Centro de Monitoreo</span>
-          <h3>Analítica de Video & Servidores NVR</h3>
-          <p>Infraestructura de almacenamiento masivo para grabación continua, lectura automática de placas de vehículos (LPR), detección de intrusos y dashboards de seguridad.</p>
-          <a href="cotizacion.html" class="btn-link">Ver Soluciones de Monitoreo ❯</a>
-        </div>
-      </div>
-
-      <!-- 10. CABLEADO ESTRUCTURADO RACKS (IMAGEN 5: cableado-1.jpg) -->
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/cableado-1.jpg" alt="Cableado Estructurado Racks">
-        </div>
+        <div class="product-img-box"><img src="img/cableado-1.jpg" alt="Cableado Estructurado Racks"></div>
         <div class="product-info-box">
           <span class="product-badge">Infraestructura de Datos</span>
           <h3>Cableado Estructurado Cat 6A</h3>
@@ -417,28 +365,23 @@
         </div>
       </div>
 
-      <!-- 11. ADECUACIÓN DE GABINETES Y DATA CENTER (IMAGEN 4: cableado-2.jpg) -->
-      <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/cableado-2.jpg" alt="Data Center y Peinado de Gabinetes">
-        </div>
+      <!-- GABINETES, SWITCHES Y DATA CENTER -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/cableado-2.jpg" alt="Switches & Data Center"></div>
         <div class="product-info-box">
-          <span class="product-badge">Centros de Cómputo</span>
-          <h3>Adecuación de Gabinetes & Data Center</h3>
-          <p>Mantenimiento, migración y adecuación de gabinetes de voz y datos. Organización de patch panels, marquillado bajo norma internacional y tendido de fibra óptica.</p>
+          <span class="product-badge">Centros de Cómputo & Switches</span>
+          <h3>Switches Capa 2/3 & Data Center</h3>
+          <p>Adecuación de gabinetes de voz y datos, instalación de switches administrables, organización de patch panels, marquillado y tendido de fibra óptica.</p>
           <a href="redes-mikrotik.html" class="btn-link">Ver Proyectos de Redes ❯</a>
         </div>
       </div>
 
     </div>
+
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
-      <img src="img/logo-iptelco-azul.jpg" alt="IPTELCO" style="height: 38px; border-radius: 4px;" onerror="this.style.display='none';">
-      <span style="font-weight: 800; color: #fff; font-size: 1.1rem;">IPTELCO S.A.S</span>
-    </div>
     <p><b>IPTELCO S.A.S</b> — Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia</p>
     <p style="margin-top: 8px;">
       📞 WhatsApp / Ventas: <a href="https://wa.me/573178737171" target="_blank">+57 317 873 7171</a> | 
@@ -446,17 +389,13 @@
     </p>
   </footer>
 
-  <!-- SCRIPT PRELOADER CON SEGURIDAD (MÁXIMO 1 SEGUNDO) -->
   <script>
     function abrirPagina() {
       const preloader = document.getElementById('iptelco-preloader');
-      if (preloader) {
-        preloader.classList.add('hidden');
-      }
+      if (preloader) { preloader.classList.add('hidden'); }
     }
-
     window.addEventListener('load', abrirPagina);
-    setTimeout(abrirPagina, 1000);
+    setTimeout(abrirPagina, 800);
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('a[href]').forEach(link => {
