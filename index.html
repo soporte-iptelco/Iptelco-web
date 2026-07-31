@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | Infraestructura, Soporte TI & Telecomunicaciones</title>
 
+  <!-- FAVICON DE LA PESTAÑA DEL NAVEGADOR -->
+  <link rel="icon" type="image/png" href="Logo Wh.png">
+
   <!-- TIPOGRAFÍA ENTERPRISE DE ALTA DENSIDAD -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +86,7 @@
     }
 
     .logo-img {
-      height: 48px;
+      height: 50px;
       width: auto;
       object-fit: contain;
       border-radius: 6px;
@@ -577,7 +580,6 @@
       font-weight: 700;
       text-transform: uppercase;
       display: inline-block;
-      margin-bottom: 14px;
       border: 1px solid rgba(96, 165, 250, 0.3);
     }
 
@@ -849,6 +851,12 @@
       color: var(--text-muted);
       font-size: 0.88rem;
     }
+
+    .footer-logo {
+      height: 42px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+    }
     
     footer a { color: #4ade80; text-decoration: none; font-weight: 700; }
 
@@ -867,10 +875,11 @@
 
   <div class="glow-bg"></div>
 
-  <!-- NAVEGACIÓN -->
+  <!-- NAVEGACIÓN PRINCIPAL -->
   <header>
+    <!-- LOGO HEADER (FONDO OSCURO) -->
     <a href="#" class="logo-container">
-      <img src="Logo iptelco.jpg" alt="IPTELCO - IP Telefonía y Comunicaciones" class="logo-img">
+      <img src="Logo iptelco_2.jpg" alt="IPTELCO - IP Telefonía y Comunicaciones" class="logo-img">
     </a>
 
     <nav>
@@ -904,14 +913,13 @@
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN: QUIÉNES SOMOS & MÉTRICAS ENTERPRISE -->
+  <!-- SECCIÓN: QUIÉNES SOMOS & MÉTRICAS -->
   <section class="about-section" id="quienes-somos">
     <div class="section-title">
       <h2>Acompañamos la Transformación Digital de tu Empresa</h2>
       <p>Más de dos décadas integrando soluciones de tecnología e infraestructura crítica en Colombia</p>
     </div>
 
-    <!-- BARRA DE MÉTRICAS -->
     <div class="metrics-bar">
       <div class="metric-card">
         <div class="metric-number">+20</div>
@@ -931,7 +939,6 @@
       </div>
     </div>
 
-    <!-- PILARES CORPORATIVOS -->
     <div class="about-content-grid">
       <div class="about-card">
         <div class="about-card-icon">🏛️</div>
@@ -1184,7 +1191,12 @@
         
         <!-- PANEL IZQUIERDO WIDGET -->
         <div class="iptelco-brand-box">
-          <span class="iptelco-badge">Catálogo B2B / Personas</span>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <!-- EMBLEMA CIRCULAR EN PANEL -->
+            <img src="Logo Wh.png" alt="IPTELCO" style="width: 42px; height: 42px; border-radius: 50%;">
+            <span class="iptelco-badge">Catálogo B2B / Personas</span>
+          </div>
+
           <h2 class="iptelco-title">Cotiza tu Proyecto</h2>
           <p class="iptelco-desc">Toca una solución para ver su alcance e ir directamente al formulario:</p>
           
@@ -1370,16 +1382,20 @@
     </div>
   </section>
 
-  <!-- MODAL DE MESA DE AYUDA (INTERACTIVO) -->
+  <!-- MODAL MESA DE AYUDA -->
   <div id="modalSoporte" class="iptelco-modal-backdrop">
     <div class="iptelco-modal-content">
       <button type="button" class="iptelco-modal-close" onclick="cerrarModalSoporte()">&times;</button>
 
-      <div class="modal-header-box">
-        <span class="badge-soporte">🛠️ Mesa de Ayuda 24/7</span>
-        <h2>Crear Ticket de Soporte Técnico</h2>
-        <p>Reporta tu caso. La solicitud será asignada inmediatamente al ingeniero de soporte en turno.</p>
+      <div class="modal-header-box" style="display: flex; align-items: center; gap: 16px;">
+        <!-- EMBLEMA EN MODAL -->
+        <img src="Logo Wh.png" alt="IPTELCO" style="width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;">
+        <div>
+          <span class="badge-soporte">🛠️ Mesa de Ayuda 24/7</span>
+          <h2>Crear Ticket de Soporte Técnico</h2>
+        </div>
       </div>
+      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Reporta tu caso. La solicitud será asignada inmediatamente al ingeniero de soporte en turno.</p>
 
       <form id="formSoporteIptelco" onsubmit="enviarTicketSoporte(event)">
         <div class="iptelco-row">
@@ -1435,8 +1451,9 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER CON REFUERZO DE LOGO EN FONDO CLARO -->
   <footer>
+    <img src="logo-iptelco-azul.jpg" alt="IPTELCO - IP Telefonía y Comunicaciones" class="footer-logo">
     <p>© 2026 IPTELCO S.A.S — Soluciones Integrales de Telecomunicaciones & TI. Bogotá, Colombia.</p>
     <p style="margin-top: 8px;">
       📞 WhatsApp Comercial / Soporte: 
