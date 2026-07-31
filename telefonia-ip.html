@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telefonía IP & Omnicanalidad 3CX | IPTELCO S.A.S</title>
+  
+  <link rel="icon" type="image/png" href="Logo Wh.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #020617;
+      --bg-card: rgba(15, 23, 42, 0.8);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-green: #22c55e;
+      --accent-glow: rgba(59, 130, 246, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center; padding: 14px 8%;
+      position: sticky; top: 0; background: rgba(2, 6, 23, 0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light); z-index: 1000;
+    }
+    .logo-img { height: 48px; width: auto; }
+    nav { display: flex; gap: 25px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; }
+    nav a:hover, nav a.active { color: var(--accent-cyan); }
+
+    /* SECCIÓN HERO 3D PRODUCTO */
+    .product-hero {
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 80px 8%; max-width: 1300px; margin: 0 auto; min-height: 85vh; gap: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+
+    .feature-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; }
+    .feature-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #e2e8f0; }
+    .feature-icon { background: rgba(59, 130, 246, 0.15); color: var(--accent-cyan); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+
+    /* CONTENEDOR 3D TILT ANIMACIÓN */
+    .tilt-wrapper {
+      perspective: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tilt-card {
+      position: relative;
+      transition: transform 0.15s ease-out;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    /* EFECTO FLOTANTE AUTOMÁTICO */
+    .floating-anim {
+      animation: floatAnimation 4s ease-in-out infinite;
+    }
+
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    .mockup-img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.6));
+      pointer-events: none;
+    }
+
+    /* GLOW DETRÁS DE LA IMAGEN */
+    .mockup-glow {
+      position: absolute;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, rgba(2, 6, 23, 0) 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff;
+      padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none;
+      display: inline-block; box-shadow: 0 4px 20px var(--accent-glow); transition: transform 0.2s;
+    }
+    .btn-action:hover { transform: translateY(-2px); }
+
+    footer { padding: 40px 8%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 0.88rem; }
+
+    @media (max-width: 900px) {
+      .product-hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
+      .feature-list { align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN MULTIPÁGINA -->
+  <header>
+    <a href="index.html">
+      <img src="Logo iptelco.png" alt="IPTELCO" class="logo-img">
+    </a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="telefonia-ip.html" class="active">Telefonía IP 3CX</a>
+      <a href="ciberseguridad.html">Ciberseguridad</a>
+      <a href="redes.html">Redes MikroTik</a>
+      <a href="index.html#cotizacion">Cotizar</a>
+    </nav>
+  </header>
+
+  <!-- HERO INTERACTIVO CON MAQUETA 3D -->
+  <section class="product-hero">
+    <div class="hero-text">
+      <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">Centrales Telefónicas en la Nube</span>
+      <h1>Lleva la extensión de tu oficina en tu Smartphone</h1>
+      <p>
+        Con la integración de 3CX y Wolkvox desplegada por IPTELCO, tus colaboradores realizan y reciben llamadas corporativas desde cualquier lugar, manteniendo el número fijo de la empresa.
+      </p>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Apps nativas para Android e iOS con calidad HD</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Grabación de llamadas, IVR interactivo y estado de presencia</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <span>Integración directa con WhatsApp Business y Vtiger CRM</span>
+        </div>
+      </div>
+
+      <a href="index.html#cotizacion" class="btn-action">Solicitar Demo de Telefonía</a>
+    </div>
+
+    <!-- CONTENEDOR DE LA MAQUETA 3D INTERACTIVA -->
+    <div class="tilt-wrapper">
+      <div class="tilt-card floating-anim" id="card3D">
+        <div class="mockup-glow"></div>
+        <!-- AQUÍ SE MUESTRA LA IMAGEN DEL SOFTPHONE 3CX -->
+        <img src="3cx-softphone.png" alt="3CX Softphone App IPTELCO" class="mockup-img">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 IPTELCO S.A.S — Soluciones Integrales de Telecomunicaciones & TI. Bogotá, Colombia.</p>
+  </footer>
+
+  <!-- SCRIPT PARA EL EFECTO TILT 3D CON EL RATÓN -->
+  <script>
+    const tiltCard = document.getElementById('card3D');
+    const container = document.querySelector('.tilt-wrapper');
+
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      // Desactiva animación flotante mientras el mouse está encima
+      tiltCard.classList.remove('floating-anim');
+
+      // Grados de rotación basados en el cursor
+      const rotateX = (-y / rect.height) * 30;
+      const rotateY = (x / rect.width) * 30;
+
+      tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      // Restablece la posición y reactiva la animación flotante
+      tiltCard.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      tiltCard.classList.add('floating-anim');
+    });
+  </script>
+</body>
+</html>
