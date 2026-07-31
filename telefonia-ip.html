@@ -43,7 +43,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER ANTI-BLOQUEO */
+    /* PRELOADER */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
@@ -62,7 +62,7 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* CABECERA UNIFICADA DE ALTA VISIBILIDAD */
+    /* HEADER Y BOTÓN DE SOPORTE IPTELCO */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 6%; position: sticky; top: 0;
@@ -111,7 +111,7 @@
       display: flex; align-items: center; justify-content: center; font-weight: 800;
     }
 
-    /* SECCIÓN DE CERTIFICACIONES 3CX EN EL HERO */
+    /* CERTIFICACIONES 3CX EN EL HERO */
     .cert-badges-row {
       display: flex; align-items: center; gap: 16px; margin-top: 25px;
       padding-top: 20px; border-top: 1px solid var(--border-light);
@@ -123,16 +123,23 @@
     }
     .cert-badge-box img { height: 42px; width: auto; object-fit: contain; }
 
-    /* CONTENEDOR BLANCO PARA LA APPARICIÓN DEL SOFTPHONE 3CX */
+    /* ANIMACIÓN DE MOVIMIENTO FLOTANTE DE LA IMAGEN (FLOATING ANIMATION) */
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+      100% { transform: translateY(0px); }
+    }
+
     .hero-media-container {
       background: #ffffff; border-radius: 20px; padding: 25px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       min-height: 330px;
+      animation: floatAnimation 4s ease-in-out infinite; /* MOVIMIENTO DE LA IMAGEN */
     }
     .hero-media-container img { max-width: 100%; max-height: 330px; object-fit: contain; }
 
-    /* SECCIÓN DE PRODUCTOS EN ZIG-ZAG */
+    /* SECCIÓN DE PRODUCTOS CON MOVIMIENTO AL PASAR EL MOUSE */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
@@ -142,11 +149,12 @@
     .product-row {
       display: flex; align-items: center; gap: 40px;
       background: var(--bg-card); border: 1px solid var(--border-light);
-      border-radius: 24px; padding: 30px; transition: all 0.3s ease;
+      border-radius: 24px; padding: 30px; transition: all 0.35s ease;
     }
     .product-row:hover {
       border-color: var(--border-glow);
-      box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15);
+      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+      transform: translateY(-5px);
       background: var(--bg-card-hover);
     }
     .product-row.reverse { flex-direction: row-reverse; }
@@ -162,7 +170,7 @@
       max-width: 100%; max-height: 100%; object-fit: contain;
       transition: transform 0.4s ease;
     }
-    .product-row:hover .product-img-box img { transform: scale(1.05); }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
     .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 
@@ -209,7 +217,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO SVG Y BOTÓN DE SOPORTE VTIGER -->
+  <!-- HEADER CON BOTÓN DE SOPORTE IPTELCO -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
@@ -228,12 +236,13 @@
     </nav>
     
     <div class="header-actions">
-      <a href="soporte.html" class="btn-soporte">🛠️ Soporte Vtiger</a>
+      <!-- BOTÓN REQUISITADO: SOPORTE IPTELCO -->
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
     </div>
   </header>
 
-  <!-- HERO TELEFONÍA IP CON LAS CERTIFICACIONES DE 3CX -->
+  <!-- HERO TELEFONÍA IP CON BOTÓN MESA DE AYUDA IPTELCO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -251,10 +260,11 @@
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Demo de Telefonía</a>
-          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda Vtiger</a>
+          <!-- BOTÓN REQUISITADO: MESA DE AYUDA IPTELCO -->
+          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda IPTELCO</a>
         </div>
 
-        <!-- CERTIFICACIONES OFICIALES 3CX (AQUÍ ESTÁN INTEGRADAS) -->
+        <!-- CERTIFICACIONES OFICIALES 3CX -->
         <div class="cert-badges-row">
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Certificaciones Oficiales:</span>
           <div class="cert-badge-box">
@@ -266,7 +276,7 @@
         </div>
       </div>
 
-      <!-- IMAGEN SOFTPHONE 3CX EN MARCO BLANCO -->
+      <!-- IMAGEN SOFTPHONE CON MOVIMIENTO FLOTANTE ANIMADO -->
       <div class="hero-media-container">
         <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.onerror=null; this.src='img/3cx-PBX.png';">
       </div>
