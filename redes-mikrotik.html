@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redes, MikroTik & Cableado | IPTELCO S.A.S</title>
+  <title>Redes, VLANs, MikroTik & Cableado | IPTELCO S.A.S</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="img/Logo Wh.png">
@@ -14,8 +14,10 @@
   <style>
     :root {
       --bg-dark: #020617;
+      --bg-card: rgba(15, 23, 42, 0.85);
       --accent-cyan: #06b6d4;
       --accent-blue: #3b82f6;
+      --accent-red: #ef4444;
       --accent-glow: rgba(6, 182, 212, 0.25);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -41,11 +43,30 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* HEADER Y LOGO VECTORIAL BLINDADO */
+    /* PRELOADER */
+    #iptelco-preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #020617; z-index: 99999; display: flex;
+      align-items: center; justify-content: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .preloader-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid var(--accent-cyan);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* HEADER Y BOTÓN DE SOPORTE IPTELCO */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 6%; position: sticky; top: 0;
-      background: rgba(2, 6, 23, 0.94); backdrop-filter: blur(16px);
+      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
@@ -53,7 +74,6 @@
     .logo-text { font-size: 1.6rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
     .logo-text span { color: var(--accent-cyan); }
 
-    /* MENÚ CON "QUIÉNES SOMOS" AL FINAL */
     nav { display: flex; align-items: center; gap: 22px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
@@ -66,7 +86,7 @@
       border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
       display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
     }
-    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: var(--accent-red); }
 
     .btn-cotizar {
       background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff;
@@ -75,20 +95,49 @@
     }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
-    /* HERO REDES */
-    .hero { padding: 70px 6% 40px 6%; max-width: 1250px; margin: 0 auto; text-align: center; }
+    /* HERO REDES CON ANIMACIÓN DE MOVIMIENTO FLOTANTE */
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
+
     .hero span.badge {
       color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem;
       text-transform: uppercase; letter-spacing: 1px;
     }
-    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin: 12px 0 18px 0; }
-    .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 820px; margin: 0 auto 30px auto; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin: 10px 0 18px 0; }
+    .hero h1 span { color: var(--accent-cyan); }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
+
+    .features-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+    .feat-item { display: flex; align-items: center; gap: 12px; font-weight: 600; color: #cbd5e1; font-size: 0.98rem; }
+    .feat-check {
+      background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);
+      width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 800;
+    }
+
+    /* ANIMACIÓN FLOTANTE DE LA IMAGEN MIKROTIK */
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero-media-container {
+      background: #ffffff; border-radius: 20px; padding: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      animation: floatAnimation 4s ease-in-out infinite;
+      min-height: 320px;
+    }
+    .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
     /* CONTENEDOR DE TARJETAS CON FOTOS DE FONDO SEMITRANSPARENTES */
-    .services-container { padding: 30px 6% 80px 6%; max-width: 1300px; margin: 0 auto; }
-    
+    .services-container { padding: 40px 6% 80px 6%; max-width: 1300px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
+
     .grid-cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;
     }
 
     .transparent-bg-card {
@@ -101,22 +150,22 @@
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     }
 
-    /* FOTO 1: MIKROTIK SEMITRANSPARENTE (img/mikrotik.jpg) */
+    /* IMÁGENES REALES SEMITRANSPARENTES DE FONDO */
     .card-mikrotik {
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%),
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.85) 0%, rgba(15, 23, 42, 0.94) 100%),
                   url('img/mikrotik.jpg') center/cover no-repeat;
     }
-
-    /* FOTO 2: CABLEADO-2 SEMITRANSPARENTE (img/cableado-2.jpg) */
-    .card-wifi {
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%),
+    .card-switches {
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.85) 0%, rgba(15, 23, 42, 0.94) 100%),
                   url('img/cableado-2.jpg') center/cover no-repeat;
     }
-
-    /* FOTO 3: CABLEADO-1 SEMITRANSPARENTE (img/cableado-1.jpg) */
     .card-cableado {
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%),
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.85) 0%, rgba(15, 23, 42, 0.94) 100%),
                   url('img/cableado-1.jpg') center/cover no-repeat;
+    }
+    .card-wifi {
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.85) 0%, rgba(15, 23, 42, 0.94) 100%),
+                  url('img/video-vigilancia-2.jpg') center/cover no-repeat;
     }
 
     .transparent-bg-card:hover {
@@ -131,7 +180,7 @@
       border: 1px solid rgba(6, 182, 212, 0.4); backdrop-filter: blur(8px);
     }
 
-    .transparent-bg-card h3 { font-size: 1.45rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; }
+    .transparent-bg-card h3 { font-size: 1.4rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; }
     .transparent-bg-card p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
 
     /* FOOTER */
@@ -140,14 +189,25 @@
       color: var(--text-muted); font-size: 0.88rem;
     }
 
-    @media (max-width: 900px) { nav { display: none; } }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      nav { display: none; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- PRELOADER -->
+  <div id="iptelco-preloader">
+    <div class="preloader-content">
+      <div class="preloader-spinner"></div>
+      <span style="color: #94a3b8; font-weight: 700; font-size: 0.88rem;">CARGANDO IPTELCO...</span>
+    </div>
+  </div>
+
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON BOTÓN DE SOPORTE IPTELCO -->
   <header>
     <a href="index.html" class="header-brand">
       <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
@@ -166,47 +226,84 @@
     </nav>
     
     <div class="header-actions">
-      <a href="soporte.html" class="btn-soporte">🛠️ Soporte Vtiger</a>
+      <!-- BOTÓN REQUISITADO: SOPORTE IPTELCO -->
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Cotizar Redes</a>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO REDES -->
   <section class="hero">
-    <span class="badge">MikroTik RouterOS & Cableado Estructurado</span>
-    <h1>Infraestructura de Datos de Alta Velocidad</h1>
-    <p>Diseñamos, instalamos y optimizamos redes corporativas. Enrutamiento MikroTik de alta densidad, VLANs empresariales, Access Points Wi-Fi 6 y certificación de cableado Cat 6/6A.</p>
-    <a href="cotizacion.html" class="btn-cotizar" style="padding: 14px 28px; font-size: 0.95rem;">Solicitar Levantamiento Técnico</a>
+    <div class="hero-grid">
+      <div>
+        <span class="badge">MikroTik RouterOS & Conmutación Layer 2/3</span>
+        <h1 style="margin-top: 10px;">Redes Empresariales, VLANs & <span>Balanceo de Cargas</span></h1>
+        <p>
+          Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, segmentación segura de VLANs, conmutación con switches L2/L3 y certificación de cableado Cat 6/6A.
+        </p>
+
+        <div class="features-list">
+          <div class="feat-item"><div class="feat-check">✓</div> Balanceo multienlace PCC y Failover automatizado ante caídas de ISP</div>
+          <div class="feat-item"><div class="feat-check">✓</div> Aislamiento de tráfico con VLANs (Voz IP, CCTV, Datos y Visitantes)</div>
+          <div class="feat-item"><div class="feat-check">✓</div> Switches administrables L2/L3 con Port Security y priorización QoS</div>
+        </div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Levantamiento Técnico</a>
+          <!-- BOTÓN REQUISITADO: MESA DE AYUDA IPTELCO -->
+          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda IPTELCO</a>
+        </div>
+      </div>
+
+      <!-- IMAGEN MIKROTIK CON ANIMACIÓN FLOTANTE -->
+      <div class="hero-media-container">
+        <img src="img/mikrotik.jpg" alt="MikroTik RouterOS IPTELCO">
+      </div>
+    </div>
   </section>
 
-  <!-- TARJETAS CON FOTOS REALES DE FONDO SEMITRANSPARENTES -->
+  <!-- TARJETAS DE SERVICIOS DE REDES CON FONDOS REALES Y SEMITRANSPARENTES -->
   <section class="services-container">
+    <div class="section-title">
+      <h2>Pilares de Infraestructura de Datos</h2>
+      <p>Soluciones de ingeniería certificada para la máxima velocidad y estabilidad:</p>
+    </div>
+
     <div class="grid-cards">
 
-      <!-- TARJETA 1: MIKROTIK -->
+      <!-- TARJETA 1: MIKROTIK & BALANCEO PCC -->
       <div class="transparent-bg-card card-mikrotik">
         <div>
           <div class="card-icon">🎛️</div>
           <h3>MikroTik & Balanceo PCC</h3>
-          <p>Configuración avanzada de RouterOS. Balanceo de carga multienlace (PCC), failover automatizado, colas de calidad de servicio (QoS) y priorización de voz sobre IP.</p>
+          <p>Configuración avanzada de RouterOS. Balanceo de carga multienlace (PCC) para sumar la velocidad de varios operadores, failover transparente y priorización de voz sobre IP (QoS).</p>
         </div>
       </div>
 
-      <!-- TARJETA 2: CABLEADO 2 -->
-      <div class="transparent-bg-card card-wifi">
+      <!-- TARJETA 2: VLANS & SWITCHES L2/L3 -->
+      <div class="transparent-bg-card card-switches">
         <div>
-          <div class="card-icon">📶</div>
-          <h3>Wi-Fi Alta Densidad</h3>
-          <p>Despliegue de Access Points con roaming transparente sin interrupciones para oficinas, bodegas y edificios comerciales con gabinetes organizados.</p>
+          <div class="card-icon">🔀</div>
+          <h3>Segmentación VLANs & Switches L2/L3</h3>
+          <p>Creación de VLANs independientes (IEEE 802.1Q) para aislar la telefonía IP, cámaras CCTV y datos. Administración de switches gestionables, Trunking, Spanning Tree y Port Security.</p>
         </div>
       </div>
 
-      <!-- TARJETA 3: CABLEADO 1 -->
+      <!-- TARJETA 3: CABLEADO ESTRUCTURADO -->
       <div class="transparent-bg-card card-cableado">
         <div>
           <div class="card-icon">🔌</div>
           <h3>Cableado Estructurado Cat 6/6A</h3>
-          <p>Instalación de racks, patch panels, peinado de gabinete de comunicaciones y certificación de puntos de red categoría 6 y 6A bajo norma internacional.</p>
+          <p>Instalación y peinado profesional de gabinetes y racks de comunicación. Montaje de patch panels, marquillado bajo norma internacional y certificación Fluke de puntos de red.</p>
+        </div>
+      </div>
+
+      <!-- TARJETA 4: WI-FI CORPORATIVO DE ALTA DENSIDAD -->
+      <div class="transparent-bg-card card-wifi">
+        <div>
+          <div class="card-icon">📶</div>
+          <h3>Wi-Fi 6 Corporativo & Roaming</h3>
+          <p>Despliegue de Access Points empresariales para bodegas, oficinas y eventos. Roaming transparente sin desconexiones, portales cautivos y gestión centralizada en la nube.</p>
         </div>
       </div>
 
@@ -215,15 +312,33 @@
 
   <!-- FOOTER -->
   <footer>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px;">
-      <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
-        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span style="font-weight: 800; color: #fff; font-size: 1.2rem;">IPTELCO S.A.S</span>
-    </div>
-    <p>📍 Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia</p>
+    <p><b>IPTELCO S.A.S</b> — Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia</p>
+    <p style="margin-top: 8px;">
+      📞 WhatsApp / Ventas: <a href="https://wa.me/573178737171" target="_blank">+57 317 873 7171</a> | 
+      ✉️ <a href="mailto:info@iptelco.com.co" style="color: #60a5fa;">info@iptelco.com.co</a>
+    </p>
   </footer>
 
+  <script>
+    function abrirPagina() {
+      const preloader = document.getElementById('iptelco-preloader');
+      if (preloader) { preloader.classList.add('hidden'); }
+    }
+    window.addEventListener('load', abrirPagina);
+    setTimeout(abrirPagina, 800);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href]').forEach(link => {
+        const url = link.getAttribute('href');
+        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('iptelco-preloader').classList.remove('hidden');
+            setTimeout(() => { window.location.href = url; }, 300);
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
