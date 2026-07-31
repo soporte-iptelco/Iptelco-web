@@ -22,7 +22,7 @@
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --border-light: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(59, 130, 246, 0.35);
+      --border-glow: rgba(59, 130, 246, 0.4);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +43,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER */
+    /* PRELOADER ANTI-BLOQUEO */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
@@ -62,27 +62,34 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* CABECERA */
+    /* CABECERA CON BOTONES BIEN UBICADOS Y LOGO SVG INCONGELABLE */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 6%; position: sticky; top: 0;
+      padding: 14px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    .brand-logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand-logo-text { font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
+    .brand-logo-container {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .brand-logo-text {
+      font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;
+    }
     .brand-logo-text span { color: var(--accent-blue); }
 
     nav { display: flex; align-items: center; gap: 22px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+    nav a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.92rem; font-weight: 600; transition: color 0.2s;
+    }
     nav a:hover, nav a.active { color: #ffffff; }
 
     .header-actions { display: flex; align-items: center; gap: 12px; }
 
     .btn-soporte {
       background: rgba(239, 68, 68, 0.15); color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.35); padding: 9px 16px;
+      border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px;
       border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
       display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
     }
@@ -90,12 +97,12 @@
 
     .btn-cotizar {
       background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
-      padding: 9px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
       box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
     }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
-    /* HERO */
+    /* HERO PRINCIPAL */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
@@ -125,7 +132,7 @@
     }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
-    /* MOSTRARIO DE PRODUCTOS ZIG-ZAG POR CATEGORÍAS */
+    /* SECCIONES CATEGORIZADAS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title {
       font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
@@ -147,11 +154,13 @@
     }
     .product-row.reverse { flex-direction: row-reverse; }
 
+    /* CAJA BLANCA PARA QUE NINGÚN LOGO OSCURO SE CAMUFLE EN EL FONDO */
     .product-img-box {
       flex: 1; min-width: 270px; height: 230px;
       background: #ffffff; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
       padding: 20px; overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
     }
     .product-img-box img {
       max-width: 100%; max-height: 100%; object-fit: contain;
@@ -178,7 +187,11 @@
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
 
-    footer { padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 0.88rem; }
+    /* FOOTER */
+    footer {
+      padding: 40px 6%; text-align: center; border-top: 1px solid var(--border-light);
+      color: var(--text-muted); font-size: 0.88rem;
+    }
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -200,7 +213,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- ENCABEZADO UNIFICADO -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
@@ -210,6 +223,7 @@
       <span class="brand-logo-text">IPTELCO<span>.</span></span>
     </a>
 
+    <!-- MENÚ CON "QUIÉNES SOMOS" AL FINAL -->
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -236,9 +250,10 @@
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Proyecto</a>
-          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Soporte Técnico Vtiger</a>
+          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Generar Ticket Vtiger</a>
         </div>
 
+        <!-- CERTIFICACIONES 3CX MOSTRADAS EN CAJAS BLANCAS -->
         <div class="cert-badges-row">
           <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Partner Certificado:</span>
           <div class="cert-badge-box"><img src="img/3cx-parner.png" alt="3CX Partner"></div>
@@ -252,16 +267,16 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO DIVIDIDO EN LAS 4 CATEGORÍAS SOLICITADAS -->
+  <!-- CATÁLOGOS ORGANIZADOS POR LAS 4 CATEGORÍAS REALES -->
   <section class="services-section">
 
-    <!-- ================= CATEGORÍA 1: TELEFONÍA IP ================= -->
+    <!-- CATEGORÍA 1: TELEFONÍA IP -->
     <div class="category-header-title">📞 Telefonía IP & Centrales Cloud</div>
     <div class="products-showcase">
 
       <!-- 3CX -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/3cx.png" alt="3CX Phone App"></div>
+        <div class="product-img-box"><img src="img/3cx.png" alt="3CX Phone App" onerror="this.src='img/3cx-PBX.png';"></div>
         <div class="product-info-box">
           <span class="product-badge">Telefonía IP Cloud</span>
           <h3>Centrales Telefónicas 3CX PBX</h3>
@@ -281,7 +296,7 @@
         </div>
       </div>
 
-      <!-- FIDELITY Y ISSABEL -->
+      <!-- FIDELITY & ISSABEL -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/fidelity.jpg" alt="Fidelity PBX & Issabel"></div>
         <div class="product-info-box">
@@ -294,7 +309,7 @@
 
     </div>
 
-    <!-- ================= CATEGORÍA 2: CIBERSEGURIDAD & REDES ================= -->
+    <!-- CATEGORÍA 2: CIBERSEGURIDAD & REDES -->
     <div class="category-header-title">🛡️ Ciberseguridad & Redes Enterprise</div>
     <div class="products-showcase">
 
@@ -322,7 +337,7 @@
 
     </div>
 
-    <!-- ================= CATEGORÍA 3: VIDEOVIGILANCIA & BIOMETRÍA ================= -->
+    <!-- CATEGORÍA 3: VIDEOVIGILANCIA & BIOMETRÍA -->
     <div class="category-header-title">📹 Videovigilancia & Seguridad Electrónica</div>
     <div class="products-showcase">
 
@@ -350,7 +365,7 @@
 
     </div>
 
-    <!-- ================= CATEGORÍA 4: CABLEADO ESTRUCTURADO ================= -->
+    <!-- CATEGORÍA 4: CABLEADO ESTRUCTURADO -->
     <div class="category-header-title">🔌 Cableado Estructurado & Racks</div>
     <div class="products-showcase">
 
