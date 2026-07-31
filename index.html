@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IPTELCO S.A.S | Infraestructura, Soporte TI & Telecomunicaciones</title>
+  <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="img/Logo Wh.png">
@@ -43,7 +43,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER: LOGO IPTELCO PULSO DE NEÓN */
+    /* PRELOADER CON LOGO OFICIAL ANIMADO */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
@@ -52,31 +52,27 @@
     }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .preloader-logo { animation: pulseLogo 1.5s ease-in-out infinite; }
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    .preloader-logo-img {
+      height: 75px; width: auto; object-fit: contain;
+      animation: pulseLogo 1.6s ease-in-out infinite;
+    }
     @keyframes pulseLogo {
-      0% { transform: scale(0.9); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
-      50% { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.8)); }
-      100% { transform: scale(0.9); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+      0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); }
+      100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
     }
-    .preloader-text {
-      font-size: 1.4rem; font-weight: 800; color: #ffffff; letter-spacing: 2px;
-      animation: pulseText 1.5s ease-in-out infinite;
-    }
-    .preloader-text span { color: var(--accent-cyan); }
-    @keyframes pulseText { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 
-    /* HEADER */
+    /* HEADER CON LOGO OFICIAL REAL */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 6%; position: sticky; top: 0;
+      padding: 12px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    .brand-logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand-logo-text { font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
-    .brand-logo-text span { color: var(--accent-blue); }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
+    .brand-logo-img { height: 46px; width: auto; object-fit: contain; }
 
     nav { display: flex; align-items: center; gap: 22px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
@@ -172,9 +168,7 @@
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
 
-    /* =========================================
-       NUEVO PIE DE PÁGINA (FOOTER CORPORATIVO)
-       ========================================= */
+    /* FOOTER CORPORATIVO CON LOGO REAL */
     footer {
       background: rgba(15, 23, 42, 0.95);
       border-top: 1px solid var(--border-light);
@@ -192,9 +186,7 @@
     }
 
     .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-logo-text { font-size: 1.8rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
-    .footer-logo-text span { color: var(--accent-blue); }
+    .footer-logo-img { height: 50px; width: auto; object-fit: contain; }
 
     .address-card {
       background: rgba(2, 6, 23, 0.6);
@@ -283,27 +275,19 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO IPTELCO -->
+  <!-- PRELOADER CON EL LOGO REAL -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo" width="65" height="65" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
-        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="preloader-text">IPTELCO<span>.</span></div>
+      <img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
     </div>
   </div>
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON LOGO OFICIAL -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
-        <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="brand-logo-text">IPTELCO<span>.</span></span>
+      <img src="img/Logo Wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
     </a>
 
     <nav>
@@ -479,20 +463,13 @@
 
   </section>
 
-  <!-- ==============================================
-       NUEVO FOOTER ORGANIZADO CON LOGO DE IPTELCO
-       ============================================== -->
+  <!-- FOOTER CON LOGO REAL DE IPTELCO -->
   <footer>
     <div class="footer-grid">
       
-      <!-- COLUMNA 1: LOGO + DESCRIPCIÓN + DIRECCIÓN -->
       <div class="footer-col-brand">
-        <a href="index.html" class="footer-logo">
-          <svg width="38" height="38" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="46" fill="#020617" stroke="#3b82f6" stroke-width="6"/>
-            <path d="M30 52 L45 67 L72 33" stroke="#06b6d4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="footer-logo-text">IPTELCO<span>.</span></span>
+        <a href="index.html">
+          <img src="img/Logo Wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
           Soluciones integrales de telecomunicaciones, redes, ciberseguridad perimetral y soporte TI para el sector corporativo.
@@ -503,7 +480,6 @@
         </div>
       </div>
 
-      <!-- COLUMNA 2: LÍNEAS DE CONTACTO DIRECTO -->
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
@@ -529,7 +505,6 @@
         </a>
       </div>
 
-      <!-- COLUMNA 3: NAVEGACIÓN RÁPIDA -->
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -543,7 +518,6 @@
 
     </div>
 
-    <!-- CIERRE INFERIOR -->
     <div class="footer-bottom">
       <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
       <div style="color: #64748b;">Bogotá, Colombia</div>
