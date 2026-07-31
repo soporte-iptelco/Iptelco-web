@@ -43,7 +43,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER */
+    /* PRELOADER ANTI-BLOQUEO */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
@@ -62,7 +62,7 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* CABECERA CORREGIDA CON LOGO VECTORIAL (JAMÁS SE ROMPE) */
+    /* CABECERA UNIFICADA DE ALTA VISIBILIDAD */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 6%; position: sticky; top: 0;
@@ -103,7 +103,7 @@
     .hero h1 span { color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
-    .features-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .features-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
     .feat-item { display: flex; align-items: center; gap: 12px; font-weight: 600; color: #cbd5e1; font-size: 0.98rem; }
     .feat-check {
       background: rgba(59, 130, 246, 0.2); color: var(--accent-cyan);
@@ -111,15 +111,7 @@
       display: flex; align-items: center; justify-content: center; font-weight: 800;
     }
 
-    /* CONTENEDOR BLANCO PARA MOSTRAR LA IMAGEN DE 3CX DE FORMA IMPECABLE */
-    .hero-media-container {
-      background: #ffffff; border-radius: 20px; padding: 25px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      min-height: 320px;
-    }
-    .hero-media-container img { max-width: 100%; max-height: 330px; object-fit: contain; }
-
+    /* SECCIÓN DE CERTIFICACIONES 3CX EN EL HERO */
     .cert-badges-row {
       display: flex; align-items: center; gap: 16px; margin-top: 25px;
       padding-top: 20px; border-top: 1px solid var(--border-light);
@@ -127,11 +119,20 @@
     .cert-badge-box {
       background: #ffffff; padding: 6px 14px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
     }
-    .cert-badge-box img { height: 38px; width: auto; object-fit: contain; }
+    .cert-badge-box img { height: 42px; width: auto; object-fit: contain; }
 
-    /* SECCIÓN DE PRODUCTOS DE TELEFONÍA EN ZIG-ZAG */
+    /* CONTENEDOR BLANCO PARA LA APPARICIÓN DEL SOFTPHONE 3CX */
+    .hero-media-container {
+      background: #ffffff; border-radius: 20px; padding: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 330px;
+    }
+    .hero-media-container img { max-width: 100%; max-height: 330px; object-fit: contain; }
+
+    /* SECCIÓN DE PRODUCTOS EN ZIG-ZAG */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
@@ -150,7 +151,6 @@
     }
     .product-row.reverse { flex-direction: row-reverse; }
 
-    /* CAJA BLANCA PARA LOGOS DE APLICATIVOS */
     .product-img-box {
       flex: 1; min-width: 270px; height: 230px;
       background: #ffffff; border-radius: 16px;
@@ -209,7 +209,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO SVG VECTORIAL (NUNCA SE ROMPE) -->
+  <!-- HEADER CON LOGO SVG Y BOTÓN DE SOPORTE VTIGER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
@@ -219,7 +219,6 @@
       <span class="brand-logo-text">IPTELCO<span>.</span></span>
     </a>
 
-    <!-- MENÚ ACTUALIZADO CON "QUIÉNES SOMOS" AL FINAL -->
     <nav>
       <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html" class="active">Telefonía IP</a>
@@ -234,14 +233,14 @@
     </div>
   </header>
 
-  <!-- HERO TELEFONÍA IP -->
+  <!-- HERO TELEFONÍA IP CON LAS CERTIFICACIONES DE 3CX -->
   <section class="hero">
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Centrales Telefónicas IP & Cloud</span>
         <h1 style="margin-top: 10px;">Lleva la extensión de tu oficina en tu <span>Smartphone</span></h1>
         <p>
-          Con las soluciones de 3CX, Wolkvox, Fidelity e Issabel desplegadas por IPTELCO, tus colaboradores realizan y reciben llamadas corporativas desde cualquier lugar, manteniendo el número fijo de la empresa.
+          Con la integración de 3CX, Wolkvox, Fidelity e Issabel desplegada por IPTELCO, tus colaboradores realizan y reciben llamadas corporativas desde cualquier lugar, manteniendo el número fijo de la empresa.
         </p>
 
         <div class="features-list">
@@ -255,22 +254,26 @@
           <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda Vtiger</a>
         </div>
 
-        <!-- SELLOS 3CX -->
+        <!-- CERTIFICACIONES OFICIALES 3CX (AQUÍ ESTÁN INTEGRADAS) -->
         <div class="cert-badges-row">
-          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Certificaciones 3CX:</span>
-          <div class="cert-badge-box"><img src="img/3cx-parner.png" alt="3CX Partner"></div>
-          <div class="cert-badge-box"><img src="img/3cx-avanced.png" alt="3CX Advanced Engineer"></div>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Certificaciones Oficiales:</span>
+          <div class="cert-badge-box">
+            <img src="img/3cx-parner.png" alt="3CX Partner Official">
+          </div>
+          <div class="cert-badge-box">
+            <img src="img/3cx-avanced.png" alt="3CX Advanced Engineer">
+          </div>
         </div>
       </div>
 
-      <!-- MARCO BLANCO CON IMAGEN REAL CORREGIDA DE 3CX -->
+      <!-- IMAGEN SOFTPHONE 3CX EN MARCO BLANCO -->
       <div class="hero-media-container">
         <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.onerror=null; this.src='img/3cx-PBX.png';">
       </div>
     </div>
   </section>
 
-  <!-- MOSTRARIO DE TELEFONÍA IP (3CX, WOLKVOX, FIDELITY, ISSABEL) -->
+  <!-- CATÁLOGO DE SOLUCIONES DE TELEFONÍA -->
   <section class="services-section">
     <div class="section-title">
       <h2>Plataformas & Conmutación Telefónica</h2>
@@ -279,7 +282,7 @@
 
     <div class="products-showcase">
 
-      <!-- 1. 3CX VOICE & PBX -->
+      <!-- 1. 3CX -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/3cx.png" alt="3CX Phone App" onerror="this.onerror=null; this.src='img/3cx-PBX.png';">
@@ -292,7 +295,7 @@
         </div>
       </div>
 
-      <!-- 2. WOLKVOX CLOUD CONTACT CENTER -->
+      <!-- 2. WOLKVOX -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/wolkvox.jpg" alt="Wolkvox Contact Center">
@@ -305,7 +308,7 @@
         </div>
       </div>
 
-      <!-- 3. FIDELITY PBX -->
+      <!-- 3. FIDELITY -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/fidelity.jpg" alt="Fidelity PBX Enterprise">
@@ -318,7 +321,7 @@
         </div>
       </div>
 
-      <!-- 4. ISSABEL VOIP PBX -->
+      <!-- 4. ISSABEL -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/3cx-PBX.png" alt="Issabel VoIP Server">
