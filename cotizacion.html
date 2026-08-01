@@ -30,17 +30,20 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER 100% CSS PURO */
+    /* PRELOADER CORREGIDO (SE OCULTA Y ELIMINA POR COMPLETO) */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
       display: flex; align-items: center; justify-content: center; 
-      animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
-      pointer-events: none; 
+      transition: opacity 0.4s ease, visibility 0.4s ease; 
+    }
+    #iptelco-preloader.hidden { 
+      opacity: 0 !important; 
+      visibility: hidden !important; 
+      pointer-events: none !important; 
     }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
-    @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
@@ -66,7 +69,7 @@
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
 
     /* SECCIÓN DE FORMULARIO DE COTIZACIÓN */
-    .quote-section { padding: 60px 6% 80px 6%; max-width: 900px; margin: 0 auto; }
+    .quote-section { padding: 60px 6% 80px 6%; max-width: 900px; margin: 0 auto; position: relative; z-index: 10; }
     .quote-header { text-align: center; margin-bottom: 40px; }
     .quote-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; }
     .quote-header h1 span { color: var(--accent-cyan); }
@@ -84,6 +87,7 @@
       border-radius: 10px; padding: 14px 16px; color: #ffffff; font-family: inherit; font-size: 0.95rem;
       outline: none; transition: border-color 0.2s;
     }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #64748b; }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
     }
@@ -125,6 +129,7 @@
 </head>
 <body>
 
+  <!-- PRELOADER CON ELIMINACIÓN DEFINITIVA DEL DOM -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
@@ -154,20 +159,20 @@
   <section class="quote-section">
     <div class="quote-header">
       <h1>Solicitar <span>Cotización Empresarial</span></h1>
-      <p>Dinos qué solución requiere tu empresa y nuestro equipo técnico te responderá con una propuesta a la medida.</p>
+      <p>Déjanos los detalles de tu proyecto y un ingeniero especialista se pondrá en contacto contigo en menos de 2 horas.</p>
     </div>
 
     <div class="quote-card">
       <form action="https://formspree.io/f/xknkyjrr" method="POST">
         <div class="form-grid">
           <div class="form-group">
-            <label for="nombre">Nombre Completo *</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+            <label for="nombre">Nombre de Contacto *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Ing. Carlos Mendoza">
           </div>
 
           <div class="form-group">
-            <label for="empresa">Empresa / Razón Social *</label>
-            <input type="text" id="empresa" name="empresa" required placeholder="Ej. IPTELCO S.A.S">
+            <label for="empresa">Razón Social de la Empresa *</label>
+            <input type="text" id="empresa" name="empresa" required placeholder="Ej. Soluciones Logísticas S.A.S">
           </div>
 
           <div class="form-group">
@@ -176,7 +181,7 @@
           </div>
 
           <div class="form-group">
-            <label for="telefono">Teléfono / WhatsApp *</label>
+            <label for="telefono">Teléfono / WhatsApp de Contacto *</label>
             <input type="tel" id="telefono" name="telefono" required placeholder="+57 300 000 0000">
           </div>
 
@@ -194,7 +199,7 @@
           </div>
 
           <div class="form-group full">
-            <label for="mensaje">Detalles de la Requerimiento / Mensaje *</label>
+            <label for="mensaje">Detalles del Requerimiento / Mensaje *</label>
             <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente la cantidad de usuarios, ubicaciones o alcance de tu proyecto..."></textarea>
           </div>
 
@@ -245,6 +250,19 @@
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
+
+  <!-- SCRIPT PARA ELIMINAR EL PRELOADER AUTOMÁTICAMENTE -->
+  <script>
+    function ocultarPreloader() {
+      const p = document.getElementById('iptelco-preloader');
+      if (p) {
+        p.classList.add('hidden');
+        setTimeout(() => { p.style.display = 'none'; }, 400);
+      }
+    }
+    window.addEventListener('load', ocultarPreloader);
+    setTimeout(ocultarPreloader, 400);
+  </script>
 
 </body>
 </html>
