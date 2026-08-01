@@ -31,11 +31,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER */
+    /* PRELOADER CON LOGO REAL */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
@@ -106,7 +106,7 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* FIX DEFINITIVO PARA EL WIDGET DE WHATSAPP (BLOQUEO DE TAMAÑO MÁXIMO) */
+    /* CONTROLES ESTRICTOS DE TAMAÑO PARA EL WIDGET DE WHATSAPP */
     .whatsapp-widget { 
       position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
       display: flex; align-items: center; text-decoration: none; 
@@ -116,15 +116,16 @@
     
     .wa-avatar-box { 
       width: 72px !important; height: 72px !important; 
+      min-width: 72px !important; min-height: 72px !important;
       max-width: 72px !important; max-height: 72px !important;
-      border-radius: 50%; border: 3px solid var(--accent-cyan); background: #ffffff; 
+      border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; 
       position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-      display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important;
     }
     .wa-avatar-box img { 
-      width: 100% !important; height: 100% !important; 
+      width: 72px !important; height: 72px !important; 
       max-width: 72px !important; max-height: 72px !important;
-      object-fit: cover; display: block; 
+      object-fit: cover !important; display: block !important; 
     }
     .wa-banner { 
       background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; 
@@ -143,10 +144,10 @@
 </head>
 <body>
 
-  <!-- PRELOADER -->
+  <!-- PRELOADER CON LOGO REAL -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -303,7 +304,7 @@
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT PRELOADER -->
   <script>
     function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
     window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 400);
