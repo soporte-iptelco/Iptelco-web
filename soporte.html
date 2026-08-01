@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesa de Ayuda & Ticket de Soporte | IPTELCO S.A.S</title>
+  <title>Mesa de Ayuda & Radicación de Casos | IPTELCO S.A.S</title>
 
+  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -19,13 +20,18 @@
       --bg-card-hover: rgba(30, 41, 59, 0.95); 
       --accent-blue: #3b82f6; 
       --accent-red: #ef4444; 
+      --accent-cyan: #06b6d4;
       --text-main: #f8fafc; 
       --text-muted: #94a3b8; 
       --border-light: rgba(255, 255, 255, 0.08); 
+      --border-glow: rgba(59, 130, 246, 0.4);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
     /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
@@ -55,16 +61,283 @@
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
-    /* FORMULARIO TICKETS */
-    .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
-    .ticket-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; padding: 50px; }
-    .form-group { margin-bottom: 25px; }
-    .form-group label { display: block; font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: #cbd5e1; }
-    .form-control { width: 100%; padding: 14px 18px; background: rgba(2, 6, 23, 0.7); border: 1px solid var(--border-light); border-radius: 8px; color: #ffffff; font-size: 1rem; }
-    .form-control:focus { border-color: var(--accent-red); outline: none; background: rgba(15, 23, 42, 0.9); }
+    /* ESTILOS DEL FORMULARIO INTEGRADO (ADAPTADO AL DARK THEME DE IPTELCO) */
+    .iptelco-card-container {
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-    .btn-submit { background: var(--accent-red); color: #ffffff; border: none; padding: 16px 28px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 1.1rem; width: 100%; transition: background 0.2s; }
-    .btn-submit:hover { background: #dc2626; }
+    .iptelco-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-light);
+      border-top: 5px solid var(--accent-blue);
+      width: 100%;
+      padding: 40px 35px;
+      box-sizing: border-box;
+      backdrop-filter: blur(12px);
+    }
+
+    .iptelco-header {
+      text-align: center;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .iptelco-title {
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+    }
+
+    .iptelco-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .col-span-2 {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 650px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .col-span-2 { grid-column: span 1; }
+      .iptelco-card { padding: 25px 20px; }
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    
+    .optional-text {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .required-asterisk {
+      color: var(--accent-red);
+      margin-left: 2px;
+    }
+
+    .help-text {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      margin-top: -3px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      background-color: rgba(2, 6, 23, 0.7);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #ffffff;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .input-group input::placeholder,
+    .input-group textarea::placeholder {
+      color: #64748b;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      outline: none;
+      background-color: rgba(15, 23, 42, 0.9);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .input-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-submit {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+
+    @media (max-width: 650px) {
+      .btn-submit { grid-column: span 1; }
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+    }
+
+    .btn-submit:disabled {
+      background: #475569;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- ESTILOS DEL POPUP (MODAL) ADAPTADO --- */
+    .modal-overlay {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(2, 6, 23, 0.8); 
+      backdrop-filter: blur(8px); 
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeInOverlay 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      padding: 32px 24px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      animation: slideUpModal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .modal-close-btn:hover {
+      background-color: rgba(255,255,255,0.1);
+      color: #ffffff;
+    }
+
+    .modal-icon-container {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+
+    .modal-icon { width: 30px; height: 30px; }
+
+    .theme-success .modal-icon-container { background-color: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .theme-error .modal-icon-container { background-color: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 10px 0;
+    }
+
+    .modal-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    .modal-btn-action {
+      margin-top: 24px;
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s ease;
+    }
+    
+    .modal-btn-action:hover { opacity: 0.9; }
+
+    @keyframes fadeInOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUpModal {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
     /* FOOTER */
     .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
@@ -73,15 +346,22 @@
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
     .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
-    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-red); border-radius: 2px; }
+    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-blue); border-radius: 2px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
+    /* WIDGET WHATSAPP */
+    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+
     @media (max-width: 900px) { 
       .footer-grid { grid-template-columns: 1fr; } 
       nav { display: none; } 
-      .ticket-card { padding: 30px 20px; }
     }
   </style>
 </head>
@@ -90,13 +370,10 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-        <text x="100" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff">IPTELCO</text>
-      </svg>
+      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </div>
   </div>
+  <div class="glow-bg"></div>
 
   <!-- HEADER -->
   <header>
@@ -118,42 +395,66 @@
     </div>
   </header>
 
-  <!-- FORMULARIO TICKETS -->
-  <div class="container">
-    <div class="ticket-card">
-      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; color: #ffffff;">🛠️ Radicación de Ticket de Soporte</h1>
-      <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Informa tu requerimiento técnico a nuestro equipo de Mesa de Ayuda IPTELCO para atención prioritaria.</p>
+  <!-- FORMULARIO DE SOPORTE INTEGRADO CON VTIGER CRM -->
+  <div class="iptelco-card-container">
+    <div class="iptelco-card">
+      
+      <div class="iptelco-header">
+        <h2 class="iptelco-title">Solicitud de Soporte IPTELCO</h2>
+        <p class="iptelco-subtitle">Complete los datos para abrir un nuevo requerimiento en nuestra Mesa de Ayuda</p>
+      </div>
 
-      <form action="https://formspree.io/f/soporte" method="POST">
-        <div class="form-group">
-          <label>Nombre Completo / Empresa *</label>
-          <input type="text" name="nombre" class="form-control" placeholder="Ej. Juan Pérez - Empresa S.A.S" required>
+      <form id="casoForm">
+        <div class="form-grid">
+          
+          <div class="input-group col-span-2">
+            <label for="titulo">Título del Caso<span class="required-asterisk">*</span></label>
+            <input type="text" id="titulo" placeholder="Ej. Falla en sistema de telefonía o red" required>
+          </div>
+          
+          <div class="input-group col-span-2">
+            <label for="descripcion">Descripción<span class="required-asterisk">*</span></label>
+            <textarea id="descripcion" rows="4" placeholder="Detalle su requerimiento o problema técnico..." required></textarea>
+          </div>
+          
+          <div class="input-group">
+            <label for="nit">NIT de la Empresa<span class="required-asterisk">*</span></label>
+            <span class="help-text">Sin puntos, guiones ni dígito de verificación</span>
+            <input type="text" id="nit" placeholder="Ej. 900123456" pattern="[0-9]+" title="Por favor, ingrese solo números" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="nombre">Nombre de Contacto<span class="required-asterisk">*</span></label>
+            <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="celular">Celular de Contacto<span class="required-asterisk">*</span></label>
+            <input type="tel" id="celular" placeholder="Ej. 3001234567" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="correo">Correo Electrónico <span class="optional-text">(Opcional)</span></label>
+            <input type="email" id="correo" placeholder="correo@empresa.com">
+          </div>
+          
+          <button type="submit" class="btn-submit" id="btnEnviar">
+            <span class="spinner" id="spinner"></span>
+            <span id="btnTexto">Crear Solicitud</span>
+          </button>
         </div>
-
-        <div class="form-group">
-          <label>Correo Electrónico Corporativo *</label>
-          <input type="email" name="email" class="form-control" placeholder="soporte@tuempresa.com" required>
-        </div>
-
-        <div class="form-group">
-          <label>Área del Requerimiento *</label>
-          <select name="area" class="form-control" required>
-            <option value="Telefonía IP / 3CX">📞 Telefonía IP / 3CX / Issabel</option>
-            <option value="Ciberseguridad / Fortinet / ESET">🛡️ Ciberseguridad / Fortinet / ESET</option>
-            <option value="Redes / MikroTik / Wi-Fi">🌐 Redes / MikroTik / Wi-Fi</option>
-            <option value="CCTV / Biometría ZKTeco">📹 CCTV / Biometría ZKTeco</option>
-            <option value="Microsoft 365 / Cloud">☁️ Microsoft 365 / Cloud</option>
-            <option value="Soporte Técnico Equipos / Hardware">💻 Soporte Técnico Equipos / Hardware</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Descripción Detallada de la Incidencia *</label>
-          <textarea name="descripcion" rows="5" class="form-control" placeholder="Explica brevemente la falla o soporte requerido..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Enviar Ticket a Mesa de Ayuda</button>
       </form>
+    </div>
+  </div>
+
+  <!-- ESTRUCTURA DEL POPUP (MODAL) -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btnCloseIcon">✕</button>
+      <div id="modalBody">
+        <!-- El contenido dinámico se inyecta por JS -->
+      </div>
+      <button class="modal-btn-action" id="btnCerrarModal">Entendido</button>
     </div>
   </div>
 
@@ -161,13 +462,20 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
           <div class="footer-logo-container">
             <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
           </div>
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6;">
+          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV y Cloud.
+        </p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Atención & Soporte</h4>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item"><div class="contact-icon-box">💬</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div></a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item"><div class="contact-icon-box">✉️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div></a>
       </div>
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
@@ -183,10 +491,114 @@
     <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- WIDGET WHATSAPP -->
+  <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
+    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+    </div>
+    <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
+  </a>
+
+  <!-- LÓGICA DE ENVÍO VTIGER Y MANEJO DE PRELOADER/MODAL -->
   <script>
-    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
-    window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 400);
+    const WEB_APP_URL = "https://webhook-vtiger-soporte.vercel.app/api/soporte";
+
+    const svgSuccess = `<svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>`;
+    const svgError = `<svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalBody = document.getElementById('modalBody');
+    const btnCloseIcon = document.getElementById('btnCloseIcon');
+    const btnCerrarModal = document.getElementById('btnCerrarModal');
+
+    function showModal(type, title, text) {
+      const icon = type === 'success' ? svgSuccess : svgError;
+      const themeClass = type === 'success' ? 'theme-success' : 'theme-error';
+      
+      modalBody.innerHTML = `
+        <div class="modal-icon-container ${themeClass}">
+          ${icon}
+        </div>
+        <h3 class="modal-title">${title}</h3>
+        <p class="modal-text">${text}</p>
+      `;
+      modalOverlay.classList.add('active');
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+    }
+
+    btnCloseIcon.addEventListener('click', closeModal);
+    btnCerrarModal.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    document.getElementById('casoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('btnEnviar');
+      const btnTexto = document.getElementById('btnTexto');
+      const spinner = document.getElementById('spinner');
+      
+      btn.disabled = true;
+      btnTexto.innerText = "Procesando...";
+      if (spinner) spinner.style.display = "inline-block";
+
+      const datos = {
+        nit: document.getElementById('nit').value.trim(),
+        nombre_contacto: document.getElementById('nombre').value.trim(),
+        correo: document.getElementById('correo').value.trim(),
+        asunto: document.getElementById('titulo').value.trim(),
+        descripcion: `${document.getElementById('descripcion').value.trim()}\n\nCelular de contacto: ${document.getElementById('celular').value.trim()}`
+      };
+
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'iptelco_Secret0_2026**'
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          const numCaso = data.ticket_no || data.case_id || "Asignado";
+          
+          showModal(
+            'success', 
+            'Solicitud Registrada Exitosamente', 
+            `Hemos asignado el número de radicado <strong>${numCaso}</strong> a su caso. Nuestro equipo de soporte lo revisará y se pondrá en contacto a la brevedad.`
+          );
+          document.getElementById('casoForm').reset();
+        } else {
+          throw new Error(data.error || 'Ocurrió un problema al procesar la solicitud.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        
+        const errorMsg = error.message && error.message.length < 100 
+          ? error.message 
+          : "No pudimos procesar su solicitud en este momento. Por favor, verifique su conexión e intente nuevamente.";
+          
+        showModal('error', 'Inconveniente al registrar el caso', errorMsg);
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btnTexto.innerText = "Crear Solicitud";
+        if (spinner) spinner.style.display = "none";
+      });
+    });
+
+    /* MANEJO DE PRELOADER */
+    function ocultarPreloader() { 
+      const p = document.getElementById('iptelco-preloader'); 
+      if (p) p.classList.add('hidden'); 
+    }
+    window.addEventListener('load', ocultarPreloader); 
+    setTimeout(ocultarPreloader, 400);
   </script>
 </body>
 </html>
