@@ -46,81 +46,80 @@
     }
 
     /* =========================================================
-       LOGO AGRANDADO CON DIFUMINADO SUAVE BILATERAL (AMBAS ESQUINAS)
+       EFECTO SPOTLIGHT / HALO BLANCO DIFUMINADO EN AMBOS LADOS
        ========================================================= */
 
-    /* CONTENEDOR DEL LOGO EN HEADER */
+    /* CONTENEDOR DIFUMINADO BILATERAL EN HEADER */
     .brand-logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
-      background-color: #ffffff; /* Fondo blanco nítido para destacar el logo */
-      padding: 6px 75px 6px 30px; /* Margen para transición holgada */
+      background-color: #ffffff; /* Fondo blanco nítido para resaltar el logo */
+      padding: 6px 65px; /* Margen simétrico a la izquierda y derecha para el desvanecido */
+      margin-left: 15px; /* Ligera separación del borde para ver la luz izquierda */
       height: 100%;
       
-      /* MÁSCARA CON DIFUMINADO SUAVE EN AMBAS ESQUINAS (IZQUIERDA Y DERECHA) */
+      /* MÁSCARA QUE DESVANACE EN AMBAS ESQUINAS (IZQUIERDA Y DERECHA) */
       -webkit-mask-image: linear-gradient(to right, 
         rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 15%, 
-        rgba(0,0,0,1) 55%, 
-        rgba(0,0,0,0.6) 80%, 
+        rgba(0,0,0,1) 22%, 
+        rgba(0,0,0,1) 78%, 
         rgba(0,0,0,0) 100%
       );
       mask-image: linear-gradient(to right, 
         rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 15%, 
-        rgba(0,0,0,1) 55%, 
-        rgba(0,0,0,0.6) 80%, 
+        rgba(0,0,0,1) 22%, 
+        rgba(0,0,0,1) 78%, 
         rgba(0,0,0,0) 100%
       );
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .brand-logo-container:hover {
+      transform: scale(1.02);
       opacity: 0.96;
-      transform: scale(1.01);
     }
 
     .brand-logo-img {
-      height: 82px; /* Logo considerablemente más grande y legible */
+      height: 80px; /* Logo grande, visible y de alta legibilidad */
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* CONTENEDOR DIFUMINADO EN FOOTER (ABAJO) */
+    /* CONTENEDOR DIFUMINADO BILATERAL EN FOOTER */
     .footer-logo-container {
       display: inline-flex;
       align-items: center;
       background-color: #ffffff;
-      padding: 10px 80px 10px 30px;
+      padding: 10px 70px;
       border-radius: 16px;
       -webkit-mask-image: linear-gradient(to right, 
         rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 12%, 
-        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,1) 20%, 
+        rgba(0,0,0,1) 80%, 
         rgba(0,0,0,0) 100%
       );
       mask-image: linear-gradient(to right, 
         rgba(0,0,0,0) 0%, 
-        rgba(0,0,0,1) 12%, 
-        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,1) 20%, 
+        rgba(0,0,0,1) 80%, 
         rgba(0,0,0,0) 100%
       );
     }
 
     .footer-logo-img {
-      height: 115px; /* Logo del footer amplio y distinguido */
+      height: 110px;
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* HEADER AJUSTADO PARA EL NUEVO TAMAÑO */
+    /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 0 4% 0 0;
-      height: 96px; /* Altura optimizada para dar aire al logo grande */
+      height: 94px;
       position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
