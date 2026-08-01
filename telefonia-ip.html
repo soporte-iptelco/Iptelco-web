@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telefonía IP & Centrales Cloud | IPTELCO S.A.S</title>
 
-  <!-- FAVICON DE LA PESTAÑA -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -45,10 +44,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* =========================================================
-       CABECERA ELEGANTE: LOGO AGRANDADO + DIFUMINADO EXCLUSIVO IZQUIERDA
-       ========================================================= */
-
+    /* LOGO DIFUMINADO */
     .brand-logo-container {
       display: flex;
       align-items: center;
@@ -60,11 +56,7 @@
       mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-
-    .brand-logo-container:hover {
-      opacity: 0.97;
-      transform: scale(1.01);
-    }
+    .brand-logo-container:hover { opacity: 0.97; transform: scale(1.01); }
 
     .brand-logo-img {
       height: 64px;
@@ -73,71 +65,9 @@
       display: block;
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-right: 4%;
-    }
-
-    .btn-soporte {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-    .btn-soporte:hover {
-      background: rgba(239, 68, 68, 0.28);
-      color: #ffffff;
-      border-color: #ef4444;
-    }
-
-    .btn-cotizar {
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 4px 15px var(--accent-glow);
-      transition: all 0.2s;
-    }
-    .btn-cotizar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-    }
-
-    .footer-logo-container {
-      display: inline-flex;
-      align-items: center;
-      background-color: #ffffff;
-      padding: 10px 60px 10px 20px;
-      border-radius: 12px;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-    }
-
-    .footer-logo-img {
-      height: 95px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
-
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0;
-      height: 82px;
-      position: sticky; top: 0;
+      padding: 0; height: 82px; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
@@ -146,36 +76,41 @@
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
 
-    /* HERO PRINCIPAL */
+    .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
+
+    .btn-soporte {
+      background: rgba(239, 68, 68, 0.15); color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 18px;
+      border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+    }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
+      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
+    }
+    .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+
+    /* HERO */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
-    
-    .hero h1 {
-      font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero h1 span { color: var(--accent-blue); -webkit-text-fill-color: var(--accent-blue); }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 span { color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
 
     .hero-media-container {
       background: #ffffff; border-radius: 20px; padding: 25px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;
       animation: floatAnimationHero 4s ease-in-out infinite;
     }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
-    /* BADGES DE SOCIO CERTIFICADO */
-    .partner-badges-bar {
-      display: flex; align-items: center; gap: 15px; margin-top: 25px; flex-wrap: wrap;
-    }
-    .partner-badge-card {
-      background: #ffffff; padding: 8px 16px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-light);
-    }
+    .partner-badges-bar { display: flex; align-items: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+    .partner-badge-card { background: #ffffff; padding: 8px 16px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-light); }
     .partner-badge-card img { height: 42px; width: auto; object-fit: contain; }
 
     /* SECCIONES Y CATÁLOGOS */
@@ -190,8 +125,7 @@
 
     .product-row {
       display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
-      border-radius: 24px; padding: 30px; transition: all 0.35s ease;
-      position: relative;
+      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative;
     }
     .product-row:hover {
       border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
@@ -219,7 +153,24 @@
     .features-list li { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
     .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; }
 
+    /* CERTIFICACIONES */
+    .certs-info-section { background: rgba(15, 23, 42, 0.6); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 60px 6%; margin: 60px 0; text-align: center; }
+    .certs-info-title { font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+    .certs-info-subtitle { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 30px auto; }
+    .certs-badges-grid { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; }
+    .cert-badge-lg-card { background: #ffffff; padding: 16px 28px; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; }
+    .cert-badge-lg-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3); }
+    .cert-badge-lg-card img { height: 65px; width: auto; object-fit: contain; }
+
     /* FOOTER */
+    .footer-logo-container {
+      display: inline-flex; align-items: center; background-color: #ffffff;
+      padding: 10px 60px 10px 20px; border-radius: 12px;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    }
+    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
@@ -281,7 +232,7 @@
     </div>
   </header>
 
-  <!-- HERO PRINCIPAL DE TELEFONÍA IP -->
+  <!-- HERO PRINCIPAL -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -330,8 +281,24 @@
         </div>
       </div>
 
-      <!-- PRODUCTO 2: ISSABEL & FIDELITY -->
+      <!-- PRODUCTO 2: WOLKVOX (AGREGADO Y RECUPERADO) -->
       <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/3cx.png" alt="Wolkvox Contact Center Cloud" onerror="this.src='img/3cx-PBX.png';"></div>
+        <div class="product-info-box">
+          <span class="product-badge" style="color: #06b6d4; background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);">Call Center Omnicanal Cloud</span>
+          <h3>Wolkvox Contact Center & CRM Cloud</h3>
+          <p>Plataforma de Call Center 100% en la nube para empresas con operaciones comerciales y de servicio al cliente exigentes. Gestiona llamadas entrantes/salientes y mensajería en un solo lugar.</p>
+          <ul class="features-list">
+            <li>Omnicanalidad: WhatsApp Business API, Facebook Messenger, WebChat y Voz.</li>
+            <li>Marcador predictivo y progresivo para campañas comerciales.</li>
+            <li>Métricas de agentes en tiempo real, supervisión de llamadas y chatbots IA.</li>
+            <li>Implementación inmediata en la nube sin inversión en servidores locales.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 3: ISSABEL & FIDELITY -->
+      <div class="product-row">
         <div class="product-img-box"><img src="img/Issabel-2.png" alt="Servidores Issabel PBX" onerror="this.src='img/Issabel.png';"></div>
         <div class="product-info-box">
           <span class="product-badge" style="color: #3b82f6; background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.25);">Open Source & Fidelity PBX</span>
@@ -346,8 +313,8 @@
         </div>
       </div>
 
-      <!-- PRODUCTO 3: TELÉFONOS IP & GATEWAYS -->
-      <div class="product-row">
+      <!-- PRODUCTO 4: TELÉFONOS IP & GATEWAYS -->
+      <div class="product-row reverse">
         <div class="product-img-box"><img src="img/fidelity.jpg" alt="Teléfonos IP Yealink & Grandstream" onerror="this.src='img/3cx.png';"></div>
         <div class="product-info-box">
           <span class="product-badge" style="color: #06b6d4; background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);">Hardware Telefónico</span>
@@ -364,6 +331,24 @@
 
     </div>
 
+  </section>
+
+  <!-- CERTIFICACIONES -->
+  <section class="certs-info-section">
+    <h2 class="certs-info-title">📜 Certificaciones & Partners Oficiales</h2>
+    <p class="certs-info-subtitle">Respaldados técnicamente por los mejores fabricantes de tecnología a nivel global para garantizar implementaciones de alta calidad.</p>
+    
+    <div class="certs-badges-grid">
+      <div class="cert-badge-lg-card">
+        <img src="img/3cx-parner.png" alt="3CX Platinum Partner">
+      </div>
+      <div class="cert-badge-lg-card">
+        <img src="img/3cx-avanced.png" alt="3CX Advanced Certified Engineer">
+      </div>
+      <div class="cert-badge-lg-card">
+        <img src="img/3cx-PBX.png" alt="3CX Enterprise PBX" onerror="this.src='img/3cx.png';">
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
