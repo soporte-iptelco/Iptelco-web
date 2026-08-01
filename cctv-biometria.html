@@ -29,6 +29,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
+    /* PRELOADER */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -42,6 +43,7 @@
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
+    /* LOGO HEADER */
     .brand-logo-container {
       display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
       padding: 6px 55px 6px 20px; height: 100%;
@@ -62,6 +64,7 @@
     .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
     .btn-cotizar { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
 
+    /* HERO CORREGIDO (CONTROL DE TAMAÑO DE IMAGEN STRICTO) */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
@@ -69,9 +72,19 @@
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
-    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
-    .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .hero-media-container { 
+      background: #ffffff; border-radius: 20px; padding: 20px; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; 
+      height: 300px; max-width: 100%; overflow: hidden !important; 
+      animation: floatAnimationHero 4s ease-in-out infinite; 
+    }
+    .hero-media-container img { 
+      max-width: 100% !important; max-height: 100% !important; 
+      width: auto !important; height: auto !important; 
+      object-fit: contain !important; display: block; 
+    }
 
+    /* PRODUCTOS HORIZONTALES */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 30px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
@@ -88,9 +101,15 @@
     .product-img-box { 
       width: 340px !important; min-width: 340px !important; height: 230px !important; 
       background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
-      padding: 20px; overflow: hidden; flex-shrink: 0 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
+      padding: 20px; overflow: hidden !important; flex-shrink: 0 !important; 
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
-    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-img-box img { 
+      max-width: 100% !important; max-height: 100% !important; 
+      width: auto !important; height: auto !important; 
+      object-fit: contain !important; display: block; 
+      transition: transform 0.4s ease; 
+    }
     .product-row:hover .product-img-box img { transform: scale(1.06); }
 
     .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -104,6 +123,7 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 1rem; margin-top: 10px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
 
+    /* FOOTER */
     .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
     .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
@@ -115,6 +135,7 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
+    /* WIDGET WHATSAPP */
     .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
     .wa-avatar-box { width: 72px !important; height: 72px !important; min-width: 72px !important; min-height: 72px !important; max-width: 72px !important; max-height: 72px !important; border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important; }
@@ -178,11 +199,12 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO CCTV -->
+  <!-- CATÁLOGO CCTV Y BIOMETRÍA -->
   <section class="services-section">
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
       
+      <!-- 1. CÁMARAS IP -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP">
@@ -199,6 +221,7 @@
         </div>
       </div>
 
+      <!-- 2. BIOMETRÍA ZKTECO -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
@@ -215,9 +238,10 @@
         </div>
       </div>
 
+      <!-- 3. TORNIQUETES & ACCESO FÍSICO -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/zkteco-zk-bioaccess.jpg" alt="Torniquetes y Electroimanes ZKTeco">
+          <img src="img/zteco-zk-bioaccess.jpg" alt="Torniquetes y Electroimanes ZKTeco">
         </div>
         <div class="product-info-box">
           <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
@@ -231,6 +255,7 @@
         </div>
       </div>
 
+      <!-- 4. ALARMAS DE INTRUSIÓN -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/camaras-sensor-movimiento.jpg" alt="Alarmas de Intrusión y Sensores">
