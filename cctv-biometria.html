@@ -18,7 +18,6 @@
       --bg-dark: #020617; 
       --bg-card: rgba(15, 23, 42, 0.85); 
       --bg-card-hover: rgba(30, 41, 59, 0.95); 
-      --accent-blue: #3b82f6; 
       --accent-cyan: #06b6d4; 
       --accent-glow: rgba(6, 182, 212, 0.25); 
       --text-main: #f8fafc; 
@@ -57,7 +56,6 @@
     .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
-    
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
@@ -76,42 +74,63 @@
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
-
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* CATÁLOGO CCTV EN FILAS INTERCALADAS */
+    /* CATÁLOGO CCTV EN FILAS ANCHAS INTERCALADAS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 30px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
+    /* TARJETA HORIZONTAL LADO A LADO */
     .product-row { 
-      display: flex; flex-direction: row !important; align-items: center; gap: 40px; 
-      background: var(--bg-card); border: 1px solid var(--border-light); 
-      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; 
+      display: flex; 
+      flex-direction: row !important; /* Fuerza el diseño horizontal */
+      align-items: center; 
+      gap: 40px; 
+      background: var(--bg-card); 
+      border: 1px solid var(--border-light); 
+      border-radius: 24px; 
+      padding: 35px; 
+      transition: all 0.35s ease; 
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
-    .product-row.reverse { flex-direction: row-reverse !important; }
+    
+    .product-row.reverse { 
+      flex-direction: row-reverse !important; 
+    }
 
+    /* CAJA DE IMAGEN A UN COSTADO - TAMAÑO FIJO */
     .product-img-box { 
-      width: 320px !important; min-width: 320px !important; height: 220px !important; 
-      background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
-      padding: 20px; overflow: hidden; flex-shrink: 0 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
+      width: 340px !important; 
+      min-width: 340px !important; 
+      height: 230px !important; 
+      background: #ffffff; 
+      border-radius: 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+      overflow: hidden; 
+      flex-shrink: 0 !important; /* Evita que la caja de la imagen se comprima o estire */
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
-    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
+    .product-row:hover .product-img-box img { transform: scale(1.06); }
 
     .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
-    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
-    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
     
-    .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 5px; }
-    .features-list li { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
-    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; }
+    /* Nota: Se eliminó la clase .product-badge por petición (Sin Categorías) */
     
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
+    .product-info-box h3 { font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 5px; }
+    .product-info-box p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+    
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+    .features-list li { font-size: 0.95rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px; }
+    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem; }
+    
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 1rem; margin-top: 10px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
 
     /* FOOTER */
@@ -127,11 +146,32 @@
     .footer-links a:hover { color: #ffffff; }
 
     /* WIDGET WHATSAPP CONTROLADO */
-    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    .whatsapp-widget { 
+      position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
+      display: flex; align-items: center; text-decoration: none; 
+      animation: floatWidget 4s ease-in-out infinite; 
+    }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px !important; height: 72px !important; min-width: 72px !important; min-height: 72px !important; max-width: 72px !important; max-height: 72px !important; border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important; }
-    .wa-avatar-box img { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; object-fit: cover !important; display: block !important; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    
+    .wa-avatar-box { 
+      width: 72px !important; height: 72px !important; 
+      min-width: 72px !important; min-height: 72px !important;
+      max-width: 72px !important; max-height: 72px !important;
+      border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; 
+      position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+      display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important;
+    }
+    .wa-avatar-box img { 
+      width: 72px !important; height: 72px !important; 
+      max-width: 72px !important; max-height: 72px !important;
+      object-fit: cover !important; display: block !important; 
+    }
+    .wa-banner { 
+      background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; 
+      padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; 
+      margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); 
+      border-left: none; transition: all 0.3s ease; white-space: nowrap; 
+    }
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
@@ -147,7 +187,8 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <!-- Carga directa, sin onerror que bloquee -->
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -155,7 +196,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -185,12 +226,13 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+        <!-- Revisa que tengas esta imagen guardada -->
+        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CCTV (SÓLO TUS 4 PRODUCTOS ORIGINALES) -->
+  <!-- CATÁLOGO CCTV (4 PRODUCTOS ORIGINALES, SIN CATEGORÍAS, SIN ONERROR) -->
   <section class="services-section">
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
@@ -198,10 +240,10 @@
       <!-- 1. CÁMARAS IP -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          <!-- Asegúrate de que el nombre del archivo aquí coincida con tu carpeta -->
+          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Sistemas de CCTV IP</span>
           <h3>Cámaras IP, PTZ & Grabadores NVR</h3>
           <p>Instalación de cámaras de alta resolución con visión nocturna a color, detección de movimiento por inteligencia artificial y monitoreo remoto desde celular.</p>
           <ul class="features-list">
@@ -213,13 +255,12 @@
         </div>
       </div>
 
-      <!-- 2. BIOMETRÍA ZKTECO -->
+      <!-- 2. BIOMETRÍA ZKTECO (REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Biometría Inteligente</span>
           <h3>Terminales ZKTeco & Software BioTime</h3>
           <p>Control de asistencia y acceso peatonal sin contacto mediante reconocimiento facial, huella dactilar y tarjetas RFID integrados al software de personal BioTime.</p>
           <ul class="features-list">
@@ -234,10 +275,9 @@
       <!-- 3. TORNIQUETES Y ELECTROIMANES -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          <img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Acceso Físico</span>
           <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
           <p>Sistemas físicos de restricción de paso integrados con lectores biométricos para asegurar áreas críticas, entradas principales y parqueaderos vehiculares.</p>
           <ul class="features-list">
@@ -249,13 +289,12 @@
         </div>
       </div>
 
-      <!-- 4. ALARMAS DE INTRUSIÓN -->
+      <!-- 4. ALARMAS DE INTRUSIÓN (REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          <img src="img/alarmas.jpg" alt="Alarmas de Intrusión">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Detección de Intrusos</span>
           <h3>Sistemas de Alarma & Sensores de Movimiento</h3>
           <p>Paneles de alarma DSC e Hikvision con sensores de apertura de puertas, movimiento infrarrojo y botones de pánico conectados a tu smartphone.</p>
           <ul class="features-list">
@@ -276,7 +315,7 @@
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
           <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img">
           </div>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
