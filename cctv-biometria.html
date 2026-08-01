@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCTV, Videovigilancia & Biometría | IPTELCO S.A.S</title>
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -83,10 +82,9 @@
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    /* TARJETA HORIZONTAL LADO A LADO */
     .product-row { 
       display: flex; 
-      flex-direction: row !important; /* Fuerza el diseño horizontal */
+      flex-direction: row !important; 
       align-items: center; 
       gap: 40px; 
       background: var(--bg-card); 
@@ -101,7 +99,6 @@
       flex-direction: row-reverse !important; 
     }
 
-    /* CAJA DE IMAGEN A UN COSTADO - TAMAÑO FIJO */
     .product-img-box { 
       width: 340px !important; 
       min-width: 340px !important; 
@@ -113,16 +110,13 @@
       justify-content: center; 
       padding: 20px; 
       overflow: hidden; 
-      flex-shrink: 0 !important; /* Evita que la caja de la imagen se comprima o estire */
+      flex-shrink: 0 !important; 
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.06); }
 
     .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    
-    /* Nota: Se eliminó la clase .product-badge por petición (Sin Categorías) */
-    
     .product-info-box h3 { font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 5px; }
     .product-info-box p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
     
@@ -187,8 +181,7 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <!-- Carga directa, sin onerror que bloquee -->
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -196,7 +189,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -226,13 +219,12 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <!-- Revisa que tengas esta imagen guardada -->
-        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO">
+        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO" onerror="this.onerror=null; this.src='img/logo-main.png';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CCTV (4 PRODUCTOS ORIGINALES, SIN CATEGORÍAS, SIN ONERROR) -->
+  <!-- CATÁLOGO CCTV CON RUTAS EXACTAS DE TU REPOSITTORIO -->
   <section class="services-section">
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
@@ -240,8 +232,7 @@
       <!-- 1. CÁMARAS IP -->
       <div class="product-row">
         <div class="product-img-box">
-          <!-- Asegúrate de que el nombre del archivo aquí coincida con tu carpeta -->
-          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP">
+          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </div>
         <div class="product-info-box">
           <h3>Cámaras IP, PTZ & Grabadores NVR</h3>
@@ -255,10 +246,10 @@
         </div>
       </div>
 
-      <!-- 2. BIOMETRÍA ZKTECO (REVERSE) -->
+      <!-- 2. BIOMETRÍA ZKTECO -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
+          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </div>
         <div class="product-info-box">
           <h3>Terminales ZKTeco & Software BioTime</h3>
@@ -272,10 +263,10 @@
         </div>
       </div>
 
-      <!-- 3. TORNIQUETES Y ELECTROIMANES -->
+      <!-- 3. TORNIQUETES & CONTROL DE ACCESO (Archivo real: zteco-zk-bioaccess.jpg) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes">
+          <img src="img/zteco-zk-bioaccess.jpg" alt="Torniquetes y Electroimanes ZKTeco" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </div>
         <div class="product-info-box">
           <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
@@ -289,10 +280,10 @@
         </div>
       </div>
 
-      <!-- 4. ALARMAS DE INTRUSIÓN (REVERSE) -->
+      <!-- 4. ALARMAS DE INTRUSIÓN (Archivo real: camaras-sensor-movimiento.jpg) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/alarmas.jpg" alt="Alarmas de Intrusión">
+          <img src="img/camaras-sensor-movimiento.jpg" alt="Alarmas de Intrusión y Sensores" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </div>
         <div class="product-info-box">
           <h3>Sistemas de Alarma & Sensores de Movimiento</h3>
@@ -315,7 +306,7 @@
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
           <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img">
+            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
           </div>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
