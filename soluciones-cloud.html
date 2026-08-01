@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soluciones Cloud, Workspace, Azure & QNAP | IPTELCO S.A.S</title>
 
+  <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+  <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -54,6 +57,7 @@
       pointer-events: none;
     }
 
+    /* PRELOADER */
     #iptelco-preloader {
       position: fixed;
       top: 0;
@@ -65,13 +69,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: fadeOutPreloader 0.4s ease 0.2s forwards;
-      pointer-events: none;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
     }
 
-    @keyframes fadeOutPreloader {
-      0% { opacity: 1; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; }
+    #iptelco-preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     .preloader-content {
@@ -93,24 +97,43 @@
       100% { transform: scale(0.92); }
     }
 
+    /* LOGO CON DIFUMINADO SUAVE EN HEADER */
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      background-color: #ffffff;
+      padding: 6px 55px 6px 20px;
+      height: 100%;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .brand-logo-container:hover {
+      opacity: 0.97;
+      transform: scale(1.01);
+    }
+
+    .brand-logo-img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 6%;
+      padding: 0;
+      height: 82px;
       position: sticky;
       top: 0;
       background: rgba(2, 6, 23, 0.95);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light);
       z-index: 1000;
-    }
-
-    .brand-logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      gap: 10px;
     }
 
     nav {
@@ -135,6 +158,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-right: 4%;
     }
 
     .btn-soporte {
@@ -174,6 +198,7 @@
       transform: translateY(-2px);
     }
 
+    /* HERO */
     .hero {
       padding: 60px 6% 40px 6%;
       max-width: 1300px;
@@ -228,6 +253,7 @@
       object-fit: contain;
     }
 
+    /* CATÁLOGO DE PRODUCTOS */
     .services-section {
       padding: 50px 6% 80px 6%;
       max-width: 1250px;
@@ -360,6 +386,24 @@
       left: 0;
       z-index: 10;
       border-radius: 24px;
+    }
+
+    /* FOOTER CON LOGO DIFUMINADO */
+    .footer-logo-container {
+      display: inline-flex;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 10px 60px 10px 20px;
+      border-radius: 12px;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    }
+
+    .footer-logo-img {
+      height: 95px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     footer {
@@ -557,14 +601,10 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO SVG OFICIAL -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-        <text x="100" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff">IPTELCO</text>
-      </svg>
+      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </div>
   </div>
 
@@ -573,11 +613,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-      </svg>
-      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -611,7 +647,7 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO CLOUD COMPLETO (4 TARJETAS) -->
+  <!-- CATÁLOGO CLOUD COMPLETO (LOS 4 PRODUCTOS REGLAMENTARIOS) -->
   <section class="services-section">
     <div class="category-header-title">☁️ Licenciamiento Corporativo & Nube Privada</div>
     <div class="products-showcase">
@@ -675,19 +711,20 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-            <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-            <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-          </svg>
-          <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
+          <div class="footer-logo-container">
+            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          </div>
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
+          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
+        </p>
         <div class="address-card">
           📍 <b>Oficina Principal:</b><br>
           Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
         </div>
       </div>
+
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
@@ -703,6 +740,7 @@
           <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
         </a>
       </div>
+
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -714,6 +752,7 @@
         </ul>
       </div>
     </div>
+    
     <div class="footer-bottom">
       <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
       <div style="color: #64748b;">Bogotá, Colombia</div>
@@ -731,10 +770,14 @@
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <!-- SCRIPT SEGURO DE NAVEGACIÓN -->
+  <!-- SCRIPT DE NAVEGACIÓN -->
   <script>
-    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
-    window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 300);
+    function ocultarPreloader() { 
+      const p = document.getElementById('iptelco-preloader'); 
+      if (p) p.classList.add('hidden'); 
+    }
+    window.addEventListener('load', ocultarPreloader); 
+    setTimeout(ocultarPreloader, 400);
   </script>
 </body>
 </html>
