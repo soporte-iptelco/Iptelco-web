@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
-  <!-- FAVICON OFICIAL CON TUS IMÁGENES DEL REPOSICIONAL -->
-  <link rel="icon" type="image/png" href="img/logo-wh.png">
-  <link rel="apple-touch-icon" href="img/logo-main.png">
+  <!-- FAVICON OFICIAL PNG TRANSPARENTE -->
+  <link rel="icon" type="image/png" href="img/logo-wh.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="img/logo-wh.png?v=2">
+  <link rel="apple-touch-icon" href="img/logo-wh.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +46,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER 100% CSS CON LOGO OFICIAL */
+    /* PRELOADER 100% CSS CON LOGO GRANDE Y TRANSPARENTE */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center;
@@ -54,19 +55,19 @@
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
     .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .preloader-logo-img { height: 65px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 85px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.95); } 50% { transform: scale(1.05); } 100% { transform: scale(0.95); } }
 
-    /* HEADER CON LOGO OFICIAL */
+    /* HEADER CON LOGO GRANDE Y TRANSPARENTE */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 6%; position: sticky; top: 0;
+      padding: 10px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
     .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo-img { height: 48px; width: auto; object-fit: contain; }
+    .brand-logo-img { height: 68px; width: auto; object-fit: contain; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -208,18 +209,18 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO OFICIAL DEL REPOSITORIO -->
+  <!-- PRELOADER CON LOGO TRANSPARENTE -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
+      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO OFICIAL DEL REPOSITORIO -->
+  <!-- HEADER CON LOGO GRANDE Y TRANSPARENTE -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
+      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html" class="active">Inicio</a>
@@ -371,16 +372,14 @@
     </div>
   </section>
 
-  <!-- FOOTER CON LOGO OFICIAL CON FONDO BLANCO PROTEGIDO -->
+  <!-- FOOTER CON LOGO TRANSPARENTE INTEGRADO PERFECTAMENTE -->
   <footer>
     <div class="footer-grid">
       
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:16px;">
-          <!-- CONTENEDOR CON EL LOGO OFICIAL DEL FOOTER DEL REPOSITORIO -->
-          <div style="background: #ffffff; padding: 10px 18px; border-radius: 12px; display: inline-block;">
-            <img src="img/logo-footer.jpg" alt="IPTELCO IP Telefonía y Comunicaciones" style="height: 52px; width: auto; object-fit: contain; display: block;" onerror="this.onerror=null; this.src='img/logo-wh.png';">
-          </div>
+        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
+          <!-- LOGO TRANSPARENTE Y GRANDE SIN PARCHES BLANCOS -->
+          <img src="img/logo-wh.png" alt="IPTELCO Logo" style="height: 80px; width: auto; object-fit: contain; display: block;">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
