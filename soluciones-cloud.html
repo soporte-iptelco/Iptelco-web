@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soluciones Cloud, Workspace, Azure & 365 | IPTELCO S.A.S</title>
+  <title>Soluciones Cloud, Workspace, Azure & QNAP | IPTELCO S.A.S</title>
 
   <link rel="icon" type="image/png" href="img/logo-wh.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,20 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-dark: #020617;
-      --bg-card: rgba(15, 23, 42, 0.85);
-      --bg-card-hover: rgba(30, 41, 59, 0.95);
-      --accent-blue: #3b82f6;
-      --accent-cyan: #06b6d4;
-      --accent-purple: #8b5cf6;
-      --accent-glow: rgba(139, 92, 246, 0.25);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-light: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(139, 92, 246, 0.4);
-    }
-
+    :root { --bg-dark: #020617; --bg-card: rgba(15, 23, 42, 0.85); --bg-card-hover: rgba(30, 41, 59, 0.95); --accent-blue: #3b82f6; --accent-cyan: #06b6d4; --accent-purple: #8b5cf6; --accent-glow: rgba(139, 92, 246, 0.25); --text-main: #f8fafc; --text-muted: #94a3b8; --border-light: rgba(255, 255, 255, 0.08); --border-glow: rgba(139, 92, 246, 0.4); }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
@@ -75,11 +62,9 @@
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
-    .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
-    .footer-logo-img { height: 50px; width: auto; object-fit: contain; }
-    .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
-    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-blue); border-radius: 2px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto; }
+    .footer-logo-img { height: 50px; margin-bottom: 16px; }
+    .footer-col h4 { color: #ffffff; border-bottom: 2px solid var(--accent-blue); padding-bottom: 8px; margin-bottom: 18px; display: inline-block; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { color: var(--text-muted); text-decoration: none; }
     .footer-links a:hover { color: #ffffff; }
@@ -97,12 +82,12 @@
 <body>
 
   <div id="iptelco-preloader">
-    <div class="preloader-content"><img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';"></div>
+    <div class="preloader-content"><img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.src='img/logo-main.png';"></div>
   </div>
   <div class="glow-bg"></div>
 
   <header>
-    <a href="index.html" class="brand-logo-container"><img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';"></a>
+    <a href="index.html" class="brand-logo-container"><img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.src='img/logo-main.png';"></a>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -123,12 +108,12 @@
       <div>
         <span style="color: var(--accent-purple); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Transformación Digital & Nube Privada</span>
         <h1 style="margin-top: 10px;">Infraestructura y Productividad en la <span>Nube</span></h1>
-        <p>Acelera la transformación de tu empresa migrando a entornos cloud públicos y privados. Ofrecemos licenciamiento corporativo Microsoft 365, Google Workspace y máquinas virtuales en Azure.</p>
+        <p>Acelera la transformación de tu empresa migrando a entornos cloud públicos y privados. Ofrecemos licenciamiento corporativo Microsoft 365, Google Workspace, servidores NAS QNAP Cloud y máquinas virtuales en Azure.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Migración Cloud</a>
         </div>
       </div>
-      <div class="hero-media-container"><img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';"></div>
+      <div class="hero-media-container"><img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.src='img/Cloud-logo.jpg';"></div>
     </div>
   </section>
 
@@ -138,7 +123,7 @@
       
       <!-- MICROSOFT 365 -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/365.png';"></div>
+        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.src='img/365.png';"></div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
           <h3>Microsoft Office 365 Corporativo</h3>
@@ -158,8 +143,19 @@
         </div>
       </div>
 
-      <!-- MICROSOFT AZURE -->
+      <!-- QNAP CLOUD NAS AHORA EN CLOUD -->
       <div class="product-row">
+        <div class="product-img-box"><img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.src='img/nas2.png';"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Nube Privada & Backup</span>
+          <h3>Servidores de Almacenamiento QNAP Cloud NAS</h3>
+          <p>Centralización de archivos corporativos, nube privada híbrida y copias de seguridad automatizadas en la nube. Protección RAID contra pérdida de datos y sincronización remota multisede.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar QNAP Cloud NAS ❯</a>
+        </div>
+      </div>
+
+      <!-- MICROSOFT AZURE -->
+      <div class="product-row reverse">
         <div class="product-img-box"><img src="img/azure.jpg" alt="Microsoft Azure Cloud"></div>
         <div class="product-info-box">
           <span class="product-badge">IaaS & PaaS</span>
@@ -197,6 +193,7 @@
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
+  <!-- SCRIPT LIMPIO PARA NAVEGACIÓN INSTANTÁNEA -->
   <script>
     function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
     window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 300);
