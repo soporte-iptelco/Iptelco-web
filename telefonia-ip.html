@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telefonía IP & Centrales Cloud | IPTELCO S.A.S</title>
 
+  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -36,6 +37,17 @@
       overflow-x: hidden;
     }
 
+    /* PRELOADER IPTELCO */
+    #iptelco-preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #020617; z-index: 99999;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
+
     .glow-bg {
       position: fixed;
       width: 800px; height: 800px;
@@ -44,7 +56,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* LOGO DIFUMINADO HACIA LA DERECHA */
+    /* LOGO DIFUMINADO EN LA CABECERA */
     .brand-logo-container {
       display: flex;
       align-items: center;
@@ -93,7 +105,7 @@
     }
     .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
 
-    /* HERO */
+    /* HERO PRINCIPAL */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
@@ -215,6 +227,13 @@
 </head>
 <body>
 
+  <!-- PRELOADER IPTELCO -->
+  <div id="iptelco-preloader">
+    <div class="preloader-content">
+      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+    </div>
+  </div>
+
   <div class="glow-bg"></div>
 
   <!-- HEADER -->
@@ -289,9 +308,11 @@
         </div>
       </div>
 
-      <!-- PRODUCTO 2: WOLKVOX (IMAGEN CORREGIDA) -->
+      <!-- PRODUCTO 2: WOLKVOX (IMAGEN ACTUALIZADA A img/wolkvox.jpg) -->
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/wolkvox.jpg" alt="Wolkvox Contact Center Cloud" onerror="this.src='img/3cx-PBX.png';"></div>
+        <div class="product-img-box">
+          <img src="img/wolkvox.jpg" alt="Wolkvox Contact Center Cloud" onerror="this.onerror=null; this.src='img/wolkvox.png';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge" style="color: #06b6d4; background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.25);">Call Center Omnicanal Cloud</span>
           <h3>Wolkvox Contact Center & CRM Cloud</h3>
@@ -420,10 +441,21 @@
     <div class="wa-avatar-box">
       <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
       <div class="wa-icon-badge">
-        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </div>
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
+
+  <!-- SCRIPT PARA PRELOADER -->
+  <script>
+    function ocultarPreloader() { 
+      const p = document.getElementById('iptelco-preloader'); 
+      if (p) p.classList.add('hidden'); 
+    }
+    window.addEventListener('load', ocultarPreloader); 
+    setTimeout(ocultarPreloader, 400);
+  </script>
 
 </body>
 </html>
