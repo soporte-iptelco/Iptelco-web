@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Outsourcing TI, Mantenimiento & Hardware | IPTELCO S.A.S</title>
+  <title>Soporte TI, Mantenimiento & Suministros | IPTELCO S.A.S</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="img/logo-wh.png">
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES GLOBALES */
     :root {
       --bg-dark: #020617;
       --bg-card: rgba(15, 23, 42, 0.85);
@@ -26,515 +25,245 @@
       --border-glow: rgba(59, 130, 246, 0.4);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    html { 
-      scroll-behavior: smooth; 
+    .glow-bg {
+      position: fixed;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%);
+      top: -250px; left: 50%; transform: translateX(-50%);
+      z-index: -1; pointer-events: none;
     }
 
-    body { 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: var(--bg-dark); 
-      color: var(--text-main); 
-      line-height: 1.6; 
-      overflow-x: hidden; 
+    /* PRELOADER CON PROTECCIÓN ANTI-BLOQUEO */
+    #iptelco-preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #020617; z-index: 99999; display: flex;
+      align-items: center; justify-content: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    /* FONDO MAGNÉTICO */
-    .glow-bg { 
-      position: fixed; 
-      width: 800px; 
-      height: 800px; 
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); 
-      top: -250px; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      z-index: -1; 
-      pointer-events: none; 
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    .preloader-logo-img {
+      height: 75px; width: auto; object-fit: contain;
+      animation: pulseLogo 1.6s ease-in-out infinite;
     }
-
-    /* PRELOADER BLINDADO ANTI-BLOQUEO */
-    #iptelco-preloader { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100vw; 
-      height: 100vh; 
-      background: #020617; 
-      z-index: 99999; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      transition: opacity 0.3s ease, visibility 0.3s ease; 
-    }
-    
-    #iptelco-preloader.hidden { 
-      opacity: 0; 
-      visibility: hidden; 
-      pointer-events: none; 
-    }
-    
-    .preloader-content { 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      gap: 15px; 
-    }
-    
-    .preloader-logo-img { 
-      height: 75px; 
-      width: auto; 
-      object-fit: contain; 
-      animation: pulseLogo 1.6s ease-in-out infinite; 
-    }
-    
-    @keyframes pulseLogo { 
-      0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 
-      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); } 
-      100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 
+    @keyframes pulseLogo {
+      0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); }
+      100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
     }
 
     /* HEADER */
-    header { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 12px 6%; 
-      position: sticky; 
-      top: 0; 
-      background: rgba(2, 6, 23, 0.95); 
-      backdrop-filter: blur(16px); 
-      border-bottom: 1px solid var(--border-light); 
-      z-index: 1000; 
-    }
-    
-    .brand-logo-container { 
-      display: flex; 
-      align-items: center; 
-      text-decoration: none; 
-    }
-    
-    .brand-logo-img { 
-      height: 46px; 
-      width: auto; 
-      object-fit: contain; 
-    }
-    
-    nav { 
-      display: flex; 
-      align-items: center; 
-      gap: 20px; 
-    }
-    
-    nav a { 
-      color: var(--text-muted); 
-      text-decoration: none; 
-      font-size: 0.9rem; 
-      font-weight: 600; 
-      transition: color 0.2s; 
-    }
-    
-    nav a:hover, nav a.active { 
-      color: #ffffff; 
-    }
-    
-    .header-actions { 
-      display: flex; 
-      align-items: center; 
-      gap: 12px; 
-    }
-    
-    .btn-soporte { 
-      background: rgba(239, 68, 68, 0.15); 
-      color: #f87171; 
-      border: 1px solid rgba(239, 68, 68, 0.35); 
-      padding: 10px 16px; 
-      border-radius: 8px; 
-      font-size: 0.88rem; 
-      font-weight: 700; 
-      text-decoration: none; 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 6px; 
-      transition: all 0.2s; 
-    }
-    
-    .btn-soporte:hover { 
-      background: rgba(239, 68, 68, 0.28); 
-      color: #ffffff; 
-      border-color: #ef4444; 
-    }
-    
-    .btn-cotizar { 
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); 
-      color: #ffffff; 
-      padding: 10px 20px; 
-      border-radius: 8px; 
-      font-size: 0.88rem; 
-      font-weight: 700; 
-      text-decoration: none; 
-      box-shadow: 0 4px 15px var(--accent-glow); 
-      transition: all 0.2s; 
-    }
-    
-    .btn-cotizar:hover { 
-      transform: translateY(-2px); 
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 6%; position: sticky; top: 0;
+      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    /* HERO */
-    .hero { 
-      padding: 60px 6% 40px 6%; 
-      max-width: 1300px; 
-      margin: 0 auto; 
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
+    .brand-logo-img { height: 46px; width: auto; object-fit: contain; }
+
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+
+    .btn-soporte {
+      background: rgba(239, 68, 68, 0.15); color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px;
+      border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
     }
-    
-    .hero-grid { 
-      display: grid; 
-      grid-template-columns: 1.1fr 0.9fr; 
-      align-items: center; 
-      gap: 40px; 
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
+      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
     }
+    .btn-cotizar:hover { transform: translateY(-2px); }
+
+    /* HERO PRINCIPAL */
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
-    .hero h1 { 
-      font-size: 3.2rem; 
-      font-weight: 800; 
-      line-height: 1.15; 
-      margin-bottom: 18px; 
+    .hero h1 {
+      font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;
       background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    
-    .hero h1 span { 
-      color: var(--accent-blue); 
-      -webkit-text-fill-color: var(--accent-blue);
+    .hero h1 span { color: var(--accent-blue); -webkit-text-fill-color: var(--accent-blue); }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
+
+    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+
+    .hero-media-container {
+      background: #ffffff; border-radius: 20px; padding: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      animation: floatAnimationHero 4s ease-in-out infinite;
     }
-    
-    .hero p { 
-      font-size: 1.1rem; 
-      color: var(--text-muted); 
-      margin-bottom: 25px; 
-      line-height: 1.6; 
-    }
-    
-    @keyframes floatAnimationHero { 
-      0% { transform: translateY(0px); } 
-      50% { transform: translateY(-14px); } 
-      100% { transform: translateY(0px); } 
-    }
-    
-    .hero-media-container { 
-      background: #ffffff; 
-      border-radius: 20px; 
-      padding: 25px; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center; 
-      animation: floatAnimationHero 4s ease-in-out infinite; 
-    }
-    
-    .hero-media-container img { 
-      max-width: 100%; 
-      max-height: 320px; 
-      object-fit: contain; 
+    .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
+
+    /* CATÁLOGOS CATEGORIZADOS */
+    .services-section { padding: 30px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
+    .category-header-title {
+      font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
+      margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 10px;
     }
 
-    /* SECCIÓN DE PRODUCTOS Y SERVICIOS */
-    .services-section { 
-      padding: 50px 6% 80px 6%; 
-      max-width: 1250px; 
-      margin: 0 auto; 
-    }
-    
-    .category-header-title { 
-      font-size: 1.8rem; 
-      font-weight: 800; 
-      color: var(--accent-cyan); 
-      margin: 50px 0 25px 0; 
-      padding-bottom: 10px; 
-      border-bottom: 1px solid var(--border-light); 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-    }
-    
-    .products-showcase { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 35px; 
-    }
+    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    .product-row { 
-      display: flex; 
-      align-items: center; 
-      gap: 40px; 
-      background: var(--bg-card); 
-      border: 1px solid var(--border-light); 
-      border-radius: 24px; 
-      padding: 30px; 
-      transition: all 0.35s ease; 
-      position: relative; 
-      cursor: pointer; 
+    /* TARJETAS CLIQUEABLES */
+    .product-row {
+      display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
+      border-radius: 24px; padding: 30px; transition: all 0.35s ease;
+      position: relative; cursor: pointer;
     }
-    
-    .product-row:hover { 
-      border-color: var(--border-glow); 
-      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15); 
-      transform: translateY(-5px); 
-      background: var(--bg-card-hover); 
+    .product-row:hover {
+      border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+      transform: translateY(-5px); background: var(--bg-card-hover);
     }
-    
-    .product-row.reverse { 
-      flex-direction: row-reverse; 
-    }
+    .product-row.reverse { flex-direction: row-reverse; }
 
-    .product-img-box { 
-      flex: 1; 
-      min-width: 270px; 
-      height: 230px; 
-      background: #ffffff; 
-      border-radius: 16px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      padding: 20px; 
-      overflow: hidden; 
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.05); 
+    .product-img-box {
+      flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
     }
-    
-    .product-img-box img { 
-      max-width: 100%; 
-      max-height: 100%; 
-      object-fit: contain; 
-      transition: transform 0.4s ease; 
-    }
-    
-    .product-row:hover .product-img-box img { 
-      transform: scale(1.08) rotate(1deg); 
-    }
+    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { 
-      flex: 1.2; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: flex-start; 
-      gap: 10px; 
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-badge {
+      font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px;
+      background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25);
     }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
     
-    .product-badge { 
-      font-size: 0.8rem; 
-      font-weight: 700; 
-      color: var(--accent-cyan); 
-      text-transform: uppercase; 
-      letter-spacing: 1px; 
-      background: rgba(6, 182, 212, 0.12); 
-      padding: 4px 12px; 
-      border-radius: 20px; 
-      border: 1px solid rgba(6, 182, 212, 0.25); 
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none;
+      font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
     }
-    
-    .product-info-box h3 { 
-      font-size: 1.65rem; 
-      font-weight: 800; 
-      color: #ffffff; 
-      line-height: 1.25; 
-    }
-    
-    .product-info-box p { 
-      font-size: 0.95rem; 
-      color: var(--text-muted); 
-      line-height: 1.6; 
-    }
-    
-    .btn-link { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      color: var(--accent-blue); 
-      font-weight: 700; 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-      margin-top: 4px; 
-      transition: gap 0.2s; 
-    }
-    
-    .btn-link:hover { 
-      gap: 12px; 
-      color: #60a5fa; 
-    }
-    
-    .btn-link::after { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      right: 0; 
-      bottom: 0; 
-      left: 0; 
-      z-index: 10; 
-      border-radius: 24px; 
+    .btn-link:hover { gap: 12px; color: #60a5fa; }
+
+    .btn-link::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px;
     }
 
     /* FOOTER */
-    footer { 
-      background: rgba(15, 23, 42, 0.95); 
-      border-top: 1px solid var(--border-light); 
-      padding: 60px 6% 30px 6%; 
-      color: var(--text-muted); 
-      font-size: 0.9rem; 
+    footer {
+      background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light);
+      padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem;
     }
-    
-    .footer-grid { 
-      display: grid; 
-      grid-template-columns: 1.4fr 1.1fr 1fr; 
-      gap: 40px; 
-      max-width: 1250px; 
-      margin: 0 auto 40px auto; 
+
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px;
+      max-width: 1250px; margin: 0 auto 40px auto;
     }
-    
-    .footer-col-brand { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 16px; 
+
+    .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-logo-img { height: 50px; width: auto; object-fit: contain; }
+
+    .address-card {
+      background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light);
+      padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1;
     }
-    
-    .footer-logo-img { 
-      height: 50px; 
-      width: auto; 
-      object-fit: contain; 
+
+    .footer-col h4 {
+      color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px;
+      position: relative; padding-bottom: 8px;
     }
-    
-    .footer-col h4 { 
-      color: #ffffff; 
-      font-size: 1.05rem; 
-      font-weight: 800; 
-      margin-bottom: 18px; 
-      position: relative; 
-      padding-bottom: 8px; 
+    .footer-col h4::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px;
+      background: var(--accent-blue); border-radius: 2px;
     }
-    
-    .footer-col h4::after { 
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      width: 35px; 
-      height: 2px; 
-      background: var(--accent-blue); 
-      border-radius: 2px; 
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
+    .footer-links a:hover { color: #ffffff; }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+      color: #cbd5e1; text-decoration: none;
     }
-    
-    .footer-links { 
-      list-style: none; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 10px; 
+    .contact-item:hover { color: #ffffff; }
+    .contact-icon-box {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3);
+      display: flex; align-items: center; justify-content: center; color: var(--accent-blue);
+      font-weight: 700; flex-shrink: 0;
     }
-    
-    .footer-links a { 
-      color: var(--text-muted); 
-      text-decoration: none; 
-      transition: color 0.2s; 
-      font-weight: 500; 
-    }
-    
-    .footer-links a:hover { 
-      color: #ffffff; 
+
+    .footer-bottom {
+      max-width: 1250px; margin: 0 auto; padding-top: 25px;
+      border-top: 1px solid var(--border-light);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 15px; font-size: 0.85rem;
     }
 
     /* WIDGET WHATSAPP */
-    .whatsapp-widget { 
-      position: fixed; 
-      bottom: 35px; 
-      right: 35px; 
-      z-index: 99990; 
-      display: flex; 
-      align-items: center; 
-      text-decoration: none; 
-      animation: floatWidget 4s ease-in-out infinite; 
+    .whatsapp-widget {
+      position: fixed; bottom: 35px; right: 35px; z-index: 99990;
+      display: flex; align-items: center; text-decoration: none;
+      animation: floatWidget 4s ease-in-out infinite;
+    }
+    @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    
+    .wa-avatar-box {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 3px solid var(--accent-blue); background: #ffffff;
+      position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .wa-icon-badge {
+      position: absolute; bottom: -2px; right: -4px;
+      width: 28px; height: 28px; background: #25D366;
+      border-radius: 50%; border: 3px solid #020617;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     
-    @keyframes floatWidget { 
-      0% { transform: translateY(0px); } 
-      50% { transform: translateY(-8px); } 
-      100% { transform: translateY(0px); } 
+    .wa-banner {
+      background: linear-gradient(135deg, #1e293b, var(--accent-blue));
+      color: #ffffff; padding: 12px 24px 12px 42px;
+      border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3;
+      margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1); border-left: none;
+      transition: all 0.3s ease; white-space: nowrap;
     }
-    
-    .wa-avatar-box { 
-      width: 72px; 
-      height: 72px; 
-      border-radius: 50%; 
-      border: 3px solid var(--accent-blue); 
-      background: #ffffff; 
-      position: relative; 
-      z-index: 2; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      overflow: hidden; 
-    }
-    
-    .wa-avatar-box img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-    }
-    
-    .wa-icon-badge { 
-      position: absolute; 
-      bottom: -2px; 
-      right: -4px; 
-      width: 28px; 
-      height: 28px; 
-      background: #25D366; 
-      border-radius: 50%; 
-      border: 3px solid #020617; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-    }
-    
-    .wa-banner { 
-      background: linear-gradient(135deg, #1e293b, var(--accent-blue)); 
-      color: #ffffff; 
-      padding: 12px 24px 12px 42px; 
-      border-radius: 0 30px 30px 0; 
-      font-size: 0.9rem; 
-      line-height: 1.3; 
-      margin-left: -32px; 
-      z-index: 1; 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-      border: 1px solid rgba(255,255,255,0.1); 
-      border-left: none; 
-      transition: all 0.3s ease; 
-      white-space: nowrap; 
-    }
-    
-    .whatsapp-widget:hover .wa-banner { 
-      background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); 
-      transform: translateX(6px); 
-    }
+    .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); transform: translateX(6px); }
 
-    @media (max-width: 900px) { 
-      .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
-      .product-row, .product-row.reverse { flex-direction: column; } 
-      nav { display: none; } 
-      .whatsapp-widget { bottom: 20px; right: 20px; } 
-      .wa-avatar-box { width: 62px; height: 62px; } 
-      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
+    @media (max-width: 900px) {
+      .footer-grid, .hero-grid { grid-template-columns: 1fr; }
+      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100%; height: 200px; }
+      nav { display: none; }
+      .whatsapp-widget { bottom: 20px; right: 20px; }
+      .wa-avatar-box { width: 62px; height: 62px; }
+      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER CON RESPALDO ANTI-BLOQUEO -->
+  <!-- PRELOADER ANTI-BLOQUEO -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
@@ -543,11 +272,12 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER COMPLETO -->
+  <!-- HEADER COMPLETO CON LAS 6 RUTAS -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </a>
+
     <nav>
       <a href="telefonia-ip.html">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
@@ -556,6 +286,7 @@
       <a href="soluciones-cloud.html">Cloud & 365</a>
       <a href="outsourcing-ti.html" class="active">Soporte TI</a>
     </nav>
+    
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
@@ -567,67 +298,147 @@
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Tu Aliado Estratégico en Tecnología</span>
-        <h1 style="margin-top: 10px;">Soporte Empresarial, Mantenimiento & <span>Suministro TI</span></h1>
-        <p>Garantizamos la operatividad continua de tu empresa. Brindamos pólizas de soporte técnico a la medida, mantenimiento preventivo de infraestructura y suministro de equipos corporativos a precios preferenciales de distribución.</p>
+        <h1 style="margin-top: 10px;">Outsourcing TI, Mantenimiento & <span>Suministros</span></h1>
+        <p>Garantizamos la estabilidad tecnológica de tu empresa. Brindamos pólizas de soporte técnico mensualizadas, mantenimiento preventivo de infraestructura y venta directa de repuestos y periféricos corporativos.</p>
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Póliza de Soporte</a>
           <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda B2B</a>
         </div>
       </div>
-      
+
       <div class="hero-media-container">
-        <!-- Puedes subir tu foto hero a la carpeta img/soluciones-ti/ -->
-        <img src="img/soluciones-ti/hero-soporte.jpg" alt="Outsourcing TI IPTELCO" onerror="this.onerror=null; this.src='img/cableado-2.jpg';">
+        <!-- IMAGEN DE HERO: Mantenimiento general -->
+        <img src="img/soluciones-ti/manteminiento.jpg" alt="Mantenimiento TI IPTELCO" onerror="this.onerror=null; this.src='img/cableado-2.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGOS DE SOPORTE Y HARDWARE (Tarjetas Cliqueables) -->
+  <!-- CATÁLOGO CATEGORIZADO DE SOLUCIONES Y PRODUCTOS TI -->
   <section class="services-section">
-    <div class="category-header-title">💻 Pólizas, Mantenimiento & Suministro Tecnológico</div>
+
+    <!-- CATEGORÍA 1: PÓLIZAS Y MANTENIMIENTO TI -->
+    <div class="category-header-title">💻 Mantenimiento & Pólizas de Soporte TI</div>
     <div class="products-showcase">
       
-      <!-- 1. PLANES DE SOPORTE -->
+      <!-- MANTENIMIENTO COMPUTADORES Y SERVIDORES -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/soluciones-ti/polizas-soporte.jpg" alt="Planes de Soporte TI" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
+          <img src="img/soluciones-ti/manteminiento.jpg" alt="Mantenimiento Computadores y Servidores">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Outsourcing TI</span>
-          <h3>Planes de Soporte & Pólizas TI a la Medida</h3>
-          <p>Ofrecemos pólizas de soporte mensualizadas, bolsas de horas y esquemas de acompañamiento Partner para empresas. Contamos con ingenieros especializados para resolver incidencias de hardware, software y redes con garantía de SLA.</p>
-          <a href="soporte.html" class="btn-link">Ver Opciones de Soporte ❯</a>
+          <span class="product-badge">Ingeniería & Diagnóstico</span>
+          <h3>Mantenimiento Preventivo & Correctivo de Equipos</h3>
+          <p>Optimizamos el rendimiento y alargamos la vida útil de computadores de escritorio, workstations y servidores. Limpieza física, aplicación de crema térmica, depuración de software y corrección de fallas críticas.</p>
+          <a href="cotizacion.html" class="btn-link">Agendar Mantenimiento de Equipos ❯</a>
         </div>
       </div>
 
-      <!-- 2. VENTA DE EQUIPOS Y HARDWARE -->
+      <!-- MANTENIMIENTO PORTÁTILES -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/soluciones-ti/venta-hardware.jpg" alt="Suministro de Equipos" onerror="this.onerror=null; this.src='img/3cx.png';">
+          <img src="img/soluciones-ti/mantenimiento-portatil.jpg" alt="Mantenimiento de Portátiles">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Suministro Tecnológico</span>
-          <h3>Venta de Hardware, Servidores & Laptops</h3>
-          <p>Facilitamos el equipamiento de tu empresa. Al ser distribuidores directos de las marcas más reconocidas, suministramos servidores, portátiles corporativos, switches y periféricos a precios mayoristas competitivos.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Equipamiento ❯</a>
-        </div>
-      </div>
-
-      <!-- 3. MANTENIMIENTO PREVENTIVO Y CORRECTIVO -->
-      <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/mantenimiento-ti.jpg" alt="Mantenimiento Preventivo" onerror="this.onerror=null; this.src='img/cableado-2.jpg';">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Mantenimiento de Infraestructura</span>
-          <h3>Mantenimiento Preventivo & Correctivo</h3>
-          <p>Maximizamos la vida útil de tus equipos. Realizamos mantenimiento físico y lógico de servidores, estaciones de trabajo y racks de comunicación, optimización de velocidad y reemplazo de partes defectuosas.</p>
-          <a href="cotizacion.html" class="btn-link">Agendar Mantenimiento ❯</a>
+          <span class="product-badge">Soporte Laptops Corporativas</span>
+          <h3>Mantenimiento & Reparación de Portátiles</h3>
+          <p>Servicio especializado para notebooks y laps corporativos. Mantenimiento de bisagras, reemplazo de pantallas, limpieza de disipadores, reemplazo de teclados y optimización de velocidad.</p>
+          <a href="cotizacion.html" class="btn-link">Solicitar Revisión de Laptops ❯</a>
         </div>
       </div>
 
     </div>
+
+    <!-- CATEGORÍA 2: SUMINISTRO DE COMPONENTES & ALMACENAMIENTO MASIVO -->
+    <div class="category-header-title">💾 Servidores NAS, Discos Duros & Memorias RAM</div>
+    <div class="products-showcase">
+
+      <!-- SERVIDORES NAS QNAP -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/qnap.png" alt="Servidores NAS QNAP" onerror="this.onerror=null; this.src='img/nas2.png';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento Empresarial</span>
+          <h3>Servidores de Almacenamiento NAS QNAP</h3>
+          <p>Centralización de archivos, nube privada local y copias de seguridad automatizadas para empresas. Protección RAID contra pérdida de datos, sincronización remota y almacenamiento seguro para redes corporativas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Servidores NAS QNAP ❯</a>
+        </div>
+      </div>
+
+      <!-- DISCOS DUROS SSD Y HDD -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/soluciones-ti/disco-duro.jpg" alt="Discos Duros SSD y HDD Enterprise">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento de Alta Velocidad</span>
+          <h3>Discos Duros Solid-State (SSD NVMe) & HDD Enterprise</h3>
+          <p>Repuestos y actualización de almacenamiento. Discos SSD M.2 NVMe de máxima velocidad de lectura/escritura y discos HDD de alta capacidad diseñados para trabajo continuo en servidores y NAS.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Discos SSD/HDD ❯</a>
+        </div>
+      </div>
+
+      <!-- MEMORIAS RAM -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/soluciones-ti/memoria-ram.png" alt="Memorias RAM Corporativas">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Upgrade de Rendimiento</span>
+          <h3>Memorias RAM DDR4 & DDR5 Corporativas</h3>
+          <p>Aumenta la capacidad multitarea de los computadores y servidores de tu empresa. Suministramos e instalamos módulos de memoria RAM DDR4 y DDR5 para Laptops, PC de escritorio y Servidores.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Memorias RAM ❯</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CATEGORÍA 3: PERIFÉRICOS, ERGONOMÍA & ACCESORIOS DE OFICINA -->
+    <div class="category-header-title">🎧 Diademas, Ergonomía & Accesorios de Trabajo</div>
+    <div class="products-showcase">
+
+      <!-- DIADEMAS CORPORATIVAS -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/soluciones-ti/diadema.jpg" alt="Diademas Telefónicas y USB">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Comunicaciones Unificadas</span>
+          <h3>Diademas Corporativas con Cancelación de Ruido</h3>
+          <p>Equipamiento profesional para estaciones de trabajo, reuniones en Microsoft Teams, Zoom y agentes de Call Center. Conexión USB y RJ9, almohadillas ergonómicas y micrófonos con supresión de ruido ambiente.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Diademas Corporativas ❯</a>
+        </div>
+      </div>
+
+      <!-- BRAZOS PARA MONITORES -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/soluciones-ti/brazo-monitor.png" alt="Brazos Ergonómicos para Monitores">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Ergonomía de Oficina</span>
+          <h3>Brazos & Soportes Hidráulicos para Monitores</h3>
+          <p>Optimiza el espacio del escritorio y mejora la postura del personal. Soportes articulados sencillos y dobles con ajuste de altura por pistón de gas, rotación de 360° y canaleta interna para cables.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Brazos para Monitores ❯</a>
+        </div>
+      </div>
+
+      <!-- BASES PARA PORTÁTILES -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/soluciones-ti/base-portatil.png" alt="Bases Refrigerantes para Portátiles">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Accesorios Ergonomía</span>
+          <h3>Bases Elevadoras & Refrigerantes para Portátiles</h3>
+          <p>Evita el sobrecalentamiento de las laptops corporativas y nivela la pantalla a la altura de la vista. Bases de aluminio ajustables con ventiladores de bajo ruido y diseño plegable de alta durabilidad.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Bases de Portátil ❯</a>
+        </div>
+      </div>
+
+    </div>
+
   </section>
 
   <!-- FOOTER -->
@@ -637,8 +448,31 @@
         <a href="index.html">
           <img src="img/logo-wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI.</p>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+          Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.
+        </p>
+        <div class="address-card">
+          📍 <b>Oficina Principal:</b><br>
+          Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
+        </div>
       </div>
+
+      <div class="footer-col">
+        <h4>Atención & Soporte</h4>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
+          <div class="contact-icon-box">💬</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+        </a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item">
+          <div class="contact-icon-box">✉️</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+        </a>
+        <a href="soporte.html" class="contact-item">
+          <div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
+        </a>
+      </div>
+
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -650,20 +484,29 @@
         </ul>
       </div>
     </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
+      <div style="color: #64748b;">Bogotá, Colombia</div>
+    </div>
   </footer>
 
-  <!-- WIDGET WHATSAPP -->
+  <!-- WIDGET FLOTANTE DE WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora Comercial IPTELCO">
       <div class="wa-icon-badge">
-        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
       </div>
     </div>
-    <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
+    <div class="wa-banner">
+      <span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span>
+    </div>
   </a>
 
-  <!-- SCRIPT BLINDADO PARA OCULTAR EL PRELOADER -->
+  <!-- SCRIPT CON RESPALDO ANTI-BLOQUEO -->
   <script>
     function ocultarPreloader() {
       const preloader = document.getElementById('iptelco-preloader');
@@ -672,11 +515,8 @@
       }
     }
 
-    // Se ejecuta al terminar de cargar la ventana
     window.addEventListener('load', ocultarPreloader);
-    
-    // RESPALDO DE SEGURIDAD (Oculta la pantalla negra tras 500ms sin importar qué)
-    setTimeout(ocultarPreloader, 500);
+    setTimeout(ocultarPreloader, 600); // Forzar retiro del preloader en máximo 600ms
 
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('a[href]').forEach(link => {
@@ -685,7 +525,7 @@
           link.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('iptelco-preloader').classList.remove('hidden');
-            setTimeout(() => { window.location.href = url; }, 300);
+            setTimeout(() => { window.location.href = url; }, 350);
           });
         }
       });
