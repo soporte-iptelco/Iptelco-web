@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
-  <!-- FAVICON DE LA PESTAÑA CON MAYÚSCULA CORRECTA Y RESPALDO -->
+  <!-- FAVICON DE LA PESTAÑA -->
   <link rel="icon" type="image/png" href="img/Logo-wh.png">
   <link rel="shortcut icon" type="image/png" href="img/Logo-wh.png">
 
@@ -45,29 +45,29 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* ESTILOS DE LOGOS TRANSPARENTES PNG */
+    /* LOGOS CON TAMAÑO AGRANDADO Y CONSIDERADO */
     .brand-logo-img {
-      height: 58px;
+      height: 88px; /* Aumentado para legibilidad total del ícono y texto */
       width: auto;
       object-fit: contain;
       display: block;
       transition: transform 0.2s ease;
     }
     .brand-logo-img:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .footer-logo-img {
-      height: 85px;
+      height: 130px; /* Tamaño prominente en el pie de página */
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* HEADER */
+    /* HEADER CON PADDING OPTIMIZADO */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 6%; position: sticky; top: 0;
+      padding: 6px 5%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
@@ -216,7 +216,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON NOMBRE EXACTO DE ARCHIVO (Logo-wh.png) -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/Logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
