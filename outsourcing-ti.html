@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soporte TI, Mantenimiento & Suministros | IPTELCO S.A.S</title>
+  <title>Soporte TI, Licencias & Suministros | IPTELCO S.A.S</title>
 
-  <!-- FAVICON EN CÓDIGO SVG (CARGA INSTANTÁNEA, CERO ESPERA) -->
+  <!-- FAVICON SVG INSTANTÁNEO -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M10 30 Q 30 10 50 30 T 90 30' stroke='%233b82f6' stroke-width='6' fill='none'/><circle cx='50' cy='30' r='6' fill='%2306b6d4'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,24 +24,19 @@
       --border-light: rgba(255, 255, 255, 0.08); 
       --border-glow: rgba(59, 130, 246, 0.4); 
     }
-    
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* PRELOADER SEGURO CON SALIDA AUTOMÁTICA */
+    /* PRELOADER SEGURO */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; 
       animation: fadeOutPreloader 0.3s ease 0.1s forwards; pointer-events: none; 
     }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
-    
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
@@ -49,51 +44,51 @@
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
-    
     .header-actions { display: flex; align-items: center; gap: 12px; }
-    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
-    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
+    .btn-cotizar:hover { transform: translateY(-2px); }
 
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
     .hero h1 span { color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
-
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
-    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
+    .products-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
-    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; cursor: pointer; }
+    /* TARJETAS CLIQUEABLES REDUCIDAS A DOS COLUMNAS (Para que entren más productos) */
+    .product-row { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; cursor: pointer; }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
-    .product-row.reverse { flex-direction: row-reverse; }
 
-    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
+    .product-img-box { width: 100%; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; margin-bottom: 20px; }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-info-box { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
     .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
-    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box h3 { font-size: 1.45rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-    
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 4px; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
-    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
+    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px;}
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
     .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
     .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-blue); border-radius: 2px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
     .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; text-decoration: none; }
+    .contact-item:hover { color: #ffffff; }
     .contact-icon-box { width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-weight: 700; flex-shrink: 0; }
     .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
 
@@ -101,10 +96,15 @@
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
     .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; border: 1px solid rgba(255,255,255,0.1); border-left: none; white-space: nowrap; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
-    @media (max-width: 900px) { .hero-grid, .footer-grid { grid-template-columns: 1fr; } .product-row, .product-row.reverse { flex-direction: column; } nav { display: none; } }
+    @media (max-width: 900px) { 
+      .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
+      .products-showcase { grid-template-columns: 1fr; }
+      nav { display: none; } 
+      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
+    }
   </style>
 </head>
 <body>
@@ -147,125 +147,180 @@
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Tu Aliado Estratégico en Tecnología</span>
-        <h1 style="margin-top: 10px;">Outsourcing TI, Mantenimiento & <span>Suministros</span></h1>
-        <p>Garantizamos la estabilidad tecnológica de tu empresa. Brindamos pólizas de soporte técnico mensualizadas, mantenimiento preventivo de infraestructura y venta directa de repuestos corporativos.</p>
+        <h1 style="margin-top: 10px;">Soporte Empresarial, Licencias & <span>Hardware</span></h1>
+        <p>Garantizamos la estabilidad de tu empresa. Brindamos pólizas de soporte, licenciamiento de Microsoft Windows, instalación de UPS, mantenimientos y suministro directo de repuestos y accesorios corporativos.</p>
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Póliza de Soporte</a>
-          <a href="soporte.html" class="btn-soporte" style="padding: 12px 20px; font-size: 0.95rem;">🛠️ Mesa de Ayuda B2B</a>
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/soluciones-ti/manteminiento.jpg" alt="Mantenimiento TI IPTELCO" onerror="this.onerror=null; this.src='img/cableado-2.jpg';">
+        <!-- VENTA EQUIPOS HERO -->
+        <img src="img/soluciones-ti/venta-equipos-corporativos.jpg" alt="Venta de Equipos TI IPTELCO" onerror="this.src='img/soluciones-ti/mantenimiento-pc.jpg';">
       </div>
     </div>
   </section>
 
   <section class="services-section">
-    <div class="category-header-title">💻 Mantenimiento & Pólizas de Soporte TI</div>
+
+    <!-- SECCIÓN 1: SOPORTE Y LICENCIAMIENTO -->
+    <div class="category-header-title">💻 Soporte TI & Licenciamiento de Software</div>
     <div class="products-showcase">
+      
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/manteminiento.jpg" alt="Mantenimiento Computadores y Servidores" onerror="this.onerror=null; this.src='img/cableado-2.jpg';">
-        </div>
+        <div class="product-img-box"><img src="img/soluciones-ti/mantenimiento-pc.jpg" alt="Mantenimiento Computadores y Servidores"></div>
         <div class="product-info-box">
           <span class="product-badge">Ingeniería & Diagnóstico</span>
-          <h3>Mantenimiento Preventivo & Correctivo de Equipos</h3>
-          <p>Optimizamos el rendimiento y alargamos la vida útil de computadores de escritorio, workstations y servidores. Limpieza física, aplicación de crema térmica, depuración de software y corrección de fallas críticas.</p>
-          <a href="cotizacion.html" class="btn-link">Agendar Mantenimiento de Equipos ❯</a>
-        </div>
-      </div>
-
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/mantenimiento-portatil.jpg" alt="Mantenimiento de Portátiles" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Soporte Laptops Corporativas</span>
-          <h3>Mantenimiento & Reparación de Portátiles</h3>
-          <p>Servicio especializado para notebooks corporativos. Mantenimiento de bisagras, reemplazo de pantallas, limpieza de disipadores, reemplazo de teclados y optimización de velocidad.</p>
-          <a href="cotizacion.html" class="btn-link">Solicitar Revisión de Laptops ❯</a>
+          <h3>Mantenimiento Preventivo & Correctivo</h3>
+          <p>Optimizamos el rendimiento de estaciones de trabajo y servidores. Limpieza física, aplicación de crema térmica y depuración de software.</p>
+          <a href="cotizacion.html" class="btn-link">Agendar Mantenimiento ❯</a>
         </div>
       </div>
 
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/365.jpg" alt="Licenciamiento 365 Soporte TI" onerror="this.onerror=null; this.src='img/365.png';">
-        </div>
+        <div class="product-img-box"><img src="img/365.jpg" alt="Licenciamiento 365 Soporte TI" onerror="this.src='img/365.png';"></div>
         <div class="product-info-box">
-          <span class="product-badge">Soporte & Licenciamiento TI</span>
-          <h3>Póliza de Administración & Licencias Microsoft 365</h3>
-          <p>Soporte técnico dedicado para la administración de usuarios, migración de correos corporativos Exchange, configuración de políticas de seguridad en Teams y renovación de licencias 365.</p>
+          <span class="product-badge">Administración & Soporte</span>
+          <h3>Pólizas Microsoft 365 & Exchange</h3>
+          <p>Soporte técnico para administración de usuarios, migración de correos corporativos y recuperación de contraseñas de la suite 365.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Póliza 365 ❯</a>
         </div>
       </div>
-    </div>
 
-    <div class="category-header-title" style="margin-top: 80px;">💾 Discos Duros, Memorias RAM & Repuestos</div>
-    <div class="products-showcase">
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/disco-duro.jpg" alt="Discos Duros SSD y HDD Enterprise" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/windows-11-pro.jpg" alt="Licencias Windows 11 Pro"></div>
         <div class="product-info-box">
-          <span class="product-badge">Almacenamiento de Alta Velocidad</span>
-          <h3>Discos Duros Solid-State (SSD NVMe) & HDD Enterprise</h3>
-          <p>Repuestos y actualización de almacenamiento. Discos SSD M.2 NVMe de máxima velocidad de lectura/escritura y discos HDD de alta capacidad diseñados para trabajo continuo.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Discos SSD/HDD ❯</a>
+          <span class="product-badge">Licenciamiento Microsoft</span>
+          <h3>Licencias Windows 11 Pro & Server</h3>
+          <p>Actualización a la última versión de Windows. Venta de licenciamiento OEM y Retail original para corporativos y servidores Windows Server.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Licencias Windows ❯</a>
         </div>
       </div>
 
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/memoria-ram.png" alt="Memorias RAM Corporativas" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
+        <div class="product-img-box"><img src="img/soluciones-ti/varios.jpg" alt="Otros Servicios TI"></div>
         <div class="product-info-box">
-          <span class="product-badge">Upgrade de Rendimiento</span>
-          <h3>Memorias RAM DDR4 & DDR5 Corporativas</h3>
-          <p>Aumenta la capacidad multitarea de los computadores y servidores de tu empresa. Suministramos e instalamos módulos de memoria RAM DDR4 y DDR5 para Laptops, PC de escritorio y Servidores.</p>
+          <span class="product-badge">Mesa de Ayuda B2B</span>
+          <h3>Soporte Técnico en Sitio y Remoto</h3>
+          <p>Pólizas de soporte con Acuerdos de Nivel de Servicio (SLA) para la resolución ágil de cualquier incidente de hardware o red en tus oficinas.</p>
+          <a href="cotizacion.html" class="btn-link">Solicitar Póliza TI ❯</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN 2: HARDWARE Y ENERGÍA -->
+    <div class="category-header-title" style="margin-top: 80px;">⚡ Hardware, Almacenamiento & Respaldo Eléctrico</div>
+    <div class="products-showcase">
+      
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/clasificacion-de-ups-tipos.jpg" alt="UPS y Respaldo Eléctrico"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Protección Eléctrica</span>
+          <h3>Sistemas Ininterrumpidos de Energía (UPS)</h3>
+          <p>Protege tus servidores y equipos críticos de apagones y picos de voltaje. Instalación y dimensionamiento de UPS interactivas y online doble conversión.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Sistemas UPS ❯</a>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/disco-externo-solido.jpg" alt="Discos Externos y Estado Sólido"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento Seguro</span>
+          <h3>Discos Duros Externos & SSD Portátiles</h3>
+          <p>Soluciones de respaldo físico de alta velocidad. Discos duros externos blindados y memorias SSD NVMe portátiles de gran capacidad y durabilidad.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Almacenamiento ❯</a>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/disco-duro.jpg" alt="Discos Duros SSD Internos"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Repuestos Internos</span>
+          <h3>Discos de Estado Sólido M.2 & SATA</h3>
+          <p>Acelera drásticamente el inicio de tus computadoras y portátiles reemplazando los discos mecánicos por tecnología SSD de alta velocidad.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Discos SSD ❯</a>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/memoria-ram.png" alt="Memorias RAM"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Upgrade de Equipos</span>
+          <h3>Memorias RAM DDR4 & DDR5</h3>
+          <p>Mejora la capacidad multitarea. Suministro e instalación de memorias RAM de alto rendimiento para estaciones de trabajo corporativas y laptops.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Memorias RAM ❯</a>
         </div>
       </div>
+
     </div>
 
-    <div class="category-header-title" style="margin-top: 80px;">🎧 Diademas, Ergonomía & Accesorios de Trabajo</div>
+    <!-- SECCIÓN 3: PERIFÉRICOS, ERGONOMÍA Y ADAPTADORES -->
+    <div class="category-header-title" style="margin-top: 80px;">⌨️ Periféricos, Adaptadores & Ergonomía</div>
     <div class="products-showcase">
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/diadema.jpg" alt="Diademas Telefónicas y USB" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
+      
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/tarjeta-red-usb.jpg" alt="Adaptadores de Red USB a RJ45"></div>
         <div class="product-info-box">
-          <span class="product-badge">Comunicaciones Unificadas</span>
-          <h3>Diademas Corporativas con Cancelación de Ruido</h3>
-          <p>Equipamiento profesional para estaciones de trabajo, reuniones en Microsoft Teams, Zoom y agentes de Call Center. Conexión USB y RJ9, almohadillas ergonómicas y micrófonos con supresión de ruido ambiente.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Diademas Corporativas ❯</a>
+          <span class="product-badge">Conectividad Alámbrica</span>
+          <h3>Adaptadores de Red USB-C a Ethernet</h3>
+          <p>Conecta a internet por cable portátiles ultra delgados que no traen puerto LAN. Adaptadores Gigabit de alta calidad para redes corporativas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Adaptadores LAN ❯</a>
         </div>
       </div>
 
       <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/brazo-monitor.png" alt="Brazos Ergonómicos para Monitores" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
+        <div class="product-img-box"><img src="img/soluciones-ti/tarjeta-red-usb-wifi.jpg" alt="Tarjetas de Red USB Wi-Fi"></div>
         <div class="product-info-box">
-          <span class="product-badge">Ergonomía de Oficina</span>
-          <h3>Brazos & Soportes Hidráulicos para Monitores</h3>
-          <p>Optimiza el espacio del escritorio y mejora la postura del personal. Soportes articulados sencillos y dobles con ajuste de altura por pistón de gas y canaleta interna para cables.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Brazos para Monitores ❯</a>
+          <span class="product-badge">Conectividad Inalámbrica</span>
+          <h3>Antenas & Tarjetas Wi-Fi USB Dual Band</h3>
+          <p>Dota de conexión inalámbrica 5Ghz a equipos de escritorio o reemplaza tarjetas de red internas dañadas de manera rápida y sin destapar el equipo.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Adaptadores Wi-Fi ❯</a>
         </div>
       </div>
 
-      <div class="product-row reverse">
-        <div class="product-img-box">
-          <img src="img/soluciones-ti/base-portatil.png" alt="Bases Refrigerantes para Portátiles" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
-        </div>
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/multipuertos-usb.jpg" alt="Hubs Multipuertos USB"></div>
         <div class="product-info-box">
-          <span class="product-badge">Accesorios Ergonomía</span>
-          <h3>Bases Elevadoras & Refrigerantes para Portátiles</h3>
-          <p>Evita el sobrecalentamiento de las laptops corporativas y nivela la pantalla a la altura de la vista. Bases de aluminio ajustables con ventiladores de bajo ruido y diseño plegable.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Bases de Portátil ❯</a>
+          <span class="product-badge">Expansión de Puertos</span>
+          <h3>Hubs y Multipuertos USB / USB-C</h3>
+          <p>Expande la capacidad de conexión de tus portátiles. Hubs con puertos USB 3.0 adicionales, salidas de video HDMI y lector de tarjetas integrado.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Hubs Multipuertos ❯</a>
         </div>
       </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/diadema.jpg" alt="Diademas Telefónicas y USB"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Audio y Videoconferencia</span>
+          <h3>Diademas Corporativas USB & RJ9</h3>
+          <p>Auriculares profesionales para call centers, reuniones en Zoom y Teams. Cancelación de ruido activa, controles en cable y alta durabilidad.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Diademas ❯</a>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/brazo-monitor.png" alt="Brazos Ergonómicos para Monitores"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Ergonomía de Oficina</span>
+          <h3>Brazos Hidráulicos para Monitores</h3>
+          <p>Mejora la postura del trabajador. Soportes de pistón de gas, rotación de 360 grados, montaje VESA para uno o dos monitores simultáneos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Soportes de Monitor ❯</a>
+        </div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/base-portatil.png" alt="Bases Refrigerantes para Portátiles"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Ergonomía Portátil</span>
+          <h3>Bases Elevadoras y Refrigerantes</h3>
+          <p>Protege tu portátil de recalentamiento con sistemas de refrigeración de aluminio y mejora el ángulo visual para jornadas prolongadas de trabajo.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Bases Portátil ❯</a>
+        </div>
+      </div>
+
     </div>
+
   </section>
 
   <footer>
@@ -302,15 +357,10 @@
   </footer>
 
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
-    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora Comercial IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <!-- SCRIPT LIMPIO PARA DESBLOQUEO INMEDIATO -->
-  <script>
-    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
-    document.addEventListener('DOMContentLoaded', ocultarPreloader);
-  </script>
 </body>
 </html>
