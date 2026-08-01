@@ -45,27 +45,32 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* ESTILOS DE LOGOS */
+    /* NUEVO TAMAÑO AUMENTADO PARA LOGOS */
     .brand-logo-img {
-      height: 52px;
+      height: 78px; /* Aumentado para máxima legibilidad */
       width: auto;
       object-fit: contain;
       display: block;
-      border-radius: 6px;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+    }
+    .brand-logo-img:hover {
+      transform: scale(1.03);
     }
 
     .footer-logo-img {
-      height: 75px;
+      height: 125px; /* Tamaño grande y destacado para el footer */
       width: auto;
       object-fit: contain;
       display: block;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    /* HEADER */
+    /* HEADER CON MÁS ESPACIO */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 6%; position: sticky; top: 0;
+      padding: 8px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
@@ -214,7 +219,7 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON NUEVO LOGO -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.jpg" alt="IPTELCO Logo" class="brand-logo-img">
@@ -351,7 +356,7 @@
 
   </section>
 
-  <!-- BLOQUE DEDICADO DE CERTIFICACIONES -->
+  <!-- CERTIFICACIONES -->
   <section class="certs-info-section">
     <h2 class="certs-info-title">📜 Certificaciones & Partners Oficiales</h2>
     <p class="certs-info-subtitle">Respaldados técnicamente por los mejores fabricantes de tecnología a nivel global para garantizar implementaciones de alta calidad.</p>
@@ -369,7 +374,7 @@
     </div>
   </section>
 
-  <!-- FOOTER CON NUEVO LOGO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       
