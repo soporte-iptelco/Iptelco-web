@@ -137,9 +137,15 @@
     }
 
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
+
+    /* =========================================================
+       MAGIA UX: TARJETAS 100% CLIQUEABLES (position: relative)
+       ========================================================= */
     .product-row {
       display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
       border-radius: 24px; padding: 30px; transition: all 0.35s ease;
+      position: relative; /* Permite que el enlace ::after se expanda */
+      cursor: pointer;    /* Manito de clic sobre toda la tarjeta */
     }
     .product-row:hover {
       border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
@@ -162,11 +168,21 @@
     }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    
     .btn-link {
       display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none;
       font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
+
+    /* ESTO EXPANDE EL ENLACE PARA CUBRIR TODA LA TARJETA */
+    .btn-link::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: 10;
+      border-radius: 24px;
+    }
 
     /* FOOTER CORPORATIVO CON LOGO REAL */
     footer {
@@ -290,7 +306,6 @@
       <img src="img/Logo Wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
     </a>
 
-    <!-- MENÚ ACTUALIZADO CON LAS 5 RUTAS -->
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -334,6 +349,7 @@
     </div>
   </section>
 
+  <!-- CATÁLOGO CATEGORIZADO (TODAS ESTAS TARJETAS AHORA SON CLIQUEABLES) -->
   <section class="services-section">
 
     <!-- CATEGORÍA 1: TELEFONÍA IP -->
@@ -394,7 +410,7 @@
       </div>
     </div>
 
-    <!-- CATEGORÍA 3: VIDEOVIGILANCIA, BIOMETRÍA & CONTROL DE ACCESO -->
+    <!-- CATEGORÍA 3: VIDEOVIGILANCIA Y BIOMETRÍA -->
     <div class="category-header-title">📹 Videovigilancia, Biometría & Control de Acceso</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -438,7 +454,7 @@
       </div>
     </div>
 
-    <!-- SECCIÓN INDEPENDIENTE: SOLO CABLEADO ESTRUCTURADO (Sin badge ni header) -->
+    <!-- SECCIÓN INDEPENDIENTE: CABLEADO ESTRUCTURADO -->
     <div class="products-showcase" style="margin-top: 80px;">
       <div class="product-row">
         <div class="product-img-box"><img src="img/cableado-1.jpg" alt="Cableado Estructurado"></div>
@@ -452,10 +468,9 @@
 
   </section>
 
-  <!-- FOOTER CON LOGO REAL DE IPTELCO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
-      
       <div class="footer-col-brand">
         <a href="index.html">
           <img src="img/Logo Wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
@@ -468,32 +483,21 @@
           Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
         </div>
       </div>
-
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
           <div class="contact-icon-box">💬</div>
-          <div>
-            <span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span>
-            <b>+57 317 873 7171</b>
-          </div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
         </a>
         <a href="mailto:info@iptelco.com.co" class="contact-item">
           <div class="contact-icon-box">✉️</div>
-          <div>
-            <span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span>
-            <b>info@iptelco.com.co</b>
-          </div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div>
         </a>
         <a href="soporte.html" class="contact-item">
           <div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div>
-          <div>
-            <span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span>
-            <b>Radicar Ticket de Soporte</b>
-          </div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
         </a>
       </div>
-
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -504,9 +508,7 @@
           <li><a href="outsourcing-ti.html">💻 Soporte TI & Outsourcing</a></li>
         </ul>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
       <div style="color: #64748b;">Bogotá, Colombia</div>
