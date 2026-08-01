@@ -31,7 +31,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER 100% CSS (IMPOSIBLE DE BLOQUEAR) */
+    /* PRELOADER 100% CSS PURO (NO BLOQUEA LA PANTALLA) */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -40,7 +40,7 @@
       pointer-events: none; 
     }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
@@ -80,16 +80,16 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* CATÁLOGO REDES EN FILAS ANCHAS INTERCALADAS (IMAGEN A UN COSTADO) */
+    /* ESTRUCTURA DE FILAS ANCHAS INTERCALADAS (IMAGEN A UN COSTADO) */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
-    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 30px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    /* FILA HORIZONTAL ESTRICTA */
+    /* TARJETA HORIZONTAL LADO A LADO */
     .product-row { 
       display: flex; 
-      flex-direction: row !important; /* Fuerza diseño horizontal */
+      flex-direction: row !important; 
       align-items: center; 
       gap: 40px; 
       background: var(--bg-card); 
@@ -101,12 +101,11 @@
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
     
-    /* FILA INTERCALADA (TEXTO A LA IZQUIERDA, IMAGEN A LA DERECHA) */
     .product-row.reverse { 
       flex-direction: row-reverse !important; 
     }
 
-    /* CAJA DE LA IMAGEN FIJA A UN COSTADO */
+    /* CAJA DE IMAGEN FIJA A UN COSTADO */
     .product-img-box { 
       width: 320px !important; 
       min-width: 320px !important; 
@@ -118,14 +117,13 @@
       justify-content: center; 
       padding: 20px; 
       overflow: hidden; 
-      flex-shrink: 0 !important; /* Evita que la imagen se estire */
+      flex-shrink: 0 !important; 
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
     .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
     
@@ -228,12 +226,12 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/mikrotik.jpg" alt="MikroTik RouterOS IPTELCO" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/MikroTik_logo.svg/1024px-MikroTik_logo.svg.png';">
+        <img src="img/mikrotik.jpg" alt="MikroTik RouterOS IPTELCO" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO REDES EN FILAS ANCHAS INTERCALADAS (IMÁGENES TECNOLÓGICAS REALES DE RESPALDO) -->
+  <!-- CATÁLOGO REDES COMPLETO (4 PRODUCTOS SIN BADGES DE CATEGORÍA) -->
   <section class="services-section">
     <div class="category-header-title">🌐 Enrutamiento MikroTik & Conectividad Enterprise</div>
     <div class="products-showcase">
@@ -241,10 +239,9 @@
       <!-- 1. MIKROTIK (IMAGEN A LA IZQUIERDA) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/mikrotik.jpg" alt="MikroTik RouterOS" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/MikroTik_logo.svg/1024px-MikroTik_logo.svg.png';">
+          <img src="img/mikrotik.jpg" alt="MikroTik RouterOS" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Enrutamiento & Balanceo PCC</span>
           <h3>MikroTik RouterOS & Multi-WAN</h3>
           <p>Configuración avanzada de routers MikroTik para garantizar máxima estabilidad de navegación. Balanceo de cargas inteligente PCC entre múltiples proveedores de internet (ISP) y Failover instantáneo.</p>
           <ul class="features-list">
@@ -256,13 +253,12 @@
         </div>
       </div>
 
-      <!-- 2. ARUBA & CISCO SWITCHES (IMAGEN A LA DERECHA - REVERSE) -->
+      <!-- 2. ARUBA SWITCHES (IMAGEN A LA DERECHA - REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/aruba.jpg" alt="Switches Aruba Enterprise" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Cisco_logo_blue_2016.svg/1200px-Cisco_logo_blue_2016.svg.png';">
+          <img src="img/aruba.jpg" alt="Switches Aruba Enterprise" onerror="this.onerror=null; this.src='img/mikrotik.jpg';">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Conmutación Capa 2/3</span>
           <h3>Switches Administrables Aruba & Cisco</h3>
           <p>Implementación de switches de red de alto rendimiento para interconectar todos los dispositivos de tu empresa con velocidades Gigabit y 10G.</p>
           <ul class="features-list">
@@ -277,10 +273,9 @@
       <!-- 3. UBIQUITI UNIFI (IMAGEN A LA IZQUIERDA) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/ubiquiti.jpg" alt="Access Points Ubiquiti UniFi" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ubiquiti_Networks_logo.svg/1200px-Ubiquiti_Networks_logo.svg.png';">
+          <img src="img/ubiquiti.jpg" alt="Access Points Ubiquiti UniFi" onerror="this.onerror=null; this.src='img/mikrotik.jpg';">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Wi-Fi Corporativo</span>
           <h3>Redes Inalámbricas Ubiquiti UniFi</h3>
           <p>Sistemas Wi-Fi empresariales de alta densidad. Garantiza cobertura total sin puntos ciegos mediante Access Points (AP) gestionados desde un único controlador.</p>
           <ul class="features-list">
@@ -292,19 +287,19 @@
         </div>
       </div>
 
-      <!-- 4. CABLEADO ESTRUCTURADO (IMAGEN A LA DERECHA - REVERSE - FOTO SERVIDORES/RACK REAL) -->
+      <!-- 4. CABLEADO ESTRUCTURADO (IMAGEN A LA DERECHA - REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/cableado.jpg" alt="Cableado Estructurado" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=500&auto=format&fit=crop&q=80';">
+          <img src="img/cableado.jpg" alt="Cableado Estructurado Cat 6/6A & Fibra" onerror="this.onerror=null; this.src='img/mikrotik.jpg';">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Infraestructura Física</span>
-          <h3>Cableado Estructurado Cat 6/6A & Fibra</h3>
-          <p>Diseño, instalación y certificación de cableado estructurado en cobre y fibra óptica para centros de datos y oficinas.</p>
+          <h3>Cableado Estructurado Cat 6/6A & Fibra Óptica</h3>
+          <p>Diseño, instalación y certificación de infraestructura de cableado en cobre y fibra óptica para centros de datos, oficinas y proyectos de telecomunicaciones.</p>
           <ul class="features-list">
-            <li>Organización de Racks y gabinetes de telecomunicaciones.</li>
-            <li>Puntos de red certificados para garantizar velocidad Gigabit.</li>
-            <li>Mantenimiento y peinado de cuartos de cableado (MDF/IDF).</li>
+            <li>Organización, peinado y montaje de Racks y gabinetes de telecomunicaciones (MDF/IDF).</li>
+            <li>Certificación de puntos de red con Fluke Tester para garantizar velocidad Gigabit/10G.</li>
+            <li>Fusión e interconexión de fibra óptica para enlaces entre gabinetes y sedes.</li>
+            <li>Mantenimiento preventivo y correctivo de voz y datos.</li>
           </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Infraestructura ❯</a>
         </div>
