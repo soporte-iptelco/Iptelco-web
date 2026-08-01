@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
-  <!-- FAVICON OFICIAL PNG TRANSPARENTE -->
-  <link rel="icon" type="image/png" href="img/logo-wh.png?v=2">
-  <link rel="shortcut icon" type="image/png" href="img/logo-wh.png?v=2">
-  <link rel="apple-touch-icon" href="img/logo-wh.png">
+  <!-- FAVICON SVG OFICIAL IPTELCO (NATIVO EN PESTAÑA - NUNCA SE ROMPE) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 45 C35 20, 65 20, 80 45' stroke='%2306b6d4' stroke-width='10' stroke-linecap='round' fill='none'/><path d='M32 58 C42 42, 58 42, 68 58' stroke='%233b82f6' stroke-width='8' stroke-linecap='round' fill='none'/><path d='M10 75 Q 50 62 90 75' stroke='%231d4ed8' stroke-width='5' fill='none'/><circle cx='50' cy='68' r='7' fill='%2306b6d4'/></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,28 +44,23 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER 100% CSS CON LOGO GRANDE Y TRANSPARENTE */
+    /* PRELOADER CSS NATIVO */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center;
-      animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none;
+      animation: fadeOutPreloader 0.3s ease 0.1s forwards; pointer-events: none;
     }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .preloader-logo-img { height: 85px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.95); } 50% { transform: scale(1.05); } 100% { transform: scale(0.95); } }
-
-    /* HEADER CON LOGO GRANDE Y TRANSPARENTE */
+    /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 6%; position: sticky; top: 0;
+      padding: 14px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo-img { height: 68px; width: auto; object-fit: contain; }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -209,18 +202,30 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO TRANSPARENTE -->
+  <!-- PRELOADER CON VECTOR OFICIAL DE IPTELCO -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="preloader-logo-img">
+      <svg width="180" height="60" viewBox="0 0 220 70" fill="none">
+        <path d="M20 38 C35 15, 65 15, 80 38" stroke="#06b6d4" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <path d="M30 48 C40 32, 60 32, 70 48" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M10 60 Q 50 48 90 60" stroke="#1d4ed8" stroke-width="4" fill="none"/>
+        <circle cx="50" cy="54" r="5" fill="#06b6d4"/>
+        <text x="100" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff" letter-spacing="1">IPTELCO</text>
+      </svg>
     </div>
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO GRANDE Y TRANSPARENTE -->
+  <!-- HEADER CON LOGO VECTORIAL IPTELCO (NUNCA SE ROMPE, NUNCA MUESTRA MARCO) -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img">
+      <svg width="170" height="52" viewBox="0 0 220 70" fill="none">
+        <path d="M20 38 C35 15, 65 15, 80 38" stroke="#06b6d4" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <path d="M30 48 C40 32, 60 32, 70 48" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M10 60 Q 50 48 90 60" stroke="#1d4ed8" stroke-width="4" fill="none"/>
+        <circle cx="50" cy="54" r="5" fill="#06b6d4"/>
+        <text x="100" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff" letter-spacing="1">IPTELCO</text>
+      </svg>
     </a>
     <nav>
       <a href="index.html" class="active">Inicio</a>
@@ -252,7 +257,7 @@
       </div>
 
       <div class="hero-media-container">
-        <img src="img/3cx.png" alt="3CX Softphone App IPTELCO" onerror="this.src='img/3cx-PBX.png';">
+        <img src="img/3cx.png" alt="3CX Softphone App IPTELCO">
       </div>
     </div>
   </section>
@@ -273,7 +278,7 @@
       </div>
 
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/Issabel-2.png" alt="Issabel PBX" onerror="this.src='img/Issabel.png';"></div>
+        <div class="product-img-box"><img src="img/Issabel-2.png" alt="Issabel PBX"></div>
         <div class="product-info-box">
           <span class="product-badge" style="color: #3b82f6; background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.25);">Conmutación PBX</span>
           <h3>Servidores Issabel & Fidelity PBX</h3>
@@ -319,7 +324,7 @@
     <div class="category-header-title" style="color: #8b5cf6; margin-top: 80px;">☁️ Soluciones Cloud & Productividad</div>
     <div class="products-showcase">
       <div class="product-row">
-        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft 365" onerror="this.src='img/365.png';"></div>
+        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft 365"></div>
         <div class="product-info-box">
           <span class="product-badge" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.25);">Productividad Empresarial</span>
           <h3>Microsoft 365 & Google Workspace</h3>
@@ -367,19 +372,25 @@
         <img src="img/3cx-avanced.png" alt="3CX Advanced Certified Engineer">
       </div>
       <div class="cert-badge-lg-card">
-        <img src="img/3cx-PBX.png" alt="3CX Enterprise PBX" onerror="this.src='img/3cx.png';">
+        <img src="img/3cx-PBX.png" alt="3CX Enterprise PBX">
       </div>
     </div>
   </section>
 
-  <!-- FOOTER CON LOGO TRANSPARENTE INTEGRADO PERFECTAMENTE -->
+  <!-- FOOTER CON LOGO COMPLETO Y ELEGANTE (SIN FONDOS NI BORDES FEOS) -->
   <footer>
     <div class="footer-grid">
       
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <!-- LOGO TRANSPARENTE Y GRANDE SIN PARCHES BLANCOS -->
-          <img src="img/logo-wh.png" alt="IPTELCO Logo" style="height: 80px; width: auto; object-fit: contain; display: block;">
+          <svg width="240" height="80" viewBox="0 0 280 90" fill="none">
+            <path d="M20 42 C40 15, 80 15, 100 42" stroke="#06b6d4" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <path d="M35 54 C48 35, 72 35, 85 54" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M10 68 Q 60 54 110 68" stroke="#1d4ed8" stroke-width="5" fill="none"/>
+            <circle cx="60" cy="61" r="6" fill="#06b6d4"/>
+            <text x="125" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="32" fill="#ffffff" letter-spacing="1">IPTELCO</text>
+            <text x="126" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#94a3b8" letter-spacing="0.5">IP Telefonía y Comunicaciones</text>
+          </svg>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
