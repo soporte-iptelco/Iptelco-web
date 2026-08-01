@@ -6,7 +6,7 @@
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="img/Logo Wh.png">
+  <link rel="icon" type="image/png" href="img/logo-wh.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -43,12 +43,12 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER CON LOGO OFICIAL ANIMADO */
+    /* PRELOADER RÁPIDO Y SEGURO */
     #iptelco-preloader {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: #020617; z-index: 99999; display: flex;
       align-items: center; justify-content: center;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -63,7 +63,7 @@
       100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); }
     }
 
-    /* HEADER CON LOGO OFICIAL REAL */
+    /* HEADER CON RUTAS EXACTAS EN MINÚSCULAS */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 12px 6%; position: sticky; top: 0;
@@ -74,8 +74,8 @@
     .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
     .brand-logo-img { height: 46px; width: auto; object-fit: contain; }
 
-    nav { display: flex; align-items: center; gap: 22px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
 
     .header-actions { display: flex; align-items: center; gap: 12px; }
@@ -138,14 +138,11 @@
 
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    /* =========================================================
-       MAGIA UX: TARJETAS 100% CLIQUEABLES (position: relative)
-       ========================================================= */
+    /* TARJETAS CLIQUEABLES */
     .product-row {
       display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
       border-radius: 24px; padding: 30px; transition: all 0.35s ease;
-      position: relative; /* Permite que el enlace ::after se expanda */
-      cursor: pointer;    /* Manito de clic sobre toda la tarjeta */
+      position: relative; cursor: pointer;
     }
     .product-row:hover {
       border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
@@ -174,17 +171,11 @@
       font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
     }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
-
-    /* ESTO EXPANDE EL ENLACE PARA CUBRIR TODA LA TARJETA */
     .btn-link::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      z-index: 10;
-      border-radius: 24px;
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px;
     }
 
-    /* FOOTER CORPORATIVO CON LOGO REAL */
+    /* FOOTER */
     footer {
       background: rgba(15, 23, 42, 0.95);
       border-top: 1px solid var(--border-light);
@@ -243,7 +234,7 @@
       flex-wrap: wrap; gap: 15px; font-size: 0.85rem;
     }
 
-    /* WIDGET WHATSAPP FLOTANTE */
+    /* WIDGET WHATSAPP */
     .whatsapp-widget {
       position: fixed; bottom: 35px; right: 35px; z-index: 99990;
       display: flex; align-items: center; text-decoration: none;
@@ -278,8 +269,7 @@
     .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); transform: translateX(6px); }
 
     @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-grid, .hero-grid { grid-template-columns: 1fr; }
       .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
       .product-img-box { width: 100%; height: 200px; }
       nav { display: none; }
@@ -294,16 +284,16 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
+      <img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </div>
   </div>
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO OFICIAL -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/Logo Wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
+      <img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </a>
 
     <nav>
@@ -312,6 +302,7 @@
       <a href="ciberseguridad.html">Ciberseguridad</a>
       <a href="redes-mikrotik.html">Redes</a>
       <a href="cctv-biometria.html">CCTV & Biometría</a>
+      <a href="soluciones-cloud.html">Cloud & 365</a>
       <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
     
@@ -349,7 +340,7 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO CATEGORIZADO (TODAS ESTAS TARJETAS AHORA SON CLIQUEABLES) -->
+  <!-- CATÁLOGO CATEGORIZADO -->
   <section class="services-section">
 
     <!-- CATEGORÍA 1: TELEFONÍA IP -->
@@ -410,7 +401,21 @@
       </div>
     </div>
 
-    <!-- CATEGORÍA 3: VIDEOVIGILANCIA Y BIOMETRÍA -->
+    <!-- CATEGORÍA 3: CLOUD & PRODUCTIVIDAD -->
+    <div class="category-header-title">☁️ Soluciones Cloud & Microsoft 365</div>
+    <div class="products-showcase">
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft 365"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Nube & Productividad</span>
+          <h3>Microsoft 365 & Servidores Azure</h3>
+          <p>Licenciamiento corporativo de Microsoft 365, Teams, correos Exchange y migración de servidores locales a la nube de Microsoft Azure.</p>
+          <a href="soluciones-cloud.html" class="btn-link">Ver Soluciones Cloud ❯</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORÍA 4: VIDEOVIGILANCIA Y BIOMETRÍA -->
     <div class="category-header-title">📹 Videovigilancia, Biometría & Control de Acceso</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -424,32 +429,12 @@
       </div>
 
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/video-vigilancia-2.jpg" alt="Centro de Monitoreo CCTV"></div>
-        <div class="product-info-box">
-          <span class="product-badge">Centro de Monitoreo</span>
-          <h3>Servidores NVR & Analítica de Video</h3>
-          <p>Infraestructura de almacenamiento masivo para grabación continua, lectura automática de placas de vehículos (LPR), detección de intrusos y dashboards de seguridad.</p>
-          <a href="cctv-biometria.html" class="btn-link">Ver Soluciones de Monitoreo ❯</a>
-        </div>
-      </div>
-
-      <div class="product-row">
         <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
         <div class="product-info-box">
           <span class="product-badge">Biometría Facial</span>
-          <h3>Control de Acceso ZKTeco SpeedFace</h3>
-          <p>Terminales de reconocimiento facial visible light sin contacto. Medición de temperatura, lectura biométrica ultra rápida y apertura automatizada de puertas o torniquetes.</p>
+          <h3>Control de Acceso ZKTeco & BioTime</h3>
+          <p>Terminales de reconocimiento facial visible light sin contacto y software centralizado BioTime para la administración de personal y asistencia.</p>
           <a href="cctv-biometria.html" class="btn-link">Ver Control de Acceso ❯</a>
-        </div>
-      </div>
-
-      <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/biotime.jpg" alt="Software BioTime ZKTeco"></div>
-        <div class="product-info-box">
-          <span class="product-badge">Gestión de Personal</span>
-          <h3>Software BioTime Control de Asistencia</h3>
-          <p>Plataforma web centralizada para la administración de turnos, marcaciones de personal, horas extras y sincronización directa con dispositivos biométricos de huella y rostro.</p>
-          <a href="cctv-biometria.html" class="btn-link">Ver Solución BioTime ❯</a>
         </div>
       </div>
     </div>
@@ -473,16 +458,17 @@
     <div class="footer-grid">
       <div class="footer-col-brand">
         <a href="index.html">
-          <img src="img/Logo Wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.onerror=null; this.src='img/Logo iptelco.png';">
+          <img src="img/logo-wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
-          Soluciones integrales de telecomunicaciones, redes, ciberseguridad perimetral y soporte TI para el sector corporativo.
+          Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.
         </p>
         <div class="address-card">
           📍 <b>Oficina Principal:</b><br>
           Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
         </div>
       </div>
+
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
@@ -498,24 +484,26 @@
           <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
         </a>
       </div>
+
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
-          <li><a href="telefonia-ip.html">📞 Telefonía IP</a></li>
-          <li><a href="ciberseguridad.html">🛡️ Firewalls & SD-WAN</a></li>
-          <li><a href="redes-mikrotik.html">🌐 Redes & MikroTik</a></li>
-          <li><a href="cctv-biometria.html">📹 CCTV & Biometría</a></li>
-          <li><a href="outsourcing-ti.html">💻 Soporte TI & Outsourcing</a></li>
+          <li><a href="telefonia-ip.html">📞 Telefonía IP & Centrales</a></li>
+          <li><a href="ciberseguridad.html">🛡️ Firewalls & Seguridad</a></li>
+          <li><a href="soluciones-cloud.html">☁️ Microsoft 365 & Azure</a></li>
+          <li><a href="cctv-biometria.html">📹 CCTV & Control de Acceso</a></li>
+          <li><a href="outsourcing-ti.html">💻 Soporte TI & Hardware</a></li>
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
       <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
       <div style="color: #64748b;">Bogotá, Colombia</div>
     </div>
   </footer>
 
-  <!-- WIDGET FLOTANTE DE WHATSAPP -->
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box">
       <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora Comercial IPTELCO">
@@ -530,26 +518,16 @@
     </div>
   </a>
 
+  <!-- SCRIPT SIN NINGUNA INTERCEPTACIÓN DE CLICS -->
   <script>
-    function abrirPagina() {
+    function ocultarPreloader() {
       const preloader = document.getElementById('iptelco-preloader');
-      if (preloader) { preloader.classList.add('hidden'); }
+      if (preloader) {
+        preloader.classList.add('hidden');
+      }
     }
-    window.addEventListener('load', abrirPagina);
-    setTimeout(abrirPagina, 1000);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href]').forEach(link => {
-        const url = link.getAttribute('href');
-        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('iptelco-preloader').classList.remove('hidden');
-            setTimeout(() => { window.location.href = url; }, 350);
-          });
-        }
-      });
-    });
+    window.addEventListener('load', ocultarPreloader);
+    setTimeout(ocultarPreloader, 400); // Retiro automático a los 400ms
   </script>
 </body>
 </html>
