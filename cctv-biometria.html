@@ -3,33 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CCTV & Biometría | IPTELCO S.A.S</title>
+  <title>CCTV, Cámaras Especiales & Biometría | IPTELCO S.A.S</title>
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="img/Logo Wh.png">
+  <link rel="icon" type="image/png" href="img/logo-wh.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES Y ESTILOS BASE (Mismo diseño premium) */
-    :root {
-      --bg-dark: #020617; --bg-card: rgba(15, 23, 42, 0.85); --bg-card-hover: rgba(30, 41, 59, 0.95);
-      --accent-blue: #3b82f6; --accent-cyan: #06b6d4; --accent-glow: rgba(59, 130, 246, 0.25);
-      --text-main: #f8fafc; --text-muted: #94a3b8; --border-light: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(59, 130, 246, 0.4);
-    }
+    :root { --bg-dark: #020617; --bg-card: rgba(15, 23, 42, 0.85); --bg-card-hover: rgba(30, 41, 59, 0.95); --accent-blue: #3b82f6; --accent-cyan: #06b6d4; --accent-glow: rgba(6, 182, 212, 0.25); --text-main: #f8fafc; --text-muted: #94a3b8; --border-light: rgba(255, 255, 255, 0.08); --border-glow: rgba(6, 182, 212, 0.4); }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* PRELOADER */
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    /* PRELOADER SIN BLOQUEOS */
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s ease, visibility 0.3s ease; }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
     .preloader-logo-img { height: 75px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); } 100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
     /* HEADER */
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
@@ -39,169 +32,226 @@
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
     .header-actions { display: flex; align-items: center; gap: 12px; }
-    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
-    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
-    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
-    .btn-cotizar:hover { transform: translateY(-2px); }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
+    .btn-cotizar { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
 
     /* HERO */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
-    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero h1 span { color: var(--accent-blue); -webkit-text-fill-color: var(--accent-blue); }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 span { color: var(--accent-cyan); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
-    
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
-    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; animation: floatAnimationHero 4s ease-in-out infinite; }
+    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
-    /* CATÁLOGO PRODUCTOS ZIG-ZAG */
+    /* TARJETAS DE SERVICIOS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
-    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; }
-    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); transform: translateY(-5px); background: var(--bg-card-hover); }
+
+    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; cursor: pointer; }
+    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
     .product-row.reverse { flex-direction: row-reverse; }
-    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+
+    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
+
     .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 4px; }
+    
+    /* ENLACE QUE CUBRE TODA LA CAJA (UX) */
+    .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
     /* FOOTER */
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
-    .footer-logo-img { height: 50px; width: auto; object-fit: contain; margin-bottom: 16px; }
-    .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 2px solid var(--accent-blue); display: inline-block; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto; }
+    .footer-logo-img { height: 50px; margin-bottom: 16px; }
+    .footer-col h4 { color: #ffffff; border-bottom: 2px solid var(--accent-blue); padding-bottom: 8px; margin-bottom: 18px; display: inline-block; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
     .footer-links a:hover { color: #ffffff; }
+
+    /* WIDGET WHATSAPP */
+    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; border: 1px solid rgba(255,255,255,0.1); border-left: none; white-space: nowrap; }
 
     @media (max-width: 900px) { .hero-grid, .footer-grid { grid-template-columns: 1fr; } .product-row, .product-row.reverse { flex-direction: column; } nav { display: none; } }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER -->
   <div id="iptelco-preloader">
-    <div class="preloader-content">
-      <img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.src='img/Logo iptelco.png';">
-    </div>
+    <div class="preloader-content"><img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.src='img/logo-main.png';"></div>
   </div>
-
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
   <header>
-    <a href="index.html" class="brand-logo-container">
-      <img src="img/Logo Wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.src='img/Logo iptelco.png';">
-    </a>
-
-    <!-- SE AÑADIÓ "SOPORTE TI" Y "CCTV" AL MENÚ -->
+    <a href="index.html" class="brand-logo-container"><img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.src='img/logo-main.png';"></a>
     <nav>
+      <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
       <a href="redes-mikrotik.html">Redes</a>
       <a href="cctv-biometria.html" class="active">CCTV & Biometría</a>
+      <a href="soluciones-cloud.html">Cloud & 365</a>
       <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
-    
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Seguridad Electrónica & Control de Acceso</span>
         <h1 style="margin-top: 10px;">Protección e Inteligencia para tus <span>Instalaciones</span></h1>
-        <p>Soluciones integrales en Circuito Cerrado de Televisión (CCTV), centros de monitoreo NVR, biometría de última generación ZKTeco y software de gestión de personal BioTime.</p>
-
+        <p>Soluciones integrales en Circuito Cerrado de Televisión (CCTV), centros de monitoreo NVR, cámaras inteligentes y biometría de última generación ZKTeco SpeedFace.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Proyecto de Seguridad</a>
         </div>
       </div>
-      <div class="hero-media-container">
-        <!-- Imagen dinámica (usa la cámara como principal) -->
-        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO">
-      </div>
+      <div class="hero-media-container"><img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO"></div>
     </div>
   </section>
 
-  <!-- CATÁLOGO -->
   <section class="services-section">
-    <div class="category-header-title">📹 Videovigilancia & Centros de Monitoreo</div>
+
+    <!-- SECCIÓN CCTV Y CÁMARAS ESPECIALES -->
+    <div class="category-header-title">📹 Videovigilancia, Cámaras Especiales & NVR</div>
     <div class="products-showcase">
-      <!-- CÁMARAS -->
+      
+      <!-- CÁMARA CCTV ESTÁNDAR -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
         <div class="product-info-box">
           <span class="product-badge">Circuito Cerrado (CCTV)</span>
           <h3>Cámaras IP & Videovigilancia CCTV</h3>
-          <p>Sistemas de CCTV IP con analítica de video inteligente, lectura automática de placas de vehículos (LPR), visión nocturna infrarroja y monitoreo remoto 24/7 en dispositivos móviles.</p>
+          <p>Sistemas de CCTV IP de alta resolución. Analítica de video inteligente, lectura automática de placas de vehículos (LPR), visión nocturna infrarroja y monitoreo remoto 24/7 en dispositivos móviles.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Sistemas CCTV ❯</a>
         </div>
       </div>
-      <!-- NVR -->
+
+      <!-- CÁMARA PTZ (NUEVA) -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/ptz.jpg" alt="Cámaras Domo PTZ"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Monitoreo Perimetral</span>
+          <h3>Cámaras Domo PTZ de Alta Velocidad</h3>
+          <p>Control total con movimiento de 360° (Pan-Tilt) y zoom óptico de gran alcance. Ideales para cubrir amplias zonas perimetrales, bodegas y exteriores con seguimiento automático (auto-tracking) de objetivos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras PTZ ❯</a>
+        </div>
+      </div>
+
+      <!-- CÁMARA OJO DE PEZ (NUEVA) -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/camara-ojo-pez.jpg" alt="Cámaras Ojo de Pez 360"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Visión Panorámica</span>
+          <h3>Cámaras Ojo de Pez (Fisheye) 360°</h3>
+          <p>Elimina los puntos ciegos en tus instalaciones. Lente ultra gran angular que permite vigilar una habitación completa, tienda o almacén desde un único punto central montado en el techo.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras 360° ❯</a>
+        </div>
+      </div>
+
+      <!-- CÁMARA SENSOR MOVIMIENTO Y LUZ (NUEVA) -->
+      <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/camaras-sensor-movimiento.jpg" alt="Cámaras con Disuasión Activa"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Disuasión Activa</span>
+          <h3>Cámaras con Alarma y Sensor PIR</h3>
+          <p>Detección de intrusos basada en temperatura corporal (PIR). Generan una respuesta de disuasión activa inmediata activando luces estroboscópicas y una sirena de alta potencia integrada en la cámara.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras con Alarma ❯</a>
+        </div>
+      </div>
+
+      <!-- CÁMARA SOLAR (NUEVA) -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/camara-solar.png" alt="Cámaras con Panel Solar"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Videovigilancia Autónoma</span>
+          <h3>Cámaras 4G Autónomas con Panel Solar</h3>
+          <p>La solución perfecta para zonas remotas, fincas, vías o proyectos en construcción. Operan de manera 100% inalámbrica gracias a su panel solar, batería de respaldo y conexión mediante chip 4G/LTE.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras Solares ❯</a>
+        </div>
+      </div>
+
+      <!-- NVR SERVIDORES -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/video-vigilancia-2.jpg" alt="Centro de Monitoreo CCTV"></div>
         <div class="product-info-box">
           <span class="product-badge">Centro de Monitoreo</span>
           <h3>Servidores NVR & Almacenamiento</h3>
-          <p>Infraestructura de almacenamiento masivo y de alta disponibilidad para grabación continua, detección de intrusos y centralización de videowalls de seguridad.</p>
+          <p>Infraestructura de almacenamiento masivo y de alta disponibilidad para grabación continua. Permite la centralización de múltiples cámaras y la gestión de videowalls de seguridad.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Servidores NVR ❯</a>
         </div>
       </div>
+
     </div>
 
+    <!-- SECCIÓN BIOMETRÍA -->
     <div class="category-header-title" style="margin-top: 80px;">👤 Biometría & Control de Asistencia</div>
     <div class="products-showcase">
-      <!-- SPEEDFACE -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
         <div class="product-info-box">
           <span class="product-badge">Biometría Facial</span>
           <h3>Control de Acceso ZKTeco SpeedFace</h3>
           <p>Terminales de reconocimiento facial visible light sin contacto. Lectura biométrica ultra rápida con detección de cubrebocas y apertura automatizada de puertas o torniquetes.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar SpeedFace ❯</a>
         </div>
       </div>
-      <!-- BIOTIME -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/biotime.jpg" alt="Software BioTime ZKTeco"></div>
         <div class="product-info-box">
           <span class="product-badge">Gestión de Personal</span>
           <h3>Software BioTime Control de Asistencia</h3>
           <p>Plataforma web centralizada para la administración de turnos, marcaciones de personal, horas extras y sincronización directa con dispositivos biométricos a nivel nacional.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar BioTime ❯</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <img src="img/Logo Wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.src='img/Logo iptelco.png';">
-        <p style="font-size: 0.9rem; color: #94a3b8;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad perimetral y soporte TI.</p>
+        <a href="index.html"><img src="img/logo-wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.src='img/logo-main.png';"></a>
+        <p style="font-size: 0.9rem; color: #94a3b8;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI.</p>
       </div>
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
-          <li><a href="telefonia-ip.html">📞 Telefonía IP</a></li>
-          <li><a href="ciberseguridad.html">🛡️ Firewalls & SD-WAN</a></li>
-          <li><a href="redes-mikrotik.html">🌐 Redes & MikroTik</a></li>
-          <li><a href="cctv-biometria.html">📹 CCTV & Biometría</a></li>
-          <li><a href="outsourcing-ti.html">💻 Outsourcing & Soporte TI</a></li>
+          <li><a href="telefonia-ip.html">📞 Telefonía IP & Centrales</a></li>
+          <li><a href="ciberseguridad.html">🛡️ Firewalls & Seguridad</a></li>
+          <li><a href="soluciones-cloud.html">☁️ Microsoft 365 & Azure</a></li>
+          <li><a href="cctv-biometria.html">📹 CCTV & Control de Acceso</a></li>
+          <li><a href="outsourcing-ti.html">💻 Soporte TI & Hardware</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
+  <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
+    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+    </div>
+    <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
+  </a>
+
+  <!-- SCRIPT SEGURO -->
   <script>
-    window.addEventListener('load', () => { document.getElementById('iptelco-preloader').classList.add('hidden'); });
+    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
+    window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 300);
   </script>
 </body>
 </html>
