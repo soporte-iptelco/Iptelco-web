@@ -31,15 +31,20 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER CON LOGO REAL */
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    /* PRELOADER IPTELCO CON LOGO REAL */
+    #iptelco-preloader { 
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+      background: #020617; z-index: 99999; 
+      display: flex; align-items: center; justify-content: center; 
+      transition: opacity 0.4s ease, visibility 0.4s ease; 
+    }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* LOGO DIFUMINADO */
+    /* LOGO DIFUMINADO EN HEADER */
     .brand-logo-container {
       display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
       padding: 6px 55px 6px 20px; height: 100%;
@@ -62,6 +67,7 @@
     .btn-cotizar { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
+    /* HERO */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
@@ -73,26 +79,48 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+    /* ESTRUCTURA DE FILAS LARGAS INTERCALADAS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
-    .products-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .product-row { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 25px; transition: all 0.35s ease; position: relative; cursor: pointer; }
+    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
+
+    .product-row { 
+      display: flex; align-items: center; gap: 40px; 
+      background: var(--bg-card); border: 1px solid var(--border-light); 
+      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; 
+    }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
+    .product-row.reverse { flex-direction: row-reverse; }
 
-    .product-img-box { width: 100%; height: 210px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; margin-bottom: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); }
-    .product-img-box img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform 0.4s ease; }
-    .product-row:hover .product-img-box img { transform: scale(1.05); }
+    .product-img-box { 
+      flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; 
+      display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; 
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
+    }
+    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex-grow: 1; }
-    .product-badge { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
-    .product-info-box h3 { font-size: 1.4rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
-    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    
     .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 5px; }
     .features-list li { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
     .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; }
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
-    .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
+    
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
+    .btn-link:hover { gap: 12px; color: #38bdf8; }
+
+    /* CERTIFICACIONES */
+    .certs-info-section { background: rgba(15, 23, 42, 0.6); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 60px 6%; margin: 60px 0; text-align: center; }
+    .certs-info-title { font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+    .certs-info-subtitle { color: var(--text-muted); font-size: 1rem; max-width: 650px; margin: 0 auto 30px auto; }
+    .certs-badges-grid { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; }
+    .cert-badge-lg-card { background: #ffffff; padding: 16px 28px; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; }
+    .cert-badge-lg-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(6, 182, 212, 0.3); }
+    .cert-badge-lg-card img { height: 65px; width: auto; object-fit: contain; }
 
     /* FOOTER */
     .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
@@ -106,7 +134,7 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* CONTROLES ESTRICTOS DE TAMAÑO PARA EL WIDGET DE WHATSAPP */
+    /* REGLA DEFINITIVA PARA TAMAÑO DEL AVATAR DE WHATSAPP */
     .whatsapp-widget { 
       position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
       display: flex; align-items: center; text-decoration: none; 
@@ -136,7 +164,8 @@
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
-      .products-showcase { grid-template-columns: 1fr; }
+      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100%; height: 200px; }
       nav { display: none; } 
       .wa-banner { display: none; }
     }
@@ -190,7 +219,7 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO CCTV COMPLETO -->
+  <!-- CATÁLOGO CCTV COMPLETO EN FILAS ANCHAS INTERCALADAS -->
   <section class="services-section">
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
@@ -211,8 +240,8 @@
         </div>
       </div>
 
-      <!-- 2. BIOMETRIA ZKTECO -->
-      <div class="product-row">
+      <!-- 2. BIOMETRIA ZKTECO (REVERSE) -->
+      <div class="product-row reverse">
         <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
         <div class="product-info-box">
           <span class="product-badge">Biometría Inteligente</span>
@@ -243,8 +272,8 @@
         </div>
       </div>
 
-      <!-- 4. ALARMAS DE INTRUSION -->
-      <div class="product-row">
+      <!-- 4. ALARMAS DE INTRUSION (REVERSE) -->
+      <div class="product-row reverse">
         <div class="product-img-box"><img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.onerror=null; this.src='img/video-vigilancia.jpg';"></div>
         <div class="product-info-box">
           <span class="product-badge">Detección de Intrusos</span>
