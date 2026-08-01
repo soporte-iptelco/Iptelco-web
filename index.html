@@ -46,20 +46,19 @@
     }
 
     /* =========================================================
-       EFECTO SPOTLIGHT / HALO BLANCO DIFUMINADO EN AMBOS LADOS
+       DISEÑO DUAL SPOTLIGHT (DIFUMINADO EN LOGO Y EN BOTONES)
        ========================================================= */
 
-    /* CONTENEDOR DIFUMINADO BILATERAL EN HEADER */
+    /* 1. CONTENEDOR IZQUIERDO (LOGO) */
     .brand-logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
-      background-color: #ffffff; /* Fondo blanco nítido para resaltar el logo */
-      padding: 6px 65px; /* Margen simétrico a la izquierda y derecha para el desvanecido */
-      margin-left: 15px; /* Ligera separación del borde para ver la luz izquierda */
+      background-color: #ffffff;
+      padding: 6px 65px;
+      margin-left: 10px;
       height: 100%;
       
-      /* MÁSCARA QUE DESVANACE EN AMBAS ESQUINAS (IZQUIERDA Y DERECHA) */
       -webkit-mask-image: linear-gradient(to right, 
         rgba(0,0,0,0) 0%, 
         rgba(0,0,0,1) 22%, 
@@ -81,13 +80,75 @@
     }
 
     .brand-logo-img {
-      height: 80px; /* Logo grande, visible y de alta legibilidad */
+      height: 80px;
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* CONTENEDOR DIFUMINADO BILATERAL EN FOOTER */
+    /* 2. CONTENEDOR DERECHO (BOTONES DIFUMINADOS EN AMBOS LADOS) */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #ffffff; /* Fondo blanco nítido */
+      padding: 6px 55px; /* Margen simétrico para el desvanecido */
+      margin-right: 10px;
+      height: 100%;
+
+      /* MÁSCARA QUE DIFUMINA EN CADA LADO (IZQUIERDA Y DERECHA) */
+      -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 20%, 
+        rgba(0,0,0,1) 80%, 
+        rgba(0,0,0,0) 100%
+      );
+      mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 20%, 
+        rgba(0,0,0,1) 80%, 
+        rgba(0,0,0,0) 100%
+      );
+    }
+
+    /* BOTONES AJUSTADOS PARA MÁXIMA VISIBILIDAD EN PANEL BLANCO */
+    .btn-soporte {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1.5px solid #fca5a5;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-soporte:hover {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #b91c1c;
+    }
+
+    .btn-cotizar {
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-cotizar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.5);
+    }
+
+    /* CONTENEDOR DIFUMINADO EN FOOTER */
     .footer-logo-container {
       display: inline-flex;
       align-items: center;
@@ -118,7 +179,7 @@
     /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 4% 0 0;
+      padding: 0;
       height: 94px;
       position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
@@ -128,23 +189,6 @@
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
-
-    .header-actions { display: flex; align-items: center; gap: 12px; }
-
-    .btn-soporte {
-      background: rgba(239, 68, 68, 0.15); color: #f87171;
-      border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px;
-      border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
-    }
-    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
-
-    .btn-cotizar {
-      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff;
-      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none;
-      box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s;
-    }
-    .btn-cotizar:hover { transform: translateY(-2px); }
 
     /* HERO PRINCIPAL */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
@@ -267,12 +311,14 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER DUAL SPOTLIGHT -->
   <header>
+    <!-- LADO IZQUIERDO: LOGO DIFUMINADO EN AMBOS LADOS -->
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </a>
 
+    <!-- NAVEGACIÓN CENTRADA SOBRE FONDO AZUL NOCHE -->
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -283,6 +329,7 @@
       <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
 
+    <!-- LADO DERECHO: BOTONES DIFUMINADOS EN AMBOS LADOS -->
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
