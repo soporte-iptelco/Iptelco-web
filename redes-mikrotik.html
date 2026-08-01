@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redes Empresariales, MikroTik, Aruba & Wi-Fi | IPTELCO S.A.S</title>
 
+  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -13,22 +14,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root { 
-      --bg-dark: #020617; 
-      --bg-card: rgba(15, 23, 42, 0.85); 
-      --bg-card-hover: rgba(30, 41, 59, 0.95); 
-      --accent-cyan: #06b6d4; 
-      --accent-glow: rgba(6, 182, 212, 0.25); 
-      --text-main: #f8fafc; 
-      --text-muted: #94a3b8; 
-      --border-light: rgba(255, 255, 255, 0.08); 
-      --border-glow: rgba(6, 182, 212, 0.4); 
+    :root {
+      --bg-dark: #020617;
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
+      --accent-cyan: #06b6d4;
+      --accent-glow: rgba(6, 182, 212, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(6, 182, 212, 0.4);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
+    /* PRELOADER 100% CSS PURO */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -37,11 +39,12 @@
       pointer-events: none; 
     }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
+    /* LOGO DIFUMINADO EN HEADER */
     .brand-logo-container {
       display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
       padding: 6px 55px 6px 20px; height: 100%;
@@ -53,15 +56,18 @@
     .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
-
+    
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
     .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
+    .btn-cotizar:hover { transform: translateY(-2px); }
 
+    /* HERO */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
@@ -69,41 +75,61 @@
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+    /* CATÁLOGO REDES */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
-    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 30px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
-
+    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
     .product-row { 
-      display: flex; flex-direction: row !important; align-items: center; gap: 40px; 
-      background: var(--bg-card); border: 1px solid var(--border-light); 
-      border-radius: 24px; padding: 35px; transition: all 0.35s ease; 
+      display: flex; 
+      flex-direction: row !important; 
+      align-items: center; 
+      gap: 40px; 
+      background: var(--bg-card); 
+      border: 1px solid var(--border-light); 
+      border-radius: 24px; 
+      padding: 30px; 
+      transition: all 0.35s ease; 
+      position: relative; 
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
-    .product-row.reverse { flex-direction: row-reverse !important; }
+    
+    .product-row.reverse { 
+      flex-direction: row-reverse !important; 
+    }
 
     .product-img-box { 
-      width: 340px !important; min-width: 340px !important; height: 230px !important; 
-      background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
-      padding: 20px; overflow: hidden; flex-shrink: 0 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
+      width: 320px !important; 
+      min-width: 320px !important; 
+      height: 220px !important; 
+      background: #ffffff; 
+      border-radius: 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+      overflow: hidden; 
+      flex-shrink: 0 !important; 
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
-    .product-row:hover .product-img-box img { transform: scale(1.06); }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-info-box h3 { font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 5px; }
-    .product-info-box p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
-    
-    .features-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
-    .features-list li { font-size: 0.95rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px; }
-    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem; }
-    
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 1rem; margin-top: 10px; }
+    .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 5px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
 
+    /* FOOTER */
+    .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
+    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -113,11 +139,33 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    /* WIDGET WHATSAPP */
+    .whatsapp-widget { 
+      position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
+      display: flex; align-items: center; text-decoration: none; 
+      animation: floatWidget 4s ease-in-out infinite; 
+    }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px !important; height: 72px !important; min-width: 72px !important; min-height: 72px !important; max-width: 72px !important; max-height: 72px !important; border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important; }
-    .wa-avatar-box img { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; object-fit: cover !important; display: block !important; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    
+    .wa-avatar-box { 
+      width: 72px !important; height: 72px !important; 
+      min-width: 72px !important; min-height: 72px !important;
+      max-width: 72px !important; max-height: 72px !important;
+      border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; 
+      position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+      display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important;
+    }
+    .wa-avatar-box img { 
+      width: 72px !important; height: 72px !important; 
+      max-width: 72px !important; max-height: 72px !important;
+      object-fit: cover !important; display: block !important; 
+    }
+    .wa-banner { 
+      background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; 
+      padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; 
+      margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); 
+      border-left: none; transition: all 0.3s ease; white-space: nowrap; 
+    }
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
@@ -133,7 +181,7 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -141,7 +189,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -165,7 +213,6 @@
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">MikroTik RouterOS, Aruba Enterprise & Wi-Fi 6</span>
         <h1 style="margin-top: 10px;">Redes Empresariales, VLANs & <span>Balanceo PCC</span></h1>
         <p>Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, switches administrables Aruba Enterprise, Access Points Aruba y Ubiquiti, y certificación de cableado Cat 6/6A.</p>
-
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Levantamiento Técnico</a>
         </div>
@@ -187,13 +234,9 @@
           <img src="img/mikrotik.jpg" alt="MikroTik RouterOS">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Enrutamiento & Balanceo PCC</span>
           <h3>MikroTik RouterOS & Multi-WAN</h3>
           <p>Configuración avanzada de routers MikroTik para garantizar máxima estabilidad de navegación. Balanceo de cargas inteligente PCC entre múltiples proveedores de internet (ISP) y Failover instantáneo.</p>
-          <ul class="features-list">
-            <li>Segmentación de VLANs corporativas para voz sobre IP, datos e invitados.</li>
-            <li>Priorización de tráfico QOS para Telefonía IP sin cortes.</li>
-            <li>Servidores Hotspot corporativos y túneles de interconexión de sedes.</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar MikroTik ❯</a>
         </div>
       </div>
@@ -204,47 +247,35 @@
           <img src="img/sw-aruba.jpg" alt="Switches Aruba Enterprise">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Conmutación Capa 2/3</span>
           <h3>Switches Administrables Aruba & Cisco</h3>
           <p>Implementación de switches de red de alto rendimiento para interconectar todos los dispositivos de tu empresa con velocidades Gigabit y 10G.</p>
-          <ul class="features-list">
-            <li>Switches PoE+ para alimentar Teléfonos IP y Cámaras CCTV.</li>
-            <li>Administración centralizada y seguridad por puertos.</li>
-            <li>Redundancia de red Spanning Tree Protocol (STP).</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Switches LAN ❯</a>
         </div>
       </div>
 
-      <!-- 3. ANTENAS ARUBA (Ruta exacta: Aruba-ap.png) -->
+      <!-- 3. ANTENAS ARUBA -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/Aruba-ap.png" alt="Access Points & Antenas Aruba Enterprise">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Wi-Fi 6 Enterprise</span>
           <h3>Antenas & Access Points Aruba Enterprise</h3>
           <p>Sistemas inalámbricos de categoría empresarial Aruba. Cobertura Wi-Fi 6 de ultra alta velocidad, óptima capacidad de penetración en muros y Roaming dinámico para entornos corporativos exigentes.</p>
-          <ul class="features-list">
-            <li>Tecnología Wi-Fi 6 (802.11ax) con múltiples antenas MIMO.</li>
-            <li>Optimización de RF automatizada para evitar interferencias.</li>
-            <li>Seguridad WPA3 Enterprise e integración con Active Directory.</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Antenas Aruba ❯</a>
         </div>
       </div>
 
-      <!-- 4. MONITOREO DE AP (Ruta exacta: consola-ap.png) -->
+      <!-- 4. MONITOREO DE AP -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/consola-ap.png" alt="Consola de Monitoreo & Gestión Cloud de APs">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Gestión & Telemetría Cloud</span>
           <h3>Consola de Monitoreo & Gestión Cloud de APs</h3>
           <p>Plataforma de gestión centralizada para supervisar en tiempo real el consumo de ancho de banda, dispositivos conectados y la salud general de la red inalámbrica de todas tus sedes.</p>
-          <ul class="features-list">
-            <li>Dashboard en tiempo real con mapas de calor de cobertura.</li>
-            <li>Alertas automáticas por fallas o desconexión de Access Points.</li>
-            <li>Gestión de politicas de ancho de banda por usuario y filtrado MAC.</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Consola de Gestión ❯</a>
         </div>
       </div>
@@ -255,13 +286,9 @@
           <img src="img/ubiquiti-unifi-access-points.jpg" alt="Access Points Ubiquiti UniFi">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Wi-Fi Corporativo</span>
           <h3>Redes Inalámbricas Ubiquiti UniFi</h3>
           <p>Sistemas Wi-Fi empresariales de alta densidad. Garantiza cobertura total sin puntos ciegos mediante Access Points (AP) gestionados desde un único controlador.</p>
-          <ul class="features-list">
-            <li>Roaming transparente (Zero Handoff) para movilidad sin cortes.</li>
-            <li>Redes de invitados aisladas con portal cautivo.</li>
-            <li>Estándar Wi-Fi 6 para máxima velocidad y concurrencia.</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Red Inalámbrica ❯</a>
         </div>
       </div>
@@ -272,14 +299,9 @@
           <img src="img/cableado-1.jpg" alt="Cableado Estructurado Cat 6/6A & Fibra">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Infraestructura Física</span>
           <h3>Cableado Estructurado Cat 6/6A & Fibra Óptica</h3>
           <p>Diseño, instalación y certificación de infraestructura de cableado en cobre y fibra óptica para centros de datos, oficinas y proyectos de telecomunicaciones.</p>
-          <ul class="features-list">
-            <li>Organización, peinado y montaje de Racks y gabinetes de telecomunicaciones (MDF/IDF).</li>
-            <li>Certificación de puntos de red con Fluke Tester para garantizar velocidad Gigabit/10G.</li>
-            <li>Fusión e interconexión de fibra óptica para enlaces entre gabinetes y sedes.</li>
-            <li>Mantenimiento preventivo y correctivo de voz y datos.</li>
-          </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Infraestructura ❯</a>
         </div>
       </div>
@@ -293,11 +315,11 @@
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
           <div class="footer-logo-container">
-            <img src="img/logo-main.png" alt="IPTELCO Logo">
+            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
           </div>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
-          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV, Nube y Soporte TI.
+          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV, Migración Cloud (Microsoft 365, Azure) y Soporte TI.
         </p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
       </div>
@@ -321,6 +343,7 @@
     <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
   </footer>
 
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box">
       <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
