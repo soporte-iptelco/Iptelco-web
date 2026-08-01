@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soluciones Cloud, Workspace, Azure & QNAP | IPTELCO S.A.S</title>
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -30,16 +29,17 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER IPTELCO */
+    /* PRELOADER 100% CSS PURO (Garantiza que nunca se bloquee la página) */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
       display: flex; align-items: center; justify-content: center; 
-      transition: opacity 0.4s ease, visibility 0.4s ease; 
+      animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
+      pointer-events: none; 
     }
-    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
@@ -78,25 +78,17 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* FILAS ANCHAS INTERCALADAS CLOUD */
+    /* CATÁLOGO CLOUD */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    .product-row { 
-      display: flex; align-items: center; gap: 40px; 
-      background: var(--bg-card); border: 1px solid var(--border-light); 
-      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; 
-    }
+    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
     .product-row.reverse { flex-direction: row-reverse; }
 
-    .product-img-box { 
-      flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; 
-      display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; 
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
-    }
+    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
@@ -104,7 +96,6 @@
     .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 1px; background: rgba(139, 92, 246, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(139, 92, 246, 0.25); }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-    
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-purple); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
     .btn-link:hover { gap: 12px; color: #c084fc; }
 
@@ -121,32 +112,11 @@
     .footer-links a:hover { color: #ffffff; }
 
     /* WIDGET WHATSAPP CONTROLADO */
-    .whatsapp-widget { 
-      position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
-      display: flex; align-items: center; text-decoration: none; 
-      animation: floatWidget 4s ease-in-out infinite; 
-    }
+    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    
-    .wa-avatar-box { 
-      width: 72px !important; height: 72px !important; 
-      min-width: 72px !important; min-height: 72px !important;
-      max-width: 72px !important; max-height: 72px !important;
-      border-radius: 50% !important; border: 3px solid var(--accent-purple); background: #ffffff; 
-      position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-      display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important;
-    }
-    .wa-avatar-box img { 
-      width: 72px !important; height: 72px !important; 
-      max-width: 72px !important; max-height: 72px !important;
-      object-fit: cover !important; display: block !important; 
-    }
-    .wa-banner { 
-      background: linear-gradient(135deg, #1e293b, var(--accent-purple)); color: #ffffff; 
-      padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; 
-      margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); 
-      border-left: none; transition: all 0.3s ease; white-space: nowrap; 
-    }
+    .wa-avatar-box { width: 72px !important; height: 72px !important; min-width: 72px !important; min-height: 72px !important; max-width: 72px !important; max-height: 72px !important; border-radius: 50% !important; border: 3px solid var(--accent-purple); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important; }
+    .wa-avatar-box img { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; object-fit: cover !important; display: block !important; }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-purple)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
@@ -159,11 +129,9 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO REAL -->
+  <!-- PRELOADER 100% CSS PURO (NO BLOQUEA LA PANTALLA) -->
   <div id="iptelco-preloader">
-    <div class="preloader-content">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
-    </div>
+    <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
   </div>
   <div class="glow-bg"></div>
 
@@ -199,12 +167,12 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
+        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4236/4236440.png';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CLOUD EN FILAS ANCHAS INTERCALADAS -->
+  <!-- CATÁLOGO CLOUD COMPLETO -->
   <section class="services-section">
     <div class="category-header-title">☁️ Licenciamiento Corporativo & Nube Privada</div>
     <div class="products-showcase">
@@ -212,7 +180,7 @@
       <!-- 1. MICROSOFT 365 -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/365.png';">
+          <img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/365.jpg';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
@@ -222,10 +190,10 @@
         </div>
       </div>
 
-      <!-- 2. GOOGLE WORKSPACE (REVERSE) -->
+      <!-- 2. GOOGLE WORKSPACE -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/Cloud-logo.jpg" alt="Google Workspace">
+          <img src="img/Cloud-logo.jpg" alt="Google Workspace" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/2991/2991148.png';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
@@ -238,7 +206,7 @@
       <!-- 3. QNAP CLOUD NAS -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='img/nas2.png';">
+          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/3208/3208573.png';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Nube Privada & Backup</span>
@@ -248,10 +216,10 @@
         </div>
       </div>
 
-      <!-- 4. MICROSOFT AZURE (REVERSE) -->
+      <!-- 4. MICROSOFT AZURE -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/azure.jpg" alt="Microsoft Azure Cloud">
+          <img src="img/azure.jpg" alt="Microsoft Azure Cloud" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/873/873100.png';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">IaaS & PaaS</span>
@@ -306,10 +274,5 @@
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <!-- SCRIPT PRELOADER -->
-  <script>
-    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
-    window.addEventListener('load', ocultarPreloader); setTimeout(ocultarPreloader, 400);
-  </script>
 </body>
 </html>
