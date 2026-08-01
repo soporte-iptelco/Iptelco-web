@@ -45,27 +45,51 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* ESTILOS PARA LOGO-AZUL.JPG MEZCLADO EN EL FONDO */
+    /* =========================================================
+       EFECTO MÁGICO DE DIFUMINADO / DESVANECIDO TIPO BANNER
+       ========================================================= */
+
+    /* CONTENEDOR DIFUMINADO EN HEADER (ARRIBA) */
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      background-color: #ffffff; /* Fondo blanco interno para resaltar el logo */
+      padding: 6px 45px 6px 16px; /* Espacio extendido a la derecha para la transición */
+      border-radius: 10px 0 0 10px;
+      
+      /* Máscara que difumina de sólido a 100% transparente hacia la derecha */
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      transition: transform 0.2s ease;
+    }
+    .brand-logo-container:hover {
+      transform: scale(1.02);
+    }
+
     .brand-logo-img {
-      height: 75px;
+      height: 54px;
       width: auto;
       object-fit: contain;
       display: block;
-      mix-blend-mode: screen; /* Fusiona el fondo oscuro del JPG con la barra */
-      filter: brightness(1.15) contrast(1.1);
-      transition: transform 0.2s ease;
     }
-    .brand-logo-img:hover {
-      transform: scale(1.03);
+
+    /* CONTENEDOR DIFUMINADO EN FOOTER (ABAJO) */
+    .footer-logo-container {
+      display: inline-flex;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 10px 60px 10px 20px;
+      border-radius: 12px 0 0 12px;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
     }
 
     .footer-logo-img {
-      height: 115px;
+      height: 95px;
       width: auto;
       object-fit: contain;
       display: block;
-      mix-blend-mode: screen; /* Integración limpia en el footer */
-      filter: brightness(1.15) contrast(1.1);
     }
 
     /* HEADER */
@@ -75,8 +99,6 @@
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
-
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -220,11 +242,12 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON LOGO Y DIFUMINADO SUAVE HACIA LA DERECHA -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-azul.jpg" alt="IPTELCO Logo" class="brand-logo-img">
+      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </a>
+
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -234,6 +257,7 @@
       <a href="soluciones-cloud.html">Cloud & 365</a>
       <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
+
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
@@ -381,7 +405,9 @@
       
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <img src="img/logo-azul.jpg" alt="IPTELCO Logo" class="footer-logo-img">
+          <div class="footer-logo-container">
+            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+          </div>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
