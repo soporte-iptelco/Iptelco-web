@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outsourcing TI & Soporte Empresarial | IPTELCO S.A.S</title>
+
+  <link rel="icon" type="image/png" href="img/Logo Wh.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #020617; --bg-card: rgba(15, 23, 42, 0.85); --bg-card-hover: rgba(30, 41, 59, 0.95);
+      --accent-blue: #3b82f6; --accent-cyan: #06b6d4; --accent-glow: rgba(59, 130, 246, 0.25);
+      --text-main: #f8fafc; --text-muted: #94a3b8; --border-light: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(59, 130, 246, 0.4);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; }
+
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-logo-img { height: 75px; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
+
+    header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    .brand-logo-img { height: 46px; }
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
+
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; text-align: center; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin: 15px 0; background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 30px auto; }
+    
+    .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
+    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
+    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; }
+    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); transform: translateY(-5px); background: var(--bg-card-hover); }
+    .product-row.reverse { flex-direction: row-reverse; }
+    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
+    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); }
+
+    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto; }
+    .footer-logo-img { height: 50px; margin-bottom: 16px; }
+    .footer-col h4 { color: #ffffff; border-bottom: 2px solid var(--accent-blue); padding-bottom: 8px; margin-bottom: 18px; display: inline-block; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: #ffffff; }
+
+    @media (max-width: 900px) { .product-row, .product-row.reverse { flex-direction: column; } nav { display: none; } .footer-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div id="iptelco-preloader">
+    <div class="preloader-content"><img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.src='img/Logo iptelco.png';"></div>
+  </div>
+
+  <div class="glow-bg"></div>
+
+  <header>
+    <a href="index.html"><img src="img/Logo Wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.src='img/Logo iptelco.png';"></a>
+    <nav>
+      <a href="telefonia-ip.html">Telefonía IP</a>
+      <a href="ciberseguridad.html">Ciberseguridad</a>
+      <a href="redes-mikrotik.html">Redes</a>
+      <a href="cctv-biometria.html">CCTV & Biometría</a>
+      <a href="outsourcing-ti.html" class="active">Soporte TI</a>
+    </nav>
+    <div class="header-actions">
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
+      <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Tu Aliado Estratégico en Tecnología</span>
+    <h1>Soporte Empresarial, Mantenimiento & <span>Suministro TI</span></h1>
+    <p>Garantizamos la operatividad continua de tu empresa. Brindamos pólizas de soporte técnico a la medida, mantenimiento de infraestructura y suministro de equipos con los mejores aliados mayoristas del mercado.</p>
+    <a href="cotizacion.html" class="btn-cotizar" style="padding: 14px 28px; font-size: 1rem;">Solicitar Asesoría Personalizada</a>
+  </section>
+
+  <section class="services-section">
+    <div class="products-showcase">
+      
+      <!-- PLANES DE SOPORTE -->
+      <div class="product-row">
+        <!-- Dejamos un placeholder genérico que puedes reemplazar luego por tu imagen de soporte, ej: soporte-1.jpg -->
+        <div class="product-img-box"><img src="img/cableado-2.jpg" alt="Soporte y Outsourcing TI"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Outsourcing TI</span>
+          <h3>Planes de Soporte a la Medida</h3>
+          <p>Ofrecemos pólizas de soporte técnico mensualizadas, bolsas de horas y esquemas de acompañamiento Partner para empresas. Contamos con técnicos especializados para resolver incidencias de hardware, software y redes, garantizando acuerdos de nivel de servicio (SLA).</p>
+          <a href="soporte.html" class="btn-link">Radicar Ticket de Soporte ❯</a>
+        </div>
+      </div>
+
+      <!-- VENTA DE EQUIPOS Y HARDWARE -->
+      <div class="product-row reverse">
+        <!-- Placeholder para la imagen de equipos tecnológicos que vas a subir -->
+        <div class="product-img-box"><img src="img/3cx.png" alt="Suministro de Hardware"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Suministro Tecnológico</span>
+          <h3>Venta de Hardware & Software</h3>
+          <p>Facilitamos el crecimiento de tu negocio. Al ser partners de los fabricantes más reconocidos, suministramos servidores, computadores corporativos, switches, routers y licenciamiento de software a <b>los mejores precios de distribución</b>, entregando soluciones llave en mano.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Equipamiento ❯</a>
+        </div>
+      </div>
+
+      <!-- MANTENIMIENTO PREVENTIVO Y CORRECTIVO -->
+      <div class="product-row">
+        <!-- Placeholder para mantenimiento -->
+        <div class="product-img-box"><img src="img/cableado-1.jpg" alt="Mantenimiento Preventivo"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Ingeniería y Mantenimiento</span>
+          <h3>Mantenimiento Preventivo & Correctivo</h3>
+          <p>Alargamos la vida útil de tu infraestructura tecnológica. Realizamos limpieza interna de servidores y computadores, actualización de sistemas operativos, optimización de redes, diagnóstico de fallas y reemplazo de componentes defectuosos.</p>
+          <a href="cotizacion.html" class="btn-link">Agendar Mantenimiento ❯</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col-brand">
+        <img src="img/Logo Wh.png" alt="IPTELCO" class="footer-logo-img" onerror="this.src='img/Logo iptelco.png';">
+        <p style="font-size: 0.9rem; color: #94a3b8;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad perimetral y soporte TI.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Nuestras Soluciones</h4>
+        <ul class="footer-links">
+          <li><a href="telefonia-ip.html">📞 Telefonía IP</a></li>
+          <li><a href="ciberseguridad.html">🛡️ Firewalls & SD-WAN</a></li>
+          <li><a href="redes-mikrotik.html">🌐 Redes & MikroTik</a></li>
+          <li><a href="cctv-biometria.html">📹 CCTV & Biometría</a></li>
+          <li><a href="outsourcing-ti.html">💻 Outsourcing & Soporte TI</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => { document.getElementById('iptelco-preloader').classList.add('hidden'); });
+  </script>
+</body>
+</html>
