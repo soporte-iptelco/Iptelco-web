@@ -45,36 +45,23 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* =========================================================
-       AJUSTES PARA LOGO-TRASPARENTE.JPG (GRANDE Y SIN ESTAMPA)
-       ========================================================= */
-    
-    /* LOGO HEADER (ARRIBA) */
+    /* LOGOS CON TRANSPARENCIA REAL (PNG) */
     .brand-logo-img {
-      height: 72px; /* Tamaño grande y destacado */
+      height: 60px;
       width: auto;
       object-fit: contain;
       display: block;
-      mix-blend-mode: screen; /* Elimina fondos oscuros residuales */
-      filter: brightness(1.2) contrast(1.15);
       transition: transform 0.2s ease;
     }
     .brand-logo-img:hover {
       transform: scale(1.03);
     }
 
-    /* LOGO FOOTER (ABAJO) */
-    .footer-logo-container {
-      display: inline-block;
-      mix-blend-mode: screen; /* Fusiona perfectamente sobre la franja oscura */
-    }
-
     .footer-logo-img {
-      height: 110px; /* Tamaño prominente en el pie de página */
+      height: 90px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: brightness(1.25) contrast(1.2);
     }
 
     /* HEADER */
@@ -232,7 +219,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html" class="active">Inicio</a>
@@ -390,9 +377,8 @@
       
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-footer.jpg';">
-          </div>
+          <!-- Usamos logo-wh.png para el pie de página también -->
+          <img src="img/logo-wh.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
