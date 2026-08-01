@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soluciones Cloud, Azure & Microsoft 365 | IPTELCO S.A.S</title>
+  <title>Soluciones Cloud, Azure, QNAP NAS & 365 | IPTELCO S.A.S</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="img/logo-wh.png">
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES GLOBALES */
     :root {
       --bg-dark: #020617;
       --bg-card: rgba(15, 23, 42, 0.85);
@@ -27,511 +26,89 @@
       --border-glow: rgba(139, 92, 246, 0.4);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
-
-    html { 
-      scroll-behavior: smooth; 
-    }
-
-    body { 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: var(--bg-dark); 
-      color: var(--text-main); 
-      line-height: 1.6; 
-      overflow-x: hidden; 
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
     
-    /* FONDO MAGNÉTICO (Tono morado para Cloud) */
-    .glow-bg { 
-      position: fixed; 
-      width: 800px; 
-      height: 800px; 
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); 
-      top: -250px; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      z-index: -1; 
-      pointer-events: none; 
-    }
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
     /* PRELOADER */
-    #iptelco-preloader { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100vw; 
-      height: 100vh; 
-      background: #020617; 
-      z-index: 99999; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      transition: opacity 0.4s ease, visibility 0.4s ease; 
-    }
-    
-    #iptelco-preloader.hidden { 
-      opacity: 0; 
-      visibility: hidden; 
-      pointer-events: none; 
-    }
-    
-    .preloader-content { 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      gap: 15px; 
-    }
-    
-    .preloader-logo-img { 
-      height: 75px; 
-      width: auto; 
-      object-fit: contain; 
-      animation: pulseLogo 1.6s ease-in-out infinite; 
-    }
-    
-    @keyframes pulseLogo { 
-      0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 
-      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); } 
-      100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 
-    }
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-logo-img { height: 75px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7)); } 100% { transform: scale(0.92); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2)); } }
 
     /* HEADER */
-    header { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 12px 6%; 
-      position: sticky; 
-      top: 0; 
-      background: rgba(2, 6, 23, 0.95); 
-      backdrop-filter: blur(16px); 
-      border-bottom: 1px solid var(--border-light); 
-      z-index: 1000; 
-    }
-    
-    .brand-logo-container { 
-      display: flex; 
-      align-items: center; 
-      text-decoration: none; 
-    }
-    
-    .brand-logo-img { 
-      height: 46px; 
-      width: auto; 
-      object-fit: contain; 
-    }
-    
-    nav { 
-      display: flex; 
-      align-items: center; 
-      gap: 20px; 
-    }
-    
-    nav a { 
-      color: var(--text-muted); 
-      text-decoration: none; 
-      font-size: 0.9rem; 
-      font-weight: 600; 
-      transition: color 0.2s; 
-    }
-    
-    nav a:hover, nav a.active { 
-      color: #ffffff; 
-    }
-    
-    .header-actions { 
-      display: flex; 
-      align-items: center; 
-      gap: 12px; 
-    }
-    
-    .btn-soporte { 
-      background: rgba(239, 68, 68, 0.15); 
-      color: #f87171; 
-      border: 1px solid rgba(239, 68, 68, 0.35); 
-      padding: 10px 16px; 
-      border-radius: 8px; 
-      font-size: 0.88rem; 
-      font-weight: 700; 
-      text-decoration: none; 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 6px; 
-      transition: all 0.2s; 
-    }
-    
-    .btn-soporte:hover { 
-      background: rgba(239, 68, 68, 0.28); 
-      color: #ffffff; 
-      border-color: #ef4444; 
-    }
-    
-    .btn-cotizar { 
-      background: linear-gradient(135deg, var(--accent-purple), #4f46e5); 
-      color: #ffffff; 
-      padding: 10px 20px; 
-      border-radius: 8px; 
-      font-size: 0.88rem; 
-      font-weight: 700; 
-      text-decoration: none; 
-      box-shadow: 0 4px 15px var(--accent-glow); 
-      transition: all 0.2s; 
-    }
-    
-    .btn-cotizar:hover { 
-      transform: translateY(-2px); 
-    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
+    .brand-logo-img { height: 46px; width: auto; object-fit: contain; }
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
+    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
+    .btn-cotizar { background: linear-gradient(135deg, var(--accent-purple), #4f46e5); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
+    .btn-cotizar:hover { transform: translateY(-2px); }
 
     /* HERO CLOUD */
-    .hero { 
-      padding: 60px 6% 40px 6%; 
-      max-width: 1300px; 
-      margin: 0 auto; 
-    }
+    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
+    .hero h1 { font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 span { color: var(--accent-purple); }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
     
-    .hero-grid { 
-      display: grid; 
-      grid-template-columns: 1.1fr 0.9fr; 
-      align-items: center; 
-      gap: 40px; 
-    }
-    
-    .hero h1 { 
-      font-size: 3.3rem; 
-      font-weight: 800; 
-      line-height: 1.15; 
-      margin-bottom: 18px; 
-    }
-    
-    .hero h1 span { 
-      color: var(--accent-purple); 
-    }
-    
-    .hero p { 
-      font-size: 1.1rem; 
-      color: var(--text-muted); 
-      margin-bottom: 25px; 
-      line-height: 1.6; 
-    }
-    
-    @keyframes floatAnimationHero { 
-      0% { transform: translateY(0px); } 
-      50% { transform: translateY(-14px); } 
-      100% { transform: translateY(0px); } 
-    }
-    
-    .hero-media-container { 
-      background: #ffffff; 
-      border-radius: 20px; 
-      padding: 25px; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center; 
-      animation: floatAnimationHero 4s ease-in-out infinite; 
-    }
-    
-    .hero-media-container img { 
-      max-width: 100%; 
-      max-height: 320px; 
-      object-fit: contain; 
-    }
+    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; animation: floatAnimationHero 4s ease-in-out infinite; }
+    .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
     /* PRODUCTOS CLOUD (TARJETAS CLIQUEABLES) */
-    .services-section { 
-      padding: 50px 6% 80px 6%; 
-      max-width: 1250px; 
-      margin: 0 auto; 
-    }
-    
-    .category-header-title { 
-      font-size: 1.8rem; 
-      font-weight: 800; 
-      color: var(--accent-purple); 
-      margin: 50px 0 25px 0; 
-      padding-bottom: 10px; 
-      border-bottom: 1px solid var(--border-light); 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-    }
-    
-    .products-showcase { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 35px; 
-    }
+    .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
+    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    .product-row { 
-      display: flex; 
-      align-items: center; 
-      gap: 40px; 
-      background: var(--bg-card); 
-      border: 1px solid var(--border-light); 
-      border-radius: 24px; 
-      padding: 30px; 
-      transition: all 0.35s ease; 
-      position: relative; 
-      cursor: pointer; 
-    }
-    
-    .product-row:hover { 
-      border-color: var(--border-glow); 
-      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); 
-      transform: translateY(-5px); 
-      background: var(--bg-card-hover); 
-    }
-    
-    .product-row.reverse { 
-      flex-direction: row-reverse; 
-    }
+    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; cursor: pointer; }
+    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
+    .product-row.reverse { flex-direction: row-reverse; }
 
-    .product-img-box { 
-      flex: 1; 
-      min-width: 270px; 
-      height: 230px; 
-      background: #ffffff; 
-      border-radius: 16px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      padding: 20px; 
-      overflow: hidden; 
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.05); 
-    }
-    
-    .product-img-box img { 
-      max-width: 100%; 
-      max-height: 100%; 
-      object-fit: contain; 
-      transition: transform 0.4s ease; 
-    }
-    
-    .product-row:hover .product-img-box img { 
-      transform: scale(1.08) rotate(1deg); 
-    }
+    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { 
-      flex: 1.2; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: flex-start; 
-      gap: 10px; 
-    }
-    
-    .product-badge { 
-      font-size: 0.8rem; 
-      font-weight: 700; 
-      color: var(--accent-purple); 
-      text-transform: uppercase; 
-      letter-spacing: 1px; 
-      background: rgba(139, 92, 246, 0.12); 
-      padding: 4px 12px; 
-      border-radius: 20px; 
-      border: 1px solid rgba(139, 92, 246, 0.25); 
-    }
-    
-    .product-info-box h3 { 
-      font-size: 1.65rem; 
-      font-weight: 800; 
-      color: #ffffff; 
-      line-height: 1.25; 
-    }
-    
-    .product-info-box p { 
-      font-size: 0.95rem; 
-      color: var(--text-muted); 
-      line-height: 1.6; 
-    }
-    
-    .btn-link { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 8px; 
-      color: var(--accent-purple); 
-      font-weight: 700; 
-      text-decoration: none; 
-      font-size: 0.95rem; 
-      margin-top: 4px; 
-      transition: gap 0.2s; 
-    }
-    
-    .btn-link:hover { 
-      gap: 12px; 
-      color: #a78bfa; 
-    }
-    
-    .btn-link::after { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      right: 0; 
-      bottom: 0; 
-      left: 0; 
-      z-index: 10; 
-      border-radius: 24px; 
-    }
+    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 1px; background: rgba(139, 92, 246, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(139, 92, 246, 0.25); }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-purple); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s; }
+    .btn-link:hover { gap: 12px; color: #a78bfa; }
+    .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
     /* FOOTER */
-    footer { 
-      background: rgba(15, 23, 42, 0.95); 
-      border-top: 1px solid var(--border-light); 
-      padding: 60px 6% 30px 6%; 
-      color: var(--text-muted); 
-      font-size: 0.9rem; 
-    }
-    
-    .footer-grid { 
-      display: grid; 
-      grid-template-columns: 1.4fr 1.1fr 1fr; 
-      gap: 40px; 
-      max-width: 1250px; 
-      margin: 0 auto 40px auto; 
-    }
-    
-    .footer-col-brand { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 16px; 
-    }
-    
-    .footer-logo-img { 
-      height: 50px; 
-      width: auto; 
-      object-fit: contain; 
-    }
-    
-    .footer-col h4 { 
-      color: #ffffff; 
-      font-size: 1.05rem; 
-      font-weight: 800; 
-      margin-bottom: 18px; 
-      position: relative; 
-      padding-bottom: 8px; 
-    }
-    
-    .footer-col h4::after { 
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      width: 35px; 
-      height: 2px; 
-      background: var(--accent-blue); 
-      border-radius: 2px; 
-    }
-    
-    .footer-links { 
-      list-style: none; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 10px; 
-    }
-    
-    .footer-links a { 
-      color: var(--text-muted); 
-      text-decoration: none; 
-      transition: color 0.2s; 
-      font-weight: 500; 
-    }
-    
-    .footer-links a:hover { 
-      color: #ffffff; 
-    }
+    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
+    .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-logo-img { height: 50px; width: auto; object-fit: contain; }
+    .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
+    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-blue); border-radius: 2px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
+    .footer-links a:hover { color: #ffffff; }
 
     /* WIDGET WHATSAPP */
-    .whatsapp-widget { 
-      position: fixed; 
-      bottom: 35px; 
-      right: 35px; 
-      z-index: 99990; 
-      display: flex; 
-      align-items: center; 
-      text-decoration: none; 
-      animation: floatWidget 4s ease-in-out infinite; 
-    }
-    
-    @keyframes floatWidget { 
-      0% { transform: translateY(0px); } 
-      50% { transform: translateY(-8px); } 
-      100% { transform: translateY(0px); } 
-    }
-    
-    .wa-avatar-box { 
-      width: 72px; 
-      height: 72px; 
-      border-radius: 50%; 
-      border: 3px solid var(--accent-blue); 
-      background: #ffffff; 
-      position: relative; 
-      z-index: 2; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      overflow: hidden; 
-    }
-    
-    .wa-avatar-box img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-    }
-    
-    .wa-icon-badge { 
-      position: absolute; 
-      bottom: -2px; 
-      right: -4px; 
-      width: 28px; 
-      height: 28px; 
-      background: #25D366; 
-      border-radius: 50%; 
-      border: 3px solid #020617; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
-    }
-    
-    .wa-banner { 
-      background: linear-gradient(135deg, #1e293b, var(--accent-blue)); 
-      color: #ffffff; 
-      padding: 12px 24px 12px 42px; 
-      border-radius: 0 30px 30px 0; 
-      font-size: 0.9rem; 
-      line-height: 1.3; 
-      margin-left: -32px; 
-      z-index: 1; 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-      border: 1px solid rgba(255,255,255,0.1); 
-      border-left: none; 
-      transition: all 0.3s ease; 
-      white-space: nowrap; 
-    }
-    
-    .whatsapp-widget:hover .wa-banner { 
-      background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); 
-      transform: translateX(6px); 
-    }
+    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); transform: translateX(6px); }
 
-    @media (max-width: 900px) { 
-      .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
-      .product-row, .product-row.reverse { flex-direction: column; } 
-      nav { display: none; } 
-      .whatsapp-widget { bottom: 20px; right: 20px; } 
-      .wa-avatar-box { width: 62px; height: 62px; } 
-      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
-    }
+    @media (max-width: 900px) { .hero-grid, .footer-grid { grid-template-columns: 1fr; } .product-row, .product-row.reverse { flex-direction: column; } nav { display: none; } .whatsapp-widget { bottom: 20px; right: 20px; } .wa-avatar-box { width: 62px; height: 62px; } .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <img src="img/logo-wh.png" alt="IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
@@ -546,6 +123,7 @@
       <img src="img/logo-wh.png" alt="IPTELCO S.A.S" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.png';">
     </a>
     <nav>
+      <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
       <a href="redes-mikrotik.html">Redes</a>
@@ -563,30 +141,43 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <span style="color: var(--accent-purple); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Transformación Digital Corporativa</span>
+        <span style="color: var(--accent-purple); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Transformación Digital & Nube Privada</span>
         <h1 style="margin-top: 10px;">Infraestructura y Productividad en la <span>Nube</span></h1>
-        <p>Acelera el crecimiento de tu empresa migrando a entornos cloud seguros y escalables. Ofrecemos licenciamiento, migración y soporte especializado en plataformas líderes mundiales.</p>
+        <p>Acelera la transformación de tu empresa migrando a entornos cloud públicos y privados. Ofrecemos licenciamiento Microsoft 365, máquinas virtuales en Azure y servidores NAS QNAP de alta disponibilidad.</p>
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Migración Cloud</a>
         </div>
       </div>
       <div class="hero-media-container">
-        <!-- IMAGEN EXACTA DE TU CARPETA IMG -->
-        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO">
+        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CLOUD (Tarjetas Cliqueables) -->
+  <!-- CATÁLOGO CLOUD COMPLETO (3 TARJETAS) -->
   <section class="services-section">
-    <div class="category-header-title">☁️ Licenciamiento & Infraestructura como Servicio</div>
+    <div class="category-header-title">☁️ Servidores Cloud, NAS & Licenciamiento Corporativo</div>
     <div class="products-showcase">
       
-      <!-- MICROSOFT 365 -->
+      <!-- 1. SERVIDORES NAS QNAP (UBICADO AQUÍ SEGÚN TU SOLICITUD) -->
       <div class="product-row">
-        <!-- IMAGEN EXACTA DE TU CARPETA IMG -->
-        <div class="product-img-box"><img src="img/offices-365.png" alt="Microsoft Office 365"></div>
+        <div class="product-img-box">
+          <img src="img/qnap.png" alt="Servidores de Almacenamiento NAS QNAP" onerror="this.onerror=null; this.src='img/nas2.png';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento Empresarial</span>
+          <h3>Servidores de Almacenamiento NAS QNAP</h3>
+          <p>Centralización de archivos, nube privada local y copias de seguridad automatizadas para empresas. Protección RAID contra pérdida de datos, sincronización remota y almacenamiento seguro para redes corporativas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Servidores NAS QNAP ❯</a>
+        </div>
+      </div>
+
+      <!-- 2. MICROSOFT 365 -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/365.png';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
           <h3>Microsoft Office 365 Corporativo</h3>
@@ -595,10 +186,11 @@
         </div>
       </div>
 
-      <!-- MICROSOFT AZURE -->
-      <div class="product-row reverse">
-        <!-- IMAGEN EXACTA DE TU CARPETA IMG -->
-        <div class="product-img-box"><img src="img/azure.jpg" alt="Microsoft Azure Cloud"></div>
+      <!-- 3. MICROSOFT AZURE -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/azure.jpg" alt="Microsoft Azure Cloud">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">IaaS & PaaS</span>
           <h3>Servidores Virtuales Microsoft Azure</h3>
@@ -610,7 +202,7 @@
     </div>
   </section>
 
-  <!-- FOOTER ORGANIZADO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
@@ -632,7 +224,7 @@
     </div>
   </footer>
 
-  <!-- WIDGET WHATSAPP ANIMADO -->
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box">
       <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
@@ -644,22 +236,14 @@
   </a>
 
   <script>
-    window.addEventListener('load', () => { 
-      setTimeout(() => document.getElementById('iptelco-preloader').classList.add('hidden'), 1000); 
-    });
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href]').forEach(link => {
-        const url = link.getAttribute('href');
-        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('iptelco-preloader').classList.remove('hidden');
-            setTimeout(() => { window.location.href = url; }, 350);
-          });
-        }
-      });
-    });
+    function ocultarPreloader() {
+      const preloader = document.getElementById('iptelco-preloader');
+      if (preloader) {
+        preloader.classList.add('hidden');
+      }
+    }
+    window.addEventListener('load', ocultarPreloader);
+    setTimeout(ocultarPreloader, 400);
   </script>
 </body>
 </html>
