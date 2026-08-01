@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ciberseguridad, Firewalls, VPN & ESET | IPTELCO S.A.S</title>
 
-  <!-- FAVICON SVG INSTANTÁNEO (ELIMINA EL BUCLE DE CARGA EN LA PESTAÑA) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M10 30 Q 30 10 50 30 T 90 30' stroke='%233b82f6' stroke-width='6' fill='none'/><circle cx='50' cy='30' r='6' fill='%2306b6d4'/></svg>">
+  <!-- FAVICON SVG GENÉRICO SOLO PARA LA PESTAÑA PARA QUE NO SE QUEDE CARGANDO -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><circle cx='30' cy='30' r='20' fill='%233b82f6'/></svg>">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* PRELOADER 100% CSS PURO - IMPOSIBLE DE BLOQUEAR LA PESTAÑA */
+    /* PRELOADER CSS - PANTALLA INSTANTÁNEA */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; 
@@ -41,8 +41,18 @@
     }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
+    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+    
+    /* ESTILO PARA EL LOGO OFICIAL EN PRELOADER */
+    .preloader-logo-img { height: 60px; width: auto; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.95); } 50% { transform: scale(1.05); } 100% { transform: scale(0.95); } }
+
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
+    
+    /* ESTILO PARA EL LOGO OFICIAL EN HEADER */
+    .brand-logo-img { height: 48px; width: auto; object-fit: contain; }
+
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
@@ -106,24 +116,18 @@
 </head>
 <body>
 
+  <!-- PRELOADER CON LOGO OFICIAL -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-        <text x="100" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff">IPTELCO</text>
-      </svg>
+      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo.png';">
     </div>
   </div>
   <div class="glow-bg"></div>
 
+  <!-- HEADER CON LOGO OFICIAL EN LUGAR DE SVG -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-      </svg>
-      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+      <img src="img/logo-wh.png" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo.png';">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -196,15 +200,12 @@
     </div>
   </section>
 
+  <!-- FOOTER CON LOGO OFICIAL EN LUGAR DE SVG -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-            <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-            <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-          </svg>
-          <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+          <img src="img/logo-wh.png" alt="IPTELCO Logo" style="height: 48px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='img/logo.png';">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
