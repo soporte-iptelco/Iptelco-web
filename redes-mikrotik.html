@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redes, MikroTik, Aruba & Cableado | IPTELCO S.A.S</title>
 
-  <!-- FAVICON EN CÓDIGO SVG (CARGA INSTANTÁNEA, CERO ESPERA) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M10 30 Q 30 10 50 30 T 90 30' stroke='%233b82f6' stroke-width='6' fill='none'/><circle cx='50' cy='30' r='6' fill='%2306b6d4'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,17 +30,12 @@
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* PRELOADER ANTI-BLOQUEO */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; 
       animation: fadeOutPreloader 0.3s ease 0.1s forwards; pointer-events: none; 
     }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
-    
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
@@ -91,7 +85,7 @@
     .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
     .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-cyan); border-radius: 2px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: #ffffff; }
 
     .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; text-decoration: none; }
@@ -105,11 +99,17 @@
     .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; }
     .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; border: 1px solid rgba(255,255,255,0.1); border-left: none; white-space: nowrap; }
 
-    @media (max-width: 900px) { .hero-grid, .footer-grid { grid-template-columns: 1fr; } .product-row, .product-row.reverse { flex-direction: column; } nav { display: none; } }
+    @media (max-width: 900px) {
+      .footer-grid, .hero-grid { grid-template-columns: 1fr; }
+      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100%; height: 200px; }
+      nav { display: none; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- PRELOADER EN CSS PURO (IMPOSIBLE DE QUEDARSE CONGELADO) -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
@@ -119,8 +119,10 @@
       </svg>
     </div>
   </div>
+
   <div class="glow-bg"></div>
 
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
@@ -144,25 +146,32 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">MikroTik RouterOS & Conmutación Layer 2/3</span>
         <h1 style="margin-top: 10px;">Redes Empresariales, VLANs & <span>Balanceo PCC</span></h1>
-        <p>Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, switches administrables Aruba Enterprise, Access Points Ubiquiti y certificación de cableado Cat 6/6A.</p>
+        <p>
+          Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, switches administrables Aruba Enterprise, Access Points Ubiquiti y certificación de cableado Cat 6/6A.
+        </p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Levantamiento Técnico</a>
         </div>
       </div>
-      <div class="hero-media-container"><img src="img/mikrotik.jpg" alt="MikroTik RouterOS IPTELCO" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+      <div class="hero-media-container">
+        <img src="img/mikrotik.jpg" alt="MikroTik RouterOS IPTELCO">
+      </div>
     </div>
   </section>
 
+  <!-- CATÁLOGOS CON LA IMAGEN DE CERTIFICACIÓN -->
   <section class="services-section">
+
     <div class="category-header-title">🎛️ Enrutamiento MikroTik & Switches Aruba</div>
     <div class="products-showcase">
       <div class="product-row">
-        <div class="product-img-box"><img src="img/mikrotik.jpg" alt="MikroTik RouterOS" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+        <div class="product-img-box"><img src="img/mikrotik.jpg" alt="MikroTik RouterOS"></div>
         <div class="product-info-box">
           <span class="product-badge">RouterOS Enterprise</span>
           <h3>MikroTik RouterOS & Balanceo PCC Multienlace</h3>
@@ -171,7 +180,7 @@
         </div>
       </div>
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/sw-aruba.jpg" alt="Switches Aruba Enterprise" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+        <div class="product-img-box"><img src="img/sw-aruba.jpg" alt="Switches Aruba Enterprise"></div>
         <div class="product-info-box">
           <span class="product-badge">Conmutación Layer 2/3</span>
           <h3>Switches Administrables Aruba Enterprise</h3>
@@ -184,7 +193,7 @@
     <div class="category-header-title" style="margin-top: 80px;">📶 Wi-Fi Corporativo & Consola Cloud</div>
     <div class="products-showcase">
       <div class="product-row">
-        <div class="product-img-box"><img src="img/Aruba-ap.png" alt="Aruba Access Points" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+        <div class="product-img-box"><img src="img/Aruba-ap.png" alt="Aruba Access Points"></div>
         <div class="product-info-box">
           <span class="product-badge">Wi-Fi 6 Enterprise</span>
           <h3>Access Points Aruba Wi-Fi 6 & Instant On</h3>
@@ -193,7 +202,7 @@
         </div>
       </div>
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/ubiquiti-unifi-access-points.jpg" alt="Ubiquiti UniFi APs" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+        <div class="product-img-box"><img src="img/ubiquiti-unifi-access-points.jpg" alt="Ubiquiti UniFi APs"></div>
         <div class="product-info-box">
           <span class="product-badge">Wi-Fi Corporativo</span>
           <h3>Access Points Ubiquiti UniFi & Mesh</h3>
@@ -202,7 +211,7 @@
         </div>
       </div>
       <div class="product-row">
-        <div class="product-img-box"><img src="img/consola-ap.png" alt="Consola de Gestión AP Cloud" onerror="this.onerror=null; this.src='img/cableado-1.jpg';"></div>
+        <div class="product-img-box"><img src="img/consola-ap.png" alt="Consola de Gestión AP Cloud"></div>
         <div class="product-info-box">
           <span class="product-badge">Monitoreo & Control</span>
           <h3>Consola Centralizada de Gestión AP Cloud</h3>
@@ -224,10 +233,11 @@
         </div>
       </div>
       
-      <!-- CORREGIDO CON NOMBRE EXACTO CON 'C' MAYÚSULA Y RESPALDO AUTOMÁTICO -->
+      <!-- ACTUALIZADA LA IMAGEN DE CERTIFICACIÓN A LA QUE SUBISTE HOY -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/Certificado-punto-red.png" alt="Certificación de Puntos" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
+          <!-- OJO AQUÍ ESTÁ LA NUEVA IMAGEN QUE SUBISTE -->
+          <img src="img/certificado-de-puntos.png" alt="Certificación y Marquillado de Puntos" onerror="this.onerror=null; this.src='img/cableado-1.jpg';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Certificación de Redes</span>
@@ -240,6 +250,7 @@
 
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
@@ -250,14 +261,28 @@
           </svg>
           <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
-        <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+          Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.
+        </p>
+        <div class="address-card">
+          📍 <b>Oficina Principal:</b><br>
+          Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
+        </div>
       </div>
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
-        <a href="https://wa.me/573178737171" target="_blank" class="contact-item"><div class="contact-icon-box">💬</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div></a>
-        <a href="mailto:info@iptelco.com.co" class="contact-item"><div class="contact-icon-box">✉️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div></a>
-        <a href="soporte.html" class="contact-item"><div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div></a>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
+          <div class="contact-icon-box">💬</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+        </a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item">
+          <div class="contact-icon-box">✉️</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+        </a>
+        <a href="soporte.html" class="contact-item">
+          <div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div>
+          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
+        </a>
       </div>
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
@@ -270,18 +295,20 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
+    <div class="footer-bottom">
+      <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
+      <div style="color: #64748b;">Bogotá, Colombia</div>
+    </div>
   </footer>
 
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
-    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+    <div class="wa-avatar-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora Comercial IPTELCO">
+      <div class="wa-icon-badge">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <script>
-    function ocultarPreloader() { const p = document.getElementById('iptelco-preloader'); if (p) p.classList.add('hidden'); }
-    document.addEventListener('DOMContentLoaded', ocultarPreloader);
-  </script>
 </body>
 </html>
