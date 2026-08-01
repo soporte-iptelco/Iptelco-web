@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
-  <!-- FAVICON SVG OFICIAL IPTELCO (NATIVO EN PESTAÑA - NUNCA SE ROMPE) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 45 C35 20, 65 20, 80 45' stroke='%2306b6d4' stroke-width='10' stroke-linecap='round' fill='none'/><path d='M32 58 C42 42, 58 42, 68 58' stroke='%233b82f6' stroke-width='8' stroke-linecap='round' fill='none'/><path d='M10 75 Q 50 62 90 75' stroke='%231d4ed8' stroke-width='5' fill='none'/><circle cx='50' cy='68' r='7' fill='%2306b6d4'/></svg>">
+  <!-- FAVICON SVG FIEL AL LOGO REAL DE IPTELCO -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='favG' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%2306b6d4'/><stop offset='60%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%231d4ed8'/></linearGradient></defs><path d='M25 55 C20 30, 42 12, 65 15 C 88 18, 92 40, 75 55 C 60 70, 42 62, 38 50 C 35 38, 48 28, 62 32' stroke='url(%23favG)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/><path d='M10 82 Q 50 68 90 82' stroke='%231d4ed8' stroke-width='5' fill='none'/><circle cx='50' cy='75' r='7' fill='%2306b6d4'/></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,12 +55,12 @@
     /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 6%; position: sticky; top: 0;
+      padding: 12px 6%; position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
     }
 
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -202,29 +202,45 @@
 </head>
 <body>
 
-  <!-- PRELOADER CON VECTOR OFICIAL DE IPTELCO -->
+  <!-- DEFINICIÓN DE DEGRADADOS VECTORIALES OFICIALES IPTELCO -->
+  <svg style="width:0; height:0; position:absolute;">
+    <defs>
+      <linearGradient id="iptelcoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#06b6d4" />
+        <stop offset="60%" stop-color="#3b82f6" />
+        <stop offset="100%" stop-color="#1d4ed8" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- PRELOADER CON LOGO OFICIAL IPTELCO RECONSTRUIDO -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg width="180" height="60" viewBox="0 0 220 70" fill="none">
-        <path d="M20 38 C35 15, 65 15, 80 38" stroke="#06b6d4" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <path d="M30 48 C40 32, 60 32, 70 48" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M10 60 Q 50 48 90 60" stroke="#1d4ed8" stroke-width="4" fill="none"/>
-        <circle cx="50" cy="54" r="5" fill="#06b6d4"/>
-        <text x="100" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff" letter-spacing="1">IPTELCO</text>
+      <svg width="200" height="70" viewBox="0 0 240 80" fill="none">
+        <!-- Listón / Bucle de Señal Plegado IPTELCO -->
+        <path d="M 30 60 C 22 30, 48 10, 75 14 C 102 18, 108 42, 85 58 C 68 72, 48 64, 44 50 C 40 36, 54 25, 70 30" stroke="url(#iptelcoGrad)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Arco del Horizonte -->
+        <path d="M 12 90 Q 60 74 108 90" stroke="#1d4ed8" stroke-width="5" fill="none"/>
+        <!-- Nodo Central -->
+        <circle cx="60" cy="82" r="7" fill="#06b6d4"/>
+        <text x="118" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="30" fill="#ffffff" letter-spacing="1">IPTELCO</text>
       </svg>
     </div>
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO VECTORIAL IPTELCO (NUNCA SE ROMPE, NUNCA MUESTRA MARCO) -->
+  <!-- HEADER CON LOGO RECONSTRUIDO FIEL AL ORIGINAL -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="170" height="52" viewBox="0 0 220 70" fill="none">
-        <path d="M20 38 C35 15, 65 15, 80 38" stroke="#06b6d4" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <path d="M30 48 C40 32, 60 32, 70 48" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M10 60 Q 50 48 90 60" stroke="#1d4ed8" stroke-width="4" fill="none"/>
-        <circle cx="50" cy="54" r="5" fill="#06b6d4"/>
-        <text x="100" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff" letter-spacing="1">IPTELCO</text>
+      <svg width="190" height="55" viewBox="0 0 240 75" fill="none">
+        <!-- Listón / Bucle de Señal Plegado -->
+        <path d="M 28 50 C 20 24, 44 8, 70 11 C 94 14, 100 36, 78 50 C 62 62, 44 55, 40 43 C 36 30, 48 20, 62 25" stroke="url(#iptelcoGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Arco del Horizonte -->
+        <path d="M 10 74 Q 55 60 100 74" stroke="#1d4ed8" stroke-width="4" fill="none"/>
+        <!-- Nodo Central -->
+        <circle cx="55" cy="67" r="6" fill="#06b6d4"/>
+        <!-- Texto IPTELCO -->
+        <text x="110" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="29" fill="#ffffff" letter-spacing="1">IPTELCO</text>
       </svg>
     </a>
     <nav>
@@ -377,19 +393,23 @@
     </div>
   </section>
 
-  <!-- FOOTER CON LOGO COMPLETO Y ELEGANTE (SIN FONDOS NI BORDES FEOS) -->
+  <!-- FOOTER CON LOGO VERTICAL APILADO OFICIAL (LISTÓN + IPTELCO + IP TELEFONÍA Y COMUNICACIONES) -->
   <footer>
     <div class="footer-grid">
       
       <div class="footer-col-brand">
         <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <svg width="240" height="80" viewBox="0 0 280 90" fill="none">
-            <path d="M20 42 C40 15, 80 15, 100 42" stroke="#06b6d4" stroke-width="8" stroke-linecap="round" fill="none"/>
-            <path d="M35 54 C48 35, 72 35, 85 54" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" fill="none"/>
-            <path d="M10 68 Q 60 54 110 68" stroke="#1d4ed8" stroke-width="5" fill="none"/>
-            <circle cx="60" cy="61" r="6" fill="#06b6d4"/>
-            <text x="125" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="32" fill="#ffffff" letter-spacing="1">IPTELCO</text>
-            <text x="126" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#94a3b8" letter-spacing="0.5">IP Telefonía y Comunicaciones</text>
+          <svg width="260" height="110" viewBox="0 0 280 120" fill="none">
+            <!-- Listón / Bucle de Señal Plegado de IPTELCO -->
+            <path d="M 98 48 C 88 20, 120 4, 148 7 C 174 10, 182 34, 158 48 C 140 60, 120 52, 115 40 C 110 26, 124 16, 138 22" stroke="url(#iptelcoGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Arco del Horizonte -->
+            <path d="M 30 75 Q 140 60 250 75" stroke="#1d4ed8" stroke-width="5" fill="none"/>
+            <!-- Nodo Central -->
+            <circle cx="140" cy="67.5" r="7.5" fill="#06b6d4"/>
+            <!-- Nombre IPTELCO -->
+            <text x="140" y="98" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="2">IPTELCO</text>
+            <!-- Subtítulo IP Telefonía y Comunicaciones -->
+            <text x="140" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="0.5">IP Telefonía y Comunicaciones</text>
           </svg>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
