@@ -32,7 +32,13 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
     /* PRELOADER 100% CSS PURO */
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.5s ease 0.6s forwards; pointer-events: none; }
+    #iptelco-preloader { 
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+      background: #020617; z-index: 99999; 
+      display: flex; align-items: center; justify-content: center; 
+      animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
+      pointer-events: none; 
+    }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
@@ -74,36 +80,58 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* ESTRUCTURA DE FILAS LARGAS INTERCALADAS */
+    /* CATÁLOGO CCTV EN FILAS ANCHAS INTERCALADAS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
+    /* FILA HORIZONTAL ESTRICTA LADO A LADO */
     .product-row { 
-      display: flex; align-items: center; gap: 40px; 
-      background: var(--bg-card); border: 1px solid var(--border-light); 
-      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; 
+      display: flex; 
+      flex-direction: row !important; /* Fuerza diseño horizontal */
+      align-items: center; 
+      gap: 40px; 
+      background: var(--bg-card); 
+      border: 1px solid var(--border-light); 
+      border-radius: 24px; 
+      padding: 35px; 
+      transition: all 0.35s ease; 
+      position: relative; 
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
-    .product-row.reverse { flex-direction: row-reverse; }
+    
+    /* FILA REVERSA */
+    .product-row.reverse { 
+      flex-direction: row-reverse !important; 
+    }
 
+    /* CAJA DE IMAGEN FIJA A UN COSTADO */
     .product-img-box { 
-      flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; 
-      display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; 
+      width: 320px !important; 
+      min-width: 320px !important; 
+      height: 230px !important; 
+      background: #ffffff; 
+      border-radius: 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+      overflow: hidden; 
+      flex-shrink: 0 !important; /* Impide que la imagen se estire */
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
     
     .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 5px; }
-    .features-list li { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
-    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; }
+    .features-list li { font-size: 0.95rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px; }
+    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem; }
     
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
@@ -120,7 +148,7 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* REGLA DEFINITIVA PARA TAMAÑO DEL AVATAR DE WHATSAPP */
+    /* WIDGET WHATSAPP CONTROLADO */
     .whatsapp-widget { 
       position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
       display: flex; align-items: center; text-decoration: none; 
@@ -150,8 +178,8 @@
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
-      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
-      .product-img-box { width: 100%; height: 200px; }
+      .product-row, .product-row.reverse { flex-direction: column !important; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100% !important; min-width: 100% !important; height: 200px !important; }
       nav { display: none; } 
       .wa-banner { display: none; }
     }
@@ -159,7 +187,7 @@
 </head>
 <body>
 
-  <!-- PRELOADER CSS PURO CON LOGO REAL -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
@@ -200,19 +228,22 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO">
+        <!-- Respaldo a logo IPTELCO en caso de faltar imagen -->
+        <img src="img/video-vigilancia.jpg" alt="CCTV IPTELCO" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CCTV COMPLETO (6 PRODUCTOS) EN FILAS ANCHAS INTERCALADAS -->
+  <!-- CATÁLOGO CCTV COMPLETO (SÓLO TUS 4 PRODUCTOS ORIGINALES) -->
   <section class="services-section">
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
       
       <!-- 1. CAMARAS IP -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
+        <div class="product-img-box">
+          <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">Sistemas de CCTV IP</span>
           <h3>Cámaras IP, PTZ & Grabadores NVR</h3>
@@ -228,7 +259,9 @@
 
       <!-- 2. BIOMETRIA ZKTECO (REVERSE) -->
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
+        <div class="product-img-box">
+          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">Biometría Inteligente</span>
           <h3>Terminales ZKTeco & Software BioTime</h3>
@@ -244,7 +277,9 @@
 
       <!-- 3. TORNIQUETES Y ELECTROIMANES -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/3063/3063162.png';"></div>
+        <div class="product-img-box">
+          <img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">Acceso Físico</span>
           <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
@@ -260,7 +295,9 @@
 
       <!-- 4. ALARMAS DE INTRUSION (REVERSE) -->
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/1055/1055183.png';"></div>
+        <div class="product-img-box">
+          <img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+        </div>
         <div class="product-info-box">
           <span class="product-badge">Detección de Intrusos</span>
           <h3>Sistemas de Alarma & Sensores de Movimiento</h3>
@@ -271,38 +308,6 @@
             <li>Sirenas de alta potencia y respaldo de batería.</li>
           </ul>
           <a href="cotizacion.html" class="btn-link">Cotizar Alarmas ❯</a>
-        </div>
-      </div>
-
-      <!-- 5. VIDEOPORTEROS Y CITOFONÍA -->
-      <div class="product-row">
-        <div class="product-img-box"><img src="img/videoporteros.jpg" alt="Videoporteros IP" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/6124/6124560.png';"></div>
-        <div class="product-info-box">
-          <span class="product-badge">Control de Visitantes</span>
-          <h3>Videoporteros & Citofonía IP</h3>
-          <p>Sistemas modernos de comunicación para edificios y oficinas. Permite visualizar, atender y abrir puertas remotamente desde pantallas táctiles o smartphones.</p>
-          <ul class="features-list">
-            <li>Llamadas directas a celulares mediante App móvil.</li>
-            <li>Integración con el sistema de cámaras CCTV.</li>
-            <li>Apertura de puertas a distancia y registro fotográfico.</li>
-          </ul>
-          <a href="cotizacion.html" class="btn-link">Cotizar Citofonía ❯</a>
-        </div>
-      </div>
-
-      <!-- 6. DETECCIÓN DE INCENDIOS (REVERSE) -->
-      <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/incendios.jpg" alt="Detección de Incendios" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/932/932087.png';"></div>
-        <div class="product-info-box">
-          <span class="product-badge">Seguridad Industrial</span>
-          <h3>Sistemas de Detección de Incendio</h3>
-          <p>Protección preventiva con paneles de incendio, detectores de humo, sensores de temperatura y estaciones manuales bajo normativa vigente.</p>
-          <ul class="features-list">
-            <li>Paneles direccionables para identificar el punto exacto de la alerta.</li>
-            <li>Sirenas estroboscópicas de alta visibilidad y decibelaje.</li>
-            <li>Sistemas interconectados con centros de monitoreo corporativo.</li>
-          </ul>
-          <a href="cotizacion.html" class="btn-link">Cotizar Detección ❯</a>
         </div>
       </div>
 
