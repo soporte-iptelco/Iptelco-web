@@ -86,28 +86,29 @@
     .product-row { 
       display: flex; flex-direction: row !important; align-items: center; gap: 40px; 
       background: var(--bg-card); border: 1px solid var(--border-light); 
-      border-radius: 24px; padding: 35px; transition: all 0.35s ease; 
+      border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; 
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px var(--accent-glow); transform: translateY(-5px); background: var(--bg-card-hover); }
     .product-row.reverse { flex-direction: row-reverse !important; }
 
     .product-img-box { 
-      width: 340px !important; min-width: 340px !important; height: 230px !important; 
+      width: 320px !important; min-width: 320px !important; height: 220px !important; 
       background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
       padding: 20px; overflow: hidden; flex-shrink: 0 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
-    .product-row:hover .product-img-box img { transform: scale(1.06); }
+    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
     .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-info-box h3 { font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 5px; }
-    .product-info-box p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+    .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
 
-    .features-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
-    .features-list li { font-size: 0.95rem; color: #cbd5e1; display: flex; align-items: center; gap: 10px; }
-    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem; }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 5px; }
+    .features-list li { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
+    .features-list li::before { content: "✓"; color: var(--accent-cyan); font-weight: 800; }
 
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 1rem; margin-top: 10px; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
     .btn-link:hover { gap: 12px; color: #60a5fa; }
 
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
@@ -175,7 +176,6 @@
 
         <div class="partner-badges-bar">
           <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; width: 100%;">Partner Certificado:</span>
-          <!-- Nombres exactos de tu repo -->
           <div class="partner-badge-card"><img src="img/3cx-parner.png" alt="3CX Partner"></div>
           <div class="partner-badge-card"><img src="img/3cx-avanced.png" alt="3CX Advanced Engineer"></div>
           <div class="partner-badge-card"><img src="img/3cx-PBX.png" alt="3CX PBX System"></div>
@@ -183,23 +183,22 @@
       </div>
 
       <div class="hero-media-container">
-        <!-- Nombres exactos de tu repo -->
         <img src="img/3cx.png" alt="3CX App IPTELCO">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO TELEFONÍA SIN CATEGORÍAS -->
   <section class="services-section">
     <div class="category-header-title">📞 Plataformas & Conmutación Telefónica</div>
     <div class="products-showcase">
 
-      <!-- 1. 3CX (Ruta exacta: 3cx.png) -->
+      <!-- 1. 3CX -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/3cx.png" alt="Central Telefónica 3CX">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Licenciamiento 3CX</span>
           <h3>Centrales Telefónicas 3CX Enterprise</h3>
           <p>La solución de Comunicaciones Unificadas más potente del mercado. Integra llamadas, chat en vivo, videoconferencias HD y respuesta por voz interactiva (IVR).</p>
           <ul class="features-list">
@@ -212,12 +211,13 @@
         </div>
       </div>
 
-      <!-- 2. WOLKVOX (Ruta exacta: wolkvox.jpg) -->
+      <!-- 2. WOLKVOX -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/wolkvox.jpg" alt="Wolkvox Contact Center Cloud">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Call Center Omnicanal Cloud</span>
           <h3>Wolkvox Contact Center & CRM Cloud</h3>
           <p>Plataforma de Call Center 100% en la nube para empresas con operaciones comerciales y de servicio al cliente exigentes. Gestiona llamadas entrantes/salientes y mensajería en un solo lugar.</p>
           <ul class="features-list">
@@ -230,12 +230,13 @@
         </div>
       </div>
 
-      <!-- 3. ISSABEL (Ruta exacta: Issabel-2.png) -->
+      <!-- 3. ISSABEL -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/Issabel-2.png" alt="Servidores Issabel PBX">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Open Source PBX</span>
           <h3>Servidores Telefónicos Issabel PBX</h3>
           <p>Instalación y mantenimiento experto de servidores telefónicos de código abierto Issabel. Conmutación corporativa robusta para empresas con alto tráfico de llamadas.</p>
           <ul class="features-list">
@@ -248,12 +249,13 @@
         </div>
       </div>
 
-      <!-- 4. FIDELITY (Ruta exacta: fidelity.jpg) -->
+      <!-- 4. FIDELITY -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/fidelity.jpg" alt="Plataforma Fidelity">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Plataforma Fidelity</span>
           <h3>Centrales Telefónicas Fidelity</h3>
           <p>Soluciones de comunicaciones unificadas de alto rendimiento con la plataforma Fidelity. Ideal para entornos corporativos y hoteleros que requieren integraciones avanzadas.</p>
           <ul class="features-list">
@@ -266,12 +268,13 @@
         </div>
       </div>
 
-      <!-- 5. TELÉFONOS IP & SOFTPHONES (Ruta exacta: softphone.png) -->
+      <!-- 5. TELÉFONOS IP (Ruta exacta apuntando a tu nueva imagen) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/softphone.png" alt="Teléfonos IP Yealink & Softphones">
+          <img src="img/telefonos-ip.png" alt="Teléfonos IP Corporativos & Gateways VoIP">
         </div>
         <div class="product-info-box">
+          <span class="product-badge">Hardware Telefónico</span>
           <h3>Teléfonos IP Corporativos & Gateways VoIP</h3>
           <p>Suministro, aprovisionamiento e instalación de teléfonos de escritorio, audioconferencias para salas de juntas y gateways FXS/FXO de marcas líderes como Yealink, Grandstream y Fanvil.</p>
           <ul class="features-list">
