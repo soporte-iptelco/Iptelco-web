@@ -30,7 +30,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER 100% CSS (Imposible que se quede bloqueada la pantalla) */
+    /* PRELOADER 100% CSS PURO (NO BLOQUEA LA PANTALLA) */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -39,7 +39,7 @@
       pointer-events: none; 
     }
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
@@ -79,25 +79,55 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* CATÁLOGO CLOUD (FILAS INTERCALADAS) */
+    /* CATÁLOGO CLOUD EN FILAS ANCHAS INTERCALADAS HORIZONTALES */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    .product-row { display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 30px; transition: all 0.35s ease; position: relative; }
+    /* FILA HORIZONTAL STRICTA */
+    .product-row { 
+      display: flex; 
+      flex-direction: row !important; /* Fuerza diseño horizontal (lado a lado) */
+      align-items: center; 
+      gap: 40px; 
+      background: var(--bg-card); 
+      border: 1px solid var(--border-light); 
+      border-radius: 24px; 
+      padding: 30px; 
+      transition: all 0.35s ease; 
+      position: relative; 
+    }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
-    .product-row.reverse { flex-direction: row-reverse; }
+    
+    /* FILA INTERCALADA (TEXTO A LA IZQUIERDA, IMAGEN A LA DERECHA) */
+    .product-row.reverse { 
+      flex-direction: row-reverse !important; 
+    }
 
-    .product-img-box { flex: 1; min-width: 270px; height: 230px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); }
+    /* CAJA DE LA IMAGENE FIJA A UN COSTADO */
+    .product-img-box { 
+      width: 320px !important; 
+      min-width: 320px !important; 
+      height: 220px !important; 
+      background: #ffffff; 
+      border-radius: 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      padding: 20px; 
+      overflow: hidden; 
+      flex-shrink: 0 !important; /* Impide que la imagen se expanda a lo largo */
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
+    }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
 
-    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .product-info-box { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     .product-badge { font-size: 0.8rem; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 1px; background: rgba(139, 92, 246, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(139, 92, 246, 0.25); }
     .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-purple); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 10px; }
+    .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-purple); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 5px; }
     .btn-link:hover { gap: 12px; color: #c084fc; }
 
     /* FOOTER */
@@ -142,8 +172,8 @@
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
-      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
-      .product-img-box { width: 100%; height: 200px; }
+      .product-row, .product-row.reverse { flex-direction: column !important; padding: 22px; gap: 20px; }
+      .product-img-box { width: 100% !important; min-width: 100% !important; height: 200px !important; }
       nav { display: none; } 
       .wa-banner { display: none; }
     }
@@ -191,20 +221,20 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4236/4236440.png';">
+        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CLOUD -->
+  <!-- CATÁLOGO CLOUD EN FILAS ANCHAS INTERCALADAS (IMAGEN A UN COSTADO / TEXTO AL OTRO) -->
   <section class="services-section">
     <div class="category-header-title">☁️ Licenciamiento Corporativo & Nube Privada</div>
     <div class="products-showcase">
       
-      <!-- 1. MICROSOFT 365 -->
+      <!-- 1. MICROSOFT 365 (IMAGEN A LA IZQUIERDA) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/offices-365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/732/732221.png';">
+          <img src="img/365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/offices-365.png';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
@@ -214,10 +244,10 @@
         </div>
       </div>
 
-      <!-- 2. GOOGLE WORKSPACE -->
+      <!-- 2. GOOGLE WORKSPACE (IMAGEN A LA DERECHA - REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/Cloud-logo.jpg" alt="Google Workspace" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/2991/2991148.png';">
+          <img src="img/Cloud-logo.jpg" alt="Google Workspace">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Productividad Empresarial</span>
@@ -227,10 +257,10 @@
         </div>
       </div>
 
-      <!-- 3. QNAP CLOUD NAS -->
+      <!-- 3. QNAP CLOUD NAS (IMAGEN A LA IZQUIERDA) -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/3208/3208573.png';">
+          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='img/qnap.jpg';">
         </div>
         <div class="product-info-box">
           <span class="product-badge">Nube Privada & Backup</span>
@@ -240,10 +270,10 @@
         </div>
       </div>
 
-      <!-- 4. MICROSOFT AZURE -->
+      <!-- 4. MICROSOFT AZURE (IMAGEN A LA DERECHA - REVERSE) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/azure.jpg" alt="Microsoft Azure Cloud" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/873/873100.png';">
+          <img src="img/azure.jpg" alt="Microsoft Azure Cloud">
         </div>
         <div class="product-info-box">
           <span class="product-badge">IaaS & PaaS</span>
