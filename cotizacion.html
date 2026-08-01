@@ -3,123 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cotizador B2B | IPTELCO S.A.S</title>
-  <link rel="icon" type="image/png" href="img/Logo Wh.png">
+  <title>Solicitar Cotización | IPTELCO S.A.S</title>
+
+  <!-- FAVICON SVG INSTANTÁNEO -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M10 30 Q 30 10 50 30 T 90 30' stroke='%233b82f6' stroke-width='6' fill='none'/><circle cx='50' cy='30' r='6' fill='%2306b6d4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root { --bg-dark: #020617; --accent-blue: #3b82f6; --text-muted: #94a3b8; --border-light: rgba(255,255,255,0.1); }
+    :root { 
+      --bg-dark: #020617; 
+      --bg-card: rgba(15, 23, 42, 0.95); 
+      --accent-blue: #3b82f6; 
+      --accent-cyan: #06b6d4; 
+      --accent-green: #25D366;
+      --text-main: #f8fafc; 
+      --text-muted: #94a3b8; 
+      --border-light: rgba(255, 255, 255, 0.1); 
+    }
+    
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: #f8fafc; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 10px 8%; background: rgba(2,6,23,0.94); border-bottom: 1px solid var(--border-light); }
-    .logo-img { height: 78px; width: auto; }
-    nav { display: flex; gap: 24px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
-    nav a.active { color: #06b6d4; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
-    .form-wrapper { padding: 60px 8%; max-width: 800px; margin: 0 auto; }
-    .form-box { background: #ffffff; color: #0f172a; padding: 35px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: #475569; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem; }
-    .btn-submit { width: 100%; padding: 14px; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
-    footer { padding: 40px 8%; text-align: center; border-top: 1px solid var(--border-light); color: var(--text-muted); }
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
-    #iptelco-preloader.hidden { opacity: 0; visibility: hidden; }
-    .preloader-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .preloader-logo { width: 85px; height: 85px; border-radius: 50%; animation: pulseLogo 1.6s infinite ease-in-out; }
-    @keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(59,130,246,0.4)); } 50% { transform: scale(1.12); filter: drop-shadow(0 0 25px rgba(6,182,212,0.8)); } }
-    .preloader-spinner { width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @media (max-width: 900px) { nav { display: none; } }
+    /* HEADER */
+    header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); }
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+    
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
+
+    /* FORMULARIO DE COTIZACIÓN */
+    .form-section { flex: 1; padding: 50px 6%; display: flex; justify-content: center; align-items: center; }
+    
+    .form-card { 
+      background: #ffffff; 
+      color: #0f172a; 
+      width: 100%; 
+      max-width: 650px; 
+      border-radius: 24px; 
+      padding: 40px; 
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
+    }
+
+    .form-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .form-card h2 { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .form-card p { font-size: 0.95rem; color: #64748b; margin-bottom: 25px; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .form-group.full { grid-column: span 2; }
+
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea { 
+      width: 100%; 
+      padding: 12px 16px; 
+      border: 1px solid #cbd5e1; 
+      border-radius: 10px; 
+      font-family: inherit; 
+      font-size: 0.95rem; 
+      color: #0f172a;
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    /* BOTÓN WHATSAPP */
+    .btn-submit-wa {
+      width: 100%;
+      background: linear-gradient(135deg, #25D366, #16a34a);
+      color: #ffffff;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
+      transition: all 0.25s ease;
+      margin-top: 10px;
+    }
+
+    .btn-submit-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(37, 211, 102, 0.35);
+      background: linear-gradient(135deg, #16a34a, #15803d);
+    }
+
+    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 30px 6%; color: var(--text-muted); font-size: 0.88rem; text-align: center; }
+
+    @media (max-width: 650px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .form-card { padding: 25px; }
+      nav { display: none; }
+    }
   </style>
 </head>
 <body>
-  <div id="iptelco-preloader">
-    <div class="preloader-content"><img src="img/Logo Wh.png" alt="IPTELCO" class="preloader-logo"><div class="preloader-spinner"></div></div>
-  </div>
 
+  <div class="glow-bg"></div>
+
+  <!-- HEADER -->
   <header>
-    <a href="index.html"><img src="img/Logo iptelco.png" alt="IPTELCO" class="logo-img"></a>
+    <a href="index.html" class="brand-logo-container">
+      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
+        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
+      </svg>
+      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+    </a>
     <nav>
       <a href="index.html">Inicio</a>
-      <a href="quienes-somos.html">Quiénes Somos</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
       <a href="ciberseguridad.html">Ciberseguridad</a>
       <a href="redes-mikrotik.html">Redes</a>
-      <a href="cotizacion.html" class="active">Cotizador B2B</a>
+      <a href="cctv-biometria.html">CCTV & Biometría</a>
+      <a href="soluciones-cloud.html">Cloud & 365</a>
+      <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
+    <div class="header-actions">
+      <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
+    </div>
   </header>
 
-  <div class="form-wrapper">
-    <div class="form-box">
-      <h2 style="margin-bottom: 8px; font-weight: 800;">Solicitar Cotización de Proyecto</h2>
-      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 24px;">Ingresa tus datos corporativos. La solicitud se registrará automáticamente en nuestro CRM.</p>
+  <!-- FORMULARIO -->
+  <section class="form-section">
+    <div class="form-card">
+      <span class="form-badge">Atención Comercial Directa</span>
+      <h2>Solicitar Cotización de Proyecto</h2>
+      <p>Diligencia tus datos. Al hacer clic en enviar, se abrirá WhatsApp Web con tu solicitud estructurada para ser atendida al instante por un asesor comercial.</p>
 
-      <form id="formCotizacion" onsubmit="enviarCotizacion(event)">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="form-group"><label>NIT o Cédula *</label><input type="text" id="nit" required placeholder="Ej: 900123456"></div>
-          <div class="form-group"><label>Razón Social / Empresa *</label><input type="text" id="empresa" required placeholder="Nombre Comercial"></div>
+      <form id="cotizacionForm">
+        <div class="form-grid">
+          
+          <div class="form-group">
+            <label for="nit">NIT o Cédula *</label>
+            <input type="text" id="nit" placeholder="Ej: 900123456" required>
+          </div>
+
+          <div class="form-group">
+            <label for="empresa">Razón Social / Empresa *</label>
+            <input type="text" id="empresa" placeholder="Nombre Comercial" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contacto">Persona de Contacto *</label>
+            <input type="text" id="contacto" placeholder="Nombre y Apellido" required>
+          </div>
+
+          <div class="form-group">
+            <label for="celular">Celular / WhatsApp *</label>
+            <input type="tel" id="celular" placeholder="300 000 0000" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="correo">Correo Electrónico *</label>
+            <input type="email" id="correo" placeholder="correo@empresa.com" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="servicio">Servicio Requerido *</label>
+            <select id="servicio" required>
+              <option value="Soporte TI Outsourcing y Mesa de Ayuda">Soporte TI Outsourcing y Mesa de Ayuda Enterprise</option>
+              <option value="Telefonía IP y Centrales 3CX / Issabel">Telefonía IP, 3CX PBX y Contact Center</option>
+              <option value="Ciberseguridad, Firewalls Fortinet y ESET">Ciberseguridad, Firewalls Fortinet y ESET</option>
+              <option value="Redes, MikroTik RouterOS y Cableado">Redes, MikroTik RouterOS y Cableado Estructurado</option>
+              <option value="CCTV, Cámaras Especiales y Biometría ZKTeco">CCTV, Cámaras Especiales y Biometría ZKTeco</option>
+              <option value="Microsoft 365, Google Workspace y Cloud Azure">Microsoft 365, Google Workspace y Cloud Azure</option>
+              <option value="Suministro de Hardware, UPS y Periféricos">Suministro de Hardware, UPS y Periféricos</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="notas">Notas Adicionales</label>
+            <textarea id="notas" rows="3" placeholder="Indícanos número de sedes, usuarios, puntos de red o requerimientos específicos..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <button type="submit" class="btn-submit-wa">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+              Enviar Cotización por WhatsApp
+            </button>
+          </div>
+
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="form-group"><label>Persona de Contacto *</label><input type="text" id="contacto" required placeholder="Nombre y Apellido"></div>
-          <div class="form-group"><label>Celular / WhatsApp *</label><input type="tel" id="celular" required placeholder="300 000 0000"></div>
-        </div>
-        <div class="form-group"><label>Correo Electrónico *</label><input type="email" id="correo" required placeholder="correo@empresa.com"></div>
-        <div class="form-group">
-          <label>Servicio Requerido *</label>
-          <select id="servicio" required>
-            <option value="Soporte TI Outsourcing y Mesa de Ayuda Enterprise">Soporte TI Outsourcing y Mesa de Ayuda Enterprise</option>
-            <option value="Telefonía IP (Wolkvox / 3CX / Issabel / Fidelity)">Telefonía IP (Wolkvox / 3CX / Issabel / Fidelity)</option>
-            <option value="Ciberseguridad y Firewalls Fortinet">Ciberseguridad y Firewalls Fortinet</option>
-            <option value="Redes, Cableado Estructurado y APs Corporativos">Redes, Cableado Estructurado y APs Corporativos</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Notas adicionales</label><textarea id="notas" rows="3" placeholder="Indícanos número de sedes, usuarios o puntos de red..."></textarea></div>
-        <button type="submit" class="btn-submit">Enviar Cotización</button>
-        <div id="statusMsg" style="margin-top: 15px; display: none; padding: 12px; border-radius: 8px; text-align: center;"></div>
       </form>
     </div>
-  </div>
+  </section>
 
-  <footer><p>© 2026 IPTELCO S.A.S — Bogotá, Colombia.</p></footer>
+  <footer>
+    © 2026 IPTELCO S.A.S — Bogotá, Colombia. Todos los derechos reservados.
+  </footer>
 
+  <!-- SCRIPT DE ENVÍO DIRECTO A WHATSAPP WEB -->
   <script>
-    window.addEventListener('load', () => { document.getElementById('iptelco-preloader').classList.add('hidden'); });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href]').forEach(link => {
-        const url = link.getAttribute('href');
-        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('mailto')) {
-          link.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('iptelco-preloader').classList.remove('hidden'); setTimeout(() => { window.location.href = url; }, 350); });
-        }
-      });
-    });
-
-    async function enviarCotizacion(e) {
+    document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const msg = document.getElementById('statusMsg');
-      msg.style.display = 'block'; msg.style.background = '#e2e8f0'; msg.style.color = '#0f172a'; msg.innerHTML = 'Enviando...';
 
-      const payload = {
-        nit: document.getElementById('nit').value, empresa: document.getElementById('empresa').value,
-        contacto: document.getElementById('contacto').value, celular: document.getElementById('celular').value,
-        correo: document.getElementById('correo').value, servicio: document.getElementById('servicio').value,
-        notas: document.getElementById('notas').value
-      };
+      const nit = document.getElementById('nit').value;
+      const empresa = document.getElementById('empresa').value;
+      const contacto = document.getElementById('contacto').value;
+      const celular = document.getElementById('celular').value;
+      const correo = document.getElementById('correo').value;
+      const servicio = document.getElementById('servicio').value;
+      const notas = document.getElementById('notas').value || 'Sin notas adicionales';
 
-      try {
-        const res = await fetch('https://webhook-vtiger-soporte.vercel.app/api/cotizacion', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        if (data.success) {
-          msg.style.background = '#dcfce7'; msg.style.color = '#15803d'; msg.innerHTML = '✅ ¡Cotización enviada exitosamente!';
-          document.getElementById('formCotizacion').reset();
-        } else { throw new Error(data.error || 'Error al enviar'); }
-      } catch (err) {
-        msg.style.background = '#fee2e2'; msg.style.color = '#b91c1c'; msg.innerHTML = '❌ ' + err.message;
-      }
-    }
+      // Mensaje formateado para WhatsApp
+      const mensaje = `*SOLICITUD DE COTIZACIÓN - IPTELCO S.A.S*%0A%0A` +
+                      `🏢 *Empresa:* ${encodeURIComponent(empresa)}%0A` +
+                      `🆔 *NIT/Cédula:* ${encodeURIComponent(nit)}%0A` +
+                      `👤 *Contacto:* ${encodeURIComponent(contacto)}%0A` +
+                      `📱 *Celular/WA:* ${encodeURIComponent(celular)}%0A` +
+                      `✉️ *Correo:* ${encodeURIComponent(correo)}%0A` +
+                      `🛠️ *Servicio Requerido:* ${encodeURIComponent(servicio)}%0A` +
+                      `📝 *Notas:* ${encodeURIComponent(notas)}`;
+
+      // Redirección a WhatsApp con el mensaje estructurado
+      const urlWA = `https://api.whatsapp.com/send?phone=573178737171&text=${mensaje}`;
+      window.open(urlWA, '_blank');
+    });
   </script>
+
 </body>
 </html>
