@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCTV, Videovigilancia & Biometría | IPTELCO S.A.S</title>
 
+  <!-- FAVICON -->
   <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
   <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
 
@@ -25,11 +26,10 @@
       --border-light: rgba(255, 255, 255, 0.08); 
       --border-glow: rgba(6, 182, 212, 0.4); 
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-
-    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
     /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
@@ -37,7 +37,9 @@
     .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
-    /* LOGO CON DIFUMINADO SUAVE EN HEADER */
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+
+    /* LOGO DIFUMINADO */
     .brand-logo-container {
       display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
       padding: 6px 55px 6px 20px; height: 100%;
@@ -57,7 +59,7 @@
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
     .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
-    .btn-cotizar { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
+    .btn-cotizar { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); }
 
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
@@ -66,7 +68,9 @@
     .hero h1 span { color: var(--accent-cyan); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
-    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; }
+    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+
+    .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
@@ -76,12 +80,12 @@
     .product-row { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 25px; transition: all 0.35s ease; position: relative; cursor: pointer; }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
 
-    .product-img-box { width: 100%; height: 210px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; margin-bottom: 20px; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); }
-    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-img-box { width: 100%; height: 210px; background: #ffffff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; margin-bottom: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.03); }
+    .product-img-box img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform 0.4s ease; }
     .product-row:hover .product-img-box img { transform: scale(1.05); }
 
     .product-info-box { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex-grow: 1; }
-    .product-badge { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .product-badge { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
     .product-info-box h3 { font-size: 1.4rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
     .features-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 5px; }
@@ -101,24 +105,39 @@
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
-    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; text-decoration: none; }
-    .contact-item:hover { color: #ffffff; }
-    .contact-icon-box { width: 36px; height: 36px; border-radius: 8px; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); font-weight: 700; flex-shrink: 0; }
-    .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
 
-    /* WHATSAPP */
-    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
+    /* FIX DEFINITIVO PARA EL WIDGET DE WHATSAPP (BLOQUEO DE TAMAÑO MÁXIMO) */
+    .whatsapp-widget { 
+      position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
+      display: flex; align-items: center; text-decoration: none; 
+      animation: floatWidget 4s ease-in-out infinite; 
+    }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    
+    .wa-avatar-box { 
+      width: 72px !important; height: 72px !important; 
+      max-width: 72px !important; max-height: 72px !important;
+      border-radius: 50%; border: 3px solid var(--accent-cyan); background: #ffffff; 
+      position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+      display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
+    }
+    .wa-avatar-box img { 
+      width: 100% !important; height: 100% !important; 
+      max-width: 72px !important; max-height: 72px !important;
+      object-fit: cover; display: block; 
+    }
+    .wa-banner { 
+      background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; 
+      padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; 
+      margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); 
+      border-left: none; transition: all 0.3s ease; white-space: nowrap; 
+    }
 
     @media (max-width: 900px) { 
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
       .products-showcase { grid-template-columns: 1fr; }
       nav { display: none; } 
-      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
+      .wa-banner { display: none; }
     }
   </style>
 </head>
@@ -127,11 +146,7 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-        <text x="100" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff">IPTELCO</text>
-      </svg>
+      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -179,6 +194,7 @@
     <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
     <div class="products-showcase">
       
+      <!-- 1. CAMARAS IP -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP"></div>
         <div class="product-info-box">
@@ -194,7 +210,8 @@
         </div>
       </div>
 
-      <div class="product-row reverse">
+      <!-- 2. BIOMETRIA ZKTECO -->
+      <div class="product-row">
         <div class="product-img-box"><img src="img/sped-face.jpg" alt="ZKTeco SpeedFace"></div>
         <div class="product-info-box">
           <span class="product-badge">Biometría Inteligente</span>
@@ -209,8 +226,9 @@
         </div>
       </div>
 
+      <!-- 3. TORNIQUETES Y ELECTROIMANES -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes" onerror="this.src='img/sped-face.jpg';"></div>
+        <div class="product-img-box"><img src="img/torniquetes.jpg" alt="Torniquetes y Electroimanes" onerror="this.onerror=null; this.src='img/sped-face.jpg';"></div>
         <div class="product-info-box">
           <span class="product-badge">Acceso Físico</span>
           <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
@@ -224,8 +242,9 @@
         </div>
       </div>
 
-      <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.src='img/video-vigilancia.jpg';"></div>
+      <!-- 4. ALARMAS DE INTRUSION -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/alarmas.jpg" alt="Alarmas de Intrusión" onerror="this.onerror=null; this.src='img/video-vigilancia.jpg';"></div>
         <div class="product-info-box">
           <span class="product-badge">Detección de Intrusos</span>
           <h3>Sistemas de Alarma & Sensores de Movimiento</h3>
@@ -246,12 +265,14 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
           <div class="footer-logo-container">
             <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
           </div>
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
+          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV y Control de Acceso.
+        </p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
       </div>
       <div class="footer-col">
@@ -276,7 +297,10 @@
 
   <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
-    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+    <div class="wa-avatar-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
+    </div>
+    <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
   <!-- SCRIPT -->
