@@ -46,58 +46,81 @@
     }
 
     /* =========================================================
-       LOGO PEGADO A LA ESQUINA Y MAS GRANDE CON DIFUMINADO
+       LOGO AGRANDADO CON DIFUMINADO SUAVE BILATERAL (AMBAS ESQUINAS)
        ========================================================= */
 
-    /* CONTENEDOR PEGADO AL BORDE IZQUIERDO Y ALTO TOTAL */
+    /* CONTENEDOR DEL LOGO EN HEADER */
     .brand-logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
-      background-color: #ffffff; /* Fondo blanco sólido */
-      padding: 8px 80px 8px 25px; /* Espacio amplio para el logo y desvanecido hacia la derecha */
-      height: 100%; /* Ocupa el alto total de la barra de arriba a abajo */
-      border-radius: 0; /* Cero bordes redondeados para pegar a la esquina exacta */
+      background-color: #ffffff; /* Fondo blanco nítido para destacar el logo */
+      padding: 6px 75px 6px 30px; /* Margen para transición holgada */
+      height: 100%;
       
-      /* Máscara que difumina de sólido a transparente a la derecha */
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
-      transition: opacity 0.2s ease;
+      /* MÁSCARA CON DIFUMINADO SUAVE EN AMBAS ESQUINAS (IZQUIERDA Y DERECHA) */
+      -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 15%, 
+        rgba(0,0,0,1) 55%, 
+        rgba(0,0,0,0.6) 80%, 
+        rgba(0,0,0,0) 100%
+      );
+      mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 15%, 
+        rgba(0,0,0,1) 55%, 
+        rgba(0,0,0,0.6) 80%, 
+        rgba(0,0,0,0) 100%
+      );
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
+
     .brand-logo-container:hover {
-      opacity: 0.95;
+      opacity: 0.96;
+      transform: scale(1.01);
     }
 
     .brand-logo-img {
-      height: 72px; /* Logo notablemente más grande y claro */
+      height: 82px; /* Logo considerablemente más grande y legible */
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* CONTENEDOR DIFUMINADO EN FOOTER */
+    /* CONTENEDOR DIFUMINADO EN FOOTER (ABAJO) */
     .footer-logo-container {
       display: inline-flex;
       align-items: center;
       background-color: #ffffff;
-      padding: 10px 70px 10px 20px;
-      border-radius: 12px 0 0 12px;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+      padding: 10px 80px 10px 30px;
+      border-radius: 16px;
+      -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 12%, 
+        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,0) 100%
+      );
+      mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,1) 12%, 
+        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,0) 100%
+      );
     }
 
     .footer-logo-img {
-      height: 105px;
+      height: 115px; /* Logo del footer amplio y distinguido */
       width: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* HEADER CON PADDING IZQUIERDO EN 0 PARA TOCAR LA ESQUINA */
+    /* HEADER AJUSTADO PARA EL NUEVO TAMAÑO */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 4% 0 0; /* 0 en la izquierda para pegar a la esquina exacta */
-      height: 90px; /* Alto definido para que el logo llene la barra */
+      padding: 0 4% 0 0;
+      height: 96px; /* Altura optimizada para dar aire al logo grande */
       position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
