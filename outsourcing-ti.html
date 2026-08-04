@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte TI, Licencias & Hardware | IPTELCO S.A.S</title>
 
-  <!-- FAVICON SVG INSTANTÁNEO -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'><path d='M10 30 Q 30 10 50 30 T 90 30' stroke='%233b82f6' stroke-width='6' fill='none'/><circle cx='50' cy='30' r='6' fill='%2306b6d4'/></svg>">
+  <!-- FAVICON PESTAÑA NAVEGADOR -->
+  <link rel="icon" type="image/png" href="img/icono-iptelco.png">
+  <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,6 +27,7 @@
       --border-glow: rgba(59, 130, 246, 0.4); 
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
@@ -32,10 +35,17 @@
 
     /* PRELOADER 100% CSS PURO */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
+    .preloader-logo-img { height: 50px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+    
+    /* LOGO HEADER TRANSPARENTE DIRECTO */
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; background: transparent !important; mask-image: none !important; -webkit-mask-image: none !important; padding: 0 !important; transition: opacity 0.2s ease, transform 0.2s ease; }
+    .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
+    .brand-logo-img { height: 38px !important; width: auto !important; object-fit: contain; display: block; }
+
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
@@ -105,6 +115,10 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
+    /* LOGO FOOTER TRANSPARENTE DIRECTO */
+    .footer-logo-container { display: inline-block; background: transparent !important; mask-image: none !important; -webkit-mask-image: none !important; padding: 0 !important; margin-bottom: 16px; }
+    .footer-logo-img { height: 38px !important; width: auto !important; object-fit: contain; display: block; }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -136,24 +150,18 @@
 </head>
 <body>
 
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <svg class="preloader-logo-img" width="160" height="46" viewBox="0 0 200 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-        <text x="100" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#ffffff">IPTELCO</text>
-      </svg>
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
 
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-      </svg>
-      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -170,6 +178,7 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -187,6 +196,7 @@
     </div>
   </section>
 
+  <!-- CATÁLOGO PRODUCTOS -->
   <section class="services-section">
 
     <!-- SECCIÓN 1: SOPORTE Y LICENCIAMIENTO -->
@@ -349,15 +359,12 @@
 
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-            <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-            <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-          </svg>
-          <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
@@ -382,6 +389,7 @@
     <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
   </footer>
 
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
     </div>
