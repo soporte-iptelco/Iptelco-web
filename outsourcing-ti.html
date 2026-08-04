@@ -35,16 +35,27 @@
 
     /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
-    .preloader-logo-img { height: 50px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 45px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
-    /* LOGO HEADER TRANSPARENTE CON RUTA CORRECTA */
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; background: transparent !important; margin-left: 6%; height: 100%; transition: opacity 0.2s ease, transform 0.2s ease; }
+    /* CONTROL DE TAMAÑO DEL LOGO EN HEADER */
+    .brand-logo-container { 
+      display: flex; align-items: center; text-decoration: none; 
+      background: transparent !important; margin-left: 6%; height: 100%; 
+      mask-image: none !important; -webkit-mask-image: none !important; 
+      transition: opacity 0.2s ease, transform 0.2s ease; 
+    }
     .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
-    .brand-logo-img { height: 42px !important; width: auto !important; object-fit: contain; display: block; }
+    .brand-logo-img { 
+      height: 40px !important; 
+      max-height: 40px !important; 
+      width: auto !important; 
+      object-fit: contain !important; 
+      display: block; 
+    }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -113,9 +124,19 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
-    /* LOGO FOOTER TRANSPARENTE DIRECTO */
-    .footer-logo-container { display: inline-block; background: transparent !important; padding: 0 !important; margin-bottom: 16px; }
-    .footer-logo-img { height: 42px !important; width: auto !important; object-fit: contain; display: block; }
+    /* CONTROL DE TAMAÑO DEL LOGO EN FOOTER */
+    .footer-logo-container { 
+      display: inline-block; background: transparent !important; 
+      mask-image: none !important; -webkit-mask-image: none !important; 
+      padding: 0 !important; margin-bottom: 16px; 
+    }
+    .footer-logo-img { 
+      height: 42px !important; 
+      max-height: 42px !important; 
+      width: auto !important; 
+      object-fit: contain !important; 
+      display: block; 
+    }
 
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
@@ -151,7 +172,7 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/icono-iptelco.png" alt="IPTELCO Logo" class="preloader-logo-img">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -159,7 +180,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/icono-iptelco.png';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -360,7 +381,7 @@
     <div class="footer-grid">
       <div class="footer-col-brand">
         <a href="index.html" class="footer-logo-container">
-          <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/icono-iptelco.png';">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
