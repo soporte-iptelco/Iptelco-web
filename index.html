@@ -45,19 +45,19 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER CON LOGO AGRANDADO */
+    /* PRELOADER CON LOGO GRANDE */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
-    .preloader-logo-img { height: 95px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    /* LOGO HEADER AGRANDADO */
+    /* LOGO HEADER MÁS GRANDE Y LEGIBLE */
     .brand-logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
       background: transparent !important;
-      margin-left: 5%;
+      margin-left: 4%;
       height: 100%;
       mask-image: none !important;
       -webkit-mask-image: none !important;
@@ -70,18 +70,18 @@
     }
 
     .brand-logo-img {
-      height: 85px !important;
-      max-height: 85px !important;
+      height: 105px !important;
+      max-height: 105px !important;
       width: auto !important;
       object-fit: contain !important;
       display: block;
     }
 
-    /* HEADER AJUSTADO A 100PX PARA DARLE ESPACIO AL LOGO GRANDE */
+    /* HEADER AMPLIO A 120PX PARA QUE EL LOGO RESPIRE */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 6px 0;
-      height: 100px;
+      height: 120px;
       position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
@@ -95,7 +95,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-right: 5%;
+      margin-right: 4%;
     }
 
     .btn-soporte {
@@ -134,7 +134,7 @@
       box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
     }
 
-    /* LOGO FOOTER AGRANDADO */
+    /* LOGO FOOTER MÁS GRANDE */
     .footer-logo-container {
       display: inline-block;
       background: transparent !important;
@@ -145,8 +145,8 @@
     }
 
     .footer-logo-img {
-      height: 110px !important;
-      max-height: 110px !important;
+      height: 160px !important;
+      max-height: 160px !important;
       width: auto !important;
       object-fit: contain !important;
       display: block;
@@ -259,6 +259,8 @@
     .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); transform: translateX(6px); }
 
     @media (max-width: 900px) {
+      header { height: 90px; }
+      .brand-logo-img { height: 70px !important; max-height: 70px !important; }
       .footer-grid, .hero-grid { grid-template-columns: 1fr; }
       .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
       .product-img-box { width: 100%; height: 200px; }
