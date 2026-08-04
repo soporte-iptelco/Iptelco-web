@@ -42,7 +42,7 @@
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    /* HEADER TRANSPARENTE OSCURO SOBERBIO */
+    /* HEADER TRANSPARENTE OSCURO */
     header { 
       display: flex; justify-content: space-between; align-items: center; 
       padding: 6px 0; height: 120px; position: sticky; top: 0; 
@@ -78,7 +78,7 @@
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--border-glow); }
 
-    /* SECCIÓN COTIZACIÓN (ESPACIO SUPERIOR AJUSTADO PARA EVITAR QUE SE TAPE) */
+    /* SECCIÓN COTIZACIÓN */
     .quote-container-wrapper {
       max-width: 850px;
       margin: 50px auto 80px auto;
@@ -142,6 +142,12 @@
       color: var(--accent-cyan);
     }
 
+    .sub-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
     input, select, textarea {
       width: 100%;
       background: var(--input-bg);
@@ -197,7 +203,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
     }
     .btn-submit:hover {
       transform: translateY(-2px);
@@ -306,7 +311,7 @@
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO TRANSPARENTE Y BOTONES DE ACCIÓN -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
@@ -330,8 +335,8 @@
   <div class="quote-container-wrapper">
     
     <div class="quote-header">
-      <h1>Solicitar <span>Cotización</span> Empresarial</h1>
-      <p>Déjanos los detalles de tu proyecto y un ingeniero especialista se pondrá en contacto contigo en menos de 2 horas.</p>
+      <h1>Solicitar <span>Cotización</span></h1>
+      <p>Déjanos los detalles de tu requerimiento o proyecto y un especialista se pondrá en contacto contigo en breve.</p>
     </div>
 
     <div class="quote-card">
@@ -339,47 +344,54 @@
         
         <div class="form-grid-2">
           <div class="form-group">
-            <label>Nombre de Contacto <span class="required">*</span></label>
-            <input type="text" placeholder="Ej. Ing. Carlos Mendoza" required>
+            <label>Nombre Completo / Contacto <span class="required">*</span></label>
+            <input type="text" placeholder="Ej. Carlos Mendoza" required>
           </div>
 
           <div class="form-group">
-            <label>Razón Social de la Empresa <span class="required">*</span></label>
-            <input type="text" placeholder="Ej. Soluciones Logísticas S.A.S" required>
+            <label>Documento de Identidad (Cédula / NIT) <span class="required">*</span></label>
+            <input type="text" placeholder="Ej. 1018234567 o 900123456" required>
           </div>
         </div>
 
         <div class="form-grid-2">
           <div class="form-group">
-            <label>Correo Corporativo <span class="required">*</span></label>
-            <input type="email" placeholder="ejemplo@tuempresa.com" required>
+            <label>Empresa / Razón Social <span class="sub-label">(Opcional)</span></label>
+            <input type="text" placeholder="Ej. Soluciones Logísticas S.A.S">
           </div>
 
+          <div class="form-group">
+            <label>Correo Electrónico <span class="required">*</span></label>
+            <input type="email" placeholder="ejemplo@correo.com" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
           <div class="form-group">
             <label>Teléfono / WhatsApp de Contacto <span class="required">*</span></label>
             <input type="tel" placeholder="+57 300 000 0000" required>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>Solución de Interés <span class="required">*</span></label>
-          <select required>
-            <option value="" disabled selected>Selecciona una solución...</option>
-            <option value="telefonia">📞 Telefonía IP, PBX Cloud & Contact Center</option>
-            <option value="ciberseguridad">🛡️ Ciberseguridad, Firewalls Fortinet & ESET</option>
-            <option value="redes">🌐 Redes, MikroTik, Aruba & Wi-Fi Enterprise</option>
-            <option value="cctv">📹 CCTV, Cámaras IP & Control de Acceso Biométrico</option>
-            <option value="cloud">☁️ Soluciones Cloud, Microsoft 365 & Azure</option>
-            <option value="soporte">💻 Soporte TI, Mantenimiento & Hardware</option>
-          </select>
+          <div class="form-group">
+            <label>Solución de Interés <span class="required">*</span></label>
+            <select required>
+              <option value="" disabled selected>Selecciona una solución...</option>
+              <option value="telefonia">📞 Telefonía IP, PBX Cloud & Contact Center</option>
+              <option value="ciberseguridad">🛡️ Ciberseguridad, Firewalls Fortinet & ESET</option>
+              <option value="redes">🌐 Redes, MikroTik, Aruba & Wi-Fi Enterprise</option>
+              <option value="cctv">📹 CCTV, Cámaras IP & Control de Acceso Biométrico</option>
+              <option value="cloud">☁️ Soluciones Cloud, Microsoft 365 & Azure</option>
+              <option value="soporte">💻 Soporte TI, Mantenimiento & Hardware</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
           <label>Detalles del Requerimiento / Mensaje <span class="required">*</span></label>
-          <textarea placeholder="Describe brevemente la cantidad de usuarios, ubicaciones o alcance de tu proyecto..." required></textarea>
+          <textarea placeholder="Describe brevemente lo que necesitas, cantidad de equipos, servicios o alcance de tu requerimiento..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Enviar Solicitud de Cotización 🚀</button>
+        <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
 
       </form>
     </div>
