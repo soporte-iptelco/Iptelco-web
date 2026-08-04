@@ -209,6 +209,29 @@
       box-shadow: 0 6px 25px rgba(6, 182, 212, 0.4);
     }
 
+    /* MENSAJE DE ESTADO DE ENVÍO */
+    #quote-status {
+      display: none;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    #quote-status.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+    }
+    #quote-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+
     /* FOOTER */
     .footer-logo-container { 
       display: inline-block; background: transparent !important; 
@@ -340,58 +363,60 @@
     </div>
 
     <div class="quote-card">
-      <form class="quote-form" action="#" method="POST">
+      <div id="quote-status"></div>
+
+      <form id="quote-form-vtiger" class="quote-form">
         
         <div class="form-grid-2">
           <div class="form-group">
             <label>Nombre Completo / Contacto <span class="required">*</span></label>
-            <input type="text" placeholder="Ej. Carlos Mendoza" required>
+            <input type="text" id="nombre_contacto" placeholder="Ej. Carlos Mendoza" required>
           </div>
 
           <div class="form-group">
             <label>Documento de Identidad (Cédula / NIT) <span class="required">*</span></label>
-            <input type="text" placeholder="Ej. 1018234567 o 900123456" required>
+            <input type="text" id="documento_id" placeholder="Ej. 1018234567 o 900123456" required>
           </div>
         </div>
 
         <div class="form-grid-2">
           <div class="form-group">
             <label>Empresa / Razón Social <span class="sub-label">(Opcional)</span></label>
-            <input type="text" placeholder="Ej. Soluciones Logísticas S.A.S">
+            <input type="text" id="empresa_nombre" placeholder="Ej. Soluciones Logísticas S.A.S">
           </div>
 
           <div class="form-group">
             <label>Correo Electrónico <span class="required">*</span></label>
-            <input type="email" placeholder="ejemplo@correo.com" required>
+            <input type="email" id="correo_contacto" placeholder="ejemplo@correo.com" required>
           </div>
         </div>
 
         <div class="form-grid-2">
           <div class="form-group">
             <label>Teléfono / WhatsApp de Contacto <span class="required">*</span></label>
-            <input type="tel" placeholder="+57 300 000 0000" required>
+            <input type="tel" id="telefono_contacto" placeholder="+57 300 000 0000" required>
           </div>
 
           <div class="form-group">
             <label>Solución de Interés <span class="required">*</span></label>
-            <select required>
+            <select id="solucion_interes" required>
               <option value="" disabled selected>Selecciona una solución...</option>
-              <option value="telefonia">📞 Telefonía IP, PBX Cloud & Contact Center</option>
-              <option value="ciberseguridad">🛡️ Ciberseguridad, Firewalls Fortinet & ESET</option>
-              <option value="redes">🌐 Redes, MikroTik, Aruba & Wi-Fi Enterprise</option>
-              <option value="cctv">📹 CCTV, Cámaras IP & Control de Acceso Biométrico</option>
-              <option value="cloud">☁️ Soluciones Cloud, Microsoft 365 & Azure</option>
-              <option value="soporte">💻 Soporte TI, Mantenimiento & Hardware</option>
+              <option value="Telefonía IP, PBX Cloud & Contact Center">📞 Telefonía IP, PBX Cloud & Contact Center</option>
+              <option value="Ciberseguridad, Firewalls Fortinet & ESET">🛡️ Ciberseguridad, Firewalls Fortinet & ESET</option>
+              <option value="Redes, MikroTik, Aruba & Wi-Fi Enterprise">🌐 Redes, MikroTik, Aruba & Wi-Fi Enterprise</option>
+              <option value="CCTV, Cámaras IP & Control de Acceso Biométrico">📹 CCTV, Cámaras IP & Control de Acceso Biométrico</option>
+              <option value="Soluciones Cloud, Microsoft 365 & Azure">☁️ Soluciones Cloud, Microsoft 365 & Azure</option>
+              <option value="Soporte TI, Mantenimiento & Hardware">💻 Soporte TI, Mantenimiento & Hardware</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
           <label>Detalles del Requerimiento / Mensaje <span class="required">*</span></label>
-          <textarea placeholder="Describe brevemente lo que necesitas, cantidad de equipos, servicios o alcance de tu requerimiento..." required></textarea>
+          <textarea id="mensaje_detalle" placeholder="Describe brevemente lo que necesitas, cantidad de equipos, servicios o alcance de tu requerimiento..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
+        <button type="submit" class="btn-submit" id="btn-enviar-cotizacion">Enviar Solicitud de Cotización</button>
 
       </form>
     </div>
@@ -443,6 +468,55 @@
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
+
+  <!-- SCRIPT ENVÍO A VTIGER Y TELEGRAM -->
+  <script>
+    document.getElementById('quote-form-vtiger').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('btn-enviar-cotizacion');
+      const statusBox = document.getElementById('quote-status');
+
+      btn.disabled = true;
+      btn.innerText = 'Enviando solicitud...';
+      statusBox.className = '';
+      statusBox.style.display = 'none';
+
+      const formData = {
+        nombre: document.getElementById('nombre_contacto').value,
+        documento: document.getElementById('documento_id').value,
+        empresa: document.getElementById('empresa_nombre').value || 'Persona Natural',
+        correo: document.getElementById('correo_contacto').value,
+        telefono: document.getElementById('telefono_contacto').value,
+        solucion: document.getElementById('solucion_interes').value,
+        mensaje: document.getElementById('mensaje_detalle').value
+      };
+
+      try {
+        const response = await fetch('crear-cotizacion-vtiger.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          statusBox.className = 'success';
+          statusBox.innerHTML = '✅ ¡Gracias! Tu solicitud de cotización ha sido registrada. Un asesor comercial te contactará en breve.';
+          document.getElementById('quote-form-vtiger').reset();
+        } else {
+          throw new Error(result.message || 'Error al enviar la solicitud.');
+        }
+      } catch (err) {
+        statusBox.className = 'error';
+        statusBox.innerHTML = `⚠️ ${err.message}`;
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Enviar Solicitud de Cotización';
+      }
+    });
+  </script>
 
 </body>
 </html>
