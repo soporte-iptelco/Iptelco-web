@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitar Cotización | IPTELCO S.A.S</title>
+  <title>Solicitar Cotización Empresarial | IPTELCO S.A.S</title>
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
-  <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+  <!-- FAVICON PESTAÑA NAVEGADOR -->
+  <link rel="icon" type="image/png" href="img/icono-iptelco.png">
+  <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,92 +17,207 @@
     :root { 
       --bg-dark: #020617; 
       --bg-card: rgba(15, 23, 42, 0.85); 
+      --bg-card-hover: rgba(30, 41, 59, 0.95); 
       --accent-blue: #3b82f6; 
       --accent-cyan: #06b6d4; 
-      --accent-glow: rgba(59, 130, 246, 0.25); 
+      --accent-glow: rgba(6, 182, 212, 0.25); 
       --text-main: #f8fafc; 
       --text-muted: #94a3b8; 
       --border-light: rgba(255, 255, 255, 0.08); 
-      --border-glow: rgba(59, 130, 246, 0.4); 
+      --border-glow: rgba(6, 182, 212, 0.4); 
+      --input-bg: rgba(2, 6, 23, 0.6);
+      --input-border: rgba(255, 255, 255, 0.12);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER CSS PURO */
-    #iptelco-preloader { 
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-      background: #020617; z-index: 99999; 
-      display: flex; align-items: center; justify-content: center; 
-      transition: opacity 0.4s ease, visibility 0.4s ease; 
-    }
-    #iptelco-preloader.hidden { 
-      opacity: 0 !important; 
-      visibility: hidden !important; 
-      pointer-events: none !important; 
-    }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
-
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* LOGO DIFUMINADO EN HEADER */
-    .brand-logo-container {
-      display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
-      padding: 6px 55px 6px 20px; height: 100%;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .brand-logo-container:hover { opacity: 0.97; transform: scale(1.01); }
-    .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
+    /* PRELOADER */
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
+    .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
-    nav { display: flex; align-items: center; gap: 20px; }
+    /* HEADER TRANSPARENTE OSCURO SOBERBIO */
+    header { 
+      display: flex; justify-content: space-between; align-items: center; 
+      padding: 6px 0; height: 120px; position: sticky; top: 0; 
+      background: rgba(2, 6, 23, 0.95); 
+      backdrop-filter: blur(16px); 
+      border-bottom: 1px solid var(--border-light); 
+      z-index: 1000; 
+    }
+
+    .brand-logo-container { 
+      display: flex; align-items: center; text-decoration: none; 
+      background: transparent !important; margin-left: 4%; height: 100%; 
+      mask-image: none !important; -webkit-mask-image: none !important;
+      transition: opacity 0.2s ease, transform 0.2s ease; 
+    }
+    .brand-logo-container:hover { opacity: 0.95; transform: scale(1.02); }
+    .brand-logo-img { 
+      height: 105px !important; 
+      max-height: 105px !important; 
+      width: auto !important; 
+      object-fit: contain !important; 
+      display: block; 
+    }
+
+    nav { display: flex; align-items: center; gap: 22px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
-
+    
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
-    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
-    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
-
-    /* SECCIÓN DE FORMULARIO DE COTIZACIÓN */
-    .quote-section { padding: 60px 6% 80px 6%; max-width: 900px; margin: 0 auto; position: relative; z-index: 10; }
-    .quote-header { text-align: center; margin-bottom: 40px; }
-    .quote-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; }
-    .quote-header h1 span { color: var(--accent-cyan); }
-    .quote-header p { color: var(--text-muted); font-size: 1.05rem; }
-
-    .quote-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
     
-    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group.full { grid-column: span 2; }
-    
-    .form-group label { font-size: 0.9rem; font-weight: 700; color: #cbd5e1; }
-    .form-group input, .form-group select, .form-group textarea {
-      background: rgba(2, 6, 23, 0.8); border: 1px solid var(--border-light);
-      border-radius: 10px; padding: 14px 16px; color: #ffffff; font-family: inherit; font-size: 0.95rem;
-      outline: none; transition: border-color 0.2s;
+    .btn-cotizar { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
+    .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--border-glow); }
+
+    /* SECCIÓN COTIZACIÓN (ESPACIO SUPERIOR AJUSTADO PARA EVITAR QUE SE TAPE) */
+    .quote-container-wrapper {
+      max-width: 850px;
+      margin: 50px auto 80px auto;
+      padding: 0 20px;
     }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #64748b; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+
+    .quote-header {
+      text-align: center;
+      margin-bottom: 35px;
     }
-    .form-group select option { background: #020617; color: #ffffff; }
+    .quote-header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .quote-header h1 span {
+      color: var(--accent-cyan);
+    }
+    .quote-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .quote-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 45px 50px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+    }
+
+    .quote-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    label span.required {
+      color: var(--accent-cyan);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #475569;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2306b6d4'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 18px;
+    }
+    select option {
+      background-color: #0f172a;
+      color: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
 
     .btn-submit {
-      width: 100%; background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
-      color: #ffffff; border: none; padding: 16px; border-radius: 12px;
-      font-size: 1.05rem; font-weight: 800; cursor: pointer; transition: all 0.2s; margin-top: 10px;
+      background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3); }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.4);
+    }
 
     /* FOOTER */
-    .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
-    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
+    .footer-logo-container { 
+      display: inline-block; background: transparent !important; 
+      mask-image: none !important; -webkit-mask-image: none !important;
+      padding: 0 !important; margin-bottom: 18px; 
+    }
+    .footer-logo-img { 
+      height: 160px !important; 
+      max-height: 160px !important; 
+      width: auto !important; 
+      object-fit: contain !important; 
+      display: block; 
+    }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -112,35 +227,89 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* WIDGET WHATSAPP CONTROLADO */
+    /* ESTILOS DE CONTACTO FOOTER */
+    .contact-item,
+    .contact-item:link,
+    .contact-item:visited,
+    .contact-item:active { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 14px !important; 
+      margin-bottom: 16px !important; 
+      color: #cbd5e1 !important; 
+      text-decoration: none !important; 
+      transition: transform 0.2s ease, color 0.2s ease !important; 
+    }
+    .contact-item:hover { 
+      color: #ffffff !important; 
+      transform: translateX(4px) !important; 
+    }
+    .contact-item span { 
+      font-size: 0.8rem !important; 
+      color: #94a3b8 !important; 
+      display: block !important; 
+      text-decoration: none !important; 
+    }
+    .contact-item b { 
+      color: #ffffff !important; 
+      font-weight: 700 !important; 
+      font-size: 0.95rem !important; 
+      text-decoration: none !important; 
+    }
+    
+    .contact-icon-box { 
+      width: 44px !important; 
+      height: 44px !important; 
+      border-radius: 10px !important; 
+      background: rgba(59, 130, 246, 0.15) !important; 
+      border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      color: #3b82f6 !important; 
+      font-size: 1.2rem !important; 
+      flex-shrink: 0 !important; 
+    }
+    .contact-icon-box.red-box { 
+      background: rgba(239, 68, 68, 0.15) !important; 
+      border-color: rgba(239, 68, 68, 0.3) !important; 
+      color: #ef4444 !important; 
+    }
+
+    .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
+
     .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px !important; height: 72px !important; min-width: 72px !important; min-height: 72px !important; max-width: 72px !important; max-height: 72px !important; border-radius: 50% !important; border: 3px solid var(--accent-cyan); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden !important; flex-shrink: 0 !important; }
-    .wa-avatar-box img { width: 72px !important; height: 72px !important; max-width: 72px !important; max-height: 72px !important; object-fit: cover !important; display: block !important; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-cyan)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
-    @media (max-width: 900px) {
-      .footer-grid, .form-grid { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: span 1; }
-      nav { display: none; }
-      .wa-banner { display: none; }
+    @media (max-width: 900px) { 
+      header { height: 90px; }
+      .brand-logo-img { height: 70px !important; max-height: 70px !important; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .quote-card { padding: 30px 22px; }
+      .footer-grid { grid-template-columns: 1fr; } 
+      nav { display: none; } 
+      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
     }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER CON LOGO PRINCIPAL -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-main.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-footer.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO PRINCIPAL -->
+  <!-- HEADER CON LOGO TRANSPARENTE Y BOTONES DE ACCIÓN -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-main.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-footer.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -153,84 +322,94 @@
     </nav>
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
-      <a href="cotizacion.html" class="btn-cotizar" style="opacity: 0.8; pointer-events: none;">Solicitar Cotización</a>
+      <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
     </div>
   </header>
 
-  <section class="quote-section">
+  <!-- FORMULARIO DE COTIZACIÓN -->
+  <div class="quote-container-wrapper">
+    
     <div class="quote-header">
-      <h1>Solicitar <span>Cotización Empresarial</span></h1>
+      <h1>Solicitar <span>Cotización</span> Empresarial</h1>
       <p>Déjanos los detalles de tu proyecto y un ingeniero especialista se pondrá en contacto contigo en menos de 2 horas.</p>
     </div>
 
     <div class="quote-card">
-      <form action="https://formspree.io/f/xknkyjrr" method="POST">
-        <div class="form-grid">
+      <form class="quote-form" action="#" method="POST">
+        
+        <div class="form-grid-2">
           <div class="form-group">
-            <label for="nombre">Nombre de Contacto *</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Ing. Carlos Mendoza">
-          </div>
-
-          <div class="form-group">
-            <label for="empresa">Razón Social de la Empresa *</label>
-            <input type="text" id="empresa" name="empresa" required placeholder="Ej. Soluciones Logísticas S.A.S">
+            <label>Nombre de Contacto <span class="required">*</span></label>
+            <input type="text" placeholder="Ej. Ing. Carlos Mendoza" required>
           </div>
 
           <div class="form-group">
-            <label for="email">Correo Corporativo *</label>
-            <input type="email" id="email" name="email" required placeholder="ejemplo@tuempresa.com">
-          </div>
-
-          <div class="form-group">
-            <label for="telefono">Teléfono / WhatsApp de Contacto *</label>
-            <input type="tel" id="telefono" name="telefono" required placeholder="+57 300 000 0000">
-          </div>
-
-          <div class="form-group full">
-            <label for="servicio">Solución de Interés *</label>
-            <select id="servicio" name="servicio" required>
-              <option value="" disabled selected>Selecciona una solución...</option>
-              <option value="Telefonía IP & Centrales Cloud">📞 Telefonía IP, 3CX & Wolkvox</option>
-              <option value="Ciberseguridad & Firewalls">🛡️ Ciberseguridad, Fortinet & ESET</option>
-              <option value="Redes & Wi-Fi Enterprise">🌐 Redes MikroTik, Switches & Cableado</option>
-              <option value="CCTV & Control de Acceso">📹 CCTV, Cámaras & Biometría ZKTeco</option>
-              <option value="Soluciones Cloud & Microsoft 365">☁️ Cloud, Microsoft 365 & Azure</option>
-              <option value="Soporte TI & Suministro Hardware">💻 Soporte TI & Outsourcing</option>
-            </select>
-          </div>
-
-          <div class="form-group full">
-            <label for="mensaje">Detalles del Requerimiento / Mensaje *</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente la cantidad de usuarios, ubicaciones o alcance de tu proyecto..."></textarea>
-          </div>
-
-          <div class="form-group full">
-            <button type="submit" class="btn-submit">Enviar Solicitud de Cotización 🚀</button>
+            <label>Razón Social de la Empresa <span class="required">*</span></label>
+            <input type="text" placeholder="Ej. Soluciones Logísticas S.A.S" required>
           </div>
         </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Correo Corporativo <span class="required">*</span></label>
+            <input type="email" placeholder="ejemplo@tuempresa.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono / WhatsApp de Contacto <span class="required">*</span></label>
+            <input type="tel" placeholder="+57 300 000 0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Solución de Interés <span class="required">*</span></label>
+          <select required>
+            <option value="" disabled selected>Selecciona una solución...</option>
+            <option value="telefonia">📞 Telefonía IP, PBX Cloud & Contact Center</option>
+            <option value="ciberseguridad">🛡️ Ciberseguridad, Firewalls Fortinet & ESET</option>
+            <option value="redes">🌐 Redes, MikroTik, Aruba & Wi-Fi Enterprise</option>
+            <option value="cctv">📹 CCTV, Cámaras IP & Control de Acceso Biométrico</option>
+            <option value="cloud">☁️ Soluciones Cloud, Microsoft 365 & Azure</option>
+            <option value="soporte">💻 Soporte TI, Mantenimiento & Hardware</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Detalles del Requerimiento / Mensaje <span class="required">*</span></label>
+          <textarea placeholder="Describe brevemente la cantidad de usuarios, ubicaciones o alcance de tu proyecto..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Solicitud de Cotización 🚀</button>
+
       </form>
     </div>
-  </section>
 
-  <!-- FOOTER CON LOGO PRINCIPAL -->
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-main.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-footer.jpg';">
-          </div>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
-          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV, Nube y Soporte TI.
-        </p>
+        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
       </div>
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
-        <a href="https://wa.me/573178737171" target="_blank" class="contact-item"><div class="contact-icon-box">💬</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div></a>
-        <a href="mailto:info@iptelco.com.co" class="contact-item"><div class="contact-icon-box">✉️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div></a>
-        <a href="soporte.html" class="contact-item"><div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div></a>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
+          <div class="contact-icon-box">💬</div>
+          <div><span>WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+        </a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item">
+          <div class="contact-icon-box">✉️</div>
+          <div><span>Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+        </a>
+        <a href="soporte.html" class="contact-item">
+          <div class="contact-icon-box red-box">🛠️</div>
+          <div><span>Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
+        </a>
       </div>
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
@@ -246,25 +425,12 @@
     <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
   </footer>
 
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
-    <div class="wa-avatar-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO">
+    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
     </div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
-
-  <!-- SCRIPT PARA ELIMINAR EL PRELOADER AUTOMÁTICAMENTE -->
-  <script>
-    function ocultarPreloader() {
-      const p = document.getElementById('iptelco-preloader');
-      if (p) {
-        p.classList.add('hidden');
-        setTimeout(() => { p.style.display = 'none'; }, 400);
-      }
-    }
-    window.addEventListener('load', ocultarPreloader);
-    setTimeout(ocultarPreloader, 400);
-  </script>
 
 </body>
 </html>
