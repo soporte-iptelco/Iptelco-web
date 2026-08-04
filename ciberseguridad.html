@@ -62,7 +62,6 @@
     .hero h1 span { color: var(--accent-color); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
 
-    /* KEYFRAMES PARA EL MOVIMIENTO FLOTANTE */
     @keyframes floatAnimationHero { 
       0% { transform: translateY(0px); } 
       50% { transform: translateY(-14px); } 
@@ -79,7 +78,7 @@
       justify-content: center; 
       overflow: hidden; 
       height: 300px; 
-      animation: floatAnimationHero 4s ease-in-out infinite; /* ¡ANIMACIÓN RECTIFICADA! */
+      animation: floatAnimationHero 4s ease-in-out infinite; 
     }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
@@ -170,9 +169,9 @@
     /* WIDGET WHATSAPP */
     .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-red); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-color); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-red)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-color)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
     @media (max-width: 900px) { 
       header { height: 90px; }
@@ -219,9 +218,9 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <span style="color: var(--accent-red); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Seguridad Perimetral, Endpoint & VPNs</span>
+        <span style="color: var(--accent-color); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Seguridad Perimetral, Endpoint & VPNs</span>
         <h1 style="margin-top: 10px;">Ciberseguridad Avanzada para tu <span>Empresa</span></h1>
-        <p>Protege la información crítica de tu compañía contra ciberataques, ransomware y acceso no autorizado. Implementamos Firewalls Fortinet FortiGate, Antivirus ESET Endpoint y conexiones remotas VPN seguras.</p>
+        <p>Protege la información crítica de tu compañía contra ciberataques, ransomware y acceso no autorizado. Implementamos Firewalls Fortinet FortiGate, MikroTik RouterOS, Antivirus ESET Endpoint y conexiones remotas VPN seguras.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Auditoría de Seguridad</a>
         </div>
@@ -273,6 +272,19 @@
           <h3>Conexiones VPN SSL & IPsec Corporativas</h3>
           <p>Garantiza el acceso remoto encriptado y seguro a los servidores de tu empresa para colaboradores en campo o teletrabajo, evitando interceptación de datos.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar VPN Corporativa ❯</a>
+        </div>
+      </div>
+
+      <!-- 4. MIKROTIK FIREWALL (NUEVO PRODUCTO AÑADIDO) -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/mikrotik-firewall.png" alt="Firewall MikroTik RouterOS" onerror="this.onerror=null; this.src='img/mikrotik.jpg';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Seguridad RouterOS & Filtrado</span>
+          <h3>Firewalls MikroTik & Filtrado Layer 7</h3>
+          <p>Protección perimetral ágil y eficiente con MikroTik RouterOS. Reglas avanzadas de Firewall, detección y bloqueo de ataques de fuerza bruta, restricción de contenido y filtrado L7.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Firewall MikroTik ❯</a>
         </div>
       </div>
 
