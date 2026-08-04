@@ -45,7 +45,13 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* LOGO HEADER TRANSPARENTE Y AMPLIADO CON logo-main.png */
+    /* PRELOADER CON LOGO AGRANDADO */
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
+    .preloader-logo-img { height: 95px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
+    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
+    @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+
+    /* LOGO HEADER AGRANDADO */
     .brand-logo-container {
       display: flex;
       align-items: center;
@@ -60,18 +66,31 @@
 
     .brand-logo-container:hover {
       opacity: 0.95;
-      transform: scale(1.01);
+      transform: scale(1.02);
     }
 
     .brand-logo-img {
-      height: 68px !important;
-      max-height: 68px !important;
+      height: 85px !important;
+      max-height: 85px !important;
       width: auto !important;
       object-fit: contain !important;
       display: block;
     }
 
-    /* LADO DERECHO: BOTONES INTEGRADOS AL FONDO OSCURO */
+    /* HEADER AJUSTADO A 100PX PARA DARLE ESPACIO AL LOGO GRANDE */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 6px 0;
+      height: 100px;
+      position: sticky; top: 0;
+      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light); z-index: 1000;
+    }
+
+    nav { display: flex; align-items: center; gap: 22px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #ffffff; }
+
     .header-actions {
       display: flex;
       align-items: center;
@@ -115,7 +134,7 @@
       box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
     }
 
-    /* LOGO FOOTER TRANSPARENTE Y AMPLIADO CON logo-main.png */
+    /* LOGO FOOTER AGRANDADO */
     .footer-logo-container {
       display: inline-block;
       background: transparent !important;
@@ -126,26 +145,12 @@
     }
 
     .footer-logo-img {
-      height: 80px !important;
-      max-height: 80px !important;
+      height: 110px !important;
+      max-height: 110px !important;
       width: auto !important;
       object-fit: contain !important;
       display: block;
     }
-
-    /* HEADER */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 0;
-      height: 82px;
-      position: sticky; top: 0;
-      background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-light); z-index: 1000;
-    }
-
-    nav { display: flex; align-items: center; gap: 22px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: #ffffff; }
 
     /* HERO PRINCIPAL */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
@@ -266,9 +271,15 @@
 </head>
 <body>
 
+  <!-- PRELOADER -->
+  <div id="iptelco-preloader">
+    <div class="preloader-content">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
+    </div>
+  </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO MAIN TRANSPARENTE Y AMPLIADO -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
@@ -425,7 +436,7 @@
     </div>
   </section>
 
-  <!-- FOOTER CON LOGO MAIN TRANSPARENTE Y AMPLIADO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       
