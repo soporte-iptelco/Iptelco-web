@@ -28,6 +28,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -152,7 +153,7 @@
       display: block;
     }
 
-    /* HERO PRINCIPAL */
+    /* HERO PRINCIPAL & ANIMACIÓN FLOTANTE */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
@@ -170,6 +171,7 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       animation: floatAnimationHero 4s ease-in-out infinite;
       height: 300px;
+      overflow: hidden;
     }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
@@ -228,9 +230,55 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; text-decoration: none; }
-    .contact-item:hover { color: #ffffff; }
-    .contact-icon-box { width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-weight: 700; flex-shrink: 0; }
+    /* ESTILOS DE CONTACTO FOOTER (CORREGIDOS) */
+    .contact-item,
+    .contact-item:link,
+    .contact-item:visited,
+    .contact-item:active { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 14px !important; 
+      margin-bottom: 16px !important; 
+      color: #cbd5e1 !important; 
+      text-decoration: none !important; 
+      transition: transform 0.2s ease, color 0.2s ease !important; 
+    }
+    .contact-item:hover { 
+      color: #ffffff !important; 
+      transform: translateX(4px) !important; 
+    }
+    .contact-item span { 
+      font-size: 0.8rem !important; 
+      color: #94a3b8 !important; 
+      display: block !important; 
+      text-decoration: none !important; 
+    }
+    .contact-item b { 
+      color: #ffffff !important; 
+      font-weight: 700 !important; 
+      font-size: 0.95rem !important; 
+      text-decoration: none !important; 
+    }
+    
+    .contact-icon-box { 
+      width: 44px !important; 
+      height: 44px !important; 
+      border-radius: 10px !important; 
+      background: rgba(59, 130, 246, 0.15) !important; 
+      border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      color: #3b82f6 !important; 
+      font-size: 1.2rem !important; 
+      flex-shrink: 0 !important; 
+    }
+    .contact-icon-box.red-box { 
+      background: rgba(239, 68, 68, 0.15) !important; 
+      border-color: rgba(239, 68, 68, 0.3) !important; 
+      color: #ef4444 !important; 
+    }
+
     .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
 
     /* WIDGET WHATSAPP */
@@ -264,7 +312,7 @@
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO MAIN TRANSPARENTE Y AMPLIADO -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
@@ -286,7 +334,7 @@
     </div>
   </header>
 
-  <!-- HERO PRINCIPAL -->
+  <!-- HERO PRINCIPAL (IMAGEN PRINCIPAL ACTUALIZADA) -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -300,7 +348,7 @@
       </div>
 
       <div class="hero-media-container">
-        <img src="img/telefonos-ip.png" alt="Telefonía IP IPTELCO" onerror="this.src='img/3cx.png';">
+        <img src="img/Telefonía-Centrales-PBX-Cloud.jpg" alt="Telefonía IP, Centrales PBX & Cloud IPTELCO" onerror="this.onerror=null; this.src='img/telefonos-ip.png';">
       </div>
     </div>
   </section>
@@ -322,7 +370,7 @@
         </div>
       </div>
 
-      <!-- 2. WOLKVOX (RUTA EXACTA A ARCHIVO JPG) -->
+      <!-- 2. WOLKVOX -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/wolkvox.jpg" alt="Wolkvox Contact Center"></div>
         <div class="product-info-box">
@@ -335,7 +383,7 @@
 
       <!-- 3. ISSABEL -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/Issabel-2.png" alt="Issabel PBX" onerror="this.src='img/Issabel.png';"></div>
+        <div class="product-img-box"><img src="img/Issabel-2.png" alt="Issabel PBX" onerror="this.onerror=null; this.src='img/Issabel.png';"></div>
         <div class="product-info-box">
           <span class="product-badge">Open Source PBX</span>
           <h3>Servidores VoIP Issabel PBX</h3>
@@ -370,7 +418,7 @@
 
   </section>
 
-  <!-- FOOTER CON LOGO MAIN AMPLIADO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       
@@ -391,15 +439,15 @@
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
           <div class="contact-icon-box">💬</div>
-          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+          <div><span>WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
         </a>
         <a href="mailto:info@iptelco.com.co" class="contact-item">
           <div class="contact-icon-box">✉️</div>
-          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+          <div><span>Correo Comercial:</span><b>info@iptelco.com.co</b></div>
         </a>
         <a href="soporte.html" class="contact-item">
-          <div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div>
-          <div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda:</span><b>Radicar Ticket de Soporte</b></div>
+          <div class="contact-icon-box red-box">🛠️</div>
+          <div><span>Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
         </a>
       </div>
 
@@ -421,6 +469,7 @@
     </div>
   </footer>
 
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"></div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
