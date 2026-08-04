@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesa de Ayuda & Radicación de Casos | IPTELCO S.A.S</title>
 
-  <!-- FAVICON ACTUALIZADO -->
+  <!-- FAVICON PESTAÑA NAVEGADOR -->
   <link rel="icon" type="image/png" href="img/icono-iptelco.png">
   <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
@@ -34,17 +34,17 @@
     /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
     #iptelco-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 60px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
-    /* CABECERA CON LOGO PRINCIPAL TRANSPARENTE */
+    /* HEADER CON LOGO TRANSPARENTE DIRECTO */
     .brand-logo-container {
       display: flex; align-items: center; text-decoration: none; background: transparent;
       padding: 0 20px; height: 100%;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
     .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
-    .brand-logo-img { height: 45px; width: auto; object-fit: contain; display: block; }
+    .brand-logo-img { height: 42px; width: auto; object-fit: contain; display: block; }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
@@ -165,9 +165,8 @@
     @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUpModal { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-    /* FOOTER */
-    .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
-    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
+    /* FOOTER CON LOGO TRANSPARENTE DIRECTO */
+    .footer-logo-img { height: 45px; width: auto; object-fit: contain; display: block; }
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -182,18 +181,16 @@
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
     .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
     @media (max-width: 900px) { 
       .footer-grid { grid-template-columns: 1fr; } 
       nav { display: none; } 
-      .wa-banner { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PRELOADER -->
+  <!-- PRELOADER CON LOGO TRANSPARENTE -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
       <img src="img/logo-main.png" alt="Cargando IPTELCO" class="preloader-logo-img">
@@ -285,25 +282,21 @@
     </div>
   </div>
 
-  <!-- ESTRUCTURA DEL POPUP (MODAL) DE ÉXITO/ERROR -->
+  <!-- POPUP MODAL -->
   <div id="modalOverlay" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close-btn" id="btnCloseIcon">✕</button>
-      <div id="modalBody">
-        <!-- El contenido dinámico se inyecta por JS -->
-      </div>
+      <div id="modalBody"></div>
       <button class="modal-btn-action" id="btnCerrarModal">Entendido</button>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER CON LOGO TRANSPARENTE DIRECTO -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
-          </div>
+        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:18px;">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV y Cloud.
