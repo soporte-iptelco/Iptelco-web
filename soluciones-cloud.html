@@ -6,8 +6,8 @@
   <title>Soluciones Cloud, Workspace, Azure & QNAP | IPTELCO S.A.S</title>
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
-  <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+  <link rel="icon" type="image/png" href="img/icono-iptelco.png">
+  <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER 100% CSS PURO (NO BLOQUEA LA PANTALLA) */
+    /* PRELOADER */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -38,24 +38,23 @@
       animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
       pointer-events: none; 
     }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* LOGO DIFUMINADO EN HEADER */
+    /* LOGO HEADER TRANSPARENTE DIRECTO */
     .brand-logo-container {
-      display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
-      padding: 6px 55px 6px 20px; height: 100%;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      display: flex; align-items: center; text-decoration: none;
+      background: transparent !important; margin-left: 4%; height: 100%;
+      mask-image: none !important; -webkit-mask-image: none !important;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    .brand-logo-container:hover { opacity: 0.97; transform: scale(1.01); }
-    .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
+    .brand-logo-container:hover { opacity: 0.95; transform: scale(1.02); }
+    .brand-logo-img { height: 105px !important; max-height: 105px !important; width: auto !important; object-fit: contain !important; display: block; }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; height: 120px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -79,16 +78,15 @@
     .hero-media-container { background: #ffffff; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; height: 300px; animation: floatAnimationHero 4s ease-in-out infinite; }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    /* CATÁLOGO CLOUD EN FILAS ANCHAS INTERCALADAS HORIZONTALES */
+    /* CATÁLOGO CLOUD */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
 
-    /* FILA HORIZONTAL STRICTA */
     .product-row { 
       display: flex; 
-      flex-direction: row !important; /* Fuerza diseño horizontal (lado a lado) */
+      flex-direction: row !important; 
       align-items: center; 
       gap: 40px; 
       background: var(--bg-card); 
@@ -100,12 +98,10 @@
     }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
     
-    /* FILA INTERCALADA (TEXTO A LA IZQUIERDA, IMAGEN A LA DERECHA) */
     .product-row.reverse { 
       flex-direction: row-reverse !important; 
     }
 
-    /* CAJA DE LA IMAGENE FIJA A UN COSTADO */
     .product-img-box { 
       width: 320px !important; 
       min-width: 320px !important; 
@@ -117,7 +113,7 @@
       justify-content: center; 
       padding: 20px; 
       overflow: hidden; 
-      flex-shrink: 0 !important; /* Impide que la imagen se expanda a lo largo */
+      flex-shrink: 0 !important; 
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03); 
     }
     .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
@@ -130,9 +126,14 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-purple); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 5px; }
     .btn-link:hover { gap: 12px; color: #c084fc; }
 
-    /* FOOTER */
-    .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
-    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
+    /* LOGO FOOTER TRANSPARENTE DIRECTO */
+    .footer-logo-container {
+      display: inline-block; background: transparent !important;
+      mask-image: none !important; -webkit-mask-image: none !important;
+      padding: 0 !important; margin-bottom: 18px;
+    }
+    .footer-logo-img { height: 160px !important; max-height: 160px !important; width: auto !important; object-fit: contain !important; display: block; }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -142,7 +143,7 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* WIDGET WHATSAPP CONTROLADO */
+    /* WIDGET WHATSAPP */
     .whatsapp-widget { 
       position: fixed; bottom: 35px; right: 35px; z-index: 99990; 
       display: flex; align-items: center; text-decoration: none; 
@@ -171,6 +172,8 @@
     }
 
     @media (max-width: 900px) { 
+      header { height: 90px; }
+      .brand-logo-img { height: 70px !important; max-height: 70px !important; }
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
       .product-row, .product-row.reverse { flex-direction: column !important; padding: 22px; gap: 20px; }
       .product-img-box { width: 100% !important; min-width: 100% !important; height: 200px !important; }
@@ -181,10 +184,10 @@
 </head>
 <body>
 
-  <!-- PRELOADER 100% CSS PURO CON LOGO REAL -->
+  <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -192,7 +195,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -221,65 +224,99 @@
         </div>
       </div>
       <div class="hero-media-container">
-        <img src="img/servicios-plataformas-cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
+        <img src="img/Soluciones-Cloud.png" alt="Plataformas Cloud IPTELCO" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
       </div>
     </div>
   </section>
 
-  <!-- CATÁLOGO CLOUD EN FILAS ANCHAS INTERCALADAS (IMAGEN A UN COSTADO / TEXTO AL OTRO) -->
+  <!-- CATÁLOGOCLOUD -->
   <section class="services-section">
-    <div class="category-header-title">☁️ Licenciamiento Corporativo & Nube Privada</div>
+    
+    <!-- SECCIÓN 1: SUITES DE PRODUCTIVIDAD Y TRABAJO EN EQUIPO -->
+    <div class="category-header-title">☁️ Suites de Productividad & Correo Corporativo</div>
     <div class="products-showcase">
       
-      <!-- 1. MICROSOFT 365 (IMAGEN A LA IZQUIERDA) -->
+      <!-- 1. MICROSOFT 365 -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/365.png" alt="Microsoft Office 365" onerror="this.onerror=null; this.src='img/offices-365.png';">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Productividad Empresarial</span>
+          <span class="product-badge">Productividad Microsoft</span>
           <h3>Microsoft Office 365 Corporativo</h3>
-          <p>Potencia el trabajo colaborativo con la suite ofimática líder. Correos corporativos Exchange, almacenamiento en OneDrive/SharePoint, reuniones en Teams y Word/Excel/PowerPoint en la nube y escritorio.</p>
+          <p>Potencia el trabajo colaborativo con la suite ofimática líder. Correos corporativos Exchange, almacenamiento en OneDrive/SharePoint, reuniones en Teams y aplicaciones Word/Excel/PowerPoint en la nube y escritorio.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Licencias Microsoft 365 ❯</a>
         </div>
       </div>
 
-      <!-- 2. GOOGLE WORKSPACE (IMAGEN A LA DERECHA - REVERSE) -->
+      <!-- 2. GOOGLE WORKSPACE -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/Cloud-logo.jpg" alt="Google Workspace">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Productividad Empresarial</span>
+          <span class="product-badge">Productividad Google</span>
           <h3>Google Workspace Corporativo</h3>
-          <p>La suite colaborativa de Google para empresas. Correos electrónicos personalizados con Gmail corporativo, videollamadas fluidas en Google Meet, formularios y almacenamiento unificado en Google Drive.</p>
+          <p>La suite colaborativa de Google para empresas. Correos personalizados con Gmail corporativo, videollamadas fluidas en Google Meet, formularios, documentos compartidos y almacenamiento unificado en Google Drive.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Google Workspace ❯</a>
         </div>
       </div>
 
-      <!-- 3. QNAP CLOUD NAS (IMAGEN A LA IZQUIERDA) -->
-      <div class="product-row">
-        <div class="product-img-box">
-          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='img/qnap.jpg';">
-        </div>
-        <div class="product-info-box">
-          <span class="product-badge">Nube Privada & Backup</span>
-          <h3>Servidores de Almacenamiento QNAP Cloud NAS</h3>
-          <p>Centralización de archivos corporativos, nube privada híbrida y copias de seguridad automatizadas en la nube. Protección RAID contra pérdida de datos y sincronización remota multisede.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar QNAP Cloud NAS ❯</a>
-        </div>
-      </div>
+    </div>
 
-      <!-- 4. MICROSOFT AZURE (IMAGEN A LA DERECHA - REVERSE) -->
-      <div class="product-row reverse">
+    <!-- SECCIÓN 2: INFRAESTRUCTURA, NUBE PRIVADA & ALMACENAMIENTO -->
+    <div class="category-header-title" style="margin-top: 80px;">⚡ Servidores Cloud, Nube Privada & Respaldos</div>
+    <div class="products-showcase">
+
+      <!-- 3. MICROSOFT AZURE -->
+      <div class="product-row">
         <div class="product-img-box">
           <img src="img/azure.jpg" alt="Microsoft Azure Cloud">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">IaaS & PaaS</span>
+          <span class="product-badge">Infraestructura IaaS & PaaS</span>
           <h3>Servidores Virtuales Microsoft Azure</h3>
-          <p>Infraestructura global segura y escalable. Despliegue de máquinas virtuales (VMs), bases de datos administradas SQL, copias de seguridad en la nube (Backups) y recuperación ante desastres (DRP).</p>
-          <a href="cotizacion.html" class="btn-link">Ver Soluciones Microsoft Azure ❯</a>
+          <p>Infraestructura global segura y escalable. Despliegue de máquinas virtuales (VMs Windows/Linux), bases de datos administradas SQL, copias de seguridad en la nube (Backups) y planes de recuperación ante desastres (DRP).</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Microsoft Azure ❯</a>
+        </div>
+      </div>
+
+      <!-- 4. QNAP CLOUD NAS -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/qnap.png" alt="QNAP Cloud NAS" onerror="this.onerror=null; this.src='img/nas2.png';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Nube Privada & Backup Local</span>
+          <h3>Servidores de Almacenamiento QNAP Cloud NAS</h3>
+          <p>Centralización de archivos corporativos, nube privada híbrida y copias de seguridad automatizadas en la nube. Protección RAID contra pérdida de datos, sincronización remota multisede y gestión de carpetas compartidas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar QNAP Cloud NAS ❯</a>
+        </div>
+      </div>
+
+      <!-- 5. BACKUP EN LA NUBE & DRP -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/nas2.png" alt="Respaldo de Datos y Copias de Seguridad en la Nube">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Protección de Datos & DRP</span>
+          <h3>Backup Automatizado en la Nube & Recuperación</h3>
+          <p>Soluciones de respaldo encriptado fuera de las instalaciones para servidores físicos, virtuales y bases de datos. Recuperación ágil ante ataques de ransomware o fallas de hardware.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Respaldos Cloud ❯</a>
+        </div>
+      </div>
+
+      <!-- 6. AMAZON WEB SERVICES (AWS) & NUBE HÍBRIDA -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/Soluciones-Cloud.png" alt="AWS & Nube Híbrida Empresarial" onerror="this.onerror=null; this.src='img/Cloud-logo.jpg';">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Cloud Pública Híbrida</span>
+          <h3>AWS & Soluciones de Nube Híbrida</h3>
+          <p>Diseño y migración de cargas de trabajo hacia Amazon Web Services (AWS) o infraestructuras híbridas. Garantizamos alta disponibilidad, monitoreo 24/7 y optimización de costos operativos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Nube Híbrida ❯</a>
         </div>
       </div>
 
@@ -290,10 +327,8 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
-          </div>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV, Migración Cloud (Microsoft 365, Azure) y Soporte TI.
