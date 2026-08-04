@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte TI, Licencias & Hardware | IPTELCO S.A.S</title>
 
-  <!-- FAVICON PESTAÑA NAVEGADOR -->
+  <!-- FAVICON CORRECTO -->
   <link rel="icon" type="image/png" href="img/icono-iptelco.png">
   <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
@@ -41,10 +41,9 @@
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
-    /* LOGO HEADER TRANSPARENTE DIRECTO */
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; background: transparent !important; mask-image: none !important; -webkit-mask-image: none !important; padding: 0 !important; transition: opacity 0.2s ease, transform 0.2s ease; }
+    /* LOGO HEADER VECTORIAL */
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; transition: opacity 0.2s ease, transform 0.2s ease; }
     .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
-    .brand-logo-img { height: 38px !important; width: auto !important; object-fit: contain; display: block; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -82,7 +81,6 @@
     .product-row { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 25px; transition: all 0.35s ease; position: relative; cursor: pointer; }
     .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
 
-    /* CAJA LIMPIA Y PROPORCIONADA PARA CADA PRODUCTO */
     .product-img-box { 
       width: 100%; 
       height: 210px; 
@@ -97,7 +95,6 @@
       box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
     }
     
-    /* IMAGEN TOTALMENTE PROPORCIONAL Y NUNCA RECORTADA */
     .product-img-box img { 
       max-width: 100%; 
       max-height: 100%; 
@@ -114,10 +111,6 @@
     .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
-
-    /* LOGO FOOTER TRANSPARENTE DIRECTO */
-    .footer-logo-container { display: inline-block; background: transparent !important; mask-image: none !important; -webkit-mask-image: none !important; padding: 0 !important; margin-bottom: 16px; }
-    .footer-logo-img { height: 38px !important; width: auto !important; object-fit: contain; display: block; }
 
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
@@ -153,15 +146,19 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
+      <img src="img/icono-iptelco.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON LOGO VECTORIAL -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
+      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
+        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
+      </svg>
+      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -178,7 +175,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -196,7 +192,6 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO PRODUCTOS -->
   <section class="services-section">
 
     <!-- SECCIÓN 1: SOPORTE Y LICENCIAMIENTO -->
@@ -363,8 +358,12 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" class="footer-logo-container">
-          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
+        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+            <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
+            <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
+          </svg>
+          <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
