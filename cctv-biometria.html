@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCTV, Videovigilancia & Biometría | IPTELCO S.A.S</title>
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
-  <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+  <!-- FAVICON DE LA PESTAÑA -->
+  <link rel="icon" type="image/png" href="img/icono-iptelco.png">
+  <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    /* PRELOADER 100% CSS PURO */
+    /* PRELOADER */
     #iptelco-preloader { 
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
@@ -38,24 +38,23 @@
       animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
       pointer-events: none; 
     }
-    .preloader-logo-img { height: 75px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
+    .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; display: none; } }
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* LOGO DIFUMINADO EN HEADER */
+    /* LOGO HEADER TRANSPARENTE DIRECTO */
     .brand-logo-container {
-      display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
-      padding: 6px 55px 6px 20px; height: 100%;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      display: flex; align-items: center; text-decoration: none;
+      background: transparent !important; margin-left: 4%; height: 100%;
+      mask-image: none !important; -webkit-mask-image: none !important;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    .brand-logo-container:hover { opacity: 0.97; transform: scale(1.01); }
-    .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
+    .brand-logo-container:hover { opacity: 0.95; transform: scale(1.02); }
+    .brand-logo-img { height: 105px !important; max-height: 105px !important; width: auto !important; object-fit: contain !important; display: block; }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; height: 120px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
@@ -127,9 +126,14 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 5px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
 
-    /* FOOTER */
-    .footer-logo-container { display: inline-flex; align-items: center; background-color: #ffffff; padding: 10px 60px 10px 20px; border-radius: 12px; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); }
-    .footer-logo-img { height: 95px; width: auto; object-fit: contain; display: block; }
+    /* LOGO FOOTER TRANSPARENTE DIRECTO */
+    .footer-logo-container {
+      display: inline-block; background: transparent !important;
+      mask-image: none !important; -webkit-mask-image: none !important;
+      padding: 0 !important; margin-bottom: 18px;
+    }
+    .footer-logo-img { height: 160px !important; max-height: 160px !important; width: auto !important; object-fit: contain !important; display: block; }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -168,6 +172,8 @@
     }
 
     @media (max-width: 900px) { 
+      header { height: 90px; }
+      .brand-logo-img { height: 70px !important; max-height: 70px !important; }
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
       .product-row, .product-row.reverse { flex-direction: column !important; padding: 22px; gap: 20px; }
       .product-img-box { width: 100% !important; min-width: 100% !important; height: 200px !important; }
@@ -181,7 +187,7 @@
   <!-- PRELOADER -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
@@ -189,7 +195,7 @@
   <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -212,7 +218,7 @@
       <div>
         <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Seguridad Electrónica & Control de Acceso</span>
         <h1 style="margin-top: 10px;">Protección e Inteligencia para tus <span>Instalaciones</span></h1>
-        <p>Soluciones integrales en Circuito Cerrado de Televisión (CCTV), centros de monitoreo NVR, cámaras inteligentes y control de acceso biométrico de última generación ZKTeco.</p>
+        <p>Soluciones integrales en Circuito Cerrado de Televisión (CCTV), cámaras inteligentes Ojo de Pez y Solares, centros de monitoreo NVR, alarmas y control de acceso biométrico ZKTeco.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar Proyecto de Seguridad</a>
         </div>
@@ -223,12 +229,14 @@
     </div>
   </section>
 
-  <!-- CATÁLOGOCCTV -->
+  <!-- CATÁLOGO COMPLETO CCTV Y BIOMETRÍA -->
   <section class="services-section">
-    <div class="category-header-title">📹 Videovigilancia, Cámaras & Control de Acceso</div>
+
+    <!-- SECCIÓN 1: VIDEOVIGILANCIA & CÁMARAS -->
+    <div class="category-header-title">📹 Videovigilancia & Cámaras Especializadas</div>
     <div class="products-showcase">
       
-      <!-- 1. CÁMARAS IP -->
+      <!-- 1. CÁMARAS IP & NVR -->
       <div class="product-row">
         <div class="product-img-box">
           <img src="img/video-vigilancia.jpg" alt="Cámaras CCTV IP">
@@ -236,38 +244,38 @@
         <div class="product-info-box">
           <span class="product-badge">Videovigilancia Inteligente</span>
           <h3>Cámaras IP, PTZ & Grabadores NVR</h3>
-          <p>Instalación de cámaras de alta resolución con visión nocturna a color, detección de movimiento por inteligencia artificial y monitoreo remoto 24/7 desde tu dispositivo móvil.</p>
+          <p>Instalación de sistemas de videovigilancia IP de alta resolución con visión nocturna a color, grabación centralizada NVR y monitoreo remoto 24/7 en dispositivos móviles.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar CCTV ❯</a>
         </div>
       </div>
 
-      <!-- 2. BIOMETRÍA ZKTECO -->
+      <!-- 2. CÁMARA OJO DE PEZ (FISHEY 360°) -->
       <div class="product-row reverse">
         <div class="product-img-box">
-          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
+          <img src="img/camara-ojo-pez.jpg" alt="Cámara Ojo de Pez 360 Fisheye">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Control de Acceso Biométrico</span>
-          <h3>Terminales ZKTeco & Software BioTime</h3>
-          <p>Control de asistencia y acceso peatonal sin contacto mediante reconocimiento facial, huella dactilar y tarjetas RFID integrados al software centralizado BioTime.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Biometría ❯</a>
+          <span class="product-badge">Cobertura Panorámica</span>
+          <h3>Cámaras Panorámicas 360° (Ojo de Pez / Fisheye)</h3>
+          <p>Monitoreo de amplias zonas sin puntos ciegos. Un solo dispositivo panorámico Ojo de Pez equivale a reemplazar múltiples cámaras convencionales en oficinas y bodegas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras Ojo de Pez ❯</a>
         </div>
       </div>
 
-      <!-- 3. TORNIQUETES & CONTROL DE ACCESO -->
+      <!-- 3. CÁMARAS SOLARES AUTÓNOMAS 4G -->
       <div class="product-row">
         <div class="product-img-box">
-          <img src="img/zkteco-zk-bioaccess.jpg" alt="Torniquetes y Electroimanes ZKTeco">
+          <img src="img/camara-solar.png" alt="Cámaras Solares 4G Autónomas">
         </div>
         <div class="product-info-box">
-          <span class="product-badge">Restricción de Paso Físico</span>
-          <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
-          <p>Sistemas físicos de restricción de paso integrados con lectores biométricos para asegurar áreas críticas, entradas principales y parqueaderos vehiculares.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Controles Físicos ❯</a>
+          <span class="product-badge">Monitoreo Remoto Sin Cables</span>
+          <h3>Cámaras Solares Autónomas & Conectividad 4G</h3>
+          <p>Soluciones de videovigilancia para zonas rurales, obras en construcción o perímetros sin cableado eléctrico ni red. Panel solar integrado, batería y chip de datos 4G.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cámaras Solares ❯</a>
         </div>
       </div>
 
-      <!-- 4. ALARMAS DE INTRUSIÓN -->
+      <!-- 4. ALARMAS & SENSORES DE INTRUSIÓN -->
       <div class="product-row reverse">
         <div class="product-img-box">
           <img src="img/camaras-sensor-movimiento.jpg" alt="Alarmas de Intrusión y Sensores">
@@ -275,8 +283,66 @@
         <div class="product-info-box">
           <span class="product-badge">Detección de Intrusos</span>
           <h3>Sistemas de Alarma & Sensores de Movimiento</h3>
-          <p>Paneles de alarma con sensores de apertura de puertas, movimiento infrarrojo y botones de pánico conectados directamente a tu smartphone para alertas inmediatas.</p>
+          <p>Paneles de alarma con sensores de apertura de puertas, detectores de movimiento infrarrojo y botones de pánico conectados directamente a tu smartphone para alertas inmediatas.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Alarmas ❯</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN 2: BIOMETRÍA & CONTROL DE ACCESO -->
+    <div class="category-header-title" style="margin-top: 80px;">🚪 Control de Acceso, Biometría & Asistencia ZKTeco</div>
+    <div class="products-showcase">
+
+      <!-- 5. RECONOCIMIENTO FACIAL SPEEDFACE -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/sped-face.jpg" alt="ZKTeco SpeedFace">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Biometría Facial Visible Light</span>
+          <h3>Terminales ZKTeco SpeedFace & Facial</h3>
+          <p>Reconocimiento facial ultra rápido sin contacto. Lectura de rostro con tapabocas, medición de temperatura opcional y alta tolerancia contra fraudes de foto o video.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar SpeedFace ❯</a>
+        </div>
+      </div>
+
+      <!-- 6. BIOMETRÍA POR HUELLA DACTILAR & RFID -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/huella-dactilar.jpg" alt="Lectores de Huella Dactilar y Tarjetas RFID">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Control de Acceso Físico</span>
+          <h3>Lectores Biométricos de Huella Dactilar & RFID</h3>
+          <p>Acceso seguro para colaboradores mediante huella dactilar, contraseña o tarjetas de proximidad RFID. Ideal para puertas de oficinas, laboratorios y centros de datos.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Lectores de Huella ❯</a>
+        </div>
+      </div>
+
+      <!-- 7. SOFTWARE BIOTIME -->
+      <div class="product-row">
+        <div class="product-img-box">
+          <img src="img/biotime.jpg" alt="Software ZKTeco BioTime">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Gestión de Personal & Nómina</span>
+          <h3>Software Centralizado BioTime & ZKBioAccess</h3>
+          <p>Administración web de asistencia, turnos de trabajo, horas extras, permisos y retardos. Sincronización en tiempo real con todas las sedes y terminales biométricas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Licencia BioTime ❯</a>
+        </div>
+      </div>
+
+      <!-- 8. TORNIQUETES & BARRERAS FÍSICAS -->
+      <div class="product-row reverse">
+        <div class="product-img-box">
+          <img src="img/zkteco-zk-bioaccess.jpg" alt="Torniquetes y Electroimanes ZKTeco">
+        </div>
+        <div class="product-info-box">
+          <span class="product-badge">Restricción de Paso Físico</span>
+          <h3>Torniquetes, Talanqueras & Cerraduras Magnéticas</h3>
+          <p>Mecanismos físicos de restricción de paso integrados con lectores biométricos para asegurar recepciones, torniquetes peatonales, barreras de parqueadero y puertas blindadas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Barreras Físicas ❯</a>
         </div>
       </div>
 
@@ -287,10 +353,8 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
-          </div>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, CCTV, Migración Cloud (Microsoft 365, Azure) y Soporte TI.
