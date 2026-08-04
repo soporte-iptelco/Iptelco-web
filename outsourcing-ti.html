@@ -41,11 +41,10 @@
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
-    /* CONTROL DE TAMAÑO DEL LOGO EN HEADER */
+    /* LOGO HEADER USANDO logo-main.png */
     .brand-logo-container { 
       display: flex; align-items: center; text-decoration: none; 
       background: transparent !important; margin-left: 6%; height: 100%; 
-      mask-image: none !important; -webkit-mask-image: none !important; 
       transition: opacity 0.2s ease, transform 0.2s ease; 
     }
     .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
@@ -124,10 +123,9 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
-    /* CONTROL DE TAMAÑO DEL LOGO EN FOOTER */
+    /* LOGO FOOTER USANDO logo-main.png */
     .footer-logo-container { 
       display: inline-block; background: transparent !important; 
-      mask-image: none !important; -webkit-mask-image: none !important; 
       padding: 0 !important; margin-bottom: 16px; 
     }
     .footer-logo-img { 
@@ -177,7 +175,7 @@
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON LOGO MAIN -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
@@ -376,7 +374,7 @@
 
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER CON LOGO MAIN -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
