@@ -55,7 +55,7 @@
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-color), #0284c7); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--border-glow); }
 
-    /* HERO & ANIMACIÓN DE MOVIMIENTO FLOTANTE */
+    /* HERO & ANIMACIÓN FLOTANTE */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
@@ -78,6 +78,7 @@
     }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+    /* CATÁLOGO DE PRODUCTOS */
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
     .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-color); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     .products-showcase { display: flex; flex-direction: column; gap: 35px; }
@@ -208,12 +209,13 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid">
       <div>
         <span style="color: var(--accent-color); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">MikroTik RouterOS, Aruba Enterprise & Wi-Fi 6</span>
         <h1 style="margin-top: 10px;">Redes Empresariales, VLANs & <span>Balanceo PCC</span></h1>
-        <p>Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, switches administrables Aruba Enterprise, Access Points Aruba y certificación de cableado.</p>
+        <p>Diseñamos, instalamos y optimizamos infraestructuras de datos de alto rendimiento. Enrutamiento MikroTik, switches administrables Aruba Enterprise, Access Points Aruba y Ubiquiti, y certificación de cableado.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Solicitar Levantamiento Técnico</a>
         </div>
@@ -224,9 +226,12 @@
     </div>
   </section>
 
+  <!-- CATÁLOGO REDES -->
   <section class="services-section">
     <div class="category-header-title">🌐 Enrutamiento MikroTik, Conmutación & Wi-Fi Enterprise</div>
     <div class="products-showcase">
+      
+      <!-- 1. MIKROTIK -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/mikrotik.jpg" alt="MikroTik RouterOS"></div>
         <div class="product-info-box">
@@ -236,6 +241,8 @@
           <a href="cotizacion.html" class="btn-link">Cotizar MikroTik ❯</a>
         </div>
       </div>
+
+      <!-- 2. ARUBA SWITCHES -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/sw-aruba.jpg" alt="Switches Aruba Enterprise"></div>
         <div class="product-info-box">
@@ -245,6 +252,8 @@
           <a href="cotizacion.html" class="btn-link">Cotizar Switches LAN ❯</a>
         </div>
       </div>
+
+      <!-- 3. ANTENAS ARUBA -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/Aruba-ap.png" alt="Access Points & Antenas Aruba Enterprise"></div>
         <div class="product-info-box">
@@ -254,6 +263,8 @@
           <a href="cotizacion.html" class="btn-link">Cotizar Antenas Aruba ❯</a>
         </div>
       </div>
+
+      <!-- 4. MONITOREO DE AP -->
       <div class="product-row reverse">
         <div class="product-img-box"><img src="img/consola-ap.png" alt="Consola de Monitoreo & Gestión Cloud de APs"></div>
         <div class="product-info-box">
@@ -263,7 +274,20 @@
           <a href="cotizacion.html" class="btn-link">Cotizar Consola de Gestión ❯</a>
         </div>
       </div>
+
+      <!-- 5. UBIQUITI UNIFI (AÑADIDO Y COMPLETO) -->
       <div class="product-row">
+        <div class="product-img-box"><img src="img/ubiquiti-unifi-access-points.jpg" alt="Access Points Ubiquiti UniFi"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Wi-Fi Corporativo</span>
+          <h3>Redes Inalámbricas Ubiquiti UniFi</h3>
+          <p>Sistemas Wi-Fi empresariales de alta densidad. Garantiza cobertura total sin puntos ciegos mediante Access Points (AP) gestionados desde un único controlador.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Red Inalámbrica ❯</a>
+        </div>
+      </div>
+
+      <!-- 6. CABLEADO ESTRUCTURADO -->
+      <div class="product-row reverse">
         <div class="product-img-box"><img src="img/cableado-1.jpg" alt="Cableado Estructurado Cat 6/6A & Fibra"></div>
         <div class="product-info-box">
           <span class="product-badge">Infraestructura Física</span>
@@ -272,7 +296,9 @@
           <a href="cotizacion.html" class="btn-link">Cotizar Infraestructura ❯</a>
         </div>
       </div>
-      <div class="product-row reverse">
+
+      <!-- 7. CERTIFICACIÓN DE PUNTOS DE RED -->
+      <div class="product-row">
         <div class="product-img-box"><img src="img/certificado-de-puntos.png" alt="Certificación de Puntos de Red"></div>
         <div class="product-info-box">
           <span class="product-badge">Auditoría & Certificación</span>
@@ -281,6 +307,7 @@
           <a href="cotizacion.html" class="btn-link">Cotizar Certificación ❯</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -323,6 +350,7 @@
     <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
   </footer>
 
+  <!-- WIDGET WHATSAPP -->
   <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
     <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"></div>
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
