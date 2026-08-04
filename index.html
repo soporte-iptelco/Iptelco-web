@@ -6,8 +6,8 @@
   <title>IPTELCO S.A.S | IP Telefonía y Comunicaciones</title>
 
   <!-- FAVICON DE LA PESTAÑA -->
-  <link rel="icon" type="image/jpeg" href="img/logo-pestaña.jpg">
-  <link rel="shortcut icon" type="image/jpeg" href="img/logo-pestaña.jpg">
+  <link rel="icon" type="image/png" href="img/icono-iptelco.png">
+  <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,34 +45,29 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* =========================================================
-       CABECERA ELEGANTE: LOGO AGRANDADO + DIFUMINADO EXCLUSIVO IZQUIERDA
-       ========================================================= */
-
-    /* CONTENEDOR DEL LOGO (SOLO LADO IZQUIERDA CON DIFUMINADO SUAVE) */
+    /* LOGO HEADER TRANSPARENTE Y AMPLIADO CON logo-main.png */
     .brand-logo-container {
       display: flex;
       align-items: center;
       text-decoration: none;
-      background-color: #ffffff; /* Fondo blanco nítido que resalta el logo */
-      padding: 6px 55px 6px 20px; /* Margen a la derecha para transición holgada */
+      background: transparent !important;
+      margin-left: 5%;
       height: 100%;
-      
-      /* Transición gradual limpia hacia la derecha para integrarse al azul oscuro */
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .brand-logo-container:hover {
-      opacity: 0.97;
+      opacity: 0.95;
       transform: scale(1.01);
     }
 
     .brand-logo-img {
-      height: 64px; /* Tamaño más grande, visible y proporcionado */
-      width: auto;
-      object-fit: contain;
+      height: 68px !important;
+      max-height: 68px !important;
+      width: auto !important;
+      object-fit: contain !important;
       display: block;
     }
 
@@ -81,7 +76,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-right: 4%;
+      margin-right: 5%;
     }
 
     .btn-soporte {
@@ -120,29 +115,29 @@
       box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
     }
 
-    /* CONTENEDOR DIFUMINADO EN FOOTER */
+    /* LOGO FOOTER TRANSPARENTE Y AMPLIADO CON logo-main.png */
     .footer-logo-container {
-      display: inline-flex;
-      align-items: center;
-      background-color: #ffffff;
-      padding: 10px 60px 10px 20px;
-      border-radius: 12px;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      display: inline-block;
+      background: transparent !important;
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      padding: 0 !important;
+      margin-bottom: 18px;
     }
 
     .footer-logo-img {
-      height: 95px;
-      width: auto;
-      object-fit: contain;
+      height: 80px !important;
+      max-height: 80px !important;
+      width: auto !important;
+      object-fit: contain !important;
       display: block;
     }
 
     /* HEADER */
     header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0;
-      height: 82px; /* Altura perfecta para albergar el logo grande */
+      padding: 8px 0;
+      height: 82px;
       position: sticky; top: 0;
       background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
@@ -273,14 +268,12 @@
 
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER CON LOGO MAIN TRANSPARENTE Y AMPLIADO -->
   <header>
-    <!-- LADO IZQUIERDO: LOGO AGRANDADO CON DIFUMINADO SUAVE HACIA LA DERECHA -->
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
 
-    <!-- NAVEGACIÓN CENTRADA SOBRE EL FONDO AZUL OSCURO DE LA PÁGINA -->
     <nav>
       <a href="index.html" class="active">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
@@ -291,7 +284,6 @@
       <a href="outsourcing-ti.html">Soporte TI</a>
     </nav>
 
-    <!-- LADO DERECHO: BOTONES LIMPIOS SOBRE EL FONDO AZUL OSCURO ORIGINAL -->
     <div class="header-actions">
       <a href="soporte.html" class="btn-soporte">🛠️ Soporte IPTELCO</a>
       <a href="cotizacion.html" class="btn-cotizar">Solicitar Cotización</a>
@@ -433,15 +425,13 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER CON LOGO MAIN TRANSPARENTE Y AMPLIADO -->
   <footer>
     <div class="footer-grid">
       
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:inline-block; margin-bottom:12px;">
-          <div class="footer-logo-container">
-            <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
-          </div>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; text-align: justify;">
           <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
