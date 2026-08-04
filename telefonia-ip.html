@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telefonía IP & Centrales Cloud | IPTELCO S.A.S</title>
+  <title>Telefonía IP, PBX Cloud & Contact Center | IPTELCO S.A.S</title>
 
   <!-- FAVICON DE LA PESTAÑA -->
   <link rel="icon" type="image/png" href="img/icono-iptelco.png">
@@ -45,7 +45,7 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* PRELOADER CON LOGO GRANDE */
+    /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
     .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
@@ -290,12 +290,12 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <span style="color: var(--accent-blue); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Comunicaciones Unificadas</span>
-        <h1 style="margin-top: 10px;">Telefonía IP & Centrales <span>Cloud</span></h1>
-        <p>Conecta a tu equipo desde cualquier lugar. Implementamos soluciones de Telefonía IP, centrales virtuales 3CX, servidores PBX Issabel y terminales IP para empresas de todos los tamaños.</p>
+        <span style="color: var(--accent-blue); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Comunicaciones Unificadas & Contact Center</span>
+        <h1 style="margin-top: 10px;">Telefonía IP, Centrales <span>PBX & Cloud</span></h1>
+        <p>Potencia la comunicación de tu empresa con soluciones líderes de Telefonía IP, PBX Cloud y Contact Center Omnicanal: 3CX, Wolkvox, Issabel, Fidelity y Jusam.</p>
 
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar PBX</a>
+          <a href="cotizacion.html" class="btn-cotizar" style="padding: 12px 24px; font-size: 0.95rem;">Cotizar PBX & Contact Center</a>
         </div>
       </div>
 
@@ -305,59 +305,67 @@
     </div>
   </section>
 
-  <!-- CATÁLOGOS DE PRODUCTOS -->
+  <!-- CATÁLOGO DE PRODUCTOS: 3CX, ISSABEL, FIDELITY, WOLKVOX Y JUSAM -->
   <section class="services-section">
     
-    <div class="category-header-title">📞 Centrales Telefónicas & Servidores PBX</div>
+    <div class="category-header-title">📞 Centrales Telefónicas, PBX & Contact Center</div>
     <div class="products-showcase">
       
-      <!-- 3CX -->
+      <!-- 1. 3CX -->
       <div class="product-row">
-        <div class="product-img-box"><img src="img/3cx.png" alt="3CX App"></div>
+        <div class="product-img-box"><img src="img/3cx.png" alt="Centrales 3CX Cloud"></div>
         <div class="product-info-box">
-          <span class="product-badge">Telefonía Cloud</span>
+          <span class="product-badge">Telefonía IP Cloud</span>
           <h3>Centrales Telefónicas 3CX PBX</h3>
-          <p>Lleva la extensión de tu oficina en tu Smartphone o Laptop. Softphones nativos para Android/iOS, grabaciones de llamadas, IVR interactivo, chat en vivo y videoconferencias integradas sin hardware adicional.</p>
+          <p>Lleva la extensión de tu oficina en tu Smartphone o Laptop. Softphones nativos para Android/iOS, grabaciones de llamadas, IVR interactivo, chat en vivo y videoconferencias integradas sin necesidad de hardware adicional.</p>
           <a href="cotizacion.html" class="btn-link">Cotizar Licencia 3CX ❯</a>
         </div>
       </div>
 
-      <!-- ISSABEL -->
+      <!-- 2. WOLKVOX -->
       <div class="product-row reverse">
+        <div class="product-img-box"><img src="img/wolkvox.png" alt="Wolkvox Contact Center" onerror="this.onerror=null; this.src='img/3cx.png';"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Contact Center Omnicanal</span>
+          <h3>Wolkvox Contact Center Cloud</h3>
+          <p>La plataforma Cloud omnicanal líder para centros de contacto. Gestión inteligente de llamadas de entrada y salida, bots con Inteligencia Artificial, marcadores predictivos y métricas en tiempo real.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Wolkvox Cloud ❯</a>
+        </div>
+      </div>
+
+      <!-- 3. ISSABEL -->
+      <div class="product-row">
         <div class="product-img-box"><img src="img/Issabel-2.png" alt="Issabel PBX" onerror="this.src='img/Issabel.png';"></div>
         <div class="product-info-box">
-          <span class="product-badge">Servidores Locales & Nube</span>
-          <h3>Servidores Issabel & Fidelity PBX</h3>
-          <p>Conmutación telefónica corporativa avanzada. Gestión de troncales SIP, líneas análogas/E1, tarificación detallada y reportes de call center basados en plataformas Open Source de alto rendimiento.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Servidor PBX ❯</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="category-header-title" style="margin-top: 80px;">☎️ Equipos Terminales & Accesorios</div>
-    <div class="products-showcase">
-      
-      <!-- TELÉFONOS IP -->
-      <div class="product-row">
-        <div class="product-img-box"><img src="img/telefonos-ip.png" alt="Teléfonos IP"></div>
-        <div class="product-info-box">
-          <span class="product-badge">Terminales de Escritorio</span>
-          <h3>Teléfonos IP Corporativos</h3>
-          <p>Suministro de teléfonos IP de marcas líderes (Fanvil, Yealink, Grandstream). Pantallas a color, conectividad Gigabit, audio HD y soporte para múltiples cuentas SIP.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Teléfonos IP ❯</a>
+          <span class="product-badge">Open Source PBX</span>
+          <h3>Servidores VoIP Issabel PBX</h3>
+          <p>Conmutación telefónica corporativa robusta. Gestión avanzada de troncales SIP, líneas análogas/E1, colas de atención, tarificación detallada y reportes para call centers locales y virtuales.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Servidor Issabel ❯</a>
         </div>
       </div>
 
-      <!-- DIADEMAS -->
+      <!-- 4. FIDELITY -->
       <div class="product-row reverse">
-        <div class="product-img-box"><img src="img/soluciones-ti/diadema.jpg" alt="Diademas Telefónicas"></div>
+        <div class="product-img-box"><img src="img/fidelity.jpg" alt="Fidelity PBX" onerror="this.onerror=null; this.src='img/3cx-PBX.png';"></div>
         <div class="product-info-box">
-          <span class="product-badge">Call Center & Teletrabajo</span>
-          <h3>Diademas Profesionales USB & RJ9</h3>
-          <p>Auriculares diseñados para uso continuo. Cancelación de ruido activa, comodidad ergonómica y compatibilidad total con softphones 3CX, Teams y teléfonos físicos.</p>
-          <a href="cotizacion.html" class="btn-link">Cotizar Diademas ❯</a>
+          <span class="product-badge">Conmutación Corporativa</span>
+          <h3>Sistemas de Conmutación Fidelity PBX</h3>
+          <p>Solución avanzada de conmutadores telefónicos corporativos. Arquitectura estable, enrutamiento prioritario de llamadas, integración con líneas tradicionales e IP para medianas y grandes empresas.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Fidelity PBX ❯</a>
         </div>
       </div>
+
+      <!-- 5. JUSAM -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/jusam.jpg" alt="Soluciones Jusam" onerror="this.onerror=null; this.src='img/telefonos-ip.png';"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Infraestructura VoIP</span>
+          <h3>Soluciones de Telefonía & Redes Jusam</h3>
+          <p>Tecnología integral de telefonía VoIP y plataformas de comunicación corporativa. Integración de gateways, plantas telefónicas y equipos terminales adaptados a la medida de tu empresa.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Soluciones Jusam ❯</a>
+        </div>
+      </div>
+
     </div>
 
   </section>
