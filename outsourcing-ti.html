@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte TI, Licencias & Hardware | IPTELCO S.A.S</title>
 
-  <!-- FAVICON CORRECTO -->
+  <!-- FAVICON PESTAÑA NAVEGADOR -->
   <link rel="icon" type="image/png" href="img/icono-iptelco.png">
   <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
@@ -33,22 +33,23 @@
 
     .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
-    /* PRELOADER 100% CSS PURO */
+    /* PRELOADER */
     #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
     .preloader-logo-img { height: 50px; width: auto; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 12px 6%; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
-    /* LOGO HEADER VECTORIAL */
-    .brand-logo-container { display: flex; align-items: center; text-decoration: none; gap: 10px; transition: opacity 0.2s ease, transform 0.2s ease; }
+    /* LOGO HEADER TRANSPARENTE CON RUTA CORRECTA */
+    .brand-logo-container { display: flex; align-items: center; text-decoration: none; background: transparent !important; margin-left: 6%; height: 100%; transition: opacity 0.2s ease, transform 0.2s ease; }
     .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
+    .brand-logo-img { height: 42px !important; width: auto !important; object-fit: contain; display: block; }
 
     nav { display: flex; align-items: center; gap: 20px; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
     nav a:hover, nav a.active { color: #ffffff; }
-    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 6%; }
     .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 16px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
@@ -112,6 +113,10 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
+    /* LOGO FOOTER TRANSPARENTE DIRECTO */
+    .footer-logo-container { display: inline-block; background: transparent !important; padding: 0 !important; margin-bottom: 16px; }
+    .footer-logo-img { height: 42px !important; width: auto !important; object-fit: contain; display: block; }
+
     footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
@@ -151,14 +156,10 @@
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER CON LOGO VECTORIAL -->
+  <!-- HEADER -->
   <header>
     <a href="index.html" class="brand-logo-container">
-      <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-        <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-        <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-      </svg>
-      <span style="font-size:1.4rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+      <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/icono-iptelco.png';">
     </a>
     <nav>
       <a href="index.html">Inicio</a>
@@ -358,12 +359,8 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-col-brand">
-        <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-            <path d="M10 30 Q 30 10 50 30 T 90 30" stroke="#3b82f6" stroke-width="6" fill="transparent" stroke-linecap="round"/>
-            <circle cx="50" cy="30" r="6" fill="#06b6d4"/>
-          </svg>
-          <span style="font-size:1.6rem; font-weight:800; color:#fff; letter-spacing:1px;">IPTELCO</span>
+        <a href="index.html" class="footer-logo-container">
+          <img src="img/logo-trasparente.jpg" alt="IPTELCO Logo" class="footer-logo-img" onerror="this.onerror=null; this.src='img/icono-iptelco.png';">
         </a>
         <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
