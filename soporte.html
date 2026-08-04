@@ -38,17 +38,15 @@
     @keyframes pulseLogo { 0% { transform: scale(0.92); } 50% { transform: scale(1.08); } 100% { transform: scale(0.92); } }
 
     /* =========================================================
-       CABECERA CON EL NUEVO LOGO DIFUMINADO HACIA LA DERECHA
+       CABECERA CON LOGO PRINCIPAL TRANSPARENTE
        ========================================================= */
     .brand-logo-container {
-      display: flex; align-items: center; text-decoration: none; background-color: #ffffff;
-      padding: 6px 55px 6px 20px; height: 100%;
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 100%);
+      display: flex; align-items: center; text-decoration: none; background: transparent;
+      padding: 0 20px; height: 100%;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    .brand-logo-container:hover { opacity: 0.97; transform: scale(1.01); }
-    .brand-logo-img { height: 64px; width: auto; object-fit: contain; display: block; }
+    .brand-logo-container:hover { opacity: 0.95; transform: scale(1.01); }
+    .brand-logo-img { height: 45px; width: auto; object-fit: contain; display: block; }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 0; height: 82px; position: sticky; top: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); z-index: 1000; }
     
@@ -197,23 +195,21 @@
 </head>
 <body>
 
-  <!-- PRELOADER -->
+  <!-- PRELOADER CON LOGO MAIN -->
   <div id="iptelco-preloader">
     <div class="preloader-content">
-      <!-- Se usa el logo difuminado para la carga inicial -->
-      <img src="img/logo-footer.jpg" alt="Cargando IPTELCO" class="preloader-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="Cargando IPTELCO" class="preloader-logo-img">
     </div>
   </div>
   <div class="glow-bg"></div>
 
   <!-- HEADER -->
   <header>
-    <!-- LOGO CON DIFUMINADO A LA DERECHA -->
+    <!-- LOGO PRINCIPAL (SIN CAJA BLANCA) -->
     <a href="index.html" class="brand-logo-container">
-      <img src="img/logo-footer.jpg" alt="IPTELCO Logo" class="brand-logo-img" onerror="this.onerror=null; this.src='img/logo-main.jpg';">
+      <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
     </a>
     
-    <!-- MENÚ AJUSTADO A TU CAPTURA DE PANTALLA -->
     <nav>
       <a href="index.html">Inicio</a>
       <a href="telefonia-ip.html">Telefonía IP</a>
