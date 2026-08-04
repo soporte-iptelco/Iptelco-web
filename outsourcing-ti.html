@@ -39,7 +39,7 @@
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    /* HEADER OSCURO ORIGINAL CON ALTURA Y LOGO AGRANDADO */
+    /* HEADER */
     header { 
       display: flex; justify-content: space-between; align-items: center; 
       padding: 6px 0; height: 120px; position: sticky; top: 0; 
@@ -75,12 +75,15 @@
     .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
     .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
 
+    /* HERO & ANIMACIÓN DE MOVIMIENTO FLOTANTE */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
     .hero h1 span { color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
     
+    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+
     .hero-media-container { 
       background: #ffffff; 
       border-radius: 20px; 
@@ -91,6 +94,7 @@
       justify-content: center; 
       overflow: hidden;
       height: 300px;
+      animation: floatAnimationHero 4s ease-in-out infinite; 
     }
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
@@ -133,7 +137,7 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
-    /* FOOTER OSCURO ORIGINAL CON LOGO AGRANDADO */
+    /* FOOTER OSCURO ORIGINAL */
     .footer-logo-container { 
       display: inline-block; background: transparent !important; 
       mask-image: none !important; -webkit-mask-image: none !important;
@@ -156,16 +160,61 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
 
-    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; text-decoration: none; }
-    .contact-item:hover { color: #ffffff; }
-    .contact-icon-box { width: 36px; height: 36px; border-radius: 8px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-weight: 700; flex-shrink: 0; }
+    /* ESTILOS DE CONTACTO FOOTER (CORREGIDOS) */
+    .contact-item,
+    .contact-item:link,
+    .contact-item:visited,
+    .contact-item:active { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 14px !important; 
+      margin-bottom: 16px !important; 
+      color: #cbd5e1 !important; 
+      text-decoration: none !important; 
+      transition: transform 0.2s ease, color 0.2s ease !important; 
+    }
+    .contact-item:hover { 
+      color: #ffffff !important; 
+      transform: translateX(4px) !important; 
+    }
+    .contact-item span { 
+      font-size: 0.8rem !important; 
+      color: #94a3b8 !important; 
+      display: block !important; 
+      text-decoration: none !important; 
+    }
+    .contact-item b { 
+      color: #ffffff !important; 
+      font-weight: 700 !important; 
+      font-size: 0.95rem !important; 
+      text-decoration: none !important; 
+    }
+    
+    .contact-icon-box { 
+      width: 44px !important; 
+      height: 44px !important; 
+      border-radius: 10px !important; 
+      background: rgba(59, 130, 246, 0.15) !important; 
+      border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      color: #3b82f6 !important; 
+      font-size: 1.2rem !important; 
+      flex-shrink: 0 !important; 
+    }
+    .contact-icon-box.red-box { 
+      background: rgba(239, 68, 68, 0.15) !important; 
+      border-color: rgba(239, 68, 68, 0.3) !important; 
+      color: #ef4444 !important; 
+    }
+
     .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
 
     .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
     .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
     .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
     @media (max-width: 900px) { 
@@ -174,7 +223,7 @@
       .hero-grid, .footer-grid { grid-template-columns: 1fr; } 
       .products-showcase { grid-template-columns: 1fr; }
       nav { display: none; } 
-      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; } 
+      .wa-banner { display: none; } 
     }
   </style>
 </head>
@@ -287,6 +336,28 @@
         </div>
       </div>
 
+      <!-- NUEVO PRODUCTO 1: SEAGATE IRONWOLF NAS -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/Seagate-Ironwolf-Pro-Disco-Duro-NAS-14TB-Inicio-l-discosduros.com_.co.jpg" alt="Discos Seagate IronWolf Pro NAS"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento Servidores & NAS</span>
+          <h3>Discos Duros NAS Seagate IronWolf Pro</h3>
+          <p>Almacenamiento de alto rendimiento y operabilidad 24/7 para servidores y almacenamiento en red NAS QNAP/Synology. Tecnología AgileArray y sensores de vibración.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Discos NAS ❯</a>
+        </div>
+      </div>
+
+      <!-- NUEVO PRODUCTO 2: WD PURPLE DVR/CCTV -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/disco-duro-dvr-wester-digital-wd-4tb-purpura-wd40purz.jpg" alt="Disco Duro WD Purple Videovigilancia"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Almacenamiento CCTV & NVR</span>
+          <h3>Discos Western Digital Purple para DVR / NVR</h3>
+          <p>Discos diseñados específicamente para videovigilancia de grabación continua 24/7. Soporta múltiples cámaras de alta definición sin pérdida de cuadros de video.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Discos CCTV ❯</a>
+        </div>
+      </div>
+
       <div class="product-row">
         <div class="product-img-box"><img src="img/soluciones-ti/disco-externo-solido.jpg" alt="Discos Externos y Estado Sólido"></div>
         <div class="product-info-box">
@@ -320,9 +391,53 @@
     </div>
 
     <!-- SECCIÓN 3: PERIFÉRICOS, ERGONOMÍA Y ADAPTADORES -->
-    <div class="category-header-title" style="margin-top: 80px;">⌨️ Periféricos, Adaptadores & Ergonomía</div>
+    <div class="category-header-title" style="margin-top: 80px;">⌨️ Periféricos, Accesorios & Comunicaciones</div>
     <div class="products-showcase">
       
+      <!-- NUEVO PRODUCTO 3: COMBOS TECLADO Y MOUSE -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/COMBO-GENIUS-KM200_.jpg" alt="Combo Teclado y Mouse Corporativo Genius"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Periféricos de Oficina</span>
+          <h3>Combos Teclado & Mouse Corporativos</h3>
+          <p>Suministro de kits de teclado y mouse ergonómicos (USB o Inalámbricos) diseñados para alta durabilidad y largas jornadas de oficina.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Combos ❯</a>
+        </div>
+      </div>
+
+      <!-- NUEVO PRODUCTO 4: CÁMARAS WEB HD -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/camara-web.png" alt="Cámaras Web HD y Videoconferencia"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Videoconferencia HD</span>
+          <h3>Cámaras Web HD & Full HD con Micrófono</h3>
+          <p>Cámaras web corporativas Plug & Play con micrófono integrado y corrección de luz automática. Compatibles con Microsoft Teams, Zoom y Google Meet.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Webcams ❯</a>
+        </div>
+      </div>
+
+      <!-- NUEVO PRODUCTO 5: CABLES PATCH CORD Y ACCESORIOS DE RED -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/cables-de-red.jpg" alt="Cables Patch Cord y Conectividad de Red"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Conectividad & Cableado</span>
+          <h3>Cables Patch Cord Cat 6 / 6A & Accesorios</h3>
+          <p>Cables de red certificados en varias medidas y colores. Conectores RJ45, Jacks, Patch Panels y organizadores para cableado estructurado.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Cables de Red ❯</a>
+        </div>
+      </div>
+
+      <!-- NUEVO PRODUCTO 6: VIDEO PORTEROS IP -->
+      <div class="product-row">
+        <div class="product-img-box"><img src="img/soluciones-ti/video-portero.jpg" alt="Video Porteros IP y Control de Acceso"></div>
+        <div class="product-info-box">
+          <span class="product-badge">Citofonía & Seguridad IP</span>
+          <h3>Video Porteros IP & Pantallas Intercom</h3>
+          <p>Sistemas de citofonía IP con cámara HD integrada para recepción de edificios y oficinas. Apertura remota de puertas desde monitores o teléfonos IP.</p>
+          <a href="cotizacion.html" class="btn-link">Cotizar Video Porteros ❯</a>
+        </div>
+      </div>
+
       <div class="product-row">
         <div class="product-img-box"><img src="img/soluciones-ti/tarjeta-red-usb.jpg" alt="Adaptadores de Red USB a RJ45"></div>
         <div class="product-info-box">
@@ -399,9 +514,18 @@
       </div>
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
-        <a href="https://wa.me/573178737171" target="_blank" class="contact-item"><div class="contact-icon-box">💬</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div></a>
-        <a href="mailto:info@iptelco.com.co" class="contact-item"><div class="contact-icon-box">✉️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div></a>
-        <a href="soporte.html" class="contact-item"><div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div></a>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
+          <div class="contact-icon-box">💬</div>
+          <div><span>WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+        </a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item">
+          <div class="contact-icon-box">✉️</div>
+          <div><span>Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+        </a>
+        <a href="soporte.html" class="contact-item">
+          <div class="contact-icon-box red-box">🛠️</div>
+          <div><span>Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
+        </a>
       </div>
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
