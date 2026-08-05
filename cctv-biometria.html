@@ -20,6 +20,7 @@
       --bg-card-hover: rgba(30, 41, 59, 0.95);
       --accent-cyan: #06b6d4;
       --accent-glow: rgba(6, 182, 212, 0.25);
+      --accent-blue: #3b82f6;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --border-light: rgba(255, 255, 255, 0.08);
@@ -27,6 +28,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
@@ -35,7 +37,7 @@
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
       background: #020617; z-index: 99999; 
       display: flex; align-items: center; justify-content: center; 
-      animation: fadeOutPreloader 0.5s ease 0.6s forwards; 
+      animation: fadeOutPreloader 0.4s ease 0.1s forwards; 
       pointer-events: none; 
     }
     .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
@@ -126,7 +128,7 @@
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: 5px; }
     .btn-link:hover { gap: 12px; color: #38bdf8; }
 
-    /* LOGO FOOTER TRANSPARENTE DIRECTO */
+    /* FOOTER Y CONTACTO CORREGIDO */
     .footer-logo-container {
       display: inline-block; background: transparent !important;
       mask-image: none !important; -webkit-mask-image: none !important;
@@ -142,6 +144,57 @@
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
     .footer-links a:hover { color: #ffffff; }
+
+    /* ESTILOS DE CONTACTO FOOTER (CORREGIDOS Y BLINDADOS) */
+    .contact-item,
+    .contact-item:link,
+    .contact-item:visited,
+    .contact-item:active { 
+      display: flex !important; 
+      align-items: center !important; 
+      gap: 14px !important; 
+      margin-bottom: 16px !important; 
+      color: #cbd5e1 !important; 
+      text-decoration: none !important; 
+      transition: transform 0.2s ease, color 0.2s ease !important; 
+    }
+    .contact-item:hover { 
+      color: #ffffff !important; 
+      transform: translateX(4px) !important; 
+    }
+    .contact-item span { 
+      font-size: 0.8rem !important; 
+      color: #94a3b8 !important; 
+      display: block !important; 
+      text-decoration: none !important; 
+    }
+    .contact-item b { 
+      color: #ffffff !important; 
+      font-weight: 700 !important; 
+      font-size: 0.95rem !important; 
+      text-decoration: none !important; 
+    }
+    
+    .contact-icon-box { 
+      width: 44px !important; 
+      height: 44px !important; 
+      border-radius: 10px !important; 
+      background: rgba(59, 130, 246, 0.15) !important; 
+      border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+      display: flex !important; 
+      align-items: center !important; 
+      justify-content: center !important; 
+      color: #3b82f6 !important; 
+      font-size: 1.2rem !important; 
+      flex-shrink: 0 !important; 
+    }
+    .contact-icon-box.red-box { 
+      background: rgba(239, 68, 68, 0.15) !important; 
+      border-color: rgba(239, 68, 68, 0.3) !important; 
+      color: #ef4444 !important; 
+    }
+
+    .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
 
     /* WIDGET WHATSAPP */
     .whatsapp-widget { 
@@ -361,12 +414,23 @@
         </p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
       </div>
+
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
-        <a href="https://wa.me/573178737171" target="_blank" class="contact-item"><div class="contact-icon-box">💬</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">WhatsApp Directo:</span><b>+57 317 873 7171</b></div></a>
-        <a href="mailto:info@iptelco.com.co" class="contact-item"><div class="contact-icon-box">✉️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Correo Comercial:</span><b>info@iptelco.com.co</b></div></a>
-        <a href="soporte.html" class="contact-item"><div class="contact-icon-box" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">🛠️</div><div><span style="font-size: 0.78rem; color: #94a3b8; display: block;">Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div></a>
+        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
+          <div class="contact-icon-box">💬</div>
+          <div><span>WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
+        </a>
+        <a href="mailto:info@iptelco.com.co" class="contact-item">
+          <div class="contact-icon-box">✉️</div>
+          <div><span>Correo Comercial:</span><b>info@iptelco.com.co</b></div>
+        </a>
+        <a href="soporte.html" class="contact-item">
+          <div class="contact-icon-box red-box">🛠️</div>
+          <div><span>Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
+        </a>
       </div>
+
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -378,7 +442,11 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
+
+    <div class="footer-bottom">
+      <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
+      <div style="color: #64748b;">Bogotá, Colombia</div>
+    </div>
   </footer>
 
   <!-- WIDGET WHATSAPP -->
