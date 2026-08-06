@@ -183,6 +183,28 @@
       min-height: 120px;
     }
 
+    /* ESTILO PERSONALIZADO PARA EL INPUT DE ARCHIVO */
+    input[type="file"] { 
+      padding: 10px; 
+      cursor: pointer; 
+      color: var(--text-muted); 
+    }
+    input[type="file"]::file-selector-button { 
+      background: rgba(59, 130, 246, 0.15); 
+      border: 1px solid rgba(59, 130, 246, 0.4); 
+      color: #60a5fa; 
+      padding: 8px 16px; 
+      border-radius: 6px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      margin-right: 15px; 
+      transition: all 0.2s; 
+    }
+    input[type="file"]::file-selector-button:hover { 
+      background: rgba(59, 130, 246, 0.25); 
+      color: #ffffff; 
+    }
+
     .btn-submit {
       background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
       color: #ffffff;
@@ -214,6 +236,7 @@
       text-align: center;
       font-weight: 700;
       font-size: 0.95rem;
+      margin-bottom: 10px;
     }
     #form-status.success {
       display: block;
@@ -373,6 +396,12 @@
           <textarea id="descripcion_caso" placeholder="Detalle su requerimiento o problema técnico..." required></textarea>
         </div>
 
+        <!-- ADJUNTAR EVIDENCIA (IMAGEN O VIDEO CORTO) -->
+        <div class="form-group">
+          <label>Adjuntar Evidencia <span class="sub-label">(Opcional. Máx 5MB. Imágenes o Videos cortos)</span></label>
+          <input type="file" id="evidencia_caso" accept="image/*, video/mp4, video/webm, video/quicktime">
+        </div>
+
         <div class="form-group">
           <label>Área de Soporte <span class="required">*</span></label>
           <select id="area_soporte" required>
@@ -381,6 +410,7 @@
             <option value="Ciberseguridad / Fortinet / ESET">🛡️ Ciberseguridad / Fortinet / ESET</option>
             <option value="Cloud / Microsoft 365 / Azure">☁️ Cloud / Microsoft 365 / Azure</option>
             <option value="Mantenimiento / Hardware TI">💻 Mantenimiento / Hardware TI</option>
+            <option value="Otros / General">🔄 Otros / General</option>
           </select>
         </div>
 
@@ -471,10 +501,47 @@
       const statusBox = document.getElementById('form-status');
 
       btn.disabled = true;
-      btn.innerText = 'Creando Ticket en Vtiger...';
+      btn.innerText = 'Procesando Archivos y Creando Ticket...';
       statusBox.className = '';
       statusBox.style.display = 'none';
 
+      // 1. Procesamiento de archivo de evidencia
+      const fileInput = document.getElementById('evidencia_caso');
+      let archivoBase64 = null;
+      let archivoNombre = null;
+      let archivoTipo = null;
+
+      if (fileInput && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        
+        // Validación de peso (Max 5MB = 5242880 bytes)
+        if (file.size > 5242880) {
+          statusBox.className = 'error';
+          statusBox.innerHTML = '⚠️ El archivo adjunto supera el límite máximo de 5MB. Por favor selecciona una imagen o video más liviano.';
+          btn.disabled = false;
+          btn.innerText = 'Crear Solicitud';
+          return;
+        }
+
+        archivoNombre = file.name;
+        archivoTipo = file.type;
+
+        // Función para convertir a Base64
+        const toBase64 = file => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        });
+
+        try {
+          archivoBase64 = await toBase64(file);
+        } catch (err) {
+          console.error("Error leyendo archivo adjunto", err);
+        }
+      }
+
+      // 2. Construcción de payload completo
       const formData = {
         titulo: document.getElementById('titulo_caso').value,
         descripcion: document.getElementById('descripcion_caso').value,
@@ -482,9 +549,15 @@
         nit: document.getElementById('nit_empresa').value,
         contacto: document.getElementById('nombre_contacto').value,
         celular: document.getElementById('celular_contacto').value,
-        correo: document.getElementById('correo_contacto').value
+        correo: document.getElementById('correo_contacto').value,
+        
+        // Datos de archivo adjunto (Si existe)
+        archivo_nombre: archivoNombre,
+        archivo_tipo: archivoTipo,
+        archivo_base64: archivoBase64
       };
 
+      // 3. Envío fetch hacia backend (crear-ticket-vtiger.php o tu endpoint)
       try {
         const response = await fetch('crear-ticket-vtiger.php', {
           method: 'POST',
