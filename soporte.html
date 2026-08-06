@@ -42,7 +42,7 @@
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
 
-    /* HEADER TRANSPARENTE OSCURO SOBRIO */
+    /* HEADER */
     header { 
       display: flex; justify-content: space-between; align-items: center; 
       padding: 6px 0; height: 120px; position: sticky; top: 0; 
@@ -398,7 +398,7 @@
 
         <!-- ADJUNTAR EVIDENCIA (IMAGEN O VIDEO CORTO) -->
         <div class="form-group">
-          <label>Adjuntar Evidencia <span class="sub-label">(Opcional. Máx 5MB. Imágenes o Videos cortos)</span></label>
+          <label>Adjuntar Evidencia <span class="sub-label">(Opcional. Máx 2.5MB. Imágenes o Videos cortos)</span></label>
           <input type="file" id="evidencia_caso" accept="image/*, video/mp4, video/webm, video/quicktime">
         </div>
 
@@ -492,7 +492,7 @@
     <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
   </a>
 
-  <!-- SCRIPT DE ENVÍO Y RADICACIÓN EN VTIGER CRM -->
+  <!-- SCRIPT DE ENVÍO CONEXIÓN VERCEL -->
   <script>
     document.getElementById('vtiger-support-form').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -505,78 +505,72 @@
       statusBox.className = '';
       statusBox.style.display = 'none';
 
-      // 1. Procesamiento de archivo de evidencia
-      const fileInput = document.getElementById('evidencia_caso');
-      let archivoBase64 = null;
-      let archivoNombre = null;
-      let archivoTipo = null;
-
-      if (fileInput && fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        
-        // Validación de peso (Max 5MB = 5242880 bytes)
-        if (file.size > 5242880) {
-          statusBox.className = 'error';
-          statusBox.innerHTML = '⚠️ El archivo adjunto supera el límite máximo de 5MB. Por favor selecciona una imagen o video más liviano.';
-          btn.disabled = false;
-          btn.innerText = 'Crear Solicitud';
-          return;
-        }
-
-        archivoNombre = file.name;
-        archivoTipo = file.type;
-
-        // Función para convertir a Base64
-        const toBase64 = file => new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = error => reject(error);
-        });
-
-        try {
-          archivoBase64 = await toBase64(file);
-        } catch (err) {
-          console.error("Error leyendo archivo adjunto", err);
-        }
-      }
-
-      // 2. Construcción de payload completo
-      const formData = {
-        titulo: document.getElementById('titulo_caso').value,
-        descripcion: document.getElementById('descripcion_caso').value,
-        area: document.getElementById('area_soporte').value,
-        nit: document.getElementById('nit_empresa').value,
-        contacto: document.getElementById('nombre_contacto').value,
-        celular: document.getElementById('celular_contacto').value,
-        correo: document.getElementById('correo_contacto').value,
-        
-        // Datos de archivo adjunto (Si existe)
-        archivo_nombre: archivoNombre,
-        archivo_tipo: archivoTipo,
-        archivo_base64: archivoBase64
-      };
-
-      // 3. Envío fetch hacia backend (crear-ticket-vtiger.php o tu endpoint)
       try {
-        const response = await fetch('crear-ticket-vtiger.php', {
+        const fileInput = document.getElementById('evidencia_caso');
+        let archivoBase64 = null;
+        let archivoNombre = null;
+        let archivoTipo = null;
+
+        if (fileInput && fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          
+          // Límite de 2.5MB seguro para Vercel (2.5 * 1024 * 1024 bytes)
+          if (file.size > 2621440) {
+            throw new Error('El archivo adjunto supera el límite de 2.5MB. Por favor selecciona un archivo más liviano.');
+          }
+
+          archivoNombre = file.name;
+          archivoTipo = file.type;
+
+          const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+          });
+
+          archivoBase64 = await toBase64(file);
+        }
+
+        const formData = {
+          titulo: document.getElementById('titulo_caso').value,
+          descripcion: document.getElementById('descripcion_caso').value,
+          area: document.getElementById('area_soporte').value,
+          nit: document.getElementById('nit_empresa').value,
+          contacto: document.getElementById('nombre_contacto').value,
+          celular: document.getElementById('celular_contacto').value,
+          correo: document.getElementById('correo_contacto').value,
+          archivo_nombre: archivoNombre,
+          archivo_tipo: archivoTipo,
+          archivo_base64: archivoBase64
+        };
+
+        // Apuntamos al endpoint serverless en Vercel
+        const response = await fetch('/api/soporte', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
 
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Error en el servidor (${response.status}): ${errorText}`);
+        }
+
         const result = await response.json();
 
         if (result.success) {
           statusBox.className = 'success';
-          statusBox.innerHTML = `✅ ¡Solicitud radicada con éxito! N° de Ticket: <strong>${result.ticket_no}</strong>. Nos comunicaremos en breve.`;
+          statusBox.innerHTML = `✅ ¡Solicitud radicada con éxito! N° de Ticket: <strong>${result.ticket_no || 'Generado'}</strong>. Nos comunicaremos en breve.`;
           document.getElementById('vtiger-support-form').reset();
         } else {
-          throw new Error(result.message || 'Ocurrió un error al radicar el ticket en la Mesa de Ayuda.');
+          throw new Error(result.message || result.error || 'No se pudo radicar la solicitud en la Mesa de Ayuda.');
         }
+
       } catch (err) {
         statusBox.className = 'error';
         statusBox.innerHTML = `⚠️ ${err.message}`;
+        console.error('Error enviando formulario:', err);
       } finally {
         btn.disabled = false;
         btn.innerText = 'Crear Solicitud';
