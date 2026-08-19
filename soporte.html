@@ -73,7 +73,7 @@
     
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
     
-    /* 🌌 BOTÓN SOPORTE DARK GLOW (AZUL NOCHE + DEGRADADO TECH + LUZ SUTIL) */
+    /* 🌌 BOTÓN SOPORTE DARK GLOW */
     .btn-soporte {
       background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%) !important;
       color: #ffffff !important;
@@ -97,7 +97,7 @@
       box-shadow: 0 6px 22px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
     }
 
-    /* ⚡ BOTÓN COTIZAR PROYECTO (PRINCIPAL Y DESTACADO) */
+    /* ⚡ BOTÓN COTIZAR PROYECTO */
     .btn-cotizar {
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
       color: #ffffff !important;
@@ -127,9 +127,11 @@
       padding: 0 20px;
     }
 
+    /* 🏆 TARJETA CON BORDE CORPORATIVO REFORZADO */
     .form-card {
       background: #ffffff;
       border: 1px solid var(--border-light);
+      border-top: 5px solid var(--accent-blue); /* Borde superior corporativo */
       border-radius: 24px;
       padding: 45px 50px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
@@ -138,18 +140,51 @@
     .form-header {
       text-align: center;
       margin-bottom: 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    /* LOGO DENTRO DE LA TARJETA */
+    .form-card-logo {
+      height: 75px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    /* BADGE DE CANAL OFICIAL */
+    .form-badge-official {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     .form-header h1 {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       font-weight: 800;
       color: #0f172a;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       line-height: 1.2;
+    }
+    .form-header h1 span {
+      color: var(--accent-blue);
     }
     .form-header p {
       color: #334155;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 500;
+      max-width: 600px;
     }
 
     .support-form {
@@ -475,13 +510,15 @@
     </div>
   </header>
 
-  <!-- FORMULARIO DE SOPORTE VTIGER -->
+  <!-- FORMULARIO DE SOPORTE VTIGER CON REFUERZO DE MARCA -->
   <div class="form-container-wrapper">
     <div class="form-card">
       
       <div class="form-header">
-        <h1>Solicitud de Soporte IPTELCO</h1>
-        <p>Complete los datos para abrir un nuevo requerimiento en nuestra Mesa de Ayuda</p>
+        <img src="img/logo-main.png" alt="IPTELCO Logo" class="form-card-logo">
+        <span class="form-badge-official">🛡️ Canal Oficial de Ingeniería • IPTELCO S.A.S</span>
+        <h1>Solicitud de Soporte <span>IPTELCO</span></h1>
+        <p>Complete los datos para radicar su ticket directamente en nuestra Mesa de Ayuda B2B</p>
       </div>
 
       <div id="form-status"></div>
