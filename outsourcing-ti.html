@@ -15,26 +15,26 @@
 
   <style>
     :root { 
-      --bg-dark: #020617; 
-      --bg-card: rgba(15, 23, 42, 0.85); 
-      --bg-card-hover: rgba(30, 41, 59, 0.95); 
-      --accent-blue: #3b82f6; 
-      --accent-cyan: #06b6d4; 
-      --accent-glow: rgba(59, 130, 246, 0.25); 
-      --text-main: #f8fafc; 
-      --text-muted: #94a3b8; 
-      --border-light: rgba(255, 255, 255, 0.08); 
-      --border-glow: rgba(59, 130, 246, 0.4); 
+      --bg-dark: #f0f6ff; /* Fondo Azul Hielo Claro */
+      --bg-card: #ffffff; 
+      --bg-card-hover: #ffffff; 
+      --accent-blue: #2563eb; 
+      --accent-cyan: #0284c7; 
+      --accent-glow: rgba(37, 99, 235, 0.12); 
+      --text-main: #0f172a;   /* Texto principal oscuro */
+      --text-muted: #334155;  /* Texto secundario de alta legibilidad */
+      --border-light: #cbd5e1; 
+      --border-glow: rgba(37, 99, 235, 0.35); 
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     img { max-width: 100%; height: auto; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(2, 6, 23, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+    .glow-bg { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, rgba(240, 246, 255, 0) 70%); top: -250px; left: 50%; transform: translateX(-50%); z-index: -1; pointer-events: none; }
 
     /* PRELOADER */
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
+    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #f8fafc; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
     .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
     @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
     @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
@@ -43,10 +43,11 @@
     header { 
       display: flex; justify-content: space-between; align-items: center; 
       padding: 6px 0; height: 120px; position: sticky; top: 0; 
-      background: rgba(2, 6, 23, 0.95); 
+      background: rgba(255, 255, 255, 0.95); 
       backdrop-filter: blur(16px); 
       border-bottom: 1px solid var(--border-light); 
       z-index: 1000; 
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
     }
 
     .brand-logo-container { 
@@ -65,22 +66,50 @@
     }
 
     nav { display: flex; align-items: center; gap: 22px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: #ffffff; }
+    nav a { color: #334155; text-decoration: none; font-size: 0.92rem; font-weight: 700; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent-blue); }
     
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
-    .btn-soporte { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .btn-soporte:hover { background: rgba(239, 68, 68, 0.28); color: #ffffff; border-color: #ef4444; }
     
-    .btn-cotizar { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.2s; }
-    .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+    /* 🔥 BOTÓN SOPORTE ROJO DE ALTO IMPACTO */
+    .btn-soporte { 
+      background: #dc2626 !important; 
+      color: #ffffff !important; 
+      border: 1px solid #b91c1c !important; 
+      padding: 10px 18px; 
+      border-radius: 8px; 
+      font-size: 0.88rem; 
+      font-weight: 700; 
+      text-decoration: none; 
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+      transition: all 0.2s ease !important; 
+    }
+    .btn-soporte:hover { 
+      background: #b91c1c !important; 
+      color: #ffffff !important; 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35) !important;
+    }
+    
+    .btn-cotizar { 
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); 
+      color: #ffffff; 
+      padding: 10px 20px; 
+      border-radius: 8px; 
+      font-size: 0.88rem; 
+      font-weight: 700; 
+      text-decoration: none; 
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25); 
+      transition: all 0.2s; 
+    }
+    .btn-cotizar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); }
 
     /* HERO & ANIMACIÓN DE MOVIMIENTO FLOTANTE */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
-    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px; color: #0f172a; }
     .hero h1 span { color: var(--accent-blue); }
-    .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
+    .hero p { font-size: 1.1rem; color: #334155; margin-bottom: 25px; line-height: 1.6; font-weight: 500; }
     
     @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
 
@@ -88,7 +117,8 @@
       background: #ffffff; 
       border-radius: 20px; 
       padding: 20px; 
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08); 
+      border: 1px solid var(--border-light);
       display: flex; 
       align-items: center; 
       justify-content: center; 
@@ -99,17 +129,22 @@
     .hero-media-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
     .services-section { padding: 50px 6% 80px 6%; max-width: 1250px; margin: 0 auto; }
-    .category-header-title { font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
+    .category-header-title { font-size: 1.8rem; font-weight: 800; color: #0284c7; margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 2px solid var(--border-light); display: flex; align-items: center; gap: 10px; }
     
     .products-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
 
-    .product-row { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 25px; transition: all 0.35s ease; position: relative; cursor: pointer; }
-    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15); transform: translateY(-5px); background: var(--bg-card-hover); }
+    .product-row { 
+      display: flex; flex-direction: column; background: var(--bg-card); 
+      border: 1px solid var(--border-light); border-radius: 24px; padding: 25px; 
+      transition: all 0.35s ease; position: relative; cursor: pointer; 
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    }
+    .product-row:hover { border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12); transform: translateY(-5px); background: var(--bg-card-hover); }
 
     .product-img-box { 
       width: 100%; 
       height: 210px; 
-      background: #ffffff; 
+      background: #f8fafc; 
       border-radius: 16px; 
       display: flex; 
       align-items: center; 
@@ -117,7 +152,7 @@
       padding: 16px; 
       margin-bottom: 20px; 
       overflow: hidden; 
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
     }
     
     .product-img-box img { 
@@ -131,10 +166,11 @@
     .product-row:hover .product-img-box img { transform: scale(1.05); }
 
     .product-info-box { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex-grow: 1; }
-    .product-badge { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; background: rgba(6, 182, 212, 0.12); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.25); }
-    .product-info-box h3 { font-size: 1.4rem; font-weight: 800; color: #ffffff; line-height: 1.25; }
-    .product-info-box p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+    .product-badge { font-size: 0.75rem; font-weight: 800; color: #0284c7; text-transform: uppercase; letter-spacing: 1px; background: #e0f2fe; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd; }
+    .product-info-box h3 { font-size: 1.4rem; font-weight: 800; color: #0f172a; line-height: 1.25; }
+    .product-info-box p { font-size: 0.95rem; color: #334155; line-height: 1.5; font-weight: 500; }
     .btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none; font-size: 0.95rem; margin-top: auto; padding-top: 10px; }
+    .btn-link:hover { color: #1d4ed8; }
     .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
 
     /* FOOTER */
@@ -151,72 +187,45 @@
       display: block; 
     }
 
-    footer { background: rgba(15, 23, 42, 0.95); border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
+    footer { background: #ffffff; border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: #334155; font-size: 0.9rem; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
-    .address-card { background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-light); padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #cbd5e1; }
-    .footer-col h4 { color: #ffffff; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
-    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 2px; background: var(--accent-blue); border-radius: 2px; }
+    .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
+    
+    .address-card { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 16px; border-radius: 12px; font-size: 0.88rem; color: #0f172a; font-weight: 500; }
+    .footer-col h4 { color: #0f172a; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
+    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 3px; background: var(--accent-blue); border-radius: 2px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 500; }
-    .footer-links a:hover { color: #ffffff; }
+    .footer-links a { color: #334155; text-decoration: none; transition: color 0.2s; font-weight: 600; }
+    .footer-links a:hover { color: var(--accent-blue); }
 
     /* ESTILOS DE CONTACTO FOOTER */
-    .contact-item,
-    .contact-item:link,
-    .contact-item:visited,
-    .contact-item:active { 
-      display: flex !important; 
-      align-items: center !important; 
-      gap: 14px !important; 
-      margin-bottom: 16px !important; 
-      color: #cbd5e1 !important; 
-      text-decoration: none !important; 
-      transition: transform 0.2s ease, color 0.2s ease !important; 
-    }
-    .contact-item:hover { 
-      color: #ffffff !important; 
-      transform: translateX(4px) !important; 
-    }
-    .contact-item span { 
-      font-size: 0.8rem !important; 
-      color: #94a3b8 !important; 
-      display: block !important; 
-      text-decoration: none !important; 
-    }
-    .contact-item b { 
-      color: #ffffff !important; 
-      font-weight: 700 !important; 
-      font-size: 0.95rem !important; 
-      text-decoration: none !important; 
+    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: #0f172a; text-decoration: none; }
+    .contact-item:hover { color: var(--accent-blue); }
+    .contact-item span { color: #475569 !important; font-size: 0.82rem; font-weight: 600; display: block; }
+    .contact-item b { color: #0f172a !important; font-size: 0.95rem; font-weight: 800; }
+
+    .contact-icon-box { 
+      width: 40px; height: 40px; border-radius: 10px; 
+      background: #eff6ff; border: 1px solid #bfdbfe; 
+      display: flex; align-items: center; justify-content: center; 
+      color: var(--accent-blue); font-weight: 700; flex-shrink: 0; 
+      font-size: 1.1rem;
     }
     
-    .contact-icon-box { 
-      width: 44px !important; 
-      height: 44px !important; 
-      border-radius: 10px !important; 
-      background: rgba(59, 130, 246, 0.15) !important; 
-      border: 1px solid rgba(59, 130, 246, 0.3) !important; 
-      display: flex !important; 
-      align-items: center !important; 
-      justify-content: center !important; 
-      color: #3b82f6 !important; 
-      font-size: 1.2rem !important; 
-      flex-shrink: 0 !important; 
-    }
     .contact-icon-box.red-box { 
-      background: rgba(239, 68, 68, 0.15) !important; 
-      border-color: rgba(239, 68, 68, 0.3) !important; 
-      color: #ef4444 !important; 
+      background: #fee2e2 !important; 
+      border-color: #fca5a5 !important; 
+      color: #dc2626 !important; 
     }
 
-    .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; }
+    .footer-bottom { max-width: 1250px; margin: 0 auto; padding-top: 25px; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.88rem; color: #475569; font-weight: 600; }
 
     .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
     @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #020617; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-    .wa-banner { background: linear-gradient(135deg, #1e293b, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
+    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+    .wa-banner { background: linear-gradient(135deg, #0f172a, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,0.2); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
 
     @media (max-width: 900px) { 
       header { height: 90px; }
@@ -261,7 +270,7 @@
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <span style="color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Tu Aliado Estratégico en Tecnología</span>
+        <span style="color: #0284c7; font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Tu Aliado Estratégico en Tecnología</span>
         <h1 style="margin-top: 10px;">Soporte Empresarial, Licencias & <span>Hardware</span></h1>
         <p>Garantizamos la estabilidad de tu empresa. Brindamos servicios de soporte técnico, licenciamiento de Microsoft Windows Pro y Windows Server, instalación de UPS y suministro directo de repuestos y accesorios corporativos.</p>
 
@@ -358,7 +367,6 @@
         </div>
       </div>
 
-      <!-- PRODUCTO SEAGATE IRONWOLF PRO (CON LA RUTA EXACTA DE TU REPOSITORIO) -->
       <div class="product-row">
         <div class="product-img-box"><img src="img/soluciones-ti/Seagate-Ironwolf-Pro-Disco-Duro.jpg" alt="Discos Seagate IronWolf Pro NAS"></div>
         <div class="product-info-box">
@@ -526,7 +534,9 @@
         <a href="index.html" class="footer-logo-container">
           <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
-        <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Soluciones integrales de telecomunicaciones, redes, ciberseguridad, cloud y soporte TI para el sector corporativo.</p>
+        <p style="font-size: 0.92rem; color: #334155; line-height: 1.6; font-weight: 500;">
+          <strong>Somos tu aliado tecnológico estratégico.</strong> Diseñamos, implementamos y soportamos soluciones integrales en Telefonía IP y Comunicaciones Unificadas, Ciberseguridad Avanzada (Fortinet/ESET), Redes y Wi-Fi Enterprise, Seguridad Electrónica (CCTV y Biometría), Migración Cloud (Microsoft 365, Azure) y Outsourcing integral de Soporte TI con suministro de hardware corporativo.
+        </p>
         <div class="address-card">📍 <b>Oficina Principal:</b><br>Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.</div>
       </div>
       <div class="footer-col">
@@ -555,7 +565,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #64748b;">Bogotá, Colombia</div></div>
+    <div class="footer-bottom"><div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div><div style="color: #475569;">Bogotá, Colombia</div></div>
   </footer>
 
   <!-- WIDGET WHATSAPP -->
