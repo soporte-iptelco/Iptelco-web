@@ -15,23 +15,26 @@
 
   <style>
     :root {
-      --bg-dark: #f0f6ff; /* Fondo Azul Hielo Claro */
+      --bg-main: #f1f5f9; /* Fondo Gris Hielo Tech con textura */
       --bg-card: #ffffff;
       --bg-card-hover: #ffffff;
       --accent-blue: #2563eb;
       --accent-cyan: #0284c7;
-      --accent-glow: rgba(37, 99, 235, 0.12);
+      --accent-navy: #0f172a;
+      --accent-glow: rgba(37, 99, 235, 0.08);
       --text-main: #0f172a;   /* Texto principal super oscuro */
       --text-muted: #334155;  /* Texto secundario de alta legibilidad */
       --border-light: #cbd5e1;
-      --border-glow: rgba(37, 99, 235, 0.35);
+      --border-glow: rgba(37, 99, 235, 0.25);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-dark);
+      background-color: var(--bg-main);
+      background-image: radial-gradient(at 50% 0%, rgba(37, 99, 235, 0.06) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(2, 132, 199, 0.04) 0px, transparent 50%);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
@@ -39,9 +42,9 @@
 
     .glow-bg {
       position: fixed;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(240, 246, 255, 0) 70%);
-      top: -250px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.07) 0%, rgba(241, 245, 249, 0) 70%);
+      top: -300px; left: 50%; transform: translateX(-50%);
       z-index: -1; pointer-events: none;
     }
 
@@ -77,15 +80,16 @@
       display: block;
     }
 
-    /* HEADER AMPLIO A 120PX PARA QUE EL LOGO RESPIRE */
+    /* HEADER AMPLIO A 120PX CON EFECTO CRISTAL */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 6px 0;
       height: 120px;
       position: sticky; top: 0;
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.92); 
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-light); z-index: 1000;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
     }
 
     nav { display: flex; align-items: center; gap: 22px; }
@@ -99,11 +103,11 @@
       margin-right: 4%;
     }
 
-    /* 💎 BOTÓN MESA DE AYUDA SOBRIO Y FRESCO (ESTILO SAAS / VERCEL) */
+    /* 💎 BOTÓN SOPORTE MIDNIGHT SLATE (ELEGANTES Y SOBRIO) */
     .btn-soporte {
-      background: #f8fafc !important;
-      color: #0f172a !important;
-      border: 1.5px solid #cbd5e1 !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border: 1px solid #1e293b !important;
       padding: 10px 18px;
       border-radius: 8px;
       font-size: 0.88rem;
@@ -111,16 +115,16 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
       transition: all 0.25s ease !important;
     }
     .btn-soporte:hover {
-      background: #ffffff !important;
+      background: #1e293b !important;
+      color: #ffffff !important;
       border-color: #2563eb !important;
-      color: #2563eb !important;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12) !important;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.2) !important;
     }
 
     .btn-cotizar {
@@ -139,7 +143,7 @@
       box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
     }
 
-    /* LOGO FOOTER MÁS GRANDE */
+    /* LOGO FOOTER */
     .footer-logo-container {
       display: inline-block;
       background: transparent !important;
@@ -157,7 +161,7 @@
       display: block;
     }
 
-    /* HERO PRINCIPAL */
+    /* HERO PRINCIPAL CON TARJETA DE CRISTAL ELEVADA */
     .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
@@ -168,11 +172,11 @@
     .hero h1 span { color: var(--accent-blue); }
     .hero p { font-size: 1.1rem; color: #334155; margin-bottom: 25px; line-height: 1.6; font-weight: 500; }
 
-    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
+    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
 
     .hero-media-container {
       background: #ffffff; border-radius: 20px; padding: 25px;
-      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.07);
       border: 1px solid var(--border-light);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       animation: floatAnimationHero 4s ease-in-out infinite;
@@ -193,10 +197,10 @@
       display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
       border-radius: 24px; padding: 30px; transition: all 0.35s ease;
       position: relative; cursor: pointer;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
     }
     .product-row:hover {
-      border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
+      border-color: var(--border-glow); box-shadow: 0 18px 40px rgba(37, 99, 235, 0.12);
       transform: translateY(-5px); background: var(--bg-card-hover);
     }
     .product-row.reverse { flex-direction: row-reverse; }
@@ -228,6 +232,7 @@
     .certs-info-section {
       background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
       padding: 60px 6%; margin: 60px 0; text-align: center;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
     }
     .certs-info-title { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
     .certs-info-subtitle { color: #334155; font-size: 1rem; max-width: 650px; margin: 0 auto 30px auto; font-weight: 500; }
@@ -239,13 +244,13 @@
     .cert-badge-lg-card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
     .cert-badge-lg-card img { height: 65px; width: auto; object-fit: contain; }
 
-    /* FOOTER CORREGIDO */
+    /* FOOTER */
     footer { background: #ffffff; border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: #334155; font-size: 0.9rem; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; }
     .footer-col-brand { display: flex; flex-direction: column; gap: 16px; }
     
     .address-card { 
-      background: #f1f5f9; 
+      background: #f8fafc; 
       border: 1px solid #cbd5e1; 
       padding: 16px; 
       border-radius: 12px; 
