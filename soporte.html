@@ -131,7 +131,7 @@
     .form-card {
       background: #ffffff;
       border: 1px solid var(--border-light);
-      border-top: 5px solid var(--accent-blue); /* Borde superior corporativo */
+      border-top: 5px solid var(--accent-blue);
       border-radius: 24px;
       padding: 45px 50px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
@@ -145,29 +145,13 @@
       align-items: center;
     }
 
-    /* LOGO DENTRO DE LA TARJETA */
+    /* LOGO DESTACADO EN LA TARJETA (MÁS GRANDE) */
     .form-card-logo {
-      height: 75px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 12px;
-    }
-
-    /* BADGE DE CANAL OFICIAL */
-    .form-badge-official {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      height: 115px !important;
+      max-height: 115px !important;
+      width: auto !important;
+      object-fit: contain !important;
+      margin-bottom: 18px;
     }
 
     .form-header h1 {
@@ -510,15 +494,14 @@
     </div>
   </header>
 
-  <!-- FORMULARIO DE SOPORTE VTIGER CON REFUERZO DE MARCA -->
+  <!-- FORMULARIO DE SOPORTE VTIGER -->
   <div class="form-container-wrapper">
     <div class="form-card">
       
       <div class="form-header">
         <img src="img/logo-main.png" alt="IPTELCO Logo" class="form-card-logo">
-        <span class="form-badge-official">🛡️ Canal Oficial de Ingeniería • IPTELCO S.A.S</span>
         <h1>Solicitud de Soporte <span>IPTELCO</span></h1>
-        <p>Complete los datos para radicar su ticket directamente en nuestra Mesa de Ayuda B2B</p>
+        <p>Complete los datos para radicar su ticket directamente en nuestra Mesa de Ayuda</p>
       </div>
 
       <div id="form-status"></div>
