@@ -73,7 +73,7 @@
     
     .header-actions { display: flex; align-items: center; gap: 12px; margin-right: 4%; }
     
-    /* 🔥 BOTÓN SOPORTE ROJO DE ALTO IMPACTO */
+    /* BOTÓN SOPORTE ROJO DE ALTO IMPACTO */
     .btn-soporte { 
       background: #dc2626 !important; 
       color: #ffffff !important; 
@@ -509,9 +509,10 @@
             <input type="tel" id="celular_contacto" placeholder="Ej. 3001234567" required>
           </div>
 
+          <!-- CORREO ELECTRÓNICO OBLIGATORIO -->
           <div class="form-group">
-            <label>Correo Electrónico <span class="sub-label">(Opcional)</span></label>
-            <input type="email" id="correo_contacto" placeholder="correo@empresa.com">
+            <label>Correo Electrónico <span class="required">*</span></label>
+            <input type="email" id="correo_contacto" placeholder="correo@empresa.com" required>
           </div>
         </div>
 
@@ -654,7 +655,9 @@
         archivoBase64 = await toBase64(file);
       }
 
-      // 2. Construcción del paquete de datos a enviar (con valor por defecto en 'area')
+      const correoUsuario = document.getElementById('correo_contacto').value;
+
+      // 2. Construcción del paquete de datos a enviar
       const formData = {
         titulo: document.getElementById('titulo_caso').value,
         descripcion: document.getElementById('descripcion_caso').value,
@@ -662,7 +665,7 @@
         nit: document.getElementById('nit_empresa').value,
         contacto: document.getElementById('nombre_contacto').value,
         celular: document.getElementById('celular_contacto').value,
-        correo: document.getElementById('correo_contacto').value,
+        correo: correoUsuario,
         
         // Datos del archivo (Si no subió nada, viajan en null)
         archivo_nombre: archivoNombre,
@@ -692,7 +695,7 @@
         showModal(
           'success', 
           'Solicitud registrada exitosamente', 
-          `Hemos asignado el radicado <strong>${numCaso}</strong> a su caso. Nuestro equipo de soporte lo revisará y se pondrá en contacto a la brevedad.`
+          `Hemos asignado el radicado <strong>${numCaso}</strong> a su caso. Se ha enviado una confirmación a <strong>${correoUsuario}</strong> y nuestro equipo le responderá a esa dirección de correo.`
         );
         document.getElementById('vtiger-support-form').reset();
       } else {
