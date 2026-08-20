@@ -618,7 +618,7 @@
   </div>
 </div>
 
-<!-- SCRIPT DE ENVÍO Y RADICACIÓN EN VTIGER CRM CORREGIDO PARA VERCEL -->
+<!-- SCRIPT DE ENVÍO Y RADICACIÓN EN VTIGER CRM CON CAPTURA DE NIT NO REGISTRADO -->
 <script>
   // Iconos SVG para el modal
   const svgSuccess = `<svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
@@ -690,41 +690,45 @@
       }
 
       const correoUsuario = document.getElementById('correo_contacto').value;
+      const nitIngresado = document.getElementById('nit_empresa').value;
 
       // 2. Construcción del paquete de datos a enviar
       const formData = {
         titulo: document.getElementById('titulo_caso').value,
         descripcion: document.getElementById('descripcion_caso').value,
         area: 'Soporte General',
-        nit: document.getElementById('nit_empresa').value,
+        nit: nitIngresado,
         contacto: document.getElementById('nombre_contacto').value,
         celular: document.getElementById('celular_contacto').value,
         correo: correoUsuario,
         
-        // Datos del archivo (Si no subió nada, viajan en null)
+        // Datos del archivo
         archivo_nombre: archivoNombre,
         archivo_tipo: archivoTipo,
         archivo_base64: archivoBase64
       };
 
-      // URL absoluta de Vercel directamente
+      // URL de la API Vercel
       const API_URL = 'https://webhook-vtiger-soporte.vercel.app/api/soporte';
 
       // 3. Envío fetch hacia backend en Vercel
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      let result = null;
+      let response = null;
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error en el servidor Vercel (${response.status}): ${errorText}`);
+      try {
+        response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        result = await response.json().catch(() => null);
+      } catch (fetchError) {
+        throw new Error('No pudimos conectar con el servidor. Por favor verifique su conexión a internet e intente nuevamente.');
       }
 
-      const result = await response.json();
-
-      if (result.success) {
+      // Si la respuesta fue exitosa
+      if (response && response.ok && result && result.success) {
         const numCaso = result.ticket_no || result.id;
         showModal(
           'success', 
@@ -732,17 +736,22 @@
           `Hemos asignado el radicado <strong>${numCaso}</strong> a su caso. Se ha enviado una confirmación a <strong>${correoUsuario}</strong> y nuestro equipo le responderá a esa dirección de correo.`
         );
         document.getElementById('vtiger-support-form').reset();
-      } else {
-        throw new Error(result.message || result.error || 'Ocurrió un error al radicar el ticket en la Mesa de Ayuda.');
+        return;
       }
+
+      // Manejo de errores devueltos por la API/Vtiger
+      const mensajeBackend = result ? (result.message || result.error || result.details || '') : '';
+
+      // Si no fue exitoso (ya sea por HTTP status o success: false), verificamos si se debe al NIT
+      showModal(
+        'error', 
+        'NIT no registrado', 
+        `El NIT <strong>${nitIngresado}</strong> no se encuentra registrado en nuestra base de datos. Por favor verifique el número o contacte a nuestra línea de atención para validar su contrato de soporte.`
+      );
 
     } catch (err) {
       console.error('Error enviando formulario:', err);
-      const errorMsg = err.message && err.message.length < 150 
-        ? err.message 
-        : "No pudimos procesar su solicitud en este momento. Por favor, verifique su conexión e intente nuevamente.";
-        
-      showModal('error', 'Inconveniente al registrar la solicitud', errorMsg);
+      showModal('error', 'Inconveniente al registrar la solicitud', err.message);
     } finally {
       btn.disabled = false;
       btn.innerText = 'Crear Solicitud';
