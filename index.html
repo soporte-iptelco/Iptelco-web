@@ -9,318 +9,13 @@
   <link rel="icon" type="image/png" href="img/icono-iptelco.png">
   <link rel="shortcut icon" type="image/png" href="img/icono-iptelco.png">
 
+  <!-- FUENTES DE GOOGLE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-dark: #f0f6ff; /* Fondo Azul Hielo Claro */
-      --bg-card: #ffffff;
-      --bg-card-hover: #ffffff;
-      --accent-blue: #2563eb;
-      --accent-cyan: #0284c7;
-      --accent-glow: rgba(37, 99, 235, 0.12);
-      --text-main: #0f172a;   /* Texto principal super oscuro */
-      --text-muted: #334155;  /* Texto secundario de alta legibilidad */
-      --border-light: #cbd5e1;
-      --border-glow: rgba(37, 99, 235, 0.35);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .glow-bg {
-      position: fixed;
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(240, 246, 255, 0) 70%);
-      top: -250px; left: 50%; transform: translateX(-50%);
-      z-index: -1; pointer-events: none;
-    }
-
-    /* PRELOADER CON LOGO GRANDE */
-    #iptelco-preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #f8fafc; z-index: 99999; display: flex; align-items: center; justify-content: center; animation: fadeOutPreloader 0.4s ease 0.1s forwards; pointer-events: none; }
-    .preloader-logo-img { height: 130px !important; width: auto !important; object-fit: contain; animation: pulseLogo 1.6s ease-in-out infinite; }
-    @keyframes pulseLogo { 0% { transform: scale(0.92); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.92); opacity: 0.8; } }
-    @keyframes fadeOutPreloader { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
-
-    /* LOGO HEADER MÁS GRANDE Y LEGIBLE */
-    .brand-logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      background: transparent !important;
-      margin-left: 4%;
-      height: 100%;
-      mask-image: none !important;
-      -webkit-mask-image: none !important;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .brand-logo-container:hover {
-      opacity: 0.95;
-      transform: scale(1.02);
-    }
-
-    .brand-logo-img {
-      height: 105px !important;
-      max-height: 105px !important;
-      width: auto !important;
-      object-fit: contain !important;
-      display: block;
-    }
-
-    /* HEADER AMPLIO A 120PX PARA QUE EL LOGO RESPIRE */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 6px 0;
-      height: 120px;
-      position: sticky; top: 0;
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-light); z-index: 1000;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-    }
-
-    nav { display: flex; align-items: center; gap: 22px; }
-    nav a { color: #334155; text-decoration: none; font-size: 0.92rem; font-weight: 700; transition: color 0.2s; }
-    nav a:hover, nav a.active { color: var(--accent-blue); }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-right: 4%;
-    }
-
-    /* 🌌 BOTÓN SOPORTE DARK GLOW */
-    .btn-soporte {
-      background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%) !important;
-      color: #ffffff !important;
-      border: 1px solid rgba(59, 130, 246, 0.5) !important;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
-      transition: all 0.25s ease !important;
-    }
-    .btn-soporte:hover {
-      background: linear-gradient(135deg, #1e293b 0%, #2563eb 100%) !important;
-      color: #ffffff !important;
-      border-color: #60a5fa !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
-    }
-
-    /* ⚡ BOTÓN COTIZAR PROYECTO */
-    .btn-cotizar {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
-      color: #ffffff !important;
-      border: 1px solid rgba(147, 197, 253, 0.6) !important;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 18px rgba(37, 99, 235, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-      transition: all 0.25s ease !important;
-    }
-    .btn-cotizar:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
-      color: #ffffff !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(37, 99, 235, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
-    }
-
-    /* HERO PRINCIPAL */
-    .hero { padding: 60px 6% 40px 6%; max-width: 1250px; margin: 0 auto; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
-    
-    .hero h1 {
-      font-size: 3.3rem; font-weight: 800; line-height: 1.15; margin-bottom: 18px;
-      color: #0f172a;
-    }
-    .hero h1 span { color: var(--accent-blue); }
-    .hero p { font-size: 1.1rem; color: #334155; margin-bottom: 25px; line-height: 1.6; font-weight: 500; }
-
-    @keyframes floatAnimationHero { 0% { transform: translateY(0px); } 50% { transform: translateY(-14px); } 100% { transform: translateY(0px); } }
-
-    .hero-media-container {
-      background: #ffffff; border-radius: 20px; padding: 25px;
-      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
-      border: 1px solid var(--border-light);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      animation: floatAnimationHero 4s ease-in-out infinite;
-    }
-    .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
-
-    /* CATÁLOGOS DE PRODUCTOS */
-    .services-section { padding: 50px 6% 40px 6%; max-width: 1250px; margin: 0 auto; }
-    .category-header-title {
-      font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
-      margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 2px solid var(--border-light);
-      display: flex; align-items: center; gap: 10px;
-    }
-
-    .products-showcase { display: flex; flex-direction: column; gap: 35px; }
-
-    .product-row {
-      display: flex; align-items: center; gap: 40px; background: var(--bg-card); border: 1px solid var(--border-light);
-      border-radius: 24px; padding: 30px; transition: all 0.35s ease;
-      position: relative; cursor: pointer;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
-    }
-    .product-row:hover {
-      border-color: var(--border-glow); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
-      transform: translateY(-5px); background: var(--bg-card-hover);
-    }
-    .product-row.reverse { flex-direction: row-reverse; }
-
-    .product-img-box {
-      flex: 1; min-width: 270px; height: 230px; background: #f8fafc; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden;
-      border: 1px solid #e2e8f0;
-    }
-    .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
-    .product-row:hover .product-img-box img { transform: scale(1.08) rotate(1deg); }
-
-    .product-info-box { flex: 1.2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .product-badge {
-      font-size: 0.8rem; font-weight: 800; color: #0284c7; text-transform: uppercase; letter-spacing: 1px;
-      background: #e0f2fe; padding: 4px 12px; border-radius: 20px; border: 1px solid #bae6fd;
-    }
-    .product-info-box h3 { font-size: 1.65rem; font-weight: 800; color: #0f172a; line-height: 1.25; }
-    .product-info-box p { font-size: 0.95rem; color: #334155; line-height: 1.6; font-weight: 500; }
-    
-    .btn-link {
-      display: inline-flex; align-items: center; gap: 8px; color: var(--accent-blue); font-weight: 700; text-decoration: none;
-      font-size: 0.95rem; margin-top: 4px; transition: gap 0.2s;
-    }
-    .btn-link:hover { gap: 12px; color: #1d4ed8; }
-    .btn-link::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; border-radius: 24px; }
-
-    /* CERTIFICACIONES */
-    .certs-info-section {
-      background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
-      padding: 60px 6%; margin: 60px 0; text-align: center;
-    }
-    .certs-info-title { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .certs-info-subtitle { color: #334155; font-size: 1rem; max-width: 650px; margin: 0 auto 30px auto; font-weight: 500; }
-    .certs-badges-grid { display: flex; justify-content: center; align-items: center; gap: 25px; flex-wrap: wrap; }
-    .cert-badge-lg-card {
-      background: #ffffff; padding: 16px 28px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06); border: 1px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .cert-badge-lg-card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
-    .cert-badge-lg-card img { height: 65px; width: auto; object-fit: contain; }
-
-    /* FOOTER OPTIMIZADO */
-    footer { 
-      background: #ffffff; 
-      border-top: 1px solid var(--border-light); 
-      padding: 50px 4% 30px 4%; 
-      color: #334155; 
-      font-size: 0.9rem; 
-    }
-
-    .footer-grid { 
-      display: grid; 
-      grid-template-columns: 1.2fr 1fr 1fr; 
-      gap: 50px; 
-      max-width: 1150px; 
-      margin: 0 auto 40px auto; 
-      align-items: start; 
-    }
-
-    .footer-col { display: flex; flex-direction: column; gap: 12px; }
-
-    .address-card { 
-      background: #f8fafc; 
-      border: 1px solid #e2e8f0; 
-      padding: 12px 14px; 
-      border-radius: 10px; 
-      font-size: 0.85rem; 
-      color: #0f172a; 
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    .footer-col h4 { color: #0f172a; font-size: 1.05rem; font-weight: 800; margin-bottom: 12px; position: relative; padding-bottom: 8px; }
-    .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 3px; background: var(--accent-blue); border-radius: 2px; }
-
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { color: #334155; text-decoration: none; transition: color 0.2s; font-weight: 600; }
-    .footer-links a:hover { color: var(--accent-blue); }
-
-    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: #0f172a; text-decoration: none; }
-    .contact-item:hover { color: var(--accent-blue); }
-    .contact-item span { color: #475569 !important; font-size: 0.82rem; font-weight: 600; display: block; }
-    .contact-item b { color: #0f172a !important; font-size: 0.95rem; font-weight: 800; }
-
-    .contact-icon-box { 
-      width: 40px; height: 40px; border-radius: 10px; 
-      background: #eff6ff; border: 1px solid #bfdbfe; 
-      display: flex; align-items: center; justify-content: center; 
-      color: var(--accent-blue); font-weight: 700; flex-shrink: 0; 
-      font-size: 1.1rem;
-    }
-
-    .contact-icon-box.red-box {
-      background: #eff6ff !important;
-      border-color: #bfdbfe !important;
-      color: #1d4ed8 !important;
-    }
-
-    .footer-bottom { 
-      max-width: 1150px; 
-      margin: 0 auto; 
-      padding-top: 25px; 
-      border-top: 1px solid var(--border-light); 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      flex-wrap: wrap; 
-      gap: 15px; 
-      font-size: 0.88rem; 
-      color: #475569; 
-      font-weight: 600; 
-    }
-
-    /* WIDGET WHATSAPP */
-    .whatsapp-widget { position: fixed; bottom: 35px; right: 35px; z-index: 99990; display: flex; align-items: center; text-decoration: none; animation: floatWidget 4s ease-in-out infinite; }
-    @keyframes floatWidget { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-    .wa-avatar-box { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--accent-blue); background: #ffffff; position: relative; z-index: 2; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .wa-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .wa-icon-badge { position: absolute; bottom: -2px; right: -4px; width: 28px; height: 28px; background: #25D366; border-radius: 50%; border: 3px solid #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-    .wa-banner { background: linear-gradient(135deg, #0f172a, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,0.2); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
-    .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #0f172a, var(--accent-cyan)); transform: translateX(6px); }
-
-    @media (max-width: 900px) {
-      header { height: 90px; }
-      .brand-logo-img { height: 70px !important; max-height: 70px !important; }
-      .footer-grid, .hero-grid { grid-template-columns: 1fr; }
-      .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
-      .product-img-box { width: 100%; height: 200px; }
-      nav { display: none; }
-      .whatsapp-widget { bottom: 20px; right: 20px; }
-      .wa-avatar-box { width: 62px; height: 62px; }
-      .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; }
-    }
-  </style>
+  <!-- HOJA DE ESTILOS PRINCIPAL (Sincronizada) -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -332,7 +27,7 @@
   </div>
   <div class="glow-bg"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER NAVEGACIÓN -->
   <header>
     <a href="index.html" class="brand-logo-container">
       <img src="img/logo-main.png" alt="IPTELCO Logo" class="brand-logo-img">
@@ -377,6 +72,7 @@
   <!-- CATÁLOGOS DE PRODUCTOS -->
   <section class="services-section">
     
+    <!-- CATEGORÍA 1: TELEFONÍA IP -->
     <div class="category-header-title" style="color: #1d4ed8;">📞 Telefonía IP & Centrales Cloud</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -400,6 +96,7 @@
       </div>
     </div>
 
+    <!-- CATEGORÍA 2: CIBERSEGURIDAD Y REDES -->
     <div class="category-header-title" style="color: #0284c7; margin-top: 80px;">🛡️ Ciberseguridad & Redes Enterprise</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -433,6 +130,7 @@
       </div>
     </div>
 
+    <!-- CATEGORÍA 3: SOLUCIONES CLOUD -->
     <div class="category-header-title" style="color: #6d28d9; margin-top: 80px;">☁️ Soluciones Cloud & Productividad</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -446,6 +144,7 @@
       </div>
     </div>
 
+    <!-- CATEGORÍA 4: VIDEOVIGILANCIA Y BIOMETRÍA -->
     <div class="category-header-title" style="color: #0284c7; margin-top: 80px;">📹 Videovigilancia, Biometría & Control de Acceso</div>
     <div class="products-showcase">
       <div class="product-row">
@@ -471,7 +170,7 @@
 
   </section>
 
-  <!-- CERTIFICACIONES -->
+  <!-- CERTIFICACIONES Y PARTNERS -->
   <section class="certs-info-section">
     <h2 class="certs-info-title">📜 Certificaciones & Partners Oficiales</h2>
     <p class="certs-info-subtitle">Respaldados técnicamente por los mejores fabricantes de tecnología a nivel global para garantizar implementaciones de alta calidad.</p>
@@ -489,67 +188,9 @@
     </div>
   </section>
 
-  <!-- FOOTER OPTIMIZADO -->
-  <footer>
-    <div class="footer-grid">
-      
-      <!-- Columna 1: Marca, Descripción Corta y Dirección -->
-      <div class="footer-col">
-        <a href="index.html" style="margin-bottom: 8px; display: inline-block; text-decoration: none;">
-          <img src="img/logo-main.png" alt="IPTELCO Logo" style="height: 85px; width: auto; object-fit: contain; display: block;">
-        </a>
-        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; font-weight: 500;">
-          <b>Somos tu aliado tecnológico estratégico.</b> Diseñamos e implementamos soluciones integrales en Telefonía IP, Ciberseguridad, Redes, Cloud y Soporte TI empresarial.
-        </p>
-        <div class="address-card" style="margin-top: 6px;">
-          📍 <b>Oficina Principal:</b><br>
-          Calle 26 # 69 – 76, Edificio Elemento Torre 3, Oficina 1501 — Bogotá, Colombia.
-        </div>
-      </div>
-
-      <!-- Columna 2: Contacto & Soporte -->
-      <div class="footer-col">
-        <h4>Atención & Soporte</h4>
-        <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
-          <div class="contact-icon-box">💬</div>
-          <div><span>WhatsApp Directo:</span><b>+57 317 873 7171</b></div>
-        </a>
-        <a href="mailto:info@iptelco.com.co" class="contact-item">
-          <div class="contact-icon-box">✉️</div>
-          <div><span>Correo Comercial:</span><b>info@iptelco.com.co</b></div>
-        </a>
-        <a href="soporte.html" class="contact-item">
-          <div class="contact-icon-box red-box">🛠️</div>
-          <div><span>Mesa de Ayuda B2B:</span><b>Radicar Ticket de Soporte</b></div>
-        </a>
-      </div>
-
-      <!-- Columna 3: Enlaces de Soluciones -->
-      <div class="footer-col">
-        <h4>Nuestras Soluciones</h4>
-        <ul class="footer-links">
-          <li><a href="telefonia-ip.html">📞 Telefonía IP & Centrales</a></li>
-          <li><a href="ciberseguridad.html">🛡️ Firewalls & Seguridad</a></li>
-          <li><a href="soluciones-cloud.html">☁️ Microsoft 365 & Azure</a></li>
-          <li><a href="cctv-biometria.html">📹 CCTV & Control de Acceso</a></li>
-          <li><a href="outsourcing-ti.html">💻 Soporte TI & Hardware</a></li>
-        </ul>
-      </div>
-
-    </div>
-    
-    <!-- Barra Inferior Limpia -->
-    <div class="footer-bottom">
-      <div>© 2026 IPTELCO S.A.S — Todos los derechos reservados.</div>
-      <div>Bogotá, Colombia</div>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/573178737171" target="_blank" class="whatsapp-widget">
-    <div class="wa-avatar-box"><img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Asesora IPTELCO"><div class="wa-icon-badge"><svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
-    </div>
-    <div class="wa-banner"><span>Recibe tu <strong>COTIZACIÓN</strong><br>en WhatsApp</span></div>
-  </a>
+  <!-- FOOTER Y BOTÓN WHATSAPP CENTRALIZADOS -->
+  <iptelco-footer></iptelco-footer>
+  <script src="footer.js"></script>
 
 </body>
 </html>
