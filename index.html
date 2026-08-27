@@ -146,26 +146,8 @@
       box-shadow: 0 6px 24px rgba(37, 99, 235, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
     }
 
-    /* LOGO FOOTER PROPORCIONADO */
-    .footer-logo-container {
-      display: inline-block;
-      background: transparent !important;
-      mask-image: none !important;
-      -webkit-mask-image: none !important;
-      padding: 0 !important;
-      margin-bottom: 8px;
-    }
-
-    .footer-logo-img {
-      height: 80px !important;
-      max-height: 80px !important;
-      width: auto !important;
-      object-fit: contain !important;
-      display: block;
-    }
-
     /* HERO PRINCIPAL */
-    .hero { padding: 60px 6% 40px 6%; max-width: 1300px; margin: 0 auto; }
+    .hero { padding: 60px 4% 40px 4%; max-width: 1420px; margin: 0 auto; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 40px; }
     
     .hero h1 {
@@ -187,7 +169,7 @@
     .hero-media-container img { max-width: 100%; max-height: 320px; object-fit: contain; }
 
     /* CATÁLOGOS DE PRODUCTOS */
-    .services-section { padding: 50px 6% 40px 6%; max-width: 1250px; margin: 0 auto; }
+    .services-section { padding: 50px 4% 40px 4%; max-width: 1420px; margin: 0 auto; }
     .category-header-title {
       font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan);
       margin: 50px 0 25px 0; padding-bottom: 10px; border-bottom: 2px solid var(--border-light);
@@ -234,7 +216,7 @@
     /* CERTIFICACIONES */
     .certs-info-section {
       background: #ffffff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
-      padding: 60px 6%; margin: 60px 0; text-align: center;
+      padding: 60px 4%; margin: 60px 0; text-align: center;
     }
     .certs-info-title { font-size: 1.8rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
     .certs-info-subtitle { color: #334155; font-size: 1rem; max-width: 650px; margin: 0 auto 30px auto; font-weight: 500; }
@@ -246,11 +228,43 @@
     .cert-badge-lg-card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(37, 99, 235, 0.15); }
     .cert-badge-lg-card img { height: 65px; width: auto; object-fit: contain; }
 
-    /* FOOTER OPTIMIZADO */
-    footer { background: #ffffff; border-top: 1px solid var(--border-light); padding: 60px 6% 30px 6%; color: #334155; font-size: 0.9rem; }
-    .footer-grid { display: grid; grid-template-columns: 1.3fr 1.1fr 1fr; gap: 40px; max-width: 1250px; margin: 0 auto 40px auto; align-items: start; }
+    /* FOOTER OPTIMIZADO Y EXPANDIDO (4 COLUMNAS) */
+    footer { 
+      background: #ffffff; 
+      border-top: 1px solid var(--border-light); 
+      padding: 60px 4% 30px 4%; 
+      color: #334155; 
+      font-size: 0.9rem; 
+    }
+
+    .footer-grid { 
+      display: grid; 
+      grid-template-columns: 1.3fr 1fr 1fr 0.9fr; 
+      gap: 35px; 
+      max-width: 1420px; 
+      margin: 0 auto 40px auto; 
+      align-items: start; 
+    }
+
     .footer-col-brand { display: flex; flex-direction: column; gap: 12px; }
-    
+
+    .footer-logo-container {
+      display: inline-block;
+      background: transparent !important;
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      padding: 0 !important;
+      margin-bottom: 4px;
+    }
+
+    .footer-logo-img {
+      height: 75px !important;
+      max-height: 75px !important;
+      width: auto !important;
+      object-fit: contain !important;
+      display: block;
+    }
+
     .address-card { 
       background: #f8fafc; 
       border: 1px solid #e2e8f0; 
@@ -261,15 +275,14 @@
       font-weight: 500;
       line-height: 1.4;
     }
-    
+
     .footer-col h4 { color: #0f172a; font-size: 1.05rem; font-weight: 800; margin-bottom: 18px; position: relative; padding-bottom: 8px; }
     .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 3px; background: var(--accent-blue); border-radius: 2px; }
-    
+
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { color: #334155; text-decoration: none; transition: color 0.2s; font-weight: 600; }
     .footer-links a:hover { color: var(--accent-blue); }
 
-    /* CONTACTO FOOTER */
     .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: #0f172a; text-decoration: none; }
     .contact-item:hover { color: var(--accent-blue); }
     .contact-item span { color: #475569 !important; font-size: 0.82rem; font-weight: 600; display: block; }
@@ -282,7 +295,7 @@
       color: var(--accent-blue); font-weight: 700; flex-shrink: 0; 
       font-size: 1.1rem;
     }
-    
+
     .contact-icon-box.red-box {
       background: #eff6ff !important;
       border-color: #bfdbfe !important;
@@ -290,10 +303,18 @@
     }
 
     .footer-bottom { 
-      max-width: 1250px; margin: 0 auto; padding-top: 25px; 
+      max-width: 1420px; 
+      margin: 0 auto; 
+      padding-top: 25px; 
       border-top: 1px solid var(--border-light); 
-      display: flex; justify-content: space-between; align-items: center; 
-      flex-wrap: wrap; gap: 15px; font-size: 0.88rem; color: #475569; font-weight: 600; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      gap: 15px; 
+      font-size: 0.88rem; 
+      color: #475569; 
+      font-weight: 600; 
     }
 
     /* WIDGET WHATSAPP */
@@ -305,16 +326,22 @@
     .wa-banner { background: linear-gradient(135deg, #0f172a, var(--accent-blue)); color: #ffffff; padding: 12px 24px 12px 42px; border-radius: 0 30px 30px 0; font-size: 0.9rem; line-height: 1.3; margin-left: -32px; z-index: 1; box-shadow: 0 10px 20px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,0.2); border-left: none; transition: all 0.3s ease; white-space: nowrap; }
     .whatsapp-widget:hover .wa-banner { background: linear-gradient(135deg, #0f172a, var(--accent-cyan)); transform: translateX(6px); }
 
+    @media (max-width: 1100px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 900px) {
       header { height: 90px; }
       .brand-logo-img { height: 70px !important; max-height: 70px !important; }
-      .footer-grid, .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
       .product-row, .product-row.reverse { flex-direction: column; padding: 22px; gap: 20px; }
       .product-img-box { width: 100%; height: 200px; }
       nav { display: none; }
       .whatsapp-widget { bottom: 20px; right: 20px; }
       .wa-avatar-box { width: 62px; height: 62px; }
       .wa-banner { padding: 10px 18px 10px 35px; font-size: 0.8rem; margin-left: -28px; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -485,23 +512,25 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER RESTRUCTURADO (4 COLUMNAS) -->
   <footer>
     <div class="footer-grid">
       
+      <!-- Columna 1: Marca y Dirección -->
       <div class="footer-col-brand">
         <a href="index.html" class="footer-logo-container">
           <img src="img/logo-main.png" alt="IPTELCO Logo" class="footer-logo-img">
         </a>
         <p style="font-size: 0.88rem; color: #334155; line-height: 1.5; font-weight: 500;">
-          <b>Somos tu aliado tecnológico estratégico.</b> Diseñamos e implementamos soluciones integrales de Ciberseguridad, Telefonía IP, Cloud y Soporte TI.
+          <b>Somos tu aliado tecnológico estratégico.</b> Soluciones integrales en Ciberseguridad, Telefonía IP, Cloud y Soporte TI corporativo.
         </p>
         <div class="address-card">
           📍 <b>Oficina Principal:</b><br>
-          Calle 26 # 69 – 76, Edificio Elemento Torre 3, Of. 1501 — Bogotá, Colombia.
+          Calle 26 # 69 – 76, Ed. Elemento T3, Of. 1501 — Bogotá, Colombia.
         </div>
       </div>
 
+      <!-- Columna 2: Contacto & Soporte -->
       <div class="footer-col">
         <h4>Atención & Soporte</h4>
         <a href="https://wa.me/573178737171" target="_blank" class="contact-item">
@@ -518,6 +547,7 @@
         </a>
       </div>
 
+      <!-- Columna 3: Enlaces de Soluciones -->
       <div class="footer-col">
         <h4>Nuestras Soluciones</h4>
         <ul class="footer-links">
@@ -528,6 +558,19 @@
           <li><a href="outsourcing-ti.html">💻 Soporte TI & Hardware</a></li>
         </ul>
       </div>
+
+      <!-- Columna 4: Cobertura & Respaldos -->
+      <div class="footer-col">
+        <h4>Cobertura & Garantía</h4>
+        <p style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-bottom: 12px; font-weight: 500;">
+          Atención técnica presencial y remota con soporte garantizado SLA 24/7 en toda Colombia.
+        </p>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.2rem;">⚡</span>
+          <span style="font-size: 0.8rem; font-weight: 700; color: #0f172a;">Partner Certificado 3CX, Fortinet & ZKTeco</span>
+        </div>
+      </div>
+
     </div>
     
     <div class="footer-bottom">
