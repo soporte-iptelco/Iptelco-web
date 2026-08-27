@@ -16,6 +16,46 @@
 
   <!-- HOJA DE ESTILOS PRINCIPAL GLOBAL -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- ESTILOS EXCLUSIVOS DEL FORMULARIO Y POPUP MODAL -->
+  <style>
+    .form-container-wrapper { max-width: 850px; margin: 50px auto 80px auto; padding: 0 20px; }
+    .form-card { background: #ffffff; border: 1px solid var(--border-light); border-top: 5px solid var(--accent-blue); border-radius: 24px; padding: 45px 50px; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08); }
+    .form-header { text-align: center; margin-bottom: 35px; display: flex; flex-direction: column; align-items: center; }
+    .form-card-logo { height: 115px !important; max-height: 115px !important; width: auto !important; object-fit: contain !important; margin-bottom: 18px; }
+    .form-header h1 { font-size: 2.3rem; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.2; }
+    .form-header h1 span { color: var(--accent-blue); }
+    .form-header p { color: #334155; font-size: 0.98rem; font-weight: 500; max-width: 600px; }
+    .support-form { display: flex; flex-direction: column; gap: 22px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    label { font-size: 0.92rem; font-weight: 700; color: #0f172a; }
+    label span.required { color: #dc2626; }
+    .sub-label { font-size: 0.8rem; color: #475569; font-weight: 500; }
+    input[type="text"], input[type="tel"], input[type="email"], textarea { width: 100%; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px 18px; color: #0f172a; font-family: inherit; font-size: 0.95rem; font-weight: 600; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    input:focus, textarea:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+    textarea { resize: vertical; min-height: 120px; }
+    input[type="file"] { padding: 10px; cursor: pointer; color: #334155; }
+    input[type="file"]::file-selector-button { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 8px 16px; border-radius: 6px; font-weight: 700; cursor: pointer; margin-right: 15px; }
+    .btn-submit { background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: #ffffff; font-size: 1.05rem; font-weight: 800; padding: 16px; border: none; border-radius: 12px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25); transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .btn-submit:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 99, 235, 0.35); }
+
+    /* POPUP MODAL ESTILOS */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.active { display: flex; }
+    .modal-content { background: #ffffff; border-radius: 16px; width: 100%; max-width: 420px; padding: 32px 24px; position: relative; box-shadow: 0 20px 30px rgba(15, 23, 42, 0.15); text-align: center; border: 1px solid #cbd5e1; }
+    .modal-close-btn { position: absolute; top: 16px; right: 16px; background: transparent; border: none; font-size: 20px; color: #64748b; cursor: pointer; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .modal-close-btn:hover { background-color: #f1f5f9; color: #0f172a; }
+    .modal-icon-container { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; }
+    .modal-icon { width: 28px; height: 28px; }
+    .theme-success .modal-icon-container { background-color: #dcfce7; color: #16a34a; }
+    .theme-error .modal-icon-container { background-color: #fee2e2; color: #dc2626; }
+    .modal-title { font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; }
+    .modal-text { font-size: 0.92rem; color: #334155; margin: 0; line-height: 1.6; font-weight: 500; }
+    .modal-btn-action { margin-top: 24px; background-color: #0f172a; color: white; border: none; border-radius: 8px; padding: 12px 20px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s ease; }
+    .modal-btn-action:hover { background-color: #1e293b; }
+    @media (max-width: 900px) { .form-grid-2 { grid-template-columns: 1fr; } .form-card { padding: 25px 20px; } }
+  </style>
 </head>
 <body>
 
@@ -71,7 +111,7 @@
           <textarea id="descripcion_caso" placeholder="Detalle su requerimiento o problema técnico..." required></textarea>
         </div>
 
-        <!-- ADJUNTAR EVIDENCIA (IMAGEN O VIDEO CORTO) -->
+        <!-- ADJUNTAR EVIDENCIA -->
         <div class="form-group">
           <label>Adjuntar Evidencia <span class="sub-label">(Opcional. Máx 2.5MB. Imágenes o Videos cortos)</span></label>
           <input type="file" id="evidencia_caso" accept="image/*, video/mp4, video/webm, video/quicktime">
@@ -96,7 +136,6 @@
             <input type="tel" id="celular_contacto" placeholder="Ej. 3001234567" required>
           </div>
 
-          <!-- CORREO ELECTRÓNICO OBLIGATORIO -->
           <div class="form-group">
             <label>Correo Electrónico <span class="required">*</span></label>
             <input type="email" id="correo_contacto" placeholder="correo@empresa.com" required>
@@ -110,12 +149,12 @@
     </div>
   </div>
 
-  <!-- ESTRUCTURA DEL POPUP (MODAL) REUBICADO -->
+  <!-- ESTRUCTURA DEL POPUP (MODAL) -->
   <div id="modalOverlay" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close-btn" id="btnCloseIcon">✕</button>
       <div id="modalBody">
-        <!-- El contenido se inyecta por JS -->
+        <!-- Contenido inyectado por JS -->
       </div>
       <button class="modal-btn-action" id="btnCerrarModal">Entendido</button>
     </div>
@@ -125,9 +164,8 @@
   <iptelco-footer></iptelco-footer>
   <script src="footer.js"></script>
 
-  <!-- SCRIPT DE ENVÍO Y RADICACIÓN EN VTIGER CRM -->
+  <!-- SCRIPT DE ENVÍO VTIGER CRM -->
   <script>
-    // Iconos SVG para el modal
     const svgSuccess = `<svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
     const svgError = `<svg class="modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
 
@@ -169,7 +207,6 @@
       btn.innerText = 'Procesando Archivos y Creando Ticket...';
 
       try {
-        // 1. Procesamiento de archivo de evidencia
         const fileInput = document.getElementById('evidencia_caso');
         let archivoBase64 = null;
         let archivoNombre = null;
@@ -198,7 +235,6 @@
         const correoUsuario = document.getElementById('correo_contacto').value;
         const nitIngresado = document.getElementById('nit_empresa').value;
 
-        // 2. Construcción del paquete de datos
         const formData = {
           titulo: document.getElementById('titulo_caso').value,
           descripcion: document.getElementById('descripcion_caso').value,
